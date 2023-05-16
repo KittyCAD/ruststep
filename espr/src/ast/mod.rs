@@ -25,7 +25,7 @@ pub trait Component: Sized {
     }
 }
 
-#[macro_export(local_inner_macro)]
+#[macro_export]
 macro_rules! derive_ast_component {
     ($component:ty, $parser:path) => {
         impl crate::ast::Component for $component {

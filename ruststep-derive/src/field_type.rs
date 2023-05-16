@@ -24,7 +24,7 @@ impl FieldType {
                     leading_colon,
                     mut segments,
                 } = path;
-                let mut last_seg = segments.last_mut().unwrap();
+                let last_seg = segments.last_mut().unwrap();
                 match &mut last_seg.arguments {
                     syn::PathArguments::None => {
                         last_seg.ident = as_holder_ident(&last_seg.ident);
