@@ -2212,24 +2212,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         ExecutedAction(Box<ExecutedActionAny>),
     }
-    impl Into<ActionAny> for Action {
-        fn into(self) -> ActionAny {
-            ActionAny::Action(Box::new(self))
-        }
-    }
-    impl Into<ActionAny> for ExecutedAction {
-        fn into(self) -> ActionAny {
-            ActionAny::ExecutedAction(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Action> for ActionAny {
-        fn as_ref(&self) -> &Action {
-            match self {
-                ActionAny::Action(x) => x.as_ref(),
-                ActionAny::ExecutedAction(x) => (**x).as_ref(),
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = action_assignment)]
@@ -2248,30 +2230,6 @@ pub mod config_control_design {
         Change(Box<Change>),
         #[holder(use_place_holder)]
         StartWork(Box<StartWork>),
-    }
-    impl Into<ActionAssignmentAny> for ActionAssignment {
-        fn into(self) -> ActionAssignmentAny {
-            ActionAssignmentAny::ActionAssignment(Box::new(self))
-        }
-    }
-    impl Into<ActionAssignmentAny> for Change {
-        fn into(self) -> ActionAssignmentAny {
-            ActionAssignmentAny::Change(Box::new(self.into()))
-        }
-    }
-    impl Into<ActionAssignmentAny> for StartWork {
-        fn into(self) -> ActionAssignmentAny {
-            ActionAssignmentAny::StartWork(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ActionAssignment> for ActionAssignmentAny {
-        fn as_ref(&self) -> &ActionAssignment {
-            match self {
-                ActionAssignmentAny::ActionAssignment(x) => x.as_ref(),
-                ActionAssignmentAny::Change(x) => (**x).as_ref(),
-                ActionAssignmentAny::StartWork(x) => (**x).as_ref(),
-            }
-        }
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -2321,30 +2279,6 @@ pub mod config_control_design {
         ChangeRequest(Box<ChangeRequest>),
         #[holder(use_place_holder)]
         StartRequest(Box<StartRequest>),
-    }
-    impl Into<ActionRequestAssignmentAny> for ActionRequestAssignment {
-        fn into(self) -> ActionRequestAssignmentAny {
-            ActionRequestAssignmentAny::ActionRequestAssignment(Box::new(self))
-        }
-    }
-    impl Into<ActionRequestAssignmentAny> for ChangeRequest {
-        fn into(self) -> ActionRequestAssignmentAny {
-            ActionRequestAssignmentAny::ChangeRequest(Box::new(self.into()))
-        }
-    }
-    impl Into<ActionRequestAssignmentAny> for StartRequest {
-        fn into(self) -> ActionRequestAssignmentAny {
-            ActionRequestAssignmentAny::StartRequest(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ActionRequestAssignment> for ActionRequestAssignmentAny {
-        fn as_ref(&self) -> &ActionRequestAssignment {
-            match self {
-                ActionRequestAssignmentAny::ActionRequestAssignment(x) => x.as_ref(),
-                ActionRequestAssignmentAny::ChangeRequest(x) => (**x).as_ref(),
-                ActionRequestAssignmentAny::StartRequest(x) => (**x).as_ref(),
-            }
-        }
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -2417,57 +2351,30 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         PersonalAddress(Box<PersonalAddress>),
     }
-    impl Into<AddressAny> for Address {
-        fn into(self) -> AddressAny {
-            AddressAny::Address(Box::new(self))
-        }
-    }
-    impl Into<AddressAny> for OrganizationalAddress {
-        fn into(self) -> AddressAny {
-            AddressAny::OrganizationalAddress(Box::new(self.into()))
-        }
-    }
-    impl Into<AddressAny> for PersonalAddress {
-        fn into(self) -> AddressAny {
-            AddressAny::PersonalAddress(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Address> for AddressAny {
-        fn as_ref(&self) -> &Address {
-            match self {
-                AddressAny::Address(x) => x.as_ref(),
-                AddressAny::OrganizationalAddress(x) => (**x).as_ref(),
-                AddressAny::PersonalAddress(x) => (**x).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = advanced_brep_shape_representation)]
     #[holder(generate_deserialize)]
     pub struct AdvancedBrepShapeRepresentation {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub shape_representation: ShapeRepresentation,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub items: Vec<RepresentationItemAny>,
+        #[holder(use_place_holder)]
+        pub context_of_items: RepresentationContextAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = advanced_face)]
     #[holder(generate_deserialize)]
     pub struct AdvancedFace {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub face_surface: FaceSurface,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub bounds: Vec<FaceBoundAny>,
+        #[holder(use_place_holder)]
+        pub face_geometry: SurfaceAny,
+        pub same_sense: bool,
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -2516,36 +2423,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         ProductDefinitionContext(Box<ProductDefinitionContextAny>),
     }
-    impl Into<ApplicationContextElementAny> for ApplicationContextElement {
-        fn into(self) -> ApplicationContextElementAny {
-            ApplicationContextElementAny::ApplicationContextElement(Box::new(self))
-        }
-    }
-    impl Into<ApplicationContextElementAny> for ProductConceptContext {
-        fn into(self) -> ApplicationContextElementAny {
-            ApplicationContextElementAny::ProductConceptContext(Box::new(self.into()))
-        }
-    }
-    impl Into<ApplicationContextElementAny> for ProductContext {
-        fn into(self) -> ApplicationContextElementAny {
-            ApplicationContextElementAny::ProductContext(Box::new(self.into()))
-        }
-    }
-    impl Into<ApplicationContextElementAny> for ProductDefinitionContext {
-        fn into(self) -> ApplicationContextElementAny {
-            ApplicationContextElementAny::ProductDefinitionContext(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ApplicationContextElement> for ApplicationContextElementAny {
-        fn as_ref(&self) -> &ApplicationContextElement {
-            match self {
-                ApplicationContextElementAny::ApplicationContextElement(x) => x.as_ref(),
-                ApplicationContextElementAny::ProductConceptContext(x) => (**x).as_ref(),
-                ApplicationContextElementAny::ProductContext(x) => (**x).as_ref(),
-                ApplicationContextElementAny::ProductDefinitionContext(x) => (**x).as_ref(),
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = application_protocol_definition)]
@@ -2586,24 +2463,6 @@ pub mod config_control_design {
         ApprovalAssignment(Box<ApprovalAssignment>),
         #[holder(use_place_holder)]
         CcDesignApproval(Box<CcDesignApproval>),
-    }
-    impl Into<ApprovalAssignmentAny> for ApprovalAssignment {
-        fn into(self) -> ApprovalAssignmentAny {
-            ApprovalAssignmentAny::ApprovalAssignment(Box::new(self))
-        }
-    }
-    impl Into<ApprovalAssignmentAny> for CcDesignApproval {
-        fn into(self) -> ApprovalAssignmentAny {
-            ApprovalAssignmentAny::CcDesignApproval(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ApprovalAssignment> for ApprovalAssignmentAny {
-        fn as_ref(&self) -> &ApprovalAssignment {
-            match self {
-                ApprovalAssignmentAny::ApprovalAssignment(x) => x.as_ref(),
-                ApprovalAssignmentAny::CcDesignApproval(x) => (**x).as_ref(),
-            }
-        }
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -2657,47 +2516,39 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub name: Label,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = area_measure_with_unit)]
     #[holder(generate_deserialize)]
     pub struct AreaMeasureWithUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub measure_with_unit: MeasureWithUnit,
+        pub value_component: MeasureValue,
+        #[holder(use_place_holder)]
+        pub unit_component: Unit,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = area_unit)]
     #[holder(generate_deserialize)]
     pub struct AreaUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub named_unit: NamedUnit,
+        pub dimensions: DimensionalExponents,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = assembly_component_usage)]
     #[holder(generate_deserialize)]
     pub struct AssemblyComponentUsage {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub product_definition_usage: ProductDefinitionUsage,
+        pub id: Identifier,
+        #[holder(use_place_holder)]
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub relating_product_definition: ProductDefinitionAny,
+        #[holder(use_place_holder)]
+        pub related_product_definition: ProductDefinitionAny,
         #[holder(use_place_holder)]
         pub reference_designator: Option<Identifier>,
     }
@@ -2716,63 +2567,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         SpecifiedHigherUsageOccurrence(Box<SpecifiedHigherUsageOccurrence>),
     }
-    impl Into<AssemblyComponentUsageAny> for AssemblyComponentUsage {
-        fn into(self) -> AssemblyComponentUsageAny {
-            AssemblyComponentUsageAny::AssemblyComponentUsage(Box::new(self))
-        }
-    }
-    impl Into<AssemblyComponentUsageAny> for NextAssemblyUsageOccurrence {
-        fn into(self) -> AssemblyComponentUsageAny {
-            AssemblyComponentUsageAny::NextAssemblyUsageOccurrence(Box::new(self.into()))
-        }
-    }
-    impl Into<AssemblyComponentUsageAny> for PromissoryUsageOccurrence {
-        fn into(self) -> AssemblyComponentUsageAny {
-            AssemblyComponentUsageAny::PromissoryUsageOccurrence(Box::new(self.into()))
-        }
-    }
-    impl Into<AssemblyComponentUsageAny> for QuantifiedAssemblyComponentUsage {
-        fn into(self) -> AssemblyComponentUsageAny {
-            AssemblyComponentUsageAny::QuantifiedAssemblyComponentUsage(Box::new(self.into()))
-        }
-    }
-    impl Into<AssemblyComponentUsageAny> for SpecifiedHigherUsageOccurrence {
-        fn into(self) -> AssemblyComponentUsageAny {
-            AssemblyComponentUsageAny::SpecifiedHigherUsageOccurrence(Box::new(self.into()))
-        }
-    }
-    impl AsRef<AssemblyComponentUsage> for AssemblyComponentUsageAny {
-        fn as_ref(&self) -> &AssemblyComponentUsage {
-            match self {
-                AssemblyComponentUsageAny::AssemblyComponentUsage(x) => x.as_ref(),
-                AssemblyComponentUsageAny::NextAssemblyUsageOccurrence(x) => (**x).as_ref(),
-                AssemblyComponentUsageAny::PromissoryUsageOccurrence(x) => (**x).as_ref(),
-                AssemblyComponentUsageAny::QuantifiedAssemblyComponentUsage(x) => (**x).as_ref(),
-                AssemblyComponentUsageAny::SpecifiedHigherUsageOccurrence(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<ProductDefinitionUsage> for AssemblyComponentUsageAny {
-        fn as_ref(&self) -> &ProductDefinitionUsage {
-            match self {
-                AssemblyComponentUsageAny::AssemblyComponentUsage(x) => {
-                    AsRef::<AssemblyComponentUsage>::as_ref(x).as_ref()
-                }
-                AssemblyComponentUsageAny::NextAssemblyUsageOccurrence(x) => {
-                    AsRef::<AssemblyComponentUsage>::as_ref(x.as_ref()).as_ref()
-                }
-                AssemblyComponentUsageAny::PromissoryUsageOccurrence(x) => {
-                    AsRef::<AssemblyComponentUsage>::as_ref(x.as_ref()).as_ref()
-                }
-                AssemblyComponentUsageAny::QuantifiedAssemblyComponentUsage(x) => {
-                    AsRef::<AssemblyComponentUsage>::as_ref(x.as_ref()).as_ref()
-                }
-                AssemblyComponentUsageAny::SpecifiedHigherUsageOccurrence(x) => {
-                    AsRef::<AssemblyComponentUsage>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = assembly_component_usage_substitute)]
@@ -2787,69 +2581,51 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub substitute: AssemblyComponentUsageAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = axis1_placement)]
     #[holder(generate_deserialize)]
     pub struct Axis1Placement {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub placement: Placement,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub location: CartesianPoint,
         #[holder(use_place_holder)]
         pub axis: Option<Direction>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = axis2_placement_2d)]
     #[holder(generate_deserialize)]
     pub struct Axis2Placement2D {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub placement: Placement,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub location: CartesianPoint,
         #[holder(use_place_holder)]
         pub ref_direction: Option<Direction>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = axis2_placement_3d)]
     #[holder(generate_deserialize)]
     pub struct Axis2Placement3D {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub placement: Placement,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub location: CartesianPoint,
         #[holder(use_place_holder)]
         pub axis: Option<Direction>,
         #[holder(use_place_holder)]
         pub ref_direction: Option<Direction>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = b_spline_curve)]
     #[holder(generate_deserialize)]
     pub struct BSplineCurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub bounded_curve: BoundedCurve,
+        pub name: Label,
         pub degree: i64,
         #[holder(use_place_holder)]
         pub control_points_list: Vec<CartesianPoint>,
@@ -2874,101 +2650,31 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         UniformCurve(Box<UniformCurve>),
     }
-    impl Into<BSplineCurveAny> for BSplineCurve {
-        fn into(self) -> BSplineCurveAny {
-            BSplineCurveAny::BSplineCurve(Box::new(self))
-        }
-    }
-    impl Into<BSplineCurveAny> for BSplineCurveWithKnots {
-        fn into(self) -> BSplineCurveAny {
-            BSplineCurveAny::BSplineCurveWithKnots(Box::new(self.into()))
-        }
-    }
-    impl Into<BSplineCurveAny> for BezierCurve {
-        fn into(self) -> BSplineCurveAny {
-            BSplineCurveAny::BezierCurve(Box::new(self.into()))
-        }
-    }
-    impl Into<BSplineCurveAny> for QuasiUniformCurve {
-        fn into(self) -> BSplineCurveAny {
-            BSplineCurveAny::QuasiUniformCurve(Box::new(self.into()))
-        }
-    }
-    impl Into<BSplineCurveAny> for RationalBSplineCurve {
-        fn into(self) -> BSplineCurveAny {
-            BSplineCurveAny::RationalBSplineCurve(Box::new(self.into()))
-        }
-    }
-    impl Into<BSplineCurveAny> for UniformCurve {
-        fn into(self) -> BSplineCurveAny {
-            BSplineCurveAny::UniformCurve(Box::new(self.into()))
-        }
-    }
-    impl AsRef<BSplineCurve> for BSplineCurveAny {
-        fn as_ref(&self) -> &BSplineCurve {
-            match self {
-                BSplineCurveAny::BSplineCurve(x) => x.as_ref(),
-                BSplineCurveAny::BSplineCurveWithKnots(x) => (**x).as_ref(),
-                BSplineCurveAny::BezierCurve(x) => (**x).as_ref(),
-                BSplineCurveAny::QuasiUniformCurve(x) => (**x).as_ref(),
-                BSplineCurveAny::RationalBSplineCurve(x) => (**x).as_ref(),
-                BSplineCurveAny::UniformCurve(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<BoundedCurve> for BSplineCurveAny {
-        fn as_ref(&self) -> &BoundedCurve {
-            match self {
-                BSplineCurveAny::BSplineCurve(x) => AsRef::<BSplineCurve>::as_ref(x).as_ref(),
-                BSplineCurveAny::BSplineCurveWithKnots(x) => {
-                    AsRef::<BSplineCurve>::as_ref(x.as_ref()).as_ref()
-                }
-                BSplineCurveAny::BezierCurve(x) => {
-                    AsRef::<BSplineCurve>::as_ref(x.as_ref()).as_ref()
-                }
-                BSplineCurveAny::QuasiUniformCurve(x) => {
-                    AsRef::<BSplineCurve>::as_ref(x.as_ref()).as_ref()
-                }
-                BSplineCurveAny::RationalBSplineCurve(x) => {
-                    AsRef::<BSplineCurve>::as_ref(x.as_ref()).as_ref()
-                }
-                BSplineCurveAny::UniformCurve(x) => {
-                    AsRef::<BSplineCurve>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = b_spline_curve_with_knots)]
     #[holder(generate_deserialize)]
     pub struct BSplineCurveWithKnots {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub b_spline_curve: BSplineCurve,
+        pub name: Label,
+        pub degree: i64,
+        #[holder(use_place_holder)]
+        pub control_points_list: Vec<CartesianPoint>,
+        pub curve_form: BSplineCurveForm,
+        pub closed_curve: Logical,
+        pub self_intersect: Logical,
         pub knot_multiplicities: Vec<i64>,
         #[holder(use_place_holder)]
         pub knots: Vec<ParameterValue>,
         pub knot_spec: KnotType,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = b_spline_surface)]
     #[holder(generate_deserialize)]
     pub struct BSplineSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub bounded_surface: BoundedSurface,
+        pub name: Label,
         pub u_degree: i64,
         pub v_degree: i64,
         #[holder(use_place_holder)]
@@ -2995,83 +2701,21 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         UniformSurface(Box<UniformSurface>),
     }
-    impl Into<BSplineSurfaceAny> for BSplineSurface {
-        fn into(self) -> BSplineSurfaceAny {
-            BSplineSurfaceAny::BSplineSurface(Box::new(self))
-        }
-    }
-    impl Into<BSplineSurfaceAny> for BSplineSurfaceWithKnots {
-        fn into(self) -> BSplineSurfaceAny {
-            BSplineSurfaceAny::BSplineSurfaceWithKnots(Box::new(self.into()))
-        }
-    }
-    impl Into<BSplineSurfaceAny> for BezierSurface {
-        fn into(self) -> BSplineSurfaceAny {
-            BSplineSurfaceAny::BezierSurface(Box::new(self.into()))
-        }
-    }
-    impl Into<BSplineSurfaceAny> for QuasiUniformSurface {
-        fn into(self) -> BSplineSurfaceAny {
-            BSplineSurfaceAny::QuasiUniformSurface(Box::new(self.into()))
-        }
-    }
-    impl Into<BSplineSurfaceAny> for RationalBSplineSurface {
-        fn into(self) -> BSplineSurfaceAny {
-            BSplineSurfaceAny::RationalBSplineSurface(Box::new(self.into()))
-        }
-    }
-    impl Into<BSplineSurfaceAny> for UniformSurface {
-        fn into(self) -> BSplineSurfaceAny {
-            BSplineSurfaceAny::UniformSurface(Box::new(self.into()))
-        }
-    }
-    impl AsRef<BSplineSurface> for BSplineSurfaceAny {
-        fn as_ref(&self) -> &BSplineSurface {
-            match self {
-                BSplineSurfaceAny::BSplineSurface(x) => x.as_ref(),
-                BSplineSurfaceAny::BSplineSurfaceWithKnots(x) => (**x).as_ref(),
-                BSplineSurfaceAny::BezierSurface(x) => (**x).as_ref(),
-                BSplineSurfaceAny::QuasiUniformSurface(x) => (**x).as_ref(),
-                BSplineSurfaceAny::RationalBSplineSurface(x) => (**x).as_ref(),
-                BSplineSurfaceAny::UniformSurface(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<BoundedSurface> for BSplineSurfaceAny {
-        fn as_ref(&self) -> &BoundedSurface {
-            match self {
-                BSplineSurfaceAny::BSplineSurface(x) => AsRef::<BSplineSurface>::as_ref(x).as_ref(),
-                BSplineSurfaceAny::BSplineSurfaceWithKnots(x) => {
-                    AsRef::<BSplineSurface>::as_ref(x.as_ref()).as_ref()
-                }
-                BSplineSurfaceAny::BezierSurface(x) => {
-                    AsRef::<BSplineSurface>::as_ref(x.as_ref()).as_ref()
-                }
-                BSplineSurfaceAny::QuasiUniformSurface(x) => {
-                    AsRef::<BSplineSurface>::as_ref(x.as_ref()).as_ref()
-                }
-                BSplineSurfaceAny::RationalBSplineSurface(x) => {
-                    AsRef::<BSplineSurface>::as_ref(x.as_ref()).as_ref()
-                }
-                BSplineSurfaceAny::UniformSurface(x) => {
-                    AsRef::<BSplineSurface>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = b_spline_surface_with_knots)]
     #[holder(generate_deserialize)]
     pub struct BSplineSurfaceWithKnots {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub b_spline_surface: BSplineSurface,
+        pub name: Label,
+        pub u_degree: i64,
+        pub v_degree: i64,
+        #[holder(use_place_holder)]
+        pub control_points_list: Vec<Vec<CartesianPoint>>,
+        pub surface_form: BSplineSurfaceForm,
+        pub u_closed: Logical,
+        pub v_closed: Logical,
+        pub self_intersect: Logical,
         pub u_multiplicities: Vec<i64>,
         pub v_multiplicities: Vec<i64>,
         #[holder(use_place_holder)]
@@ -3080,47 +2724,46 @@ pub mod config_control_design {
         pub v_knots: Vec<ParameterValue>,
         pub knot_spec: KnotType,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = bezier_curve)]
     #[holder(generate_deserialize)]
     pub struct BezierCurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub b_spline_curve: BSplineCurve,
+        pub name: Label,
+        pub degree: i64,
+        #[holder(use_place_holder)]
+        pub control_points_list: Vec<CartesianPoint>,
+        pub curve_form: BSplineCurveForm,
+        pub closed_curve: Logical,
+        pub self_intersect: Logical,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = bezier_surface)]
     #[holder(generate_deserialize)]
     pub struct BezierSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub b_spline_surface: BSplineSurface,
+        pub name: Label,
+        pub u_degree: i64,
+        pub v_degree: i64,
+        #[holder(use_place_holder)]
+        pub control_points_list: Vec<Vec<CartesianPoint>>,
+        pub surface_form: BSplineSurfaceForm,
+        pub u_closed: Logical,
+        pub v_closed: Logical,
+        pub self_intersect: Logical,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = boundary_curve)]
     #[holder(generate_deserialize)]
     pub struct BoundaryCurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub composite_curve_on_surface: CompositeCurveOnSurface,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub segments: Vec<CompositeCurveSegmentAny>,
+        pub self_intersect: Logical,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -3131,47 +2774,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         OuterBoundaryCurve(Box<OuterBoundaryCurve>),
     }
-    impl Into<BoundaryCurveAny> for BoundaryCurve {
-        fn into(self) -> BoundaryCurveAny {
-            BoundaryCurveAny::BoundaryCurve(Box::new(self))
-        }
-    }
-    impl Into<BoundaryCurveAny> for OuterBoundaryCurve {
-        fn into(self) -> BoundaryCurveAny {
-            BoundaryCurveAny::OuterBoundaryCurve(Box::new(self.into()))
-        }
-    }
-    impl AsRef<BoundaryCurve> for BoundaryCurveAny {
-        fn as_ref(&self) -> &BoundaryCurve {
-            match self {
-                BoundaryCurveAny::BoundaryCurve(x) => x.as_ref(),
-                BoundaryCurveAny::OuterBoundaryCurve(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<CompositeCurveOnSurface> for BoundaryCurveAny {
-        fn as_ref(&self) -> &CompositeCurveOnSurface {
-            match self {
-                BoundaryCurveAny::BoundaryCurve(x) => AsRef::<BoundaryCurve>::as_ref(x).as_ref(),
-                BoundaryCurveAny::OuterBoundaryCurve(x) => {
-                    AsRef::<BoundaryCurve>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = bounded_curve)]
     #[holder(generate_deserialize)]
     pub struct BoundedCurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub curve: Curve,
+        pub name: Label,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -3192,104 +2801,25 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         TrimmedCurve(Box<TrimmedCurve>),
     }
-    impl Into<BoundedCurveAny> for BoundedCurve {
-        fn into(self) -> BoundedCurveAny {
-            BoundedCurveAny::BoundedCurve(Box::new(self))
-        }
-    }
-    impl Into<BoundedCurveAny> for BSplineCurve {
-        fn into(self) -> BoundedCurveAny {
-            BoundedCurveAny::BSplineCurve(Box::new(self.into()))
-        }
-    }
-    impl Into<BoundedCurveAny> for BoundedPcurve {
-        fn into(self) -> BoundedCurveAny {
-            BoundedCurveAny::BoundedPcurve(Box::new(self.into()))
-        }
-    }
-    impl Into<BoundedCurveAny> for BoundedSurfaceCurve {
-        fn into(self) -> BoundedCurveAny {
-            BoundedCurveAny::BoundedSurfaceCurve(Box::new(self.into()))
-        }
-    }
-    impl Into<BoundedCurveAny> for CompositeCurve {
-        fn into(self) -> BoundedCurveAny {
-            BoundedCurveAny::CompositeCurve(Box::new(self.into()))
-        }
-    }
-    impl Into<BoundedCurveAny> for Polyline {
-        fn into(self) -> BoundedCurveAny {
-            BoundedCurveAny::Polyline(Box::new(self.into()))
-        }
-    }
-    impl Into<BoundedCurveAny> for TrimmedCurve {
-        fn into(self) -> BoundedCurveAny {
-            BoundedCurveAny::TrimmedCurve(Box::new(self.into()))
-        }
-    }
-    impl AsRef<BoundedCurve> for BoundedCurveAny {
-        fn as_ref(&self) -> &BoundedCurve {
-            match self {
-                BoundedCurveAny::BoundedCurve(x) => x.as_ref(),
-                BoundedCurveAny::BSplineCurve(x) => (**x).as_ref(),
-                BoundedCurveAny::BoundedPcurve(x) => (**x).as_ref(),
-                BoundedCurveAny::BoundedSurfaceCurve(x) => (**x).as_ref(),
-                BoundedCurveAny::CompositeCurve(x) => (**x).as_ref(),
-                BoundedCurveAny::Polyline(x) => (**x).as_ref(),
-                BoundedCurveAny::TrimmedCurve(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<Curve> for BoundedCurveAny {
-        fn as_ref(&self) -> &Curve {
-            match self {
-                BoundedCurveAny::BoundedCurve(x) => AsRef::<BoundedCurve>::as_ref(x).as_ref(),
-                BoundedCurveAny::BSplineCurve(x) => {
-                    AsRef::<BoundedCurve>::as_ref(x.as_ref()).as_ref()
-                }
-                BoundedCurveAny::BoundedPcurve(x) => {
-                    AsRef::<BoundedCurve>::as_ref(x.as_ref()).as_ref()
-                }
-                BoundedCurveAny::BoundedSurfaceCurve(x) => {
-                    AsRef::<BoundedCurve>::as_ref(x.as_ref()).as_ref()
-                }
-                BoundedCurveAny::CompositeCurve(x) => {
-                    AsRef::<BoundedCurve>::as_ref(x.as_ref()).as_ref()
-                }
-                BoundedCurveAny::Polyline(x) => AsRef::<BoundedCurve>::as_ref(x.as_ref()).as_ref(),
-                BoundedCurveAny::TrimmedCurve(x) => {
-                    AsRef::<BoundedCurve>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut)]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = bounded_pcurve)]
     #[holder(generate_deserialize)]
     pub struct BoundedPcurve {
-        #[as_ref]
-        #[as_mut]
         #[holder(use_place_holder)]
-        pub pcurve: Pcurve,
-        #[as_ref]
-        #[as_mut]
+        pub name: Label,
         #[holder(use_place_holder)]
-        pub bounded_curve: BoundedCurve,
+        pub basis_surface: SurfaceAny,
+        #[holder(use_place_holder)]
+        pub reference_to_curve: DefinitionalRepresentation,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = bounded_surface)]
     #[holder(generate_deserialize)]
     pub struct BoundedSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub surface: Surface,
+        pub name: Label,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -3306,138 +2836,62 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         RectangularTrimmedSurface(Box<RectangularTrimmedSurface>),
     }
-    impl Into<BoundedSurfaceAny> for BoundedSurface {
-        fn into(self) -> BoundedSurfaceAny {
-            BoundedSurfaceAny::BoundedSurface(Box::new(self))
-        }
-    }
-    impl Into<BoundedSurfaceAny> for BSplineSurface {
-        fn into(self) -> BoundedSurfaceAny {
-            BoundedSurfaceAny::BSplineSurface(Box::new(self.into()))
-        }
-    }
-    impl Into<BoundedSurfaceAny> for CurveBoundedSurface {
-        fn into(self) -> BoundedSurfaceAny {
-            BoundedSurfaceAny::CurveBoundedSurface(Box::new(self.into()))
-        }
-    }
-    impl Into<BoundedSurfaceAny> for RectangularCompositeSurface {
-        fn into(self) -> BoundedSurfaceAny {
-            BoundedSurfaceAny::RectangularCompositeSurface(Box::new(self.into()))
-        }
-    }
-    impl Into<BoundedSurfaceAny> for RectangularTrimmedSurface {
-        fn into(self) -> BoundedSurfaceAny {
-            BoundedSurfaceAny::RectangularTrimmedSurface(Box::new(self.into()))
-        }
-    }
-    impl AsRef<BoundedSurface> for BoundedSurfaceAny {
-        fn as_ref(&self) -> &BoundedSurface {
-            match self {
-                BoundedSurfaceAny::BoundedSurface(x) => x.as_ref(),
-                BoundedSurfaceAny::BSplineSurface(x) => (**x).as_ref(),
-                BoundedSurfaceAny::CurveBoundedSurface(x) => (**x).as_ref(),
-                BoundedSurfaceAny::RectangularCompositeSurface(x) => (**x).as_ref(),
-                BoundedSurfaceAny::RectangularTrimmedSurface(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<Surface> for BoundedSurfaceAny {
-        fn as_ref(&self) -> &Surface {
-            match self {
-                BoundedSurfaceAny::BoundedSurface(x) => AsRef::<BoundedSurface>::as_ref(x).as_ref(),
-                BoundedSurfaceAny::BSplineSurface(x) => {
-                    AsRef::<BoundedSurface>::as_ref(x.as_ref()).as_ref()
-                }
-                BoundedSurfaceAny::CurveBoundedSurface(x) => {
-                    AsRef::<BoundedSurface>::as_ref(x.as_ref()).as_ref()
-                }
-                BoundedSurfaceAny::RectangularCompositeSurface(x) => {
-                    AsRef::<BoundedSurface>::as_ref(x.as_ref()).as_ref()
-                }
-                BoundedSurfaceAny::RectangularTrimmedSurface(x) => {
-                    AsRef::<BoundedSurface>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut)]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = bounded_surface_curve)]
     #[holder(generate_deserialize)]
     pub struct BoundedSurfaceCurve {
-        #[as_ref]
-        #[as_mut]
         #[holder(use_place_holder)]
-        pub surface_curve: SurfaceCurve,
-        #[as_ref]
-        #[as_mut]
+        pub name: Label,
         #[holder(use_place_holder)]
-        pub bounded_curve: BoundedCurve,
+        pub curve_3d: CurveAny,
+        #[holder(use_place_holder)]
+        pub associated_geometry: Vec<PcurveOrSurface>,
+        pub master_representation: PreferredSurfaceCurveRepresentation,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = brep_with_voids)]
     #[holder(generate_deserialize)]
     pub struct BrepWithVoids {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub manifold_solid_brep: ManifoldSolidBrep,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub outer: ClosedShellAny,
         #[holder(use_place_holder)]
         pub voids: Vec<OrientedClosedShell>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = calendar_date)]
     #[holder(generate_deserialize)]
     pub struct CalendarDate {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub date: Date,
+        pub year_component: YearNumber,
         #[holder(use_place_holder)]
         pub day_component: DayInMonthNumber,
         #[holder(use_place_holder)]
         pub month_component: MonthInYearNumber,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = cartesian_point)]
     #[holder(generate_deserialize)]
     pub struct CartesianPoint {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub point: Point,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub coordinates: Vec<LengthMeasure>,
     }
-    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut)]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = cartesian_transformation_operator)]
     #[holder(generate_deserialize)]
     pub struct CartesianTransformationOperator {
-        #[as_ref]
-        #[as_mut]
         #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
-        #[as_ref]
-        #[as_mut]
+        pub name: Label,
         #[holder(use_place_holder)]
-        pub functionally_defined_transformation: FunctionallyDefinedTransformation,
+        pub description: Text,
         #[holder(use_place_holder)]
         pub axis1: Option<Direction>,
         #[holder(use_place_holder)]
@@ -3455,179 +2909,98 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         CartesianTransformationOperator3D(Box<CartesianTransformationOperator3D>),
     }
-    impl Into<CartesianTransformationOperatorAny> for CartesianTransformationOperator {
-        fn into(self) -> CartesianTransformationOperatorAny {
-            CartesianTransformationOperatorAny::CartesianTransformationOperator(Box::new(self))
-        }
-    }
-    impl Into<CartesianTransformationOperatorAny> for CartesianTransformationOperator3D {
-        fn into(self) -> CartesianTransformationOperatorAny {
-            CartesianTransformationOperatorAny::CartesianTransformationOperator3D(Box::new(
-                self.into(),
-            ))
-        }
-    }
-    impl AsRef<CartesianTransformationOperator> for CartesianTransformationOperatorAny {
-        fn as_ref(&self) -> &CartesianTransformationOperator {
-            match self {
-                CartesianTransformationOperatorAny::CartesianTransformationOperator(x) => {
-                    x.as_ref()
-                }
-                CartesianTransformationOperatorAny::CartesianTransformationOperator3D(x) => {
-                    (**x).as_ref()
-                }
-            }
-        }
-    }
-    impl AsRef<GeometricRepresentationItem> for CartesianTransformationOperatorAny {
-        fn as_ref(&self) -> &GeometricRepresentationItem {
-            match self {
-                CartesianTransformationOperatorAny::CartesianTransformationOperator(x) => {
-                    AsRef::<CartesianTransformationOperator>::as_ref(x).as_ref()
-                }
-                CartesianTransformationOperatorAny::CartesianTransformationOperator3D(x) => {
-                    AsRef::<CartesianTransformationOperator>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    impl AsRef<FunctionallyDefinedTransformation> for CartesianTransformationOperatorAny {
-        fn as_ref(&self) -> &FunctionallyDefinedTransformation {
-            match self {
-                CartesianTransformationOperatorAny::CartesianTransformationOperator(x) => {
-                    AsRef::<CartesianTransformationOperator>::as_ref(x).as_ref()
-                }
-                CartesianTransformationOperatorAny::CartesianTransformationOperator3D(x) => {
-                    AsRef::<CartesianTransformationOperator>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = cartesian_transformation_operator_3d)]
     #[holder(generate_deserialize)]
     pub struct CartesianTransformationOperator3D {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub cartesian_transformation_operator: CartesianTransformationOperator,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub axis1: Option<Direction>,
+        #[holder(use_place_holder)]
+        pub axis2: Option<Direction>,
+        #[holder(use_place_holder)]
+        pub local_origin: CartesianPoint,
+        pub scale: Option<f64>,
         #[holder(use_place_holder)]
         pub axis3: Option<Direction>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = cc_design_approval)]
     #[holder(generate_deserialize)]
     pub struct CcDesignApproval {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub approval_assignment: ApprovalAssignment,
+        pub assigned_approval: Approval,
         #[holder(use_place_holder)]
         pub items: Vec<ApprovedItem>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = cc_design_certification)]
     #[holder(generate_deserialize)]
     pub struct CcDesignCertification {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub certification_assignment: CertificationAssignment,
+        pub assigned_certification: Certification,
         #[holder(use_place_holder)]
         pub items: Vec<CertifiedItem>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = cc_design_contract)]
     #[holder(generate_deserialize)]
     pub struct CcDesignContract {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub contract_assignment: ContractAssignment,
+        pub assigned_contract: Contract,
         #[holder(use_place_holder)]
         pub items: Vec<ContractedItem>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = cc_design_date_and_time_assignment)]
     #[holder(generate_deserialize)]
     pub struct CcDesignDateAndTimeAssignment {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub date_and_time_assignment: DateAndTimeAssignment,
+        pub assigned_date_and_time: DateAndTime,
+        #[holder(use_place_holder)]
+        pub role: DateTimeRole,
         #[holder(use_place_holder)]
         pub items: Vec<DateTimeItem>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = cc_design_person_and_organization_assignment)]
     #[holder(generate_deserialize)]
     pub struct CcDesignPersonAndOrganizationAssignment {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub person_and_organization_assignment: PersonAndOrganizationAssignment,
+        pub assigned_person_and_organization: PersonAndOrganization,
+        #[holder(use_place_holder)]
+        pub role: PersonAndOrganizationRole,
         #[holder(use_place_holder)]
         pub items: Vec<PersonOrganizationItem>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = cc_design_security_classification)]
     #[holder(generate_deserialize)]
     pub struct CcDesignSecurityClassification {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub security_classification_assignment: SecurityClassificationAssignment,
+        pub assigned_security_classification: SecurityClassification,
         #[holder(use_place_holder)]
         pub items: Vec<ClassifiedItem>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = cc_design_specification_reference)]
     #[holder(generate_deserialize)]
     pub struct CcDesignSpecificationReference {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub document_reference: DocumentReference,
+        pub assigned_document: DocumentAny,
+        #[holder(use_place_holder)]
+        pub source: Label,
         #[holder(use_place_holder)]
         pub items: Vec<SpecifiedItem>,
     }
@@ -3660,24 +3033,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         CcDesignCertification(Box<CcDesignCertification>),
     }
-    impl Into<CertificationAssignmentAny> for CertificationAssignment {
-        fn into(self) -> CertificationAssignmentAny {
-            CertificationAssignmentAny::CertificationAssignment(Box::new(self))
-        }
-    }
-    impl Into<CertificationAssignmentAny> for CcDesignCertification {
-        fn into(self) -> CertificationAssignmentAny {
-            CertificationAssignmentAny::CcDesignCertification(Box::new(self.into()))
-        }
-    }
-    impl AsRef<CertificationAssignment> for CertificationAssignmentAny {
-        fn as_ref(&self) -> &CertificationAssignment {
-            match self {
-                CertificationAssignmentAny::CertificationAssignment(x) => x.as_ref(),
-                CertificationAssignmentAny::CcDesignCertification(x) => (**x).as_ref(),
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = certification_type)]
@@ -3686,67 +3041,47 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub description: Label,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = change)]
     #[holder(generate_deserialize)]
     pub struct Change {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub action_assignment: ActionAssignment,
+        pub assigned_action: ActionAny,
         #[holder(use_place_holder)]
         pub items: Vec<WorkItem>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = change_request)]
     #[holder(generate_deserialize)]
     pub struct ChangeRequest {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub action_request_assignment: ActionRequestAssignment,
+        pub assigned_action_request: VersionedActionRequest,
         #[holder(use_place_holder)]
         pub items: Vec<ChangeRequestItem>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = circle)]
     #[holder(generate_deserialize)]
     pub struct Circle {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub conic: Conic,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub position: Axis2Placement,
         #[holder(use_place_holder)]
         pub radius: PositiveLengthMeasure,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = closed_shell)]
     #[holder(generate_deserialize)]
     pub struct ClosedShell {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub connected_face_set: ConnectedFaceSet,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub cfs_faces: Vec<FaceAny>,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -3757,47 +3092,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         OrientedClosedShell(Box<OrientedClosedShell>),
     }
-    impl Into<ClosedShellAny> for ClosedShell {
-        fn into(self) -> ClosedShellAny {
-            ClosedShellAny::ClosedShell(Box::new(self))
-        }
-    }
-    impl Into<ClosedShellAny> for OrientedClosedShell {
-        fn into(self) -> ClosedShellAny {
-            ClosedShellAny::OrientedClosedShell(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ClosedShell> for ClosedShellAny {
-        fn as_ref(&self) -> &ClosedShell {
-            match self {
-                ClosedShellAny::ClosedShell(x) => x.as_ref(),
-                ClosedShellAny::OrientedClosedShell(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<ConnectedFaceSet> for ClosedShellAny {
-        fn as_ref(&self) -> &ConnectedFaceSet {
-            match self {
-                ClosedShellAny::ClosedShell(x) => AsRef::<ClosedShell>::as_ref(x).as_ref(),
-                ClosedShellAny::OrientedClosedShell(x) => {
-                    AsRef::<ClosedShell>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = composite_curve)]
     #[holder(generate_deserialize)]
     pub struct CompositeCurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub bounded_curve: BoundedCurve,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub segments: Vec<CompositeCurveSegmentAny>,
         pub self_intersect: Logical,
@@ -3811,47 +3112,16 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         CompositeCurveOnSurface(Box<CompositeCurveOnSurfaceAny>),
     }
-    impl Into<CompositeCurveAny> for CompositeCurve {
-        fn into(self) -> CompositeCurveAny {
-            CompositeCurveAny::CompositeCurve(Box::new(self))
-        }
-    }
-    impl Into<CompositeCurveAny> for CompositeCurveOnSurface {
-        fn into(self) -> CompositeCurveAny {
-            CompositeCurveAny::CompositeCurveOnSurface(Box::new(self.into()))
-        }
-    }
-    impl AsRef<CompositeCurve> for CompositeCurveAny {
-        fn as_ref(&self) -> &CompositeCurve {
-            match self {
-                CompositeCurveAny::CompositeCurve(x) => x.as_ref(),
-                CompositeCurveAny::CompositeCurveOnSurface(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<BoundedCurve> for CompositeCurveAny {
-        fn as_ref(&self) -> &BoundedCurve {
-            match self {
-                CompositeCurveAny::CompositeCurve(x) => AsRef::<CompositeCurve>::as_ref(x).as_ref(),
-                CompositeCurveAny::CompositeCurveOnSurface(x) => {
-                    AsRef::<CompositeCurve>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = composite_curve_on_surface)]
     #[holder(generate_deserialize)]
     pub struct CompositeCurveOnSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub composite_curve: CompositeCurve,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub segments: Vec<CompositeCurveSegmentAny>,
+        pub self_intersect: Logical,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -3862,49 +3132,11 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         BoundaryCurve(Box<BoundaryCurveAny>),
     }
-    impl Into<CompositeCurveOnSurfaceAny> for CompositeCurveOnSurface {
-        fn into(self) -> CompositeCurveOnSurfaceAny {
-            CompositeCurveOnSurfaceAny::CompositeCurveOnSurface(Box::new(self))
-        }
-    }
-    impl Into<CompositeCurveOnSurfaceAny> for BoundaryCurve {
-        fn into(self) -> CompositeCurveOnSurfaceAny {
-            CompositeCurveOnSurfaceAny::BoundaryCurve(Box::new(self.into()))
-        }
-    }
-    impl AsRef<CompositeCurveOnSurface> for CompositeCurveOnSurfaceAny {
-        fn as_ref(&self) -> &CompositeCurveOnSurface {
-            match self {
-                CompositeCurveOnSurfaceAny::CompositeCurveOnSurface(x) => x.as_ref(),
-                CompositeCurveOnSurfaceAny::BoundaryCurve(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<CompositeCurve> for CompositeCurveOnSurfaceAny {
-        fn as_ref(&self) -> &CompositeCurve {
-            match self {
-                CompositeCurveOnSurfaceAny::CompositeCurveOnSurface(x) => {
-                    AsRef::<CompositeCurveOnSurface>::as_ref(x).as_ref()
-                }
-                CompositeCurveOnSurfaceAny::BoundaryCurve(x) => {
-                    AsRef::<CompositeCurveOnSurface>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = composite_curve_segment)]
     #[holder(generate_deserialize)]
     pub struct CompositeCurveSegment {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
-        #[holder(use_place_holder)]
-        pub founded_item: FoundedItem,
         pub transition: TransitionCode,
         pub same_sense: bool,
         #[holder(use_place_holder)]
@@ -3919,36 +3151,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         ReparametrisedCompositeCurveSegment(Box<ReparametrisedCompositeCurveSegment>),
     }
-    impl Into<CompositeCurveSegmentAny> for CompositeCurveSegment {
-        fn into(self) -> CompositeCurveSegmentAny {
-            CompositeCurveSegmentAny::CompositeCurveSegment(Box::new(self))
-        }
-    }
-    impl Into<CompositeCurveSegmentAny> for ReparametrisedCompositeCurveSegment {
-        fn into(self) -> CompositeCurveSegmentAny {
-            CompositeCurveSegmentAny::ReparametrisedCompositeCurveSegment(Box::new(self.into()))
-        }
-    }
-    impl AsRef<CompositeCurveSegment> for CompositeCurveSegmentAny {
-        fn as_ref(&self) -> &CompositeCurveSegment {
-            match self {
-                CompositeCurveSegmentAny::CompositeCurveSegment(x) => x.as_ref(),
-                CompositeCurveSegmentAny::ReparametrisedCompositeCurveSegment(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<FoundedItem> for CompositeCurveSegmentAny {
-        fn as_ref(&self) -> &FoundedItem {
-            match self {
-                CompositeCurveSegmentAny::CompositeCurveSegment(x) => {
-                    AsRef::<CompositeCurveSegment>::as_ref(x).as_ref()
-                }
-                CompositeCurveSegmentAny::ReparametrisedCompositeCurveSegment(x) => {
-                    AsRef::<CompositeCurveSegment>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = configuration_design)]
@@ -3959,19 +3161,15 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub design: ProductDefinitionFormationAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = configuration_effectivity)]
     #[holder(generate_deserialize)]
     pub struct ConfigurationEffectivity {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub product_definition_effectivity: ProductDefinitionEffectivity,
+        pub id: Identifier,
+        #[holder(use_place_holder)]
+        pub usage: ProductDefinitionRelationshipAny,
         #[holder(use_place_holder)]
         pub configuration: ConfigurationDesign,
     }
@@ -3991,19 +3189,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub purpose: Option<Label>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = conic)]
     #[holder(generate_deserialize)]
     pub struct Conic {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub curve: Curve,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub position: Axis2Placement,
     }
@@ -4022,100 +3214,37 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         Parabola(Box<Parabola>),
     }
-    impl Into<ConicAny> for Conic {
-        fn into(self) -> ConicAny {
-            ConicAny::Conic(Box::new(self))
-        }
-    }
-    impl Into<ConicAny> for Circle {
-        fn into(self) -> ConicAny {
-            ConicAny::Circle(Box::new(self.into()))
-        }
-    }
-    impl Into<ConicAny> for Ellipse {
-        fn into(self) -> ConicAny {
-            ConicAny::Ellipse(Box::new(self.into()))
-        }
-    }
-    impl Into<ConicAny> for Hyperbola {
-        fn into(self) -> ConicAny {
-            ConicAny::Hyperbola(Box::new(self.into()))
-        }
-    }
-    impl Into<ConicAny> for Parabola {
-        fn into(self) -> ConicAny {
-            ConicAny::Parabola(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Conic> for ConicAny {
-        fn as_ref(&self) -> &Conic {
-            match self {
-                ConicAny::Conic(x) => x.as_ref(),
-                ConicAny::Circle(x) => (**x).as_ref(),
-                ConicAny::Ellipse(x) => (**x).as_ref(),
-                ConicAny::Hyperbola(x) => (**x).as_ref(),
-                ConicAny::Parabola(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<Curve> for ConicAny {
-        fn as_ref(&self) -> &Curve {
-            match self {
-                ConicAny::Conic(x) => AsRef::<Conic>::as_ref(x).as_ref(),
-                ConicAny::Circle(x) => AsRef::<Conic>::as_ref(x.as_ref()).as_ref(),
-                ConicAny::Ellipse(x) => AsRef::<Conic>::as_ref(x.as_ref()).as_ref(),
-                ConicAny::Hyperbola(x) => AsRef::<Conic>::as_ref(x.as_ref()).as_ref(),
-                ConicAny::Parabola(x) => AsRef::<Conic>::as_ref(x.as_ref()).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = conical_surface)]
     #[holder(generate_deserialize)]
     pub struct ConicalSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub elementary_surface: ElementarySurface,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub position: Axis2Placement3D,
         #[holder(use_place_holder)]
         pub radius: LengthMeasure,
         #[holder(use_place_holder)]
         pub semi_angle: PlaneAngleMeasure,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = connected_edge_set)]
     #[holder(generate_deserialize)]
     pub struct ConnectedEdgeSet {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub topological_representation_item: TopologicalRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub ces_edges: Vec<EdgeAny>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = connected_face_set)]
     #[holder(generate_deserialize)]
     pub struct ConnectedFaceSet {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub topological_representation_item: TopologicalRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub cfs_faces: Vec<FaceAny>,
     }
@@ -4130,45 +3259,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         OpenShell(Box<OpenShellAny>),
     }
-    impl Into<ConnectedFaceSetAny> for ConnectedFaceSet {
-        fn into(self) -> ConnectedFaceSetAny {
-            ConnectedFaceSetAny::ConnectedFaceSet(Box::new(self))
-        }
-    }
-    impl Into<ConnectedFaceSetAny> for ClosedShell {
-        fn into(self) -> ConnectedFaceSetAny {
-            ConnectedFaceSetAny::ClosedShell(Box::new(self.into()))
-        }
-    }
-    impl Into<ConnectedFaceSetAny> for OpenShell {
-        fn into(self) -> ConnectedFaceSetAny {
-            ConnectedFaceSetAny::OpenShell(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ConnectedFaceSet> for ConnectedFaceSetAny {
-        fn as_ref(&self) -> &ConnectedFaceSet {
-            match self {
-                ConnectedFaceSetAny::ConnectedFaceSet(x) => x.as_ref(),
-                ConnectedFaceSetAny::ClosedShell(x) => (**x).as_ref(),
-                ConnectedFaceSetAny::OpenShell(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<TopologicalRepresentationItem> for ConnectedFaceSetAny {
-        fn as_ref(&self) -> &TopologicalRepresentationItem {
-            match self {
-                ConnectedFaceSetAny::ConnectedFaceSet(x) => {
-                    AsRef::<ConnectedFaceSet>::as_ref(x).as_ref()
-                }
-                ConnectedFaceSetAny::ClosedShell(x) => {
-                    AsRef::<ConnectedFaceSet>::as_ref(x.as_ref()).as_ref()
-                }
-                ConnectedFaceSetAny::OpenShell(x) => {
-                    AsRef::<ConnectedFaceSet>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = context_dependent_shape_representation)]
@@ -4179,19 +3269,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub represented_product_relation: ProductDefinitionShape,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = context_dependent_unit)]
     #[holder(generate_deserialize)]
     pub struct ContextDependentUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub named_unit: NamedUnit,
+        pub dimensions: DimensionalExponents,
         #[holder(use_place_holder)]
         pub name: Label,
     }
@@ -4224,24 +3308,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         CcDesignContract(Box<CcDesignContract>),
     }
-    impl Into<ContractAssignmentAny> for ContractAssignment {
-        fn into(self) -> ContractAssignmentAny {
-            ContractAssignmentAny::ContractAssignment(Box::new(self))
-        }
-    }
-    impl Into<ContractAssignmentAny> for CcDesignContract {
-        fn into(self) -> ContractAssignmentAny {
-            ContractAssignmentAny::CcDesignContract(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ContractAssignment> for ContractAssignmentAny {
-        fn as_ref(&self) -> &ContractAssignment {
-            match self {
-                ContractAssignmentAny::ContractAssignment(x) => x.as_ref(),
-                ContractAssignmentAny::CcDesignContract(x) => (**x).as_ref(),
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = contract_type)]
@@ -4250,19 +3316,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub description: Label,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = conversion_based_unit)]
     #[holder(generate_deserialize)]
     pub struct ConversionBasedUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub named_unit: NamedUnit,
+        pub dimensions: DimensionalExponents,
         #[holder(use_place_holder)]
         pub name: Label,
         #[holder(use_place_holder)]
@@ -4279,19 +3339,13 @@ pub mod config_control_design {
         pub minute_offset: Option<MinuteInHour>,
         pub sense: AheadOrBehind,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = curve)]
     #[holder(generate_deserialize)]
     pub struct Curve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub name: Label,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -4314,124 +3368,40 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         SurfaceCurve(Box<SurfaceCurveAny>),
     }
-    impl Into<CurveAny> for Curve {
-        fn into(self) -> CurveAny {
-            CurveAny::Curve(Box::new(self))
-        }
-    }
-    impl Into<CurveAny> for BoundedCurve {
-        fn into(self) -> CurveAny {
-            CurveAny::BoundedCurve(Box::new(self.into()))
-        }
-    }
-    impl Into<CurveAny> for Conic {
-        fn into(self) -> CurveAny {
-            CurveAny::Conic(Box::new(self.into()))
-        }
-    }
-    impl Into<CurveAny> for CurveReplica {
-        fn into(self) -> CurveAny {
-            CurveAny::CurveReplica(Box::new(self.into()))
-        }
-    }
-    impl Into<CurveAny> for Line {
-        fn into(self) -> CurveAny {
-            CurveAny::Line(Box::new(self.into()))
-        }
-    }
-    impl Into<CurveAny> for OffsetCurve3D {
-        fn into(self) -> CurveAny {
-            CurveAny::OffsetCurve3D(Box::new(self.into()))
-        }
-    }
-    impl Into<CurveAny> for Pcurve {
-        fn into(self) -> CurveAny {
-            CurveAny::Pcurve(Box::new(self.into()))
-        }
-    }
-    impl Into<CurveAny> for SurfaceCurve {
-        fn into(self) -> CurveAny {
-            CurveAny::SurfaceCurve(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Curve> for CurveAny {
-        fn as_ref(&self) -> &Curve {
-            match self {
-                CurveAny::Curve(x) => x.as_ref(),
-                CurveAny::BoundedCurve(x) => (**x).as_ref(),
-                CurveAny::Conic(x) => (**x).as_ref(),
-                CurveAny::CurveReplica(x) => (**x).as_ref(),
-                CurveAny::Line(x) => (**x).as_ref(),
-                CurveAny::OffsetCurve3D(x) => (**x).as_ref(),
-                CurveAny::Pcurve(x) => (**x).as_ref(),
-                CurveAny::SurfaceCurve(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<GeometricRepresentationItem> for CurveAny {
-        fn as_ref(&self) -> &GeometricRepresentationItem {
-            match self {
-                CurveAny::Curve(x) => AsRef::<Curve>::as_ref(x).as_ref(),
-                CurveAny::BoundedCurve(x) => AsRef::<Curve>::as_ref(x.as_ref()).as_ref(),
-                CurveAny::Conic(x) => AsRef::<Curve>::as_ref(x.as_ref()).as_ref(),
-                CurveAny::CurveReplica(x) => AsRef::<Curve>::as_ref(x.as_ref()).as_ref(),
-                CurveAny::Line(x) => AsRef::<Curve>::as_ref(x.as_ref()).as_ref(),
-                CurveAny::OffsetCurve3D(x) => AsRef::<Curve>::as_ref(x.as_ref()).as_ref(),
-                CurveAny::Pcurve(x) => AsRef::<Curve>::as_ref(x.as_ref()).as_ref(),
-                CurveAny::SurfaceCurve(x) => AsRef::<Curve>::as_ref(x.as_ref()).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = curve_bounded_surface)]
     #[holder(generate_deserialize)]
     pub struct CurveBoundedSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub bounded_surface: BoundedSurface,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub basis_surface: SurfaceAny,
         #[holder(use_place_holder)]
         pub boundaries: Vec<BoundaryCurveAny>,
         pub implicit_outer: bool,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = curve_replica)]
     #[holder(generate_deserialize)]
     pub struct CurveReplica {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub curve: Curve,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub parent_curve: CurveAny,
         #[holder(use_place_holder)]
         pub transformation: CartesianTransformationOperatorAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = cylindrical_surface)]
     #[holder(generate_deserialize)]
     pub struct CylindricalSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub elementary_surface: ElementarySurface,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub position: Axis2Placement3D,
         #[holder(use_place_holder)]
         pub radius: PositiveLengthMeasure,
     }
@@ -4455,36 +3425,6 @@ pub mod config_control_design {
         OrdinalDate(Box<OrdinalDate>),
         #[holder(use_place_holder)]
         WeekOfYearAndDayDate(Box<WeekOfYearAndDayDate>),
-    }
-    impl Into<DateAny> for Date {
-        fn into(self) -> DateAny {
-            DateAny::Date(Box::new(self))
-        }
-    }
-    impl Into<DateAny> for CalendarDate {
-        fn into(self) -> DateAny {
-            DateAny::CalendarDate(Box::new(self.into()))
-        }
-    }
-    impl Into<DateAny> for OrdinalDate {
-        fn into(self) -> DateAny {
-            DateAny::OrdinalDate(Box::new(self.into()))
-        }
-    }
-    impl Into<DateAny> for WeekOfYearAndDayDate {
-        fn into(self) -> DateAny {
-            DateAny::WeekOfYearAndDayDate(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Date> for DateAny {
-        fn as_ref(&self) -> &Date {
-            match self {
-                DateAny::Date(x) => x.as_ref(),
-                DateAny::CalendarDate(x) => (**x).as_ref(),
-                DateAny::OrdinalDate(x) => (**x).as_ref(),
-                DateAny::WeekOfYearAndDayDate(x) => (**x).as_ref(),
-            }
-        }
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -4515,24 +3455,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         CcDesignDateAndTimeAssignment(Box<CcDesignDateAndTimeAssignment>),
     }
-    impl Into<DateAndTimeAssignmentAny> for DateAndTimeAssignment {
-        fn into(self) -> DateAndTimeAssignmentAny {
-            DateAndTimeAssignmentAny::DateAndTimeAssignment(Box::new(self))
-        }
-    }
-    impl Into<DateAndTimeAssignmentAny> for CcDesignDateAndTimeAssignment {
-        fn into(self) -> DateAndTimeAssignmentAny {
-            DateAndTimeAssignmentAny::CcDesignDateAndTimeAssignment(Box::new(self.into()))
-        }
-    }
-    impl AsRef<DateAndTimeAssignment> for DateAndTimeAssignmentAny {
-        fn as_ref(&self) -> &DateAndTimeAssignment {
-            match self {
-                DateAndTimeAssignmentAny::DateAndTimeAssignment(x) => x.as_ref(),
-                DateAndTimeAssignmentAny::CcDesignDateAndTimeAssignment(x) => (**x).as_ref(),
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = date_time_role)]
@@ -4541,51 +3463,37 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub name: Label,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = dated_effectivity)]
     #[holder(generate_deserialize)]
     pub struct DatedEffectivity {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub effectivity: Effectivity,
+        pub id: Identifier,
         #[holder(use_place_holder)]
         pub effectivity_start_date: DateAndTime,
         #[holder(use_place_holder)]
         pub effectivity_end_date: Option<DateAndTime>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = definitional_representation)]
     #[holder(generate_deserialize)]
     pub struct DefinitionalRepresentation {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub representation: Representation,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub items: Vec<RepresentationItemAny>,
+        #[holder(use_place_holder)]
+        pub context_of_items: RepresentationContextAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = degenerate_pcurve)]
     #[holder(generate_deserialize)]
     pub struct DegeneratePcurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub point: Point,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub basis_surface: SurfaceAny,
         #[holder(use_place_holder)]
@@ -4600,78 +3508,48 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         EvaluatedDegeneratePcurve(Box<EvaluatedDegeneratePcurve>),
     }
-    impl Into<DegeneratePcurveAny> for DegeneratePcurve {
-        fn into(self) -> DegeneratePcurveAny {
-            DegeneratePcurveAny::DegeneratePcurve(Box::new(self))
-        }
-    }
-    impl Into<DegeneratePcurveAny> for EvaluatedDegeneratePcurve {
-        fn into(self) -> DegeneratePcurveAny {
-            DegeneratePcurveAny::EvaluatedDegeneratePcurve(Box::new(self.into()))
-        }
-    }
-    impl AsRef<DegeneratePcurve> for DegeneratePcurveAny {
-        fn as_ref(&self) -> &DegeneratePcurve {
-            match self {
-                DegeneratePcurveAny::DegeneratePcurve(x) => x.as_ref(),
-                DegeneratePcurveAny::EvaluatedDegeneratePcurve(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<Point> for DegeneratePcurveAny {
-        fn as_ref(&self) -> &Point {
-            match self {
-                DegeneratePcurveAny::DegeneratePcurve(x) => {
-                    AsRef::<DegeneratePcurve>::as_ref(x).as_ref()
-                }
-                DegeneratePcurveAny::EvaluatedDegeneratePcurve(x) => {
-                    AsRef::<DegeneratePcurve>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = degenerate_toroidal_surface)]
     #[holder(generate_deserialize)]
     pub struct DegenerateToroidalSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub toroidal_surface: ToroidalSurface,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub position: Axis2Placement3D,
+        #[holder(use_place_holder)]
+        pub major_radius: PositiveLengthMeasure,
+        #[holder(use_place_holder)]
+        pub minor_radius: PositiveLengthMeasure,
         pub select_outer: bool,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = design_context)]
     #[holder(generate_deserialize)]
     pub struct DesignContext {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub product_definition_context: ProductDefinitionContext,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub frame_of_reference: ApplicationContext,
+        #[holder(use_place_holder)]
+        pub life_cycle_stage: Label,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = design_make_from_relationship)]
     #[holder(generate_deserialize)]
     pub struct DesignMakeFromRelationship {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub product_definition_relationship: ProductDefinitionRelationship,
+        pub id: Identifier,
+        #[holder(use_place_holder)]
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub relating_product_definition: ProductDefinitionAny,
+        #[holder(use_place_holder)]
+        pub related_product_definition: ProductDefinitionAny,
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -4686,35 +3564,27 @@ pub mod config_control_design {
         pub amount_of_substance_exponent: f64,
         pub luminous_intensity_exponent: f64,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = directed_action)]
     #[holder(generate_deserialize)]
     pub struct DirectedAction {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub executed_action: ExecutedAction,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub chosen_method: ActionMethod,
         #[holder(use_place_holder)]
         pub directive: ActionDirective,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = direction)]
     #[holder(generate_deserialize)]
     pub struct Direction {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub name: Label,
         pub direction_ratios: Vec<f64>,
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -4740,24 +3610,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         DocumentWithClass(Box<DocumentWithClass>),
     }
-    impl Into<DocumentAny> for Document {
-        fn into(self) -> DocumentAny {
-            DocumentAny::Document(Box::new(self))
-        }
-    }
-    impl Into<DocumentAny> for DocumentWithClass {
-        fn into(self) -> DocumentAny {
-            DocumentAny::DocumentWithClass(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Document> for DocumentAny {
-        fn as_ref(&self) -> &Document {
-            match self {
-                DocumentAny::Document(x) => x.as_ref(),
-                DocumentAny::DocumentWithClass(x) => (**x).as_ref(),
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = document_reference)]
@@ -4776,24 +3628,6 @@ pub mod config_control_design {
         DocumentReference(Box<DocumentReference>),
         #[holder(use_place_holder)]
         CcDesignSpecificationReference(Box<CcDesignSpecificationReference>),
-    }
-    impl Into<DocumentReferenceAny> for DocumentReference {
-        fn into(self) -> DocumentReferenceAny {
-            DocumentReferenceAny::DocumentReference(Box::new(self))
-        }
-    }
-    impl Into<DocumentReferenceAny> for CcDesignSpecificationReference {
-        fn into(self) -> DocumentReferenceAny {
-            DocumentReferenceAny::CcDesignSpecificationReference(Box::new(self.into()))
-        }
-    }
-    impl AsRef<DocumentReference> for DocumentReferenceAny {
-        fn as_ref(&self) -> &DocumentReference {
-            match self {
-                DocumentReferenceAny::DocumentReference(x) => x.as_ref(),
-                DocumentReferenceAny::CcDesignSpecificationReference(x) => (**x).as_ref(),
-            }
-        }
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -4829,35 +3663,29 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub subject_element_value: Text,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = document_with_class)]
     #[holder(generate_deserialize)]
     pub struct DocumentWithClass {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub document: Document,
+        pub id: Identifier,
+        #[holder(use_place_holder)]
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub kind: DocumentType,
         #[holder(use_place_holder)]
         pub class: Identifier,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = edge)]
     #[holder(generate_deserialize)]
     pub struct Edge {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub topological_representation_item: TopologicalRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub edge_start: VertexAny,
         #[holder(use_place_holder)]
@@ -4874,99 +3702,52 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         OrientedEdge(Box<OrientedEdge>),
     }
-    impl Into<EdgeAny> for Edge {
-        fn into(self) -> EdgeAny {
-            EdgeAny::Edge(Box::new(self))
-        }
-    }
-    impl Into<EdgeAny> for EdgeCurve {
-        fn into(self) -> EdgeAny {
-            EdgeAny::EdgeCurve(Box::new(self.into()))
-        }
-    }
-    impl Into<EdgeAny> for OrientedEdge {
-        fn into(self) -> EdgeAny {
-            EdgeAny::OrientedEdge(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Edge> for EdgeAny {
-        fn as_ref(&self) -> &Edge {
-            match self {
-                EdgeAny::Edge(x) => x.as_ref(),
-                EdgeAny::EdgeCurve(x) => (**x).as_ref(),
-                EdgeAny::OrientedEdge(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<TopologicalRepresentationItem> for EdgeAny {
-        fn as_ref(&self) -> &TopologicalRepresentationItem {
-            match self {
-                EdgeAny::Edge(x) => AsRef::<Edge>::as_ref(x).as_ref(),
-                EdgeAny::EdgeCurve(x) => AsRef::<Edge>::as_ref(x.as_ref()).as_ref(),
-                EdgeAny::OrientedEdge(x) => AsRef::<Edge>::as_ref(x.as_ref()).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = edge_based_wireframe_model)]
     #[holder(generate_deserialize)]
     pub struct EdgeBasedWireframeModel {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub ebwm_boundary: Vec<ConnectedEdgeSet>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = edge_based_wireframe_shape_representation)]
     #[holder(generate_deserialize)]
     pub struct EdgeBasedWireframeShapeRepresentation {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub shape_representation: ShapeRepresentation,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub items: Vec<RepresentationItemAny>,
+        #[holder(use_place_holder)]
+        pub context_of_items: RepresentationContextAny,
     }
-    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut)]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = edge_curve)]
     #[holder(generate_deserialize)]
     pub struct EdgeCurve {
-        #[as_ref]
-        #[as_mut]
         #[holder(use_place_holder)]
-        pub edge: Edge,
-        #[as_ref]
-        #[as_mut]
+        pub name: Label,
         #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub edge_start: VertexAny,
+        #[holder(use_place_holder)]
+        pub edge_end: VertexAny,
         #[holder(use_place_holder)]
         pub edge_geometry: CurveAny,
         pub same_sense: bool,
     }
-    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut)]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = edge_loop)]
     #[holder(generate_deserialize)]
     pub struct EdgeLoop {
-        #[as_ref]
-        #[as_mut]
         #[holder(use_place_holder)]
-        pub r#loop: Loop,
-        #[as_ref]
-        #[as_mut]
+        pub name: Label,
         #[holder(use_place_holder)]
-        pub path: Path,
+        pub edge_list: Vec<OrientedEdge>,
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -4991,55 +3772,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         SerialNumberedEffectivity(Box<SerialNumberedEffectivity>),
     }
-    impl Into<EffectivityAny> for Effectivity {
-        fn into(self) -> EffectivityAny {
-            EffectivityAny::Effectivity(Box::new(self))
-        }
-    }
-    impl Into<EffectivityAny> for DatedEffectivity {
-        fn into(self) -> EffectivityAny {
-            EffectivityAny::DatedEffectivity(Box::new(self.into()))
-        }
-    }
-    impl Into<EffectivityAny> for LotEffectivity {
-        fn into(self) -> EffectivityAny {
-            EffectivityAny::LotEffectivity(Box::new(self.into()))
-        }
-    }
-    impl Into<EffectivityAny> for ProductDefinitionEffectivity {
-        fn into(self) -> EffectivityAny {
-            EffectivityAny::ProductDefinitionEffectivity(Box::new(self.into()))
-        }
-    }
-    impl Into<EffectivityAny> for SerialNumberedEffectivity {
-        fn into(self) -> EffectivityAny {
-            EffectivityAny::SerialNumberedEffectivity(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Effectivity> for EffectivityAny {
-        fn as_ref(&self) -> &Effectivity {
-            match self {
-                EffectivityAny::Effectivity(x) => x.as_ref(),
-                EffectivityAny::DatedEffectivity(x) => (**x).as_ref(),
-                EffectivityAny::LotEffectivity(x) => (**x).as_ref(),
-                EffectivityAny::ProductDefinitionEffectivity(x) => (**x).as_ref(),
-                EffectivityAny::SerialNumberedEffectivity(x) => (**x).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = elementary_surface)]
     #[holder(generate_deserialize)]
     pub struct ElementarySurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub surface: Surface,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub position: Axis2Placement3D,
     }
@@ -5060,119 +3799,45 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         ToroidalSurface(Box<ToroidalSurfaceAny>),
     }
-    impl Into<ElementarySurfaceAny> for ElementarySurface {
-        fn into(self) -> ElementarySurfaceAny {
-            ElementarySurfaceAny::ElementarySurface(Box::new(self))
-        }
-    }
-    impl Into<ElementarySurfaceAny> for ConicalSurface {
-        fn into(self) -> ElementarySurfaceAny {
-            ElementarySurfaceAny::ConicalSurface(Box::new(self.into()))
-        }
-    }
-    impl Into<ElementarySurfaceAny> for CylindricalSurface {
-        fn into(self) -> ElementarySurfaceAny {
-            ElementarySurfaceAny::CylindricalSurface(Box::new(self.into()))
-        }
-    }
-    impl Into<ElementarySurfaceAny> for Plane {
-        fn into(self) -> ElementarySurfaceAny {
-            ElementarySurfaceAny::Plane(Box::new(self.into()))
-        }
-    }
-    impl Into<ElementarySurfaceAny> for SphericalSurface {
-        fn into(self) -> ElementarySurfaceAny {
-            ElementarySurfaceAny::SphericalSurface(Box::new(self.into()))
-        }
-    }
-    impl Into<ElementarySurfaceAny> for ToroidalSurface {
-        fn into(self) -> ElementarySurfaceAny {
-            ElementarySurfaceAny::ToroidalSurface(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ElementarySurface> for ElementarySurfaceAny {
-        fn as_ref(&self) -> &ElementarySurface {
-            match self {
-                ElementarySurfaceAny::ElementarySurface(x) => x.as_ref(),
-                ElementarySurfaceAny::ConicalSurface(x) => (**x).as_ref(),
-                ElementarySurfaceAny::CylindricalSurface(x) => (**x).as_ref(),
-                ElementarySurfaceAny::Plane(x) => (**x).as_ref(),
-                ElementarySurfaceAny::SphericalSurface(x) => (**x).as_ref(),
-                ElementarySurfaceAny::ToroidalSurface(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<Surface> for ElementarySurfaceAny {
-        fn as_ref(&self) -> &Surface {
-            match self {
-                ElementarySurfaceAny::ElementarySurface(x) => {
-                    AsRef::<ElementarySurface>::as_ref(x).as_ref()
-                }
-                ElementarySurfaceAny::ConicalSurface(x) => {
-                    AsRef::<ElementarySurface>::as_ref(x.as_ref()).as_ref()
-                }
-                ElementarySurfaceAny::CylindricalSurface(x) => {
-                    AsRef::<ElementarySurface>::as_ref(x.as_ref()).as_ref()
-                }
-                ElementarySurfaceAny::Plane(x) => {
-                    AsRef::<ElementarySurface>::as_ref(x.as_ref()).as_ref()
-                }
-                ElementarySurfaceAny::SphericalSurface(x) => {
-                    AsRef::<ElementarySurface>::as_ref(x.as_ref()).as_ref()
-                }
-                ElementarySurfaceAny::ToroidalSurface(x) => {
-                    AsRef::<ElementarySurface>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = ellipse)]
     #[holder(generate_deserialize)]
     pub struct Ellipse {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub conic: Conic,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub position: Axis2Placement,
         #[holder(use_place_holder)]
         pub semi_axis_1: PositiveLengthMeasure,
         #[holder(use_place_holder)]
         pub semi_axis_2: PositiveLengthMeasure,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = evaluated_degenerate_pcurve)]
     #[holder(generate_deserialize)]
     pub struct EvaluatedDegeneratePcurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub degenerate_pcurve: DegeneratePcurve,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub basis_surface: SurfaceAny,
+        #[holder(use_place_holder)]
+        pub reference_to_curve: DefinitionalRepresentation,
         #[holder(use_place_holder)]
         pub equivalent_point: CartesianPoint,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = executed_action)]
     #[holder(generate_deserialize)]
     pub struct ExecutedAction {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub action: Action,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub chosen_method: ActionMethod,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -5183,47 +3848,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         DirectedAction(Box<DirectedAction>),
     }
-    impl Into<ExecutedActionAny> for ExecutedAction {
-        fn into(self) -> ExecutedActionAny {
-            ExecutedActionAny::ExecutedAction(Box::new(self))
-        }
-    }
-    impl Into<ExecutedActionAny> for DirectedAction {
-        fn into(self) -> ExecutedActionAny {
-            ExecutedActionAny::DirectedAction(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ExecutedAction> for ExecutedActionAny {
-        fn as_ref(&self) -> &ExecutedAction {
-            match self {
-                ExecutedActionAny::ExecutedAction(x) => x.as_ref(),
-                ExecutedActionAny::DirectedAction(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<Action> for ExecutedActionAny {
-        fn as_ref(&self) -> &Action {
-            match self {
-                ExecutedActionAny::ExecutedAction(x) => AsRef::<ExecutedAction>::as_ref(x).as_ref(),
-                ExecutedActionAny::DirectedAction(x) => {
-                    AsRef::<ExecutedAction>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = face)]
     #[holder(generate_deserialize)]
     pub struct Face {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub topological_representation_item: TopologicalRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub bounds: Vec<FaceBoundAny>,
     }
@@ -5238,52 +3869,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         OrientedFace(Box<OrientedFace>),
     }
-    impl Into<FaceAny> for Face {
-        fn into(self) -> FaceAny {
-            FaceAny::Face(Box::new(self))
-        }
-    }
-    impl Into<FaceAny> for FaceSurface {
-        fn into(self) -> FaceAny {
-            FaceAny::FaceSurface(Box::new(self.into()))
-        }
-    }
-    impl Into<FaceAny> for OrientedFace {
-        fn into(self) -> FaceAny {
-            FaceAny::OrientedFace(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Face> for FaceAny {
-        fn as_ref(&self) -> &Face {
-            match self {
-                FaceAny::Face(x) => x.as_ref(),
-                FaceAny::FaceSurface(x) => (**x).as_ref(),
-                FaceAny::OrientedFace(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<TopologicalRepresentationItem> for FaceAny {
-        fn as_ref(&self) -> &TopologicalRepresentationItem {
-            match self {
-                FaceAny::Face(x) => AsRef::<Face>::as_ref(x).as_ref(),
-                FaceAny::FaceSurface(x) => AsRef::<Face>::as_ref(x.as_ref()).as_ref(),
-                FaceAny::OrientedFace(x) => AsRef::<Face>::as_ref(x.as_ref()).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = face_bound)]
     #[holder(generate_deserialize)]
     pub struct FaceBound {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub topological_representation_item: TopologicalRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub bound: LoopAny,
         pub orientation: bool,
@@ -5297,59 +3889,26 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         FaceOuterBound(Box<FaceOuterBound>),
     }
-    impl Into<FaceBoundAny> for FaceBound {
-        fn into(self) -> FaceBoundAny {
-            FaceBoundAny::FaceBound(Box::new(self))
-        }
-    }
-    impl Into<FaceBoundAny> for FaceOuterBound {
-        fn into(self) -> FaceBoundAny {
-            FaceBoundAny::FaceOuterBound(Box::new(self.into()))
-        }
-    }
-    impl AsRef<FaceBound> for FaceBoundAny {
-        fn as_ref(&self) -> &FaceBound {
-            match self {
-                FaceBoundAny::FaceBound(x) => x.as_ref(),
-                FaceBoundAny::FaceOuterBound(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<TopologicalRepresentationItem> for FaceBoundAny {
-        fn as_ref(&self) -> &TopologicalRepresentationItem {
-            match self {
-                FaceBoundAny::FaceBound(x) => AsRef::<FaceBound>::as_ref(x).as_ref(),
-                FaceBoundAny::FaceOuterBound(x) => AsRef::<FaceBound>::as_ref(x.as_ref()).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = face_outer_bound)]
     #[holder(generate_deserialize)]
     pub struct FaceOuterBound {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub face_bound: FaceBound,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub bound: LoopAny,
+        pub orientation: bool,
     }
-    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut)]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = face_surface)]
     #[holder(generate_deserialize)]
     pub struct FaceSurface {
-        #[as_ref]
-        #[as_mut]
         #[holder(use_place_holder)]
-        pub face: Face,
-        #[as_ref]
-        #[as_mut]
+        pub name: Label,
         #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub bounds: Vec<FaceBoundAny>,
         #[holder(use_place_holder)]
         pub face_geometry: SurfaceAny,
         pub same_sense: bool,
@@ -5363,71 +3922,27 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         AdvancedFace(Box<AdvancedFace>),
     }
-    impl Into<FaceSurfaceAny> for FaceSurface {
-        fn into(self) -> FaceSurfaceAny {
-            FaceSurfaceAny::FaceSurface(Box::new(self))
-        }
-    }
-    impl Into<FaceSurfaceAny> for AdvancedFace {
-        fn into(self) -> FaceSurfaceAny {
-            FaceSurfaceAny::AdvancedFace(Box::new(self.into()))
-        }
-    }
-    impl AsRef<FaceSurface> for FaceSurfaceAny {
-        fn as_ref(&self) -> &FaceSurface {
-            match self {
-                FaceSurfaceAny::FaceSurface(x) => x.as_ref(),
-                FaceSurfaceAny::AdvancedFace(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<Face> for FaceSurfaceAny {
-        fn as_ref(&self) -> &Face {
-            match self {
-                FaceSurfaceAny::FaceSurface(x) => AsRef::<FaceSurface>::as_ref(x).as_ref(),
-                FaceSurfaceAny::AdvancedFace(x) => {
-                    AsRef::<FaceSurface>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    impl AsRef<GeometricRepresentationItem> for FaceSurfaceAny {
-        fn as_ref(&self) -> &GeometricRepresentationItem {
-            match self {
-                FaceSurfaceAny::FaceSurface(x) => AsRef::<FaceSurface>::as_ref(x).as_ref(),
-                FaceSurfaceAny::AdvancedFace(x) => {
-                    AsRef::<FaceSurface>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = faceted_brep)]
     #[holder(generate_deserialize)]
     pub struct FacetedBrep {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub manifold_solid_brep: ManifoldSolidBrep,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub outer: ClosedShellAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = faceted_brep_shape_representation)]
     #[holder(generate_deserialize)]
     pub struct FacetedBrepShapeRepresentation {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub shape_representation: ShapeRepresentation,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub items: Vec<RepresentationItemAny>,
+        #[holder(use_place_holder)]
+        pub context_of_items: RepresentationContextAny,
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -5444,30 +3959,6 @@ pub mod config_control_design {
         CompositeCurveSegment(Box<CompositeCurveSegmentAny>),
         #[holder(use_place_holder)]
         SurfacePatch(Box<SurfacePatch>),
-    }
-    impl Into<FoundedItemAny> for FoundedItem {
-        fn into(self) -> FoundedItemAny {
-            FoundedItemAny::FoundedItem(Box::new(self))
-        }
-    }
-    impl Into<FoundedItemAny> for CompositeCurveSegment {
-        fn into(self) -> FoundedItemAny {
-            FoundedItemAny::CompositeCurveSegment(Box::new(self.into()))
-        }
-    }
-    impl Into<FoundedItemAny> for SurfacePatch {
-        fn into(self) -> FoundedItemAny {
-            FoundedItemAny::SurfacePatch(Box::new(self.into()))
-        }
-    }
-    impl AsRef<FoundedItem> for FoundedItemAny {
-        fn as_ref(&self) -> &FoundedItem {
-            match self {
-                FoundedItemAny::FoundedItem(x) => x.as_ref(),
-                FoundedItemAny::CompositeCurveSegment(x) => (**x).as_ref(),
-                FoundedItemAny::SurfacePatch(x) => (**x).as_ref(),
-            }
-        }
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -5488,73 +3979,35 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         CartesianTransformationOperator(Box<CartesianTransformationOperatorAny>),
     }
-    impl Into<FunctionallyDefinedTransformationAny> for FunctionallyDefinedTransformation {
-        fn into(self) -> FunctionallyDefinedTransformationAny {
-            FunctionallyDefinedTransformationAny::FunctionallyDefinedTransformation(Box::new(self))
-        }
-    }
-    impl Into<FunctionallyDefinedTransformationAny> for CartesianTransformationOperator {
-        fn into(self) -> FunctionallyDefinedTransformationAny {
-            FunctionallyDefinedTransformationAny::CartesianTransformationOperator(Box::new(
-                self.into(),
-            ))
-        }
-    }
-    impl AsRef<FunctionallyDefinedTransformation> for FunctionallyDefinedTransformationAny {
-        fn as_ref(&self) -> &FunctionallyDefinedTransformation {
-            match self {
-                FunctionallyDefinedTransformationAny::FunctionallyDefinedTransformation(x) => {
-                    x.as_ref()
-                }
-                FunctionallyDefinedTransformationAny::CartesianTransformationOperator(x) => {
-                    (**x).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = geometric_curve_set)]
     #[holder(generate_deserialize)]
     pub struct GeometricCurveSet {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub geometric_set: GeometricSet,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub elements: Vec<GeometricSetSelect>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = geometric_representation_context)]
     #[holder(generate_deserialize)]
     pub struct GeometricRepresentationContext {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub representation_context: RepresentationContext,
+        pub context_identifier: Identifier,
+        #[holder(use_place_holder)]
+        pub context_type: Text,
         #[holder(use_place_holder)]
         pub coordinate_space_dimension: DimensionCount,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = geometric_representation_item)]
     #[holder(generate_deserialize)]
     pub struct GeometricRepresentationItem {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub representation_item: RepresentationItem,
+        pub name: Label,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -5595,186 +4048,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         VertexPoint(Box<VertexPoint>),
     }
-    impl Into<GeometricRepresentationItemAny> for GeometricRepresentationItem {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::GeometricRepresentationItem(Box::new(self))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for CartesianTransformationOperator {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::CartesianTransformationOperator(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for Curve {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::Curve(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for Direction {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::Direction(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for EdgeBasedWireframeModel {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::EdgeBasedWireframeModel(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for EdgeCurve {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::EdgeCurve(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for FaceSurface {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::FaceSurface(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for GeometricSet {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::GeometricSet(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for Placement {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::Placement(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for Point {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::Point(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for PolyLoop {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::PolyLoop(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for ShellBasedSurfaceModel {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::ShellBasedSurfaceModel(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for ShellBasedWireframeModel {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::ShellBasedWireframeModel(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for SolidModel {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::SolidModel(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for Surface {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::Surface(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for Vector {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::Vector(Box::new(self.into()))
-        }
-    }
-    impl Into<GeometricRepresentationItemAny> for VertexPoint {
-        fn into(self) -> GeometricRepresentationItemAny {
-            GeometricRepresentationItemAny::VertexPoint(Box::new(self.into()))
-        }
-    }
-    impl AsRef<GeometricRepresentationItem> for GeometricRepresentationItemAny {
-        fn as_ref(&self) -> &GeometricRepresentationItem {
-            match self {
-                GeometricRepresentationItemAny::GeometricRepresentationItem(x) => x.as_ref(),
-                GeometricRepresentationItemAny::CartesianTransformationOperator(x) => {
-                    (**x).as_ref()
-                }
-                GeometricRepresentationItemAny::Curve(x) => (**x).as_ref(),
-                GeometricRepresentationItemAny::Direction(x) => (**x).as_ref(),
-                GeometricRepresentationItemAny::EdgeBasedWireframeModel(x) => (**x).as_ref(),
-                GeometricRepresentationItemAny::EdgeCurve(x) => (**x).as_ref(),
-                GeometricRepresentationItemAny::FaceSurface(x) => (**x).as_ref(),
-                GeometricRepresentationItemAny::GeometricSet(x) => (**x).as_ref(),
-                GeometricRepresentationItemAny::Placement(x) => (**x).as_ref(),
-                GeometricRepresentationItemAny::Point(x) => (**x).as_ref(),
-                GeometricRepresentationItemAny::PolyLoop(x) => (**x).as_ref(),
-                GeometricRepresentationItemAny::ShellBasedSurfaceModel(x) => (**x).as_ref(),
-                GeometricRepresentationItemAny::ShellBasedWireframeModel(x) => (**x).as_ref(),
-                GeometricRepresentationItemAny::SolidModel(x) => (**x).as_ref(),
-                GeometricRepresentationItemAny::Surface(x) => (**x).as_ref(),
-                GeometricRepresentationItemAny::Vector(x) => (**x).as_ref(),
-                GeometricRepresentationItemAny::VertexPoint(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<RepresentationItem> for GeometricRepresentationItemAny {
-        fn as_ref(&self) -> &RepresentationItem {
-            match self {
-                GeometricRepresentationItemAny::GeometricRepresentationItem(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x).as_ref()
-                }
-                GeometricRepresentationItemAny::CartesianTransformationOperator(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::Curve(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::Direction(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::EdgeBasedWireframeModel(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::EdgeCurve(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::FaceSurface(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::GeometricSet(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::Placement(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::Point(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::PolyLoop(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::ShellBasedSurfaceModel(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::ShellBasedWireframeModel(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::SolidModel(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::Surface(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::Vector(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                GeometricRepresentationItemAny::VertexPoint(x) => {
-                    AsRef::<GeometricRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = geometric_set)]
     #[holder(generate_deserialize)]
     pub struct GeometricSet {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub elements: Vec<GeometricSetSelect>,
     }
@@ -5787,125 +4067,80 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         GeometricCurveSet(Box<GeometricCurveSet>),
     }
-    impl Into<GeometricSetAny> for GeometricSet {
-        fn into(self) -> GeometricSetAny {
-            GeometricSetAny::GeometricSet(Box::new(self))
-        }
-    }
-    impl Into<GeometricSetAny> for GeometricCurveSet {
-        fn into(self) -> GeometricSetAny {
-            GeometricSetAny::GeometricCurveSet(Box::new(self.into()))
-        }
-    }
-    impl AsRef<GeometricSet> for GeometricSetAny {
-        fn as_ref(&self) -> &GeometricSet {
-            match self {
-                GeometricSetAny::GeometricSet(x) => x.as_ref(),
-                GeometricSetAny::GeometricCurveSet(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<GeometricRepresentationItem> for GeometricSetAny {
-        fn as_ref(&self) -> &GeometricRepresentationItem {
-            match self {
-                GeometricSetAny::GeometricSet(x) => AsRef::<GeometricSet>::as_ref(x).as_ref(),
-                GeometricSetAny::GeometricCurveSet(x) => {
-                    AsRef::<GeometricSet>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = geometrically_bounded_surface_shape_representation)]
     #[holder(generate_deserialize)]
     pub struct GeometricallyBoundedSurfaceShapeRepresentation {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub shape_representation: ShapeRepresentation,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub items: Vec<RepresentationItemAny>,
+        #[holder(use_place_holder)]
+        pub context_of_items: RepresentationContextAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = geometrically_bounded_wireframe_shape_representation)]
     #[holder(generate_deserialize)]
     pub struct GeometricallyBoundedWireframeShapeRepresentation {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub shape_representation: ShapeRepresentation,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub items: Vec<RepresentationItemAny>,
+        #[holder(use_place_holder)]
+        pub context_of_items: RepresentationContextAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = global_uncertainty_assigned_context)]
     #[holder(generate_deserialize)]
     pub struct GlobalUncertaintyAssignedContext {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub representation_context: RepresentationContext,
+        pub context_identifier: Identifier,
+        #[holder(use_place_holder)]
+        pub context_type: Text,
         #[holder(use_place_holder)]
         pub uncertainty: Vec<UncertaintyMeasureWithUnit>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = global_unit_assigned_context)]
     #[holder(generate_deserialize)]
     pub struct GlobalUnitAssignedContext {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub representation_context: RepresentationContext,
+        pub context_identifier: Identifier,
+        #[holder(use_place_holder)]
+        pub context_type: Text,
         #[holder(use_place_holder)]
         pub units: Vec<Unit>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = hyperbola)]
     #[holder(generate_deserialize)]
     pub struct Hyperbola {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub conic: Conic,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub position: Axis2Placement,
         #[holder(use_place_holder)]
         pub semi_axis: PositiveLengthMeasure,
         #[holder(use_place_holder)]
         pub semi_imag_axis: PositiveLengthMeasure,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = intersection_curve)]
     #[holder(generate_deserialize)]
     pub struct IntersectionCurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub surface_curve: SurfaceCurve,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub curve_3d: CurveAny,
+        #[holder(use_place_holder)]
+        pub associated_geometry: Vec<PcurveOrSurface>,
+        pub master_representation: PreferredSurfaceCurveRepresentation,
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -5921,47 +4156,31 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub transform_item_2: RepresentationItemAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = length_measure_with_unit)]
     #[holder(generate_deserialize)]
     pub struct LengthMeasureWithUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub measure_with_unit: MeasureWithUnit,
+        pub value_component: MeasureValue,
+        #[holder(use_place_holder)]
+        pub unit_component: Unit,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = length_unit)]
     #[holder(generate_deserialize)]
     pub struct LengthUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub named_unit: NamedUnit,
+        pub dimensions: DimensionalExponents,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = line)]
     #[holder(generate_deserialize)]
     pub struct Line {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub curve: Curve,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub pnt: CartesianPoint,
         #[holder(use_place_holder)]
@@ -5981,19 +4200,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub zone: CoordinatedUniversalTimeOffset,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = r#loop)]
     #[holder(generate_deserialize)]
     pub struct Loop {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub topological_representation_item: TopologicalRepresentationItem,
+        pub name: Label,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -6008,77 +4221,25 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         VertexLoop(Box<VertexLoop>),
     }
-    impl Into<LoopAny> for Loop {
-        fn into(self) -> LoopAny {
-            LoopAny::Loop(Box::new(self))
-        }
-    }
-    impl Into<LoopAny> for EdgeLoop {
-        fn into(self) -> LoopAny {
-            LoopAny::EdgeLoop(Box::new(self.into()))
-        }
-    }
-    impl Into<LoopAny> for PolyLoop {
-        fn into(self) -> LoopAny {
-            LoopAny::PolyLoop(Box::new(self.into()))
-        }
-    }
-    impl Into<LoopAny> for VertexLoop {
-        fn into(self) -> LoopAny {
-            LoopAny::VertexLoop(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Loop> for LoopAny {
-        fn as_ref(&self) -> &Loop {
-            match self {
-                LoopAny::Loop(x) => x.as_ref(),
-                LoopAny::EdgeLoop(x) => (**x).as_ref(),
-                LoopAny::PolyLoop(x) => (**x).as_ref(),
-                LoopAny::VertexLoop(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<TopologicalRepresentationItem> for LoopAny {
-        fn as_ref(&self) -> &TopologicalRepresentationItem {
-            match self {
-                LoopAny::Loop(x) => AsRef::<Loop>::as_ref(x).as_ref(),
-                LoopAny::EdgeLoop(x) => AsRef::<Loop>::as_ref(x.as_ref()).as_ref(),
-                LoopAny::PolyLoop(x) => AsRef::<Loop>::as_ref(x.as_ref()).as_ref(),
-                LoopAny::VertexLoop(x) => AsRef::<Loop>::as_ref(x.as_ref()).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = lot_effectivity)]
     #[holder(generate_deserialize)]
     pub struct LotEffectivity {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub effectivity: Effectivity,
+        pub id: Identifier,
         #[holder(use_place_holder)]
         pub effectivity_lot_id: Identifier,
         #[holder(use_place_holder)]
         pub effectivity_lot_size: MeasureWithUnitAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = manifold_solid_brep)]
     #[holder(generate_deserialize)]
     pub struct ManifoldSolidBrep {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub solid_model: SolidModel,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub outer: ClosedShellAny,
     }
@@ -6093,104 +4254,47 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         FacetedBrep(Box<FacetedBrep>),
     }
-    impl Into<ManifoldSolidBrepAny> for ManifoldSolidBrep {
-        fn into(self) -> ManifoldSolidBrepAny {
-            ManifoldSolidBrepAny::ManifoldSolidBrep(Box::new(self))
-        }
-    }
-    impl Into<ManifoldSolidBrepAny> for BrepWithVoids {
-        fn into(self) -> ManifoldSolidBrepAny {
-            ManifoldSolidBrepAny::BrepWithVoids(Box::new(self.into()))
-        }
-    }
-    impl Into<ManifoldSolidBrepAny> for FacetedBrep {
-        fn into(self) -> ManifoldSolidBrepAny {
-            ManifoldSolidBrepAny::FacetedBrep(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ManifoldSolidBrep> for ManifoldSolidBrepAny {
-        fn as_ref(&self) -> &ManifoldSolidBrep {
-            match self {
-                ManifoldSolidBrepAny::ManifoldSolidBrep(x) => x.as_ref(),
-                ManifoldSolidBrepAny::BrepWithVoids(x) => (**x).as_ref(),
-                ManifoldSolidBrepAny::FacetedBrep(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<SolidModel> for ManifoldSolidBrepAny {
-        fn as_ref(&self) -> &SolidModel {
-            match self {
-                ManifoldSolidBrepAny::ManifoldSolidBrep(x) => {
-                    AsRef::<ManifoldSolidBrep>::as_ref(x).as_ref()
-                }
-                ManifoldSolidBrepAny::BrepWithVoids(x) => {
-                    AsRef::<ManifoldSolidBrep>::as_ref(x.as_ref()).as_ref()
-                }
-                ManifoldSolidBrepAny::FacetedBrep(x) => {
-                    AsRef::<ManifoldSolidBrep>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = manifold_surface_shape_representation)]
     #[holder(generate_deserialize)]
     pub struct ManifoldSurfaceShapeRepresentation {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub shape_representation: ShapeRepresentation,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub items: Vec<RepresentationItemAny>,
+        #[holder(use_place_holder)]
+        pub context_of_items: RepresentationContextAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = mapped_item)]
     #[holder(generate_deserialize)]
     pub struct MappedItem {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub representation_item: RepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub mapping_source: RepresentationMap,
         #[holder(use_place_holder)]
         pub mapping_target: RepresentationItemAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = mass_measure_with_unit)]
     #[holder(generate_deserialize)]
     pub struct MassMeasureWithUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub measure_with_unit: MeasureWithUnit,
+        pub value_component: MeasureValue,
+        #[holder(use_place_holder)]
+        pub unit_component: Unit,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = mass_unit)]
     #[holder(generate_deserialize)]
     pub struct MassUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub named_unit: NamedUnit,
+        pub dimensions: DimensionalExponents,
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -6223,73 +4327,17 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         VolumeMeasureWithUnit(Box<VolumeMeasureWithUnit>),
     }
-    impl Into<MeasureWithUnitAny> for MeasureWithUnit {
-        fn into(self) -> MeasureWithUnitAny {
-            MeasureWithUnitAny::MeasureWithUnit(Box::new(self))
-        }
-    }
-    impl Into<MeasureWithUnitAny> for AreaMeasureWithUnit {
-        fn into(self) -> MeasureWithUnitAny {
-            MeasureWithUnitAny::AreaMeasureWithUnit(Box::new(self.into()))
-        }
-    }
-    impl Into<MeasureWithUnitAny> for LengthMeasureWithUnit {
-        fn into(self) -> MeasureWithUnitAny {
-            MeasureWithUnitAny::LengthMeasureWithUnit(Box::new(self.into()))
-        }
-    }
-    impl Into<MeasureWithUnitAny> for MassMeasureWithUnit {
-        fn into(self) -> MeasureWithUnitAny {
-            MeasureWithUnitAny::MassMeasureWithUnit(Box::new(self.into()))
-        }
-    }
-    impl Into<MeasureWithUnitAny> for PlaneAngleMeasureWithUnit {
-        fn into(self) -> MeasureWithUnitAny {
-            MeasureWithUnitAny::PlaneAngleMeasureWithUnit(Box::new(self.into()))
-        }
-    }
-    impl Into<MeasureWithUnitAny> for SolidAngleMeasureWithUnit {
-        fn into(self) -> MeasureWithUnitAny {
-            MeasureWithUnitAny::SolidAngleMeasureWithUnit(Box::new(self.into()))
-        }
-    }
-    impl Into<MeasureWithUnitAny> for UncertaintyMeasureWithUnit {
-        fn into(self) -> MeasureWithUnitAny {
-            MeasureWithUnitAny::UncertaintyMeasureWithUnit(Box::new(self.into()))
-        }
-    }
-    impl Into<MeasureWithUnitAny> for VolumeMeasureWithUnit {
-        fn into(self) -> MeasureWithUnitAny {
-            MeasureWithUnitAny::VolumeMeasureWithUnit(Box::new(self.into()))
-        }
-    }
-    impl AsRef<MeasureWithUnit> for MeasureWithUnitAny {
-        fn as_ref(&self) -> &MeasureWithUnit {
-            match self {
-                MeasureWithUnitAny::MeasureWithUnit(x) => x.as_ref(),
-                MeasureWithUnitAny::AreaMeasureWithUnit(x) => (**x).as_ref(),
-                MeasureWithUnitAny::LengthMeasureWithUnit(x) => (**x).as_ref(),
-                MeasureWithUnitAny::MassMeasureWithUnit(x) => (**x).as_ref(),
-                MeasureWithUnitAny::PlaneAngleMeasureWithUnit(x) => (**x).as_ref(),
-                MeasureWithUnitAny::SolidAngleMeasureWithUnit(x) => (**x).as_ref(),
-                MeasureWithUnitAny::UncertaintyMeasureWithUnit(x) => (**x).as_ref(),
-                MeasureWithUnitAny::VolumeMeasureWithUnit(x) => (**x).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = mechanical_context)]
     #[holder(generate_deserialize)]
     pub struct MechanicalContext {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub product_context: ProductContext,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub frame_of_reference: ApplicationContext,
+        #[holder(use_place_holder)]
+        pub discipline_type: Label,
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -6324,99 +4372,31 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         VolumeUnit(Box<VolumeUnit>),
     }
-    impl Into<NamedUnitAny> for NamedUnit {
-        fn into(self) -> NamedUnitAny {
-            NamedUnitAny::NamedUnit(Box::new(self))
-        }
-    }
-    impl Into<NamedUnitAny> for AreaUnit {
-        fn into(self) -> NamedUnitAny {
-            NamedUnitAny::AreaUnit(Box::new(self.into()))
-        }
-    }
-    impl Into<NamedUnitAny> for ContextDependentUnit {
-        fn into(self) -> NamedUnitAny {
-            NamedUnitAny::ContextDependentUnit(Box::new(self.into()))
-        }
-    }
-    impl Into<NamedUnitAny> for ConversionBasedUnit {
-        fn into(self) -> NamedUnitAny {
-            NamedUnitAny::ConversionBasedUnit(Box::new(self.into()))
-        }
-    }
-    impl Into<NamedUnitAny> for LengthUnit {
-        fn into(self) -> NamedUnitAny {
-            NamedUnitAny::LengthUnit(Box::new(self.into()))
-        }
-    }
-    impl Into<NamedUnitAny> for MassUnit {
-        fn into(self) -> NamedUnitAny {
-            NamedUnitAny::MassUnit(Box::new(self.into()))
-        }
-    }
-    impl Into<NamedUnitAny> for PlaneAngleUnit {
-        fn into(self) -> NamedUnitAny {
-            NamedUnitAny::PlaneAngleUnit(Box::new(self.into()))
-        }
-    }
-    impl Into<NamedUnitAny> for SiUnit {
-        fn into(self) -> NamedUnitAny {
-            NamedUnitAny::SiUnit(Box::new(self.into()))
-        }
-    }
-    impl Into<NamedUnitAny> for SolidAngleUnit {
-        fn into(self) -> NamedUnitAny {
-            NamedUnitAny::SolidAngleUnit(Box::new(self.into()))
-        }
-    }
-    impl Into<NamedUnitAny> for VolumeUnit {
-        fn into(self) -> NamedUnitAny {
-            NamedUnitAny::VolumeUnit(Box::new(self.into()))
-        }
-    }
-    impl AsRef<NamedUnit> for NamedUnitAny {
-        fn as_ref(&self) -> &NamedUnit {
-            match self {
-                NamedUnitAny::NamedUnit(x) => x.as_ref(),
-                NamedUnitAny::AreaUnit(x) => (**x).as_ref(),
-                NamedUnitAny::ContextDependentUnit(x) => (**x).as_ref(),
-                NamedUnitAny::ConversionBasedUnit(x) => (**x).as_ref(),
-                NamedUnitAny::LengthUnit(x) => (**x).as_ref(),
-                NamedUnitAny::MassUnit(x) => (**x).as_ref(),
-                NamedUnitAny::PlaneAngleUnit(x) => (**x).as_ref(),
-                NamedUnitAny::SiUnit(x) => (**x).as_ref(),
-                NamedUnitAny::SolidAngleUnit(x) => (**x).as_ref(),
-                NamedUnitAny::VolumeUnit(x) => (**x).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = next_assembly_usage_occurrence)]
     #[holder(generate_deserialize)]
     pub struct NextAssemblyUsageOccurrence {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub assembly_component_usage: AssemblyComponentUsage,
+        pub id: Identifier,
+        #[holder(use_place_holder)]
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub relating_product_definition: ProductDefinitionAny,
+        #[holder(use_place_holder)]
+        pub related_product_definition: ProductDefinitionAny,
+        #[holder(use_place_holder)]
+        pub reference_designator: Option<Identifier>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = offset_curve_3d)]
     #[holder(generate_deserialize)]
     pub struct OffsetCurve3D {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub curve: Curve,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub basis_curve: CurveAny,
         #[holder(use_place_holder)]
@@ -6425,38 +4405,28 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub ref_direction: Direction,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = offset_surface)]
     #[holder(generate_deserialize)]
     pub struct OffsetSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub surface: Surface,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub basis_surface: SurfaceAny,
         #[holder(use_place_holder)]
         pub distance: LengthMeasure,
         pub self_intersect: Logical,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = open_shell)]
     #[holder(generate_deserialize)]
     pub struct OpenShell {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub connected_face_set: ConnectedFaceSet,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub cfs_faces: Vec<FaceAny>,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -6467,47 +4437,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         OrientedOpenShell(Box<OrientedOpenShell>),
     }
-    impl Into<OpenShellAny> for OpenShell {
-        fn into(self) -> OpenShellAny {
-            OpenShellAny::OpenShell(Box::new(self))
-        }
-    }
-    impl Into<OpenShellAny> for OrientedOpenShell {
-        fn into(self) -> OpenShellAny {
-            OpenShellAny::OrientedOpenShell(Box::new(self.into()))
-        }
-    }
-    impl AsRef<OpenShell> for OpenShellAny {
-        fn as_ref(&self) -> &OpenShell {
-            match self {
-                OpenShellAny::OpenShell(x) => x.as_ref(),
-                OpenShellAny::OrientedOpenShell(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<ConnectedFaceSet> for OpenShellAny {
-        fn as_ref(&self) -> &ConnectedFaceSet {
-            match self {
-                OpenShellAny::OpenShell(x) => AsRef::<OpenShell>::as_ref(x).as_ref(),
-                OpenShellAny::OrientedOpenShell(x) => {
-                    AsRef::<OpenShell>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = ordinal_date)]
     #[holder(generate_deserialize)]
     pub struct OrdinalDate {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub date: Date,
+        pub year_component: YearNumber,
         #[holder(use_place_holder)]
         pub day_component: DayInYearNumber,
     }
@@ -6537,19 +4473,35 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub related_organization: Organization,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = organizational_address)]
     #[holder(generate_deserialize)]
     pub struct OrganizationalAddress {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub address: Address,
+        pub internal_location: Option<Label>,
+        #[holder(use_place_holder)]
+        pub street_number: Option<Label>,
+        #[holder(use_place_holder)]
+        pub street: Option<Label>,
+        #[holder(use_place_holder)]
+        pub postal_box: Option<Label>,
+        #[holder(use_place_holder)]
+        pub town: Option<Label>,
+        #[holder(use_place_holder)]
+        pub region: Option<Label>,
+        #[holder(use_place_holder)]
+        pub postal_code: Option<Label>,
+        #[holder(use_place_holder)]
+        pub country: Option<Label>,
+        #[holder(use_place_holder)]
+        pub facsimile_number: Option<Label>,
+        #[holder(use_place_holder)]
+        pub telephone_number: Option<Label>,
+        #[holder(use_place_holder)]
+        pub electronic_mail_address: Option<Label>,
+        #[holder(use_place_holder)]
+        pub telex_number: Option<Label>,
         #[holder(use_place_holder)]
         pub organizations: Vec<Organization>,
         #[holder(use_place_holder)]
@@ -6567,148 +4519,113 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub responsible_organizations: Vec<Organization>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = oriented_closed_shell)]
     #[holder(generate_deserialize)]
     pub struct OrientedClosedShell {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub closed_shell: ClosedShell,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub cfs_faces: Vec<FaceAny>,
         #[holder(use_place_holder)]
         pub closed_shell_element: ClosedShellAny,
         pub orientation: bool,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = oriented_edge)]
     #[holder(generate_deserialize)]
     pub struct OrientedEdge {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub edge: Edge,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub edge_start: VertexAny,
+        #[holder(use_place_holder)]
+        pub edge_end: VertexAny,
         #[holder(use_place_holder)]
         pub edge_element: EdgeAny,
         pub orientation: bool,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = oriented_face)]
     #[holder(generate_deserialize)]
     pub struct OrientedFace {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub face: Face,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub bounds: Vec<FaceBoundAny>,
         #[holder(use_place_holder)]
         pub face_element: FaceAny,
         pub orientation: bool,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = oriented_open_shell)]
     #[holder(generate_deserialize)]
     pub struct OrientedOpenShell {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub open_shell: OpenShell,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub cfs_faces: Vec<FaceAny>,
         #[holder(use_place_holder)]
         pub open_shell_element: OpenShellAny,
         pub orientation: bool,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = oriented_path)]
     #[holder(generate_deserialize)]
     pub struct OrientedPath {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub path: Path,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub edge_list: Vec<OrientedEdge>,
         #[holder(use_place_holder)]
         pub path_element: PathAny,
         pub orientation: bool,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = outer_boundary_curve)]
     #[holder(generate_deserialize)]
     pub struct OuterBoundaryCurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub boundary_curve: BoundaryCurve,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub segments: Vec<CompositeCurveSegmentAny>,
+        pub self_intersect: Logical,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = parabola)]
     #[holder(generate_deserialize)]
     pub struct Parabola {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub conic: Conic,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub position: Axis2Placement,
         #[holder(use_place_holder)]
         pub focal_dist: LengthMeasure,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = parametric_representation_context)]
     #[holder(generate_deserialize)]
     pub struct ParametricRepresentationContext {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub representation_context: RepresentationContext,
+        pub context_identifier: Identifier,
+        #[holder(use_place_holder)]
+        pub context_type: Text,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = path)]
     #[holder(generate_deserialize)]
     pub struct Path {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub topological_representation_item: TopologicalRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub edge_list: Vec<OrientedEdge>,
     }
@@ -6723,52 +4640,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         OrientedPath(Box<OrientedPath>),
     }
-    impl Into<PathAny> for Path {
-        fn into(self) -> PathAny {
-            PathAny::Path(Box::new(self))
-        }
-    }
-    impl Into<PathAny> for EdgeLoop {
-        fn into(self) -> PathAny {
-            PathAny::EdgeLoop(Box::new(self.into()))
-        }
-    }
-    impl Into<PathAny> for OrientedPath {
-        fn into(self) -> PathAny {
-            PathAny::OrientedPath(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Path> for PathAny {
-        fn as_ref(&self) -> &Path {
-            match self {
-                PathAny::Path(x) => x.as_ref(),
-                PathAny::EdgeLoop(x) => (**x).as_ref(),
-                PathAny::OrientedPath(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<TopologicalRepresentationItem> for PathAny {
-        fn as_ref(&self) -> &TopologicalRepresentationItem {
-            match self {
-                PathAny::Path(x) => AsRef::<Path>::as_ref(x).as_ref(),
-                PathAny::EdgeLoop(x) => AsRef::<Path>::as_ref(x.as_ref()).as_ref(),
-                PathAny::OrientedPath(x) => AsRef::<Path>::as_ref(x.as_ref()).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = pcurve)]
     #[holder(generate_deserialize)]
     pub struct Pcurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub curve: Curve,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub basis_surface: SurfaceAny,
         #[holder(use_place_holder)]
@@ -6782,32 +4660,6 @@ pub mod config_control_design {
         Pcurve(Box<Pcurve>),
         #[holder(use_place_holder)]
         BoundedPcurve(Box<BoundedPcurve>),
-    }
-    impl Into<PcurveAny> for Pcurve {
-        fn into(self) -> PcurveAny {
-            PcurveAny::Pcurve(Box::new(self))
-        }
-    }
-    impl Into<PcurveAny> for BoundedPcurve {
-        fn into(self) -> PcurveAny {
-            PcurveAny::BoundedPcurve(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Pcurve> for PcurveAny {
-        fn as_ref(&self) -> &Pcurve {
-            match self {
-                PcurveAny::Pcurve(x) => x.as_ref(),
-                PcurveAny::BoundedPcurve(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<Curve> for PcurveAny {
-        fn as_ref(&self) -> &Curve {
-            match self {
-                PcurveAny::Pcurve(x) => AsRef::<Pcurve>::as_ref(x).as_ref(),
-                PcurveAny::BoundedPcurve(x) => AsRef::<Pcurve>::as_ref(x.as_ref()).as_ref(),
-            }
-        }
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -6856,30 +4708,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         CcDesignPersonAndOrganizationAssignment(Box<CcDesignPersonAndOrganizationAssignment>),
     }
-    impl Into<PersonAndOrganizationAssignmentAny> for PersonAndOrganizationAssignment {
-        fn into(self) -> PersonAndOrganizationAssignmentAny {
-            PersonAndOrganizationAssignmentAny::PersonAndOrganizationAssignment(Box::new(self))
-        }
-    }
-    impl Into<PersonAndOrganizationAssignmentAny> for CcDesignPersonAndOrganizationAssignment {
-        fn into(self) -> PersonAndOrganizationAssignmentAny {
-            PersonAndOrganizationAssignmentAny::CcDesignPersonAndOrganizationAssignment(Box::new(
-                self.into(),
-            ))
-        }
-    }
-    impl AsRef<PersonAndOrganizationAssignment> for PersonAndOrganizationAssignmentAny {
-        fn as_ref(&self) -> &PersonAndOrganizationAssignment {
-            match self {
-                PersonAndOrganizationAssignmentAny::PersonAndOrganizationAssignment(x) => {
-                    x.as_ref()
-                }
-                PersonAndOrganizationAssignmentAny::CcDesignPersonAndOrganizationAssignment(x) => {
-                    (**x).as_ref()
-                }
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = person_and_organization_role)]
@@ -6888,37 +4716,47 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub name: Label,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = personal_address)]
     #[holder(generate_deserialize)]
     pub struct PersonalAddress {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub address: Address,
+        pub internal_location: Option<Label>,
+        #[holder(use_place_holder)]
+        pub street_number: Option<Label>,
+        #[holder(use_place_holder)]
+        pub street: Option<Label>,
+        #[holder(use_place_holder)]
+        pub postal_box: Option<Label>,
+        #[holder(use_place_holder)]
+        pub town: Option<Label>,
+        #[holder(use_place_holder)]
+        pub region: Option<Label>,
+        #[holder(use_place_holder)]
+        pub postal_code: Option<Label>,
+        #[holder(use_place_holder)]
+        pub country: Option<Label>,
+        #[holder(use_place_holder)]
+        pub facsimile_number: Option<Label>,
+        #[holder(use_place_holder)]
+        pub telephone_number: Option<Label>,
+        #[holder(use_place_holder)]
+        pub electronic_mail_address: Option<Label>,
+        #[holder(use_place_holder)]
+        pub telex_number: Option<Label>,
         #[holder(use_place_holder)]
         pub people: Vec<Person>,
         #[holder(use_place_holder)]
         pub description: Text,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = placement)]
     #[holder(generate_deserialize)]
     pub struct Placement {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub location: CartesianPoint,
     }
@@ -6935,105 +4773,41 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         Axis2Placement3D(Box<Axis2Placement3D>),
     }
-    impl Into<PlacementAny> for Placement {
-        fn into(self) -> PlacementAny {
-            PlacementAny::Placement(Box::new(self))
-        }
-    }
-    impl Into<PlacementAny> for Axis1Placement {
-        fn into(self) -> PlacementAny {
-            PlacementAny::Axis1Placement(Box::new(self.into()))
-        }
-    }
-    impl Into<PlacementAny> for Axis2Placement2D {
-        fn into(self) -> PlacementAny {
-            PlacementAny::Axis2Placement2D(Box::new(self.into()))
-        }
-    }
-    impl Into<PlacementAny> for Axis2Placement3D {
-        fn into(self) -> PlacementAny {
-            PlacementAny::Axis2Placement3D(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Placement> for PlacementAny {
-        fn as_ref(&self) -> &Placement {
-            match self {
-                PlacementAny::Placement(x) => x.as_ref(),
-                PlacementAny::Axis1Placement(x) => (**x).as_ref(),
-                PlacementAny::Axis2Placement2D(x) => (**x).as_ref(),
-                PlacementAny::Axis2Placement3D(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<GeometricRepresentationItem> for PlacementAny {
-        fn as_ref(&self) -> &GeometricRepresentationItem {
-            match self {
-                PlacementAny::Placement(x) => AsRef::<Placement>::as_ref(x).as_ref(),
-                PlacementAny::Axis1Placement(x) => AsRef::<Placement>::as_ref(x.as_ref()).as_ref(),
-                PlacementAny::Axis2Placement2D(x) => {
-                    AsRef::<Placement>::as_ref(x.as_ref()).as_ref()
-                }
-                PlacementAny::Axis2Placement3D(x) => {
-                    AsRef::<Placement>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = plane)]
     #[holder(generate_deserialize)]
     pub struct Plane {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub elementary_surface: ElementarySurface,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub position: Axis2Placement3D,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = plane_angle_measure_with_unit)]
     #[holder(generate_deserialize)]
     pub struct PlaneAngleMeasureWithUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub measure_with_unit: MeasureWithUnit,
+        pub value_component: MeasureValue,
+        #[holder(use_place_holder)]
+        pub unit_component: Unit,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = plane_angle_unit)]
     #[holder(generate_deserialize)]
     pub struct PlaneAngleUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub named_unit: NamedUnit,
+        pub dimensions: DimensionalExponents,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = point)]
     #[holder(generate_deserialize)]
     pub struct Point {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub name: Label,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -7052,91 +4826,25 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         PointReplica(Box<PointReplica>),
     }
-    impl Into<PointAny> for Point {
-        fn into(self) -> PointAny {
-            PointAny::Point(Box::new(self))
-        }
-    }
-    impl Into<PointAny> for CartesianPoint {
-        fn into(self) -> PointAny {
-            PointAny::CartesianPoint(Box::new(self.into()))
-        }
-    }
-    impl Into<PointAny> for DegeneratePcurve {
-        fn into(self) -> PointAny {
-            PointAny::DegeneratePcurve(Box::new(self.into()))
-        }
-    }
-    impl Into<PointAny> for PointOnCurve {
-        fn into(self) -> PointAny {
-            PointAny::PointOnCurve(Box::new(self.into()))
-        }
-    }
-    impl Into<PointAny> for PointOnSurface {
-        fn into(self) -> PointAny {
-            PointAny::PointOnSurface(Box::new(self.into()))
-        }
-    }
-    impl Into<PointAny> for PointReplica {
-        fn into(self) -> PointAny {
-            PointAny::PointReplica(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Point> for PointAny {
-        fn as_ref(&self) -> &Point {
-            match self {
-                PointAny::Point(x) => x.as_ref(),
-                PointAny::CartesianPoint(x) => (**x).as_ref(),
-                PointAny::DegeneratePcurve(x) => (**x).as_ref(),
-                PointAny::PointOnCurve(x) => (**x).as_ref(),
-                PointAny::PointOnSurface(x) => (**x).as_ref(),
-                PointAny::PointReplica(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<GeometricRepresentationItem> for PointAny {
-        fn as_ref(&self) -> &GeometricRepresentationItem {
-            match self {
-                PointAny::Point(x) => AsRef::<Point>::as_ref(x).as_ref(),
-                PointAny::CartesianPoint(x) => AsRef::<Point>::as_ref(x.as_ref()).as_ref(),
-                PointAny::DegeneratePcurve(x) => AsRef::<Point>::as_ref(x.as_ref()).as_ref(),
-                PointAny::PointOnCurve(x) => AsRef::<Point>::as_ref(x.as_ref()).as_ref(),
-                PointAny::PointOnSurface(x) => AsRef::<Point>::as_ref(x.as_ref()).as_ref(),
-                PointAny::PointReplica(x) => AsRef::<Point>::as_ref(x.as_ref()).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = point_on_curve)]
     #[holder(generate_deserialize)]
     pub struct PointOnCurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub point: Point,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub basis_curve: CurveAny,
         #[holder(use_place_holder)]
         pub point_parameter: ParameterValue,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = point_on_surface)]
     #[holder(generate_deserialize)]
     pub struct PointOnSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub point: Point,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub basis_surface: SurfaceAny,
         #[holder(use_place_holder)]
@@ -7144,53 +4852,35 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub point_parameter_v: ParameterValue,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = point_replica)]
     #[holder(generate_deserialize)]
     pub struct PointReplica {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub point: Point,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub parent_pt: PointAny,
         #[holder(use_place_holder)]
         pub transformation: CartesianTransformationOperatorAny,
     }
-    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut)]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = poly_loop)]
     #[holder(generate_deserialize)]
     pub struct PolyLoop {
-        #[as_ref]
-        #[as_mut]
         #[holder(use_place_holder)]
-        pub r#loop: Loop,
-        #[as_ref]
-        #[as_mut]
-        #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub polygon: Vec<CartesianPoint>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = polyline)]
     #[holder(generate_deserialize)]
     pub struct Polyline {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub bounded_curve: BoundedCurve,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub points: Vec<CartesianPoint>,
     }
@@ -7227,24 +4917,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         ProductRelatedProductCategory(Box<ProductRelatedProductCategory>),
     }
-    impl Into<ProductCategoryAny> for ProductCategory {
-        fn into(self) -> ProductCategoryAny {
-            ProductCategoryAny::ProductCategory(Box::new(self))
-        }
-    }
-    impl Into<ProductCategoryAny> for ProductRelatedProductCategory {
-        fn into(self) -> ProductCategoryAny {
-            ProductCategoryAny::ProductRelatedProductCategory(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ProductCategory> for ProductCategoryAny {
-        fn as_ref(&self) -> &ProductCategory {
-            match self {
-                ProductCategoryAny::ProductCategory(x) => x.as_ref(),
-                ProductCategoryAny::ProductRelatedProductCategory(x) => (**x).as_ref(),
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = product_category_relationship)]
@@ -7273,35 +4945,27 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub market_context: ProductConceptContext,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = product_concept_context)]
     #[holder(generate_deserialize)]
     pub struct ProductConceptContext {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub application_context_element: ApplicationContextElement,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub frame_of_reference: ApplicationContext,
         #[holder(use_place_holder)]
         pub market_segment_type: Label,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = product_context)]
     #[holder(generate_deserialize)]
     pub struct ProductContext {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub application_context_element: ApplicationContextElement,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub frame_of_reference: ApplicationContext,
         #[holder(use_place_holder)]
         pub discipline_type: Label,
     }
@@ -7313,34 +4977,6 @@ pub mod config_control_design {
         ProductContext(Box<ProductContext>),
         #[holder(use_place_holder)]
         MechanicalContext(Box<MechanicalContext>),
-    }
-    impl Into<ProductContextAny> for ProductContext {
-        fn into(self) -> ProductContextAny {
-            ProductContextAny::ProductContext(Box::new(self))
-        }
-    }
-    impl Into<ProductContextAny> for MechanicalContext {
-        fn into(self) -> ProductContextAny {
-            ProductContextAny::MechanicalContext(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ProductContext> for ProductContextAny {
-        fn as_ref(&self) -> &ProductContext {
-            match self {
-                ProductContextAny::ProductContext(x) => x.as_ref(),
-                ProductContextAny::MechanicalContext(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<ApplicationContextElement> for ProductContextAny {
-        fn as_ref(&self) -> &ApplicationContextElement {
-            match self {
-                ProductContextAny::ProductContext(x) => AsRef::<ProductContext>::as_ref(x).as_ref(),
-                ProductContextAny::MechanicalContext(x) => {
-                    AsRef::<ProductContext>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -7365,37 +5001,15 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         ProductDefinitionWithAssociatedDocuments(Box<ProductDefinitionWithAssociatedDocuments>),
     }
-    impl Into<ProductDefinitionAny> for ProductDefinition {
-        fn into(self) -> ProductDefinitionAny {
-            ProductDefinitionAny::ProductDefinition(Box::new(self))
-        }
-    }
-    impl Into<ProductDefinitionAny> for ProductDefinitionWithAssociatedDocuments {
-        fn into(self) -> ProductDefinitionAny {
-            ProductDefinitionAny::ProductDefinitionWithAssociatedDocuments(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ProductDefinition> for ProductDefinitionAny {
-        fn as_ref(&self) -> &ProductDefinition {
-            match self {
-                ProductDefinitionAny::ProductDefinition(x) => x.as_ref(),
-                ProductDefinitionAny::ProductDefinitionWithAssociatedDocuments(x) => (**x).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = product_definition_context)]
     #[holder(generate_deserialize)]
     pub struct ProductDefinitionContext {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub application_context_element: ApplicationContextElement,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub frame_of_reference: ApplicationContext,
         #[holder(use_place_holder)]
         pub life_cycle_stage: Label,
     }
@@ -7408,49 +5022,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         DesignContext(Box<DesignContext>),
     }
-    impl Into<ProductDefinitionContextAny> for ProductDefinitionContext {
-        fn into(self) -> ProductDefinitionContextAny {
-            ProductDefinitionContextAny::ProductDefinitionContext(Box::new(self))
-        }
-    }
-    impl Into<ProductDefinitionContextAny> for DesignContext {
-        fn into(self) -> ProductDefinitionContextAny {
-            ProductDefinitionContextAny::DesignContext(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ProductDefinitionContext> for ProductDefinitionContextAny {
-        fn as_ref(&self) -> &ProductDefinitionContext {
-            match self {
-                ProductDefinitionContextAny::ProductDefinitionContext(x) => x.as_ref(),
-                ProductDefinitionContextAny::DesignContext(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<ApplicationContextElement> for ProductDefinitionContextAny {
-        fn as_ref(&self) -> &ApplicationContextElement {
-            match self {
-                ProductDefinitionContextAny::ProductDefinitionContext(x) => {
-                    AsRef::<ProductDefinitionContext>::as_ref(x).as_ref()
-                }
-                ProductDefinitionContextAny::DesignContext(x) => {
-                    AsRef::<ProductDefinitionContext>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = product_definition_effectivity)]
     #[holder(generate_deserialize)]
     pub struct ProductDefinitionEffectivity {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub effectivity: Effectivity,
+        pub id: Identifier,
         #[holder(use_place_holder)]
         pub usage: ProductDefinitionRelationshipAny,
     }
@@ -7462,36 +5040,6 @@ pub mod config_control_design {
         ProductDefinitionEffectivity(Box<ProductDefinitionEffectivity>),
         #[holder(use_place_holder)]
         ConfigurationEffectivity(Box<ConfigurationEffectivity>),
-    }
-    impl Into<ProductDefinitionEffectivityAny> for ProductDefinitionEffectivity {
-        fn into(self) -> ProductDefinitionEffectivityAny {
-            ProductDefinitionEffectivityAny::ProductDefinitionEffectivity(Box::new(self))
-        }
-    }
-    impl Into<ProductDefinitionEffectivityAny> for ConfigurationEffectivity {
-        fn into(self) -> ProductDefinitionEffectivityAny {
-            ProductDefinitionEffectivityAny::ConfigurationEffectivity(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ProductDefinitionEffectivity> for ProductDefinitionEffectivityAny {
-        fn as_ref(&self) -> &ProductDefinitionEffectivity {
-            match self {
-                ProductDefinitionEffectivityAny::ProductDefinitionEffectivity(x) => x.as_ref(),
-                ProductDefinitionEffectivityAny::ConfigurationEffectivity(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<Effectivity> for ProductDefinitionEffectivityAny {
-        fn as_ref(&self) -> &Effectivity {
-            match self {
-                ProductDefinitionEffectivityAny::ProductDefinitionEffectivity(x) => {
-                    AsRef::<ProductDefinitionEffectivity>::as_ref(x).as_ref()
-                }
-                ProductDefinitionEffectivityAny::ConfigurationEffectivity(x) => {
-                    AsRef::<ProductDefinitionEffectivity>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -7516,41 +5064,17 @@ pub mod config_control_design {
             Box<ProductDefinitionFormationWithSpecifiedSource>,
         ),
     }
-    impl Into<ProductDefinitionFormationAny> for ProductDefinitionFormation {
-        fn into(self) -> ProductDefinitionFormationAny {
-            ProductDefinitionFormationAny::ProductDefinitionFormation(Box::new(self))
-        }
-    }
-    impl Into<ProductDefinitionFormationAny> for ProductDefinitionFormationWithSpecifiedSource {
-        fn into(self) -> ProductDefinitionFormationAny {
-            ProductDefinitionFormationAny::ProductDefinitionFormationWithSpecifiedSource(Box::new(
-                self.into(),
-            ))
-        }
-    }
-    impl AsRef<ProductDefinitionFormation> for ProductDefinitionFormationAny {
-        fn as_ref(&self) -> &ProductDefinitionFormation {
-            match self {
-                ProductDefinitionFormationAny::ProductDefinitionFormation(x) => x.as_ref(),
-                ProductDefinitionFormationAny::ProductDefinitionFormationWithSpecifiedSource(x) => {
-                    (**x).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = product_definition_formation_with_specified_source)]
     #[holder(generate_deserialize)]
     pub struct ProductDefinitionFormationWithSpecifiedSource {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub product_definition_formation: ProductDefinitionFormation,
+        pub id: Identifier,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub of_product: Product,
         pub make_or_buy: Source,
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -7582,63 +5106,33 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         SuppliedPartRelationship(Box<SuppliedPartRelationship>),
     }
-    impl Into<ProductDefinitionRelationshipAny> for ProductDefinitionRelationship {
-        fn into(self) -> ProductDefinitionRelationshipAny {
-            ProductDefinitionRelationshipAny::ProductDefinitionRelationship(Box::new(self))
-        }
-    }
-    impl Into<ProductDefinitionRelationshipAny> for DesignMakeFromRelationship {
-        fn into(self) -> ProductDefinitionRelationshipAny {
-            ProductDefinitionRelationshipAny::DesignMakeFromRelationship(Box::new(self.into()))
-        }
-    }
-    impl Into<ProductDefinitionRelationshipAny> for ProductDefinitionUsage {
-        fn into(self) -> ProductDefinitionRelationshipAny {
-            ProductDefinitionRelationshipAny::ProductDefinitionUsage(Box::new(self.into()))
-        }
-    }
-    impl Into<ProductDefinitionRelationshipAny> for SuppliedPartRelationship {
-        fn into(self) -> ProductDefinitionRelationshipAny {
-            ProductDefinitionRelationshipAny::SuppliedPartRelationship(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ProductDefinitionRelationship> for ProductDefinitionRelationshipAny {
-        fn as_ref(&self) -> &ProductDefinitionRelationship {
-            match self {
-                ProductDefinitionRelationshipAny::ProductDefinitionRelationship(x) => x.as_ref(),
-                ProductDefinitionRelationshipAny::DesignMakeFromRelationship(x) => (**x).as_ref(),
-                ProductDefinitionRelationshipAny::ProductDefinitionUsage(x) => (**x).as_ref(),
-                ProductDefinitionRelationshipAny::SuppliedPartRelationship(x) => (**x).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = product_definition_shape)]
     #[holder(generate_deserialize)]
     pub struct ProductDefinitionShape {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub property_definition: PropertyDefinition,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub definition: CharacterizedDefinition,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = product_definition_usage)]
     #[holder(generate_deserialize)]
     pub struct ProductDefinitionUsage {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub product_definition_relationship: ProductDefinitionRelationship,
+        pub id: Identifier,
+        #[holder(use_place_holder)]
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub relating_product_definition: ProductDefinitionAny,
+        #[holder(use_place_holder)]
+        pub related_product_definition: ProductDefinitionAny,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -7649,81 +5143,51 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         AssemblyComponentUsage(Box<AssemblyComponentUsageAny>),
     }
-    impl Into<ProductDefinitionUsageAny> for ProductDefinitionUsage {
-        fn into(self) -> ProductDefinitionUsageAny {
-            ProductDefinitionUsageAny::ProductDefinitionUsage(Box::new(self))
-        }
-    }
-    impl Into<ProductDefinitionUsageAny> for AssemblyComponentUsage {
-        fn into(self) -> ProductDefinitionUsageAny {
-            ProductDefinitionUsageAny::AssemblyComponentUsage(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ProductDefinitionUsage> for ProductDefinitionUsageAny {
-        fn as_ref(&self) -> &ProductDefinitionUsage {
-            match self {
-                ProductDefinitionUsageAny::ProductDefinitionUsage(x) => x.as_ref(),
-                ProductDefinitionUsageAny::AssemblyComponentUsage(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<ProductDefinitionRelationship> for ProductDefinitionUsageAny {
-        fn as_ref(&self) -> &ProductDefinitionRelationship {
-            match self {
-                ProductDefinitionUsageAny::ProductDefinitionUsage(x) => {
-                    AsRef::<ProductDefinitionUsage>::as_ref(x).as_ref()
-                }
-                ProductDefinitionUsageAny::AssemblyComponentUsage(x) => {
-                    AsRef::<ProductDefinitionUsage>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = product_definition_with_associated_documents)]
     #[holder(generate_deserialize)]
     pub struct ProductDefinitionWithAssociatedDocuments {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub product_definition: ProductDefinition,
+        pub id: Identifier,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub formation: ProductDefinitionFormationAny,
+        #[holder(use_place_holder)]
+        pub frame_of_reference: ProductDefinitionContextAny,
         #[holder(use_place_holder)]
         pub documentation_ids: Vec<DocumentAny>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = product_related_product_category)]
     #[holder(generate_deserialize)]
     pub struct ProductRelatedProductCategory {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub product_category: ProductCategory,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Option<Text>,
         #[holder(use_place_holder)]
         pub products: Vec<Product>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = promissory_usage_occurrence)]
     #[holder(generate_deserialize)]
     pub struct PromissoryUsageOccurrence {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub assembly_component_usage: AssemblyComponentUsage,
+        pub id: Identifier,
+        #[holder(use_place_holder)]
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub relating_product_definition: ProductDefinitionAny,
+        #[holder(use_place_holder)]
+        pub related_product_definition: ProductDefinitionAny,
+        #[holder(use_place_holder)]
+        pub reference_designator: Option<Identifier>,
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -7746,24 +5210,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         ProductDefinitionShape(Box<ProductDefinitionShape>),
     }
-    impl Into<PropertyDefinitionAny> for PropertyDefinition {
-        fn into(self) -> PropertyDefinitionAny {
-            PropertyDefinitionAny::PropertyDefinition(Box::new(self))
-        }
-    }
-    impl Into<PropertyDefinitionAny> for ProductDefinitionShape {
-        fn into(self) -> PropertyDefinitionAny {
-            PropertyDefinitionAny::ProductDefinitionShape(Box::new(self.into()))
-        }
-    }
-    impl AsRef<PropertyDefinition> for PropertyDefinitionAny {
-        fn as_ref(&self) -> &PropertyDefinition {
-            match self {
-                PropertyDefinitionAny::PropertyDefinition(x) => x.as_ref(),
-                PropertyDefinitionAny::ProductDefinitionShape(x) => (**x).as_ref(),
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = property_definition_representation)]
@@ -7783,133 +5229,105 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         ShapeDefinitionRepresentation(Box<ShapeDefinitionRepresentation>),
     }
-    impl Into<PropertyDefinitionRepresentationAny> for PropertyDefinitionRepresentation {
-        fn into(self) -> PropertyDefinitionRepresentationAny {
-            PropertyDefinitionRepresentationAny::PropertyDefinitionRepresentation(Box::new(self))
-        }
-    }
-    impl Into<PropertyDefinitionRepresentationAny> for ShapeDefinitionRepresentation {
-        fn into(self) -> PropertyDefinitionRepresentationAny {
-            PropertyDefinitionRepresentationAny::ShapeDefinitionRepresentation(Box::new(
-                self.into(),
-            ))
-        }
-    }
-    impl AsRef<PropertyDefinitionRepresentation> for PropertyDefinitionRepresentationAny {
-        fn as_ref(&self) -> &PropertyDefinitionRepresentation {
-            match self {
-                PropertyDefinitionRepresentationAny::PropertyDefinitionRepresentation(x) => {
-                    x.as_ref()
-                }
-                PropertyDefinitionRepresentationAny::ShapeDefinitionRepresentation(x) => {
-                    (**x).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = quantified_assembly_component_usage)]
     #[holder(generate_deserialize)]
     pub struct QuantifiedAssemblyComponentUsage {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub assembly_component_usage: AssemblyComponentUsage,
+        pub id: Identifier,
+        #[holder(use_place_holder)]
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub relating_product_definition: ProductDefinitionAny,
+        #[holder(use_place_holder)]
+        pub related_product_definition: ProductDefinitionAny,
+        #[holder(use_place_holder)]
+        pub reference_designator: Option<Identifier>,
         #[holder(use_place_holder)]
         pub quantity: MeasureWithUnitAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = quasi_uniform_curve)]
     #[holder(generate_deserialize)]
     pub struct QuasiUniformCurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub b_spline_curve: BSplineCurve,
+        pub name: Label,
+        pub degree: i64,
+        #[holder(use_place_holder)]
+        pub control_points_list: Vec<CartesianPoint>,
+        pub curve_form: BSplineCurveForm,
+        pub closed_curve: Logical,
+        pub self_intersect: Logical,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = quasi_uniform_surface)]
     #[holder(generate_deserialize)]
     pub struct QuasiUniformSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub b_spline_surface: BSplineSurface,
+        pub name: Label,
+        pub u_degree: i64,
+        pub v_degree: i64,
+        #[holder(use_place_holder)]
+        pub control_points_list: Vec<Vec<CartesianPoint>>,
+        pub surface_form: BSplineSurfaceForm,
+        pub u_closed: Logical,
+        pub v_closed: Logical,
+        pub self_intersect: Logical,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = rational_b_spline_curve)]
     #[holder(generate_deserialize)]
     pub struct RationalBSplineCurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub b_spline_curve: BSplineCurve,
+        pub name: Label,
+        pub degree: i64,
+        #[holder(use_place_holder)]
+        pub control_points_list: Vec<CartesianPoint>,
+        pub curve_form: BSplineCurveForm,
+        pub closed_curve: Logical,
+        pub self_intersect: Logical,
         pub weights_data: Vec<f64>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = rational_b_spline_surface)]
     #[holder(generate_deserialize)]
     pub struct RationalBSplineSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub b_spline_surface: BSplineSurface,
+        pub name: Label,
+        pub u_degree: i64,
+        pub v_degree: i64,
+        #[holder(use_place_holder)]
+        pub control_points_list: Vec<Vec<CartesianPoint>>,
+        pub surface_form: BSplineSurfaceForm,
+        pub u_closed: Logical,
+        pub v_closed: Logical,
+        pub self_intersect: Logical,
         pub weights_data: Vec<Vec<f64>>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = rectangular_composite_surface)]
     #[holder(generate_deserialize)]
     pub struct RectangularCompositeSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub bounded_surface: BoundedSurface,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub segments: Vec<Vec<SurfacePatch>>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = rectangular_trimmed_surface)]
     #[holder(generate_deserialize)]
     pub struct RectangularTrimmedSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub bounded_surface: BoundedSurface,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub basis_surface: SurfaceAny,
         #[holder(use_place_holder)]
@@ -7923,19 +5341,15 @@ pub mod config_control_design {
         pub usense: bool,
         pub vsense: bool,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = reparametrised_composite_curve_segment)]
     #[holder(generate_deserialize)]
     pub struct ReparametrisedCompositeCurveSegment {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
+        pub transition: TransitionCode,
+        pub same_sense: bool,
         #[holder(use_place_holder)]
-        pub composite_curve_segment: CompositeCurveSegment,
+        pub parent_curve: CurveAny,
         #[holder(use_place_holder)]
         pub param_length: ParameterValue,
     }
@@ -7962,30 +5376,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         ShapeRepresentation(Box<ShapeRepresentationAny>),
     }
-    impl Into<RepresentationAny> for Representation {
-        fn into(self) -> RepresentationAny {
-            RepresentationAny::Representation(Box::new(self))
-        }
-    }
-    impl Into<RepresentationAny> for DefinitionalRepresentation {
-        fn into(self) -> RepresentationAny {
-            RepresentationAny::DefinitionalRepresentation(Box::new(self.into()))
-        }
-    }
-    impl Into<RepresentationAny> for ShapeRepresentation {
-        fn into(self) -> RepresentationAny {
-            RepresentationAny::ShapeRepresentation(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Representation> for RepresentationAny {
-        fn as_ref(&self) -> &Representation {
-            match self {
-                RepresentationAny::Representation(x) => x.as_ref(),
-                RepresentationAny::DefinitionalRepresentation(x) => (**x).as_ref(),
-                RepresentationAny::ShapeRepresentation(x) => (**x).as_ref(),
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = representation_context)]
@@ -8011,42 +5401,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         ParametricRepresentationContext(Box<ParametricRepresentationContext>),
     }
-    impl Into<RepresentationContextAny> for RepresentationContext {
-        fn into(self) -> RepresentationContextAny {
-            RepresentationContextAny::RepresentationContext(Box::new(self))
-        }
-    }
-    impl Into<RepresentationContextAny> for GeometricRepresentationContext {
-        fn into(self) -> RepresentationContextAny {
-            RepresentationContextAny::GeometricRepresentationContext(Box::new(self.into()))
-        }
-    }
-    impl Into<RepresentationContextAny> for GlobalUncertaintyAssignedContext {
-        fn into(self) -> RepresentationContextAny {
-            RepresentationContextAny::GlobalUncertaintyAssignedContext(Box::new(self.into()))
-        }
-    }
-    impl Into<RepresentationContextAny> for GlobalUnitAssignedContext {
-        fn into(self) -> RepresentationContextAny {
-            RepresentationContextAny::GlobalUnitAssignedContext(Box::new(self.into()))
-        }
-    }
-    impl Into<RepresentationContextAny> for ParametricRepresentationContext {
-        fn into(self) -> RepresentationContextAny {
-            RepresentationContextAny::ParametricRepresentationContext(Box::new(self.into()))
-        }
-    }
-    impl AsRef<RepresentationContext> for RepresentationContextAny {
-        fn as_ref(&self) -> &RepresentationContext {
-            match self {
-                RepresentationContextAny::RepresentationContext(x) => x.as_ref(),
-                RepresentationContextAny::GeometricRepresentationContext(x) => (**x).as_ref(),
-                RepresentationContextAny::GlobalUncertaintyAssignedContext(x) => (**x).as_ref(),
-                RepresentationContextAny::GlobalUnitAssignedContext(x) => (**x).as_ref(),
-                RepresentationContextAny::ParametricRepresentationContext(x) => (**x).as_ref(),
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = representation_item)]
@@ -8067,36 +5421,6 @@ pub mod config_control_design {
         MappedItem(Box<MappedItem>),
         #[holder(use_place_holder)]
         TopologicalRepresentationItem(Box<TopologicalRepresentationItemAny>),
-    }
-    impl Into<RepresentationItemAny> for RepresentationItem {
-        fn into(self) -> RepresentationItemAny {
-            RepresentationItemAny::RepresentationItem(Box::new(self))
-        }
-    }
-    impl Into<RepresentationItemAny> for GeometricRepresentationItem {
-        fn into(self) -> RepresentationItemAny {
-            RepresentationItemAny::GeometricRepresentationItem(Box::new(self.into()))
-        }
-    }
-    impl Into<RepresentationItemAny> for MappedItem {
-        fn into(self) -> RepresentationItemAny {
-            RepresentationItemAny::MappedItem(Box::new(self.into()))
-        }
-    }
-    impl Into<RepresentationItemAny> for TopologicalRepresentationItem {
-        fn into(self) -> RepresentationItemAny {
-            RepresentationItemAny::TopologicalRepresentationItem(Box::new(self.into()))
-        }
-    }
-    impl AsRef<RepresentationItem> for RepresentationItemAny {
-        fn as_ref(&self) -> &RepresentationItem {
-            match self {
-                RepresentationItemAny::RepresentationItem(x) => x.as_ref(),
-                RepresentationItemAny::GeometricRepresentationItem(x) => (**x).as_ref(),
-                RepresentationItemAny::MappedItem(x) => (**x).as_ref(),
-                RepresentationItemAny::TopologicalRepresentationItem(x) => (**x).as_ref(),
-            }
-        }
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -8135,63 +5459,34 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         ShapeRepresentationRelationship(Box<ShapeRepresentationRelationship>),
     }
-    impl Into<RepresentationRelationshipAny> for RepresentationRelationship {
-        fn into(self) -> RepresentationRelationshipAny {
-            RepresentationRelationshipAny::RepresentationRelationship(Box::new(self))
-        }
-    }
-    impl Into<RepresentationRelationshipAny> for RepresentationRelationshipWithTransformation {
-        fn into(self) -> RepresentationRelationshipAny {
-            RepresentationRelationshipAny::RepresentationRelationshipWithTransformation(Box::new(
-                self.into(),
-            ))
-        }
-    }
-    impl Into<RepresentationRelationshipAny> for ShapeRepresentationRelationship {
-        fn into(self) -> RepresentationRelationshipAny {
-            RepresentationRelationshipAny::ShapeRepresentationRelationship(Box::new(self.into()))
-        }
-    }
-    impl AsRef<RepresentationRelationship> for RepresentationRelationshipAny {
-        fn as_ref(&self) -> &RepresentationRelationship {
-            match self {
-                RepresentationRelationshipAny::RepresentationRelationship(x) => x.as_ref(),
-                RepresentationRelationshipAny::RepresentationRelationshipWithTransformation(x) => {
-                    (**x).as_ref()
-                }
-                RepresentationRelationshipAny::ShapeRepresentationRelationship(x) => (**x).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = representation_relationship_with_transformation)]
     #[holder(generate_deserialize)]
     pub struct RepresentationRelationshipWithTransformation {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub representation_relationship: RepresentationRelationship,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub rep_1: RepresentationAny,
+        #[holder(use_place_holder)]
+        pub rep_2: RepresentationAny,
         #[holder(use_place_holder)]
         pub transformation_operator: Transformation,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = seam_curve)]
     #[holder(generate_deserialize)]
     pub struct SeamCurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub surface_curve: SurfaceCurve,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub curve_3d: CurveAny,
+        #[holder(use_place_holder)]
+        pub associated_geometry: Vec<PcurveOrSurface>,
+        pub master_representation: PreferredSurfaceCurveRepresentation,
     }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
@@ -8222,30 +5517,6 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         CcDesignSecurityClassification(Box<CcDesignSecurityClassification>),
     }
-    impl Into<SecurityClassificationAssignmentAny> for SecurityClassificationAssignment {
-        fn into(self) -> SecurityClassificationAssignmentAny {
-            SecurityClassificationAssignmentAny::SecurityClassificationAssignment(Box::new(self))
-        }
-    }
-    impl Into<SecurityClassificationAssignmentAny> for CcDesignSecurityClassification {
-        fn into(self) -> SecurityClassificationAssignmentAny {
-            SecurityClassificationAssignmentAny::CcDesignSecurityClassification(Box::new(
-                self.into(),
-            ))
-        }
-    }
-    impl AsRef<SecurityClassificationAssignment> for SecurityClassificationAssignmentAny {
-        fn as_ref(&self) -> &SecurityClassificationAssignment {
-            match self {
-                SecurityClassificationAssignmentAny::SecurityClassificationAssignment(x) => {
-                    x.as_ref()
-                }
-                SecurityClassificationAssignmentAny::CcDesignSecurityClassification(x) => {
-                    (**x).as_ref()
-                }
-            }
-        }
-    }
     #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = security_classification_level)]
@@ -8254,19 +5525,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub name: Label,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = serial_numbered_effectivity)]
     #[holder(generate_deserialize)]
     pub struct SerialNumberedEffectivity {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub effectivity: Effectivity,
+        pub id: Identifier,
         #[holder(use_place_holder)]
         pub effectivity_start_id: Identifier,
         #[holder(use_place_holder)]
@@ -8299,33 +5564,27 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub related_shape_aspect: ShapeAspect,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = shape_definition_representation)]
     #[holder(generate_deserialize)]
     pub struct ShapeDefinitionRepresentation {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub property_definition_representation: PropertyDefinitionRepresentation,
+        pub definition: PropertyDefinitionAny,
+        #[holder(use_place_holder)]
+        pub used_representation: RepresentationAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = shape_representation)]
     #[holder(generate_deserialize)]
     pub struct ShapeRepresentation {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub representation: Representation,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub items: Vec<RepresentationItemAny>,
+        #[holder(use_place_holder)]
+        pub context_of_items: RepresentationContextAny,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -8352,215 +5611,87 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         ShellBasedWireframeShapeRepresentation(Box<ShellBasedWireframeShapeRepresentation>),
     }
-    impl Into<ShapeRepresentationAny> for ShapeRepresentation {
-        fn into(self) -> ShapeRepresentationAny {
-            ShapeRepresentationAny::ShapeRepresentation(Box::new(self))
-        }
-    }
-    impl Into<ShapeRepresentationAny> for AdvancedBrepShapeRepresentation {
-        fn into(self) -> ShapeRepresentationAny {
-            ShapeRepresentationAny::AdvancedBrepShapeRepresentation(Box::new(self.into()))
-        }
-    }
-    impl Into<ShapeRepresentationAny> for EdgeBasedWireframeShapeRepresentation {
-        fn into(self) -> ShapeRepresentationAny {
-            ShapeRepresentationAny::EdgeBasedWireframeShapeRepresentation(Box::new(self.into()))
-        }
-    }
-    impl Into<ShapeRepresentationAny> for FacetedBrepShapeRepresentation {
-        fn into(self) -> ShapeRepresentationAny {
-            ShapeRepresentationAny::FacetedBrepShapeRepresentation(Box::new(self.into()))
-        }
-    }
-    impl Into<ShapeRepresentationAny> for GeometricallyBoundedSurfaceShapeRepresentation {
-        fn into(self) -> ShapeRepresentationAny {
-            ShapeRepresentationAny::GeometricallyBoundedSurfaceShapeRepresentation(Box::new(
-                self.into(),
-            ))
-        }
-    }
-    impl Into<ShapeRepresentationAny> for GeometricallyBoundedWireframeShapeRepresentation {
-        fn into(self) -> ShapeRepresentationAny {
-            ShapeRepresentationAny::GeometricallyBoundedWireframeShapeRepresentation(Box::new(
-                self.into(),
-            ))
-        }
-    }
-    impl Into<ShapeRepresentationAny> for ManifoldSurfaceShapeRepresentation {
-        fn into(self) -> ShapeRepresentationAny {
-            ShapeRepresentationAny::ManifoldSurfaceShapeRepresentation(Box::new(self.into()))
-        }
-    }
-    impl Into<ShapeRepresentationAny> for ShellBasedWireframeShapeRepresentation {
-        fn into(self) -> ShapeRepresentationAny {
-            ShapeRepresentationAny::ShellBasedWireframeShapeRepresentation(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ShapeRepresentation> for ShapeRepresentationAny {
-        fn as_ref(&self) -> &ShapeRepresentation {
-            match self {
-                ShapeRepresentationAny::ShapeRepresentation(x) => x.as_ref(),
-                ShapeRepresentationAny::AdvancedBrepShapeRepresentation(x) => (**x).as_ref(),
-                ShapeRepresentationAny::EdgeBasedWireframeShapeRepresentation(x) => (**x).as_ref(),
-                ShapeRepresentationAny::FacetedBrepShapeRepresentation(x) => (**x).as_ref(),
-                ShapeRepresentationAny::GeometricallyBoundedSurfaceShapeRepresentation(x) => {
-                    (**x).as_ref()
-                }
-                ShapeRepresentationAny::GeometricallyBoundedWireframeShapeRepresentation(x) => {
-                    (**x).as_ref()
-                }
-                ShapeRepresentationAny::ManifoldSurfaceShapeRepresentation(x) => (**x).as_ref(),
-                ShapeRepresentationAny::ShellBasedWireframeShapeRepresentation(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<Representation> for ShapeRepresentationAny {
-        fn as_ref(&self) -> &Representation {
-            match self {
-                ShapeRepresentationAny::ShapeRepresentation(x) => {
-                    AsRef::<ShapeRepresentation>::as_ref(x).as_ref()
-                }
-                ShapeRepresentationAny::AdvancedBrepShapeRepresentation(x) => {
-                    AsRef::<ShapeRepresentation>::as_ref(x.as_ref()).as_ref()
-                }
-                ShapeRepresentationAny::EdgeBasedWireframeShapeRepresentation(x) => {
-                    AsRef::<ShapeRepresentation>::as_ref(x.as_ref()).as_ref()
-                }
-                ShapeRepresentationAny::FacetedBrepShapeRepresentation(x) => {
-                    AsRef::<ShapeRepresentation>::as_ref(x.as_ref()).as_ref()
-                }
-                ShapeRepresentationAny::GeometricallyBoundedSurfaceShapeRepresentation(x) => {
-                    AsRef::<ShapeRepresentation>::as_ref(x.as_ref()).as_ref()
-                }
-                ShapeRepresentationAny::GeometricallyBoundedWireframeShapeRepresentation(x) => {
-                    AsRef::<ShapeRepresentation>::as_ref(x.as_ref()).as_ref()
-                }
-                ShapeRepresentationAny::ManifoldSurfaceShapeRepresentation(x) => {
-                    AsRef::<ShapeRepresentation>::as_ref(x.as_ref()).as_ref()
-                }
-                ShapeRepresentationAny::ShellBasedWireframeShapeRepresentation(x) => {
-                    AsRef::<ShapeRepresentation>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = shape_representation_relationship)]
     #[holder(generate_deserialize)]
     pub struct ShapeRepresentationRelationship {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub representation_relationship: RepresentationRelationship,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub rep_1: RepresentationAny,
+        #[holder(use_place_holder)]
+        pub rep_2: RepresentationAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = shell_based_surface_model)]
     #[holder(generate_deserialize)]
     pub struct ShellBasedSurfaceModel {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub sbsm_boundary: Vec<Shell>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = shell_based_wireframe_model)]
     #[holder(generate_deserialize)]
     pub struct ShellBasedWireframeModel {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub sbwm_boundary: Vec<Shell>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = shell_based_wireframe_shape_representation)]
     #[holder(generate_deserialize)]
     pub struct ShellBasedWireframeShapeRepresentation {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub shape_representation: ShapeRepresentation,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub items: Vec<RepresentationItemAny>,
+        #[holder(use_place_holder)]
+        pub context_of_items: RepresentationContextAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = si_unit)]
     #[holder(generate_deserialize)]
     pub struct SiUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub named_unit: NamedUnit,
+        pub dimensions: DimensionalExponents,
         pub prefix: Option<SiPrefix>,
         pub name: SiUnitName,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = solid_angle_measure_with_unit)]
     #[holder(generate_deserialize)]
     pub struct SolidAngleMeasureWithUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub measure_with_unit: MeasureWithUnit,
+        pub value_component: MeasureValue,
+        #[holder(use_place_holder)]
+        pub unit_component: Unit,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = solid_angle_unit)]
     #[holder(generate_deserialize)]
     pub struct SolidAngleUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub named_unit: NamedUnit,
+        pub dimensions: DimensionalExponents,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = solid_model)]
     #[holder(generate_deserialize)]
     pub struct SolidModel {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub name: Label,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -8571,127 +5702,83 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         ManifoldSolidBrep(Box<ManifoldSolidBrepAny>),
     }
-    impl Into<SolidModelAny> for SolidModel {
-        fn into(self) -> SolidModelAny {
-            SolidModelAny::SolidModel(Box::new(self))
-        }
-    }
-    impl Into<SolidModelAny> for ManifoldSolidBrep {
-        fn into(self) -> SolidModelAny {
-            SolidModelAny::ManifoldSolidBrep(Box::new(self.into()))
-        }
-    }
-    impl AsRef<SolidModel> for SolidModelAny {
-        fn as_ref(&self) -> &SolidModel {
-            match self {
-                SolidModelAny::SolidModel(x) => x.as_ref(),
-                SolidModelAny::ManifoldSolidBrep(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<GeometricRepresentationItem> for SolidModelAny {
-        fn as_ref(&self) -> &GeometricRepresentationItem {
-            match self {
-                SolidModelAny::SolidModel(x) => AsRef::<SolidModel>::as_ref(x).as_ref(),
-                SolidModelAny::ManifoldSolidBrep(x) => {
-                    AsRef::<SolidModel>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = specified_higher_usage_occurrence)]
     #[holder(generate_deserialize)]
     pub struct SpecifiedHigherUsageOccurrence {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub assembly_component_usage: AssemblyComponentUsage,
+        pub id: Identifier,
+        #[holder(use_place_holder)]
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub relating_product_definition: ProductDefinitionAny,
+        #[holder(use_place_holder)]
+        pub related_product_definition: ProductDefinitionAny,
+        #[holder(use_place_holder)]
+        pub reference_designator: Option<Identifier>,
         #[holder(use_place_holder)]
         pub upper_usage: AssemblyComponentUsageAny,
         #[holder(use_place_holder)]
         pub next_usage: NextAssemblyUsageOccurrence,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = spherical_surface)]
     #[holder(generate_deserialize)]
     pub struct SphericalSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub elementary_surface: ElementarySurface,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub position: Axis2Placement3D,
         #[holder(use_place_holder)]
         pub radius: PositiveLengthMeasure,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = start_request)]
     #[holder(generate_deserialize)]
     pub struct StartRequest {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub action_request_assignment: ActionRequestAssignment,
+        pub assigned_action_request: VersionedActionRequest,
         #[holder(use_place_holder)]
         pub items: Vec<StartRequestItem>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = start_work)]
     #[holder(generate_deserialize)]
     pub struct StartWork {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub action_assignment: ActionAssignment,
+        pub assigned_action: ActionAny,
         #[holder(use_place_holder)]
         pub items: Vec<WorkItem>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = supplied_part_relationship)]
     #[holder(generate_deserialize)]
     pub struct SuppliedPartRelationship {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub product_definition_relationship: ProductDefinitionRelationship,
+        pub id: Identifier,
+        #[holder(use_place_holder)]
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub description: Text,
+        #[holder(use_place_holder)]
+        pub relating_product_definition: ProductDefinitionAny,
+        #[holder(use_place_holder)]
+        pub related_product_definition: ProductDefinitionAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = surface)]
     #[holder(generate_deserialize)]
     pub struct Surface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub name: Label,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -8710,73 +5797,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         SweptSurface(Box<SweptSurfaceAny>),
     }
-    impl Into<SurfaceAny> for Surface {
-        fn into(self) -> SurfaceAny {
-            SurfaceAny::Surface(Box::new(self))
-        }
-    }
-    impl Into<SurfaceAny> for BoundedSurface {
-        fn into(self) -> SurfaceAny {
-            SurfaceAny::BoundedSurface(Box::new(self.into()))
-        }
-    }
-    impl Into<SurfaceAny> for ElementarySurface {
-        fn into(self) -> SurfaceAny {
-            SurfaceAny::ElementarySurface(Box::new(self.into()))
-        }
-    }
-    impl Into<SurfaceAny> for OffsetSurface {
-        fn into(self) -> SurfaceAny {
-            SurfaceAny::OffsetSurface(Box::new(self.into()))
-        }
-    }
-    impl Into<SurfaceAny> for SurfaceReplica {
-        fn into(self) -> SurfaceAny {
-            SurfaceAny::SurfaceReplica(Box::new(self.into()))
-        }
-    }
-    impl Into<SurfaceAny> for SweptSurface {
-        fn into(self) -> SurfaceAny {
-            SurfaceAny::SweptSurface(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Surface> for SurfaceAny {
-        fn as_ref(&self) -> &Surface {
-            match self {
-                SurfaceAny::Surface(x) => x.as_ref(),
-                SurfaceAny::BoundedSurface(x) => (**x).as_ref(),
-                SurfaceAny::ElementarySurface(x) => (**x).as_ref(),
-                SurfaceAny::OffsetSurface(x) => (**x).as_ref(),
-                SurfaceAny::SurfaceReplica(x) => (**x).as_ref(),
-                SurfaceAny::SweptSurface(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<GeometricRepresentationItem> for SurfaceAny {
-        fn as_ref(&self) -> &GeometricRepresentationItem {
-            match self {
-                SurfaceAny::Surface(x) => AsRef::<Surface>::as_ref(x).as_ref(),
-                SurfaceAny::BoundedSurface(x) => AsRef::<Surface>::as_ref(x.as_ref()).as_ref(),
-                SurfaceAny::ElementarySurface(x) => AsRef::<Surface>::as_ref(x.as_ref()).as_ref(),
-                SurfaceAny::OffsetSurface(x) => AsRef::<Surface>::as_ref(x.as_ref()).as_ref(),
-                SurfaceAny::SurfaceReplica(x) => AsRef::<Surface>::as_ref(x.as_ref()).as_ref(),
-                SurfaceAny::SweptSurface(x) => AsRef::<Surface>::as_ref(x.as_ref()).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = surface_curve)]
     #[holder(generate_deserialize)]
     pub struct SurfaceCurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub curve: Curve,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub curve_3d: CurveAny,
         #[holder(use_place_holder)]
@@ -8796,95 +5823,35 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         SeamCurve(Box<SeamCurve>),
     }
-    impl Into<SurfaceCurveAny> for SurfaceCurve {
-        fn into(self) -> SurfaceCurveAny {
-            SurfaceCurveAny::SurfaceCurve(Box::new(self))
-        }
-    }
-    impl Into<SurfaceCurveAny> for BoundedSurfaceCurve {
-        fn into(self) -> SurfaceCurveAny {
-            SurfaceCurveAny::BoundedSurfaceCurve(Box::new(self.into()))
-        }
-    }
-    impl Into<SurfaceCurveAny> for IntersectionCurve {
-        fn into(self) -> SurfaceCurveAny {
-            SurfaceCurveAny::IntersectionCurve(Box::new(self.into()))
-        }
-    }
-    impl Into<SurfaceCurveAny> for SeamCurve {
-        fn into(self) -> SurfaceCurveAny {
-            SurfaceCurveAny::SeamCurve(Box::new(self.into()))
-        }
-    }
-    impl AsRef<SurfaceCurve> for SurfaceCurveAny {
-        fn as_ref(&self) -> &SurfaceCurve {
-            match self {
-                SurfaceCurveAny::SurfaceCurve(x) => x.as_ref(),
-                SurfaceCurveAny::BoundedSurfaceCurve(x) => (**x).as_ref(),
-                SurfaceCurveAny::IntersectionCurve(x) => (**x).as_ref(),
-                SurfaceCurveAny::SeamCurve(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<Curve> for SurfaceCurveAny {
-        fn as_ref(&self) -> &Curve {
-            match self {
-                SurfaceCurveAny::SurfaceCurve(x) => AsRef::<SurfaceCurve>::as_ref(x).as_ref(),
-                SurfaceCurveAny::BoundedSurfaceCurve(x) => {
-                    AsRef::<SurfaceCurve>::as_ref(x.as_ref()).as_ref()
-                }
-                SurfaceCurveAny::IntersectionCurve(x) => {
-                    AsRef::<SurfaceCurve>::as_ref(x.as_ref()).as_ref()
-                }
-                SurfaceCurveAny::SeamCurve(x) => AsRef::<SurfaceCurve>::as_ref(x.as_ref()).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = surface_of_linear_extrusion)]
     #[holder(generate_deserialize)]
     pub struct SurfaceOfLinearExtrusion {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub swept_surface: SweptSurface,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub swept_curve: CurveAny,
         #[holder(use_place_holder)]
         pub extrusion_axis: Vector,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = surface_of_revolution)]
     #[holder(generate_deserialize)]
     pub struct SurfaceOfRevolution {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub swept_surface: SweptSurface,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub swept_curve: CurveAny,
         #[holder(use_place_holder)]
         pub axis_position: Axis1Placement,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = surface_patch)]
     #[holder(generate_deserialize)]
     pub struct SurfacePatch {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
-        #[holder(use_place_holder)]
-        pub founded_item: FoundedItem,
         #[holder(use_place_holder)]
         pub parent_surface: BoundedSurfaceAny,
         pub u_transition: TransitionCode,
@@ -8892,37 +5859,25 @@ pub mod config_control_design {
         pub u_sense: bool,
         pub v_sense: bool,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = surface_replica)]
     #[holder(generate_deserialize)]
     pub struct SurfaceReplica {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub surface: Surface,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub parent_surface: SurfaceAny,
         #[holder(use_place_holder)]
         pub transformation: CartesianTransformationOperator3D,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = swept_surface)]
     #[holder(generate_deserialize)]
     pub struct SweptSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub surface: Surface,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub swept_curve: CurveAny,
     }
@@ -8937,56 +5892,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         SurfaceOfRevolution(Box<SurfaceOfRevolution>),
     }
-    impl Into<SweptSurfaceAny> for SweptSurface {
-        fn into(self) -> SweptSurfaceAny {
-            SweptSurfaceAny::SweptSurface(Box::new(self))
-        }
-    }
-    impl Into<SweptSurfaceAny> for SurfaceOfLinearExtrusion {
-        fn into(self) -> SweptSurfaceAny {
-            SweptSurfaceAny::SurfaceOfLinearExtrusion(Box::new(self.into()))
-        }
-    }
-    impl Into<SweptSurfaceAny> for SurfaceOfRevolution {
-        fn into(self) -> SweptSurfaceAny {
-            SweptSurfaceAny::SurfaceOfRevolution(Box::new(self.into()))
-        }
-    }
-    impl AsRef<SweptSurface> for SweptSurfaceAny {
-        fn as_ref(&self) -> &SweptSurface {
-            match self {
-                SweptSurfaceAny::SweptSurface(x) => x.as_ref(),
-                SweptSurfaceAny::SurfaceOfLinearExtrusion(x) => (**x).as_ref(),
-                SweptSurfaceAny::SurfaceOfRevolution(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<Surface> for SweptSurfaceAny {
-        fn as_ref(&self) -> &Surface {
-            match self {
-                SweptSurfaceAny::SweptSurface(x) => AsRef::<SweptSurface>::as_ref(x).as_ref(),
-                SweptSurfaceAny::SurfaceOfLinearExtrusion(x) => {
-                    AsRef::<SweptSurface>::as_ref(x.as_ref()).as_ref()
-                }
-                SweptSurfaceAny::SurfaceOfRevolution(x) => {
-                    AsRef::<SweptSurface>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = topological_representation_item)]
     #[holder(generate_deserialize)]
     pub struct TopologicalRepresentationItem {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub representation_item: RepresentationItem,
+        pub name: Label,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -9015,130 +5927,15 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         WireShell(Box<WireShell>),
     }
-    impl Into<TopologicalRepresentationItemAny> for TopologicalRepresentationItem {
-        fn into(self) -> TopologicalRepresentationItemAny {
-            TopologicalRepresentationItemAny::TopologicalRepresentationItem(Box::new(self))
-        }
-    }
-    impl Into<TopologicalRepresentationItemAny> for ConnectedEdgeSet {
-        fn into(self) -> TopologicalRepresentationItemAny {
-            TopologicalRepresentationItemAny::ConnectedEdgeSet(Box::new(self.into()))
-        }
-    }
-    impl Into<TopologicalRepresentationItemAny> for ConnectedFaceSet {
-        fn into(self) -> TopologicalRepresentationItemAny {
-            TopologicalRepresentationItemAny::ConnectedFaceSet(Box::new(self.into()))
-        }
-    }
-    impl Into<TopologicalRepresentationItemAny> for Edge {
-        fn into(self) -> TopologicalRepresentationItemAny {
-            TopologicalRepresentationItemAny::Edge(Box::new(self.into()))
-        }
-    }
-    impl Into<TopologicalRepresentationItemAny> for Face {
-        fn into(self) -> TopologicalRepresentationItemAny {
-            TopologicalRepresentationItemAny::Face(Box::new(self.into()))
-        }
-    }
-    impl Into<TopologicalRepresentationItemAny> for FaceBound {
-        fn into(self) -> TopologicalRepresentationItemAny {
-            TopologicalRepresentationItemAny::FaceBound(Box::new(self.into()))
-        }
-    }
-    impl Into<TopologicalRepresentationItemAny> for Loop {
-        fn into(self) -> TopologicalRepresentationItemAny {
-            TopologicalRepresentationItemAny::Loop(Box::new(self.into()))
-        }
-    }
-    impl Into<TopologicalRepresentationItemAny> for Path {
-        fn into(self) -> TopologicalRepresentationItemAny {
-            TopologicalRepresentationItemAny::Path(Box::new(self.into()))
-        }
-    }
-    impl Into<TopologicalRepresentationItemAny> for Vertex {
-        fn into(self) -> TopologicalRepresentationItemAny {
-            TopologicalRepresentationItemAny::Vertex(Box::new(self.into()))
-        }
-    }
-    impl Into<TopologicalRepresentationItemAny> for VertexShell {
-        fn into(self) -> TopologicalRepresentationItemAny {
-            TopologicalRepresentationItemAny::VertexShell(Box::new(self.into()))
-        }
-    }
-    impl Into<TopologicalRepresentationItemAny> for WireShell {
-        fn into(self) -> TopologicalRepresentationItemAny {
-            TopologicalRepresentationItemAny::WireShell(Box::new(self.into()))
-        }
-    }
-    impl AsRef<TopologicalRepresentationItem> for TopologicalRepresentationItemAny {
-        fn as_ref(&self) -> &TopologicalRepresentationItem {
-            match self {
-                TopologicalRepresentationItemAny::TopologicalRepresentationItem(x) => x.as_ref(),
-                TopologicalRepresentationItemAny::ConnectedEdgeSet(x) => (**x).as_ref(),
-                TopologicalRepresentationItemAny::ConnectedFaceSet(x) => (**x).as_ref(),
-                TopologicalRepresentationItemAny::Edge(x) => (**x).as_ref(),
-                TopologicalRepresentationItemAny::Face(x) => (**x).as_ref(),
-                TopologicalRepresentationItemAny::FaceBound(x) => (**x).as_ref(),
-                TopologicalRepresentationItemAny::Loop(x) => (**x).as_ref(),
-                TopologicalRepresentationItemAny::Path(x) => (**x).as_ref(),
-                TopologicalRepresentationItemAny::Vertex(x) => (**x).as_ref(),
-                TopologicalRepresentationItemAny::VertexShell(x) => (**x).as_ref(),
-                TopologicalRepresentationItemAny::WireShell(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<RepresentationItem> for TopologicalRepresentationItemAny {
-        fn as_ref(&self) -> &RepresentationItem {
-            match self {
-                TopologicalRepresentationItemAny::TopologicalRepresentationItem(x) => {
-                    AsRef::<TopologicalRepresentationItem>::as_ref(x).as_ref()
-                }
-                TopologicalRepresentationItemAny::ConnectedEdgeSet(x) => {
-                    AsRef::<TopologicalRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                TopologicalRepresentationItemAny::ConnectedFaceSet(x) => {
-                    AsRef::<TopologicalRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                TopologicalRepresentationItemAny::Edge(x) => {
-                    AsRef::<TopologicalRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                TopologicalRepresentationItemAny::Face(x) => {
-                    AsRef::<TopologicalRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                TopologicalRepresentationItemAny::FaceBound(x) => {
-                    AsRef::<TopologicalRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                TopologicalRepresentationItemAny::Loop(x) => {
-                    AsRef::<TopologicalRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                TopologicalRepresentationItemAny::Path(x) => {
-                    AsRef::<TopologicalRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                TopologicalRepresentationItemAny::Vertex(x) => {
-                    AsRef::<TopologicalRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                TopologicalRepresentationItemAny::VertexShell(x) => {
-                    AsRef::<TopologicalRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-                TopologicalRepresentationItemAny::WireShell(x) => {
-                    AsRef::<TopologicalRepresentationItem>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = toroidal_surface)]
     #[holder(generate_deserialize)]
     pub struct ToroidalSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub elementary_surface: ElementarySurface,
+        pub name: Label,
+        #[holder(use_place_holder)]
+        pub position: Axis2Placement3D,
         #[holder(use_place_holder)]
         pub major_radius: PositiveLengthMeasure,
         #[holder(use_place_holder)]
@@ -9153,49 +5950,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         DegenerateToroidalSurface(Box<DegenerateToroidalSurface>),
     }
-    impl Into<ToroidalSurfaceAny> for ToroidalSurface {
-        fn into(self) -> ToroidalSurfaceAny {
-            ToroidalSurfaceAny::ToroidalSurface(Box::new(self))
-        }
-    }
-    impl Into<ToroidalSurfaceAny> for DegenerateToroidalSurface {
-        fn into(self) -> ToroidalSurfaceAny {
-            ToroidalSurfaceAny::DegenerateToroidalSurface(Box::new(self.into()))
-        }
-    }
-    impl AsRef<ToroidalSurface> for ToroidalSurfaceAny {
-        fn as_ref(&self) -> &ToroidalSurface {
-            match self {
-                ToroidalSurfaceAny::ToroidalSurface(x) => x.as_ref(),
-                ToroidalSurfaceAny::DegenerateToroidalSurface(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<ElementarySurface> for ToroidalSurfaceAny {
-        fn as_ref(&self) -> &ElementarySurface {
-            match self {
-                ToroidalSurfaceAny::ToroidalSurface(x) => {
-                    AsRef::<ToroidalSurface>::as_ref(x).as_ref()
-                }
-                ToroidalSurfaceAny::DegenerateToroidalSurface(x) => {
-                    AsRef::<ToroidalSurface>::as_ref(x.as_ref()).as_ref()
-                }
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = trimmed_curve)]
     #[holder(generate_deserialize)]
     pub struct TrimmedCurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub bounded_curve: BoundedCurve,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub basis_curve: CurveAny,
         #[holder(use_place_holder)]
@@ -9205,65 +5966,57 @@ pub mod config_control_design {
         pub sense_agreement: bool,
         pub master_representation: TrimmingPreference,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = uncertainty_measure_with_unit)]
     #[holder(generate_deserialize)]
     pub struct UncertaintyMeasureWithUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub measure_with_unit: MeasureWithUnit,
+        pub value_component: MeasureValue,
+        #[holder(use_place_holder)]
+        pub unit_component: Unit,
         #[holder(use_place_holder)]
         pub name: Label,
         #[holder(use_place_holder)]
         pub description: Text,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = uniform_curve)]
     #[holder(generate_deserialize)]
     pub struct UniformCurve {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub b_spline_curve: BSplineCurve,
+        pub name: Label,
+        pub degree: i64,
+        #[holder(use_place_holder)]
+        pub control_points_list: Vec<CartesianPoint>,
+        pub curve_form: BSplineCurveForm,
+        pub closed_curve: Logical,
+        pub self_intersect: Logical,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = uniform_surface)]
     #[holder(generate_deserialize)]
     pub struct UniformSurface {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub b_spline_surface: BSplineSurface,
+        pub name: Label,
+        pub u_degree: i64,
+        pub v_degree: i64,
+        #[holder(use_place_holder)]
+        pub control_points_list: Vec<Vec<CartesianPoint>>,
+        pub surface_form: BSplineSurfaceForm,
+        pub u_closed: Logical,
+        pub v_closed: Logical,
+        pub self_intersect: Logical,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = vector)]
     #[holder(generate_deserialize)]
     pub struct Vector {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub orientation: Direction,
         #[holder(use_place_holder)]
@@ -9283,19 +6036,13 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         pub description: Text,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = vertex)]
     #[holder(generate_deserialize)]
     pub struct Vertex {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub topological_representation_item: TopologicalRepresentationItem,
+        pub name: Label,
     }
     #[derive(Debug, Clone, PartialEq, Holder)]
     # [holder (table = Tables)]
@@ -9306,139 +6053,73 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         VertexPoint(Box<VertexPoint>),
     }
-    impl Into<VertexAny> for Vertex {
-        fn into(self) -> VertexAny {
-            VertexAny::Vertex(Box::new(self))
-        }
-    }
-    impl Into<VertexAny> for VertexPoint {
-        fn into(self) -> VertexAny {
-            VertexAny::VertexPoint(Box::new(self.into()))
-        }
-    }
-    impl AsRef<Vertex> for VertexAny {
-        fn as_ref(&self) -> &Vertex {
-            match self {
-                VertexAny::Vertex(x) => x.as_ref(),
-                VertexAny::VertexPoint(x) => (**x).as_ref(),
-            }
-        }
-    }
-    impl AsRef<TopologicalRepresentationItem> for VertexAny {
-        fn as_ref(&self) -> &TopologicalRepresentationItem {
-            match self {
-                VertexAny::Vertex(x) => AsRef::<Vertex>::as_ref(x).as_ref(),
-                VertexAny::VertexPoint(x) => AsRef::<Vertex>::as_ref(x.as_ref()).as_ref(),
-            }
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = vertex_loop)]
     #[holder(generate_deserialize)]
     pub struct VertexLoop {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub r#loop: Loop,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub loop_vertex: VertexAny,
     }
-    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut)]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = vertex_point)]
     #[holder(generate_deserialize)]
     pub struct VertexPoint {
-        #[as_ref]
-        #[as_mut]
         #[holder(use_place_holder)]
-        pub vertex: Vertex,
-        #[as_ref]
-        #[as_mut]
-        #[holder(use_place_holder)]
-        pub geometric_representation_item: GeometricRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub vertex_geometry: PointAny,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = vertex_shell)]
     #[holder(generate_deserialize)]
     pub struct VertexShell {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub topological_representation_item: TopologicalRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub vertex_shell_extent: VertexLoop,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = volume_measure_with_unit)]
     #[holder(generate_deserialize)]
     pub struct VolumeMeasureWithUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub measure_with_unit: MeasureWithUnit,
+        pub value_component: MeasureValue,
+        #[holder(use_place_holder)]
+        pub unit_component: Unit,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = volume_unit)]
     #[holder(generate_deserialize)]
     pub struct VolumeUnit {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub named_unit: NamedUnit,
+        pub dimensions: DimensionalExponents,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = week_of_year_and_day_date)]
     #[holder(generate_deserialize)]
     pub struct WeekOfYearAndDayDate {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub date: Date,
+        pub year_component: YearNumber,
         #[holder(use_place_holder)]
         pub week_component: WeekInYearNumber,
         #[holder(use_place_holder)]
         pub day_component: Option<DayInWeekNumber>,
     }
-    #[derive(
-        Debug, Clone, PartialEq, :: derive_new :: new, Holder, AsRef, AsMut, Deref, DerefMut,
-    )]
+    #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
     # [holder (table = Tables)]
     # [holder (field = wire_shell)]
     #[holder(generate_deserialize)]
     pub struct WireShell {
-        #[as_ref]
-        #[as_mut]
-        #[deref]
-        #[deref_mut]
         #[holder(use_place_holder)]
-        pub topological_representation_item: TopologicalRepresentationItem,
+        pub name: Label,
         #[holder(use_place_holder)]
         pub wire_shell_extent: Vec<LoopAny>,
     }
