@@ -31,6 +31,46 @@ impl IR {
     }
 }
 
+impl Entity {
+    fn expand(&self, entities: &[Entity]) -> Entity {
+        let name = self.name.clone();
+        let constraints = self.constraints.clone();
+        let supertypes = self.supertypes.clone();
+        let mut attributes = vec![];
+
+        fn recurse(entity: &Entity, entities: &[Entity], attributes: &mut Vec<EntityAttribute>) {
+            if !entity.supertypes.is_empty() {
+                for supertype in &entity.supertypes {
+                    match supertype {
+                        TypeRef::Entity { name, .. } => {
+                            let super_entity = entities
+                                .iter()
+                                .find(|&e| &e.name == name)
+                                .expect("supertype not found");
+                            recurse(super_entity, entities, attributes);
+                        }
+                        _ => eprintln!("unhandled case"),
+                    }
+                }
+            }
+            for attribute in &entity.attributes {
+                if !attributes.contains(attribute) {
+                    attributes.push(attribute.clone());
+                }
+            }
+        }
+
+        recurse(self, entities, &mut attributes);
+
+        Entity {
+            name,
+            attributes,
+            constraints,
+            supertypes,
+        }
+    }
+}
+
 impl Schema {
     pub fn to_token_stream(&self, prefix: CratePrefix) -> TokenStream {
         let name = format_ident!("{}", self.name);
@@ -40,6 +80,9 @@ impl Schema {
             TypeDecl::Enumeration(_) => false,
             _ => true,
         });
+
+        let expanded_entities: Vec<Entity> = entities.iter().map(|e| e.expand(entities)).collect();
+
         let entity_types: Vec<_> = entities
             .iter()
             .map(|e| format_ident!("{}", e.name.to_pascal_case()))
@@ -87,7 +130,7 @@ impl Schema {
                 }
 
                 #(#types)*
-                #(#entities)*
+                #(#expanded_entities)*
             }
         }
     }

@@ -124,132 +124,14 @@ impl Entity {
         }); // tokens.append_all
     }
 
-    /// Generate `impl Into<SelfAny> for SubType` for self and all constraints
-    fn generate_into_any(&self, tokens: &mut TokenStream) {
-        let any = self.any_ident();
-        let name = self.name_ident();
-
-        // `Self` to `SelfAny`
-        tokens.append_all(quote! {
-            impl Into<#any> for #name {
-                fn into(self) -> #any {
-                    #any::#name(Box::new(self))
-                }
-            }
-        });
-
-        for ty in &self.constraints {
-            if let TypeRef::Entity { name, .. } = ty {
-                let name = format_ident!("{}", name.to_pascal_case());
-                tokens.append_all(quote! {
-                    impl Into<#any> for #name {
-                        fn into(self) -> #any {
-                            #any::#name(Box::new(self.into()))
-                        }
-                    }
-                });
-            }
-        }
-    }
-
-    /// Generate `impl AsRef<Self> for SelfAny` and `impl AsRef<Super> for SelfAny`
-    fn generate_asref_from_any(&self, tokens: &mut TokenStream) {
-        let any = self.any_ident();
-        let name = self.name_ident();
-
-        let constraints = self
-            .constraints
-            .iter()
-            .map(|ty| match ty {
-                TypeRef::Entity { name, .. } => {
-                    format_ident!("{}", name.to_pascal_case())
-                }
-                _ => unreachable!(),
-            })
-            .collect::<Vec<_>>();
-
-        tokens.append_all(quote! {
-            impl AsRef<#name> for #any {
-                fn as_ref(&self) -> &#name {
-                    match self {
-                        #any::#name (x) => x.as_ref(),
-                        #(#any::#constraints (x) => (**x).as_ref(),)*
-                    }
-                }
-            }
-        });
-
-        for ty in &self.supertypes {
-            let supertype = match ty {
-                TypeRef::Entity { name, .. } => {
-                    format_ident!("{}", name.to_pascal_case())
-                }
-                _ => unreachable!(),
-            };
-
-            tokens.append_all(quote! {
-                impl AsRef<#supertype> for #any {
-                    fn as_ref(&self) -> &#supertype {
-                        match self {
-                            #any::#name (x) => AsRef::<#name>::as_ref(x).as_ref(),
-                            #(#any::#constraints (x) => AsRef::<#name>::as_ref(x.as_ref()).as_ref(),)*
-                        }
-                    }
-                }
-            });
-        }
-    }
-
-    fn supertype_fields(&self) -> Vec<Field> {
-        self.supertypes
-            .iter()
-            .map(|ty| {
-                let mut attributes = Vec::new();
-                attributes.push(parse_quote! { #[as_ref] });
-                attributes.push(parse_quote! { #[as_mut] });
-
-                if self.supertypes.len() == 1 {
-                    attributes.push(parse_quote! { #[deref] });
-                    attributes.push(parse_quote! { #[deref_mut] });
-                }
-                attributes.push(parse_quote! { #[holder(use_place_holder)] });
-                let (name, ty) = match ty {
-                    TypeRef::Named { name, .. } | TypeRef::Entity { name, .. } => {
-                        let ty = format_ident!("{}", name.to_pascal_case());
-                        (
-                            format_ident!("{}", name.as_str().into_safe()),
-                            parse_quote! { #ty },
-                        )
-                    }
-                    _ => unreachable!(),
-                };
-
-                Field {
-                    name,
-                    ty,
-                    attributes,
-                }
-            })
-            .collect()
-    }
-
     fn derives(&self) -> Vec<syn::Path> {
-        let mut derives = vec![
+        vec![
             syn::parse_str("Debug").unwrap(),
             syn::parse_str("Clone").unwrap(),
             syn::parse_str("PartialEq").unwrap(),
             syn::parse_str("::derive_new::new").unwrap(),
             syn::parse_str("Holder").unwrap(),
-        ];
-        if !self.supertypes.is_empty() {
-            derives.push(syn::parse_str("AsRef").unwrap());
-            derives.push(syn::parse_str("AsMut").unwrap());
-        }
-        if self.supertypes.len() == 1 {
-            derives.push(syn::parse_str("Deref").unwrap());
-            derives.push(syn::parse_str("DerefMut").unwrap());
-        }
-        derives
+        ]
     }
 }
 
@@ -267,7 +149,6 @@ impl ToTokens for Entity {
             .iter()
             .map(|attr| Field::from(attr.clone()))
             .collect::<Vec<Field>>();
-        let supertype_fields = self.supertype_fields();
 
         let derive = self.derives();
 
@@ -277,7 +158,6 @@ impl ToTokens for Entity {
             #[holder(field = #field_name)]
             #[holder(generate_deserialize)]
             pub struct #name {
-                #(#supertype_fields,)*
                 #(#fields,)*
             }
         });
@@ -285,9 +165,6 @@ impl ToTokens for Entity {
         // Generate `Any` enum if this entity is a supertype of other entities
         if !self.constraints.is_empty() {
             self.generate_any_enum(tokens);
-            // Generate `impl Into<XxxAny> for Yyy` for self and all constraints
-            self.generate_into_any(tokens);
-            self.generate_asref_from_any(tokens);
         }
     }
 }
