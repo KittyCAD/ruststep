@@ -14,12 +14,14 @@ pub struct HolderAttr {
     pub field: Option<syn::Ident>,
     pub place_holder: bool,
     pub generate_deserialize: bool,
+    pub from_type: Option<FromType>,
 }
 
 impl HolderAttr {
     pub fn parse(attrs: &[syn::Attribute]) -> Self {
         let mut table = None;
         let mut field = None;
+        let mut from_type = None;
         let mut place_holder = false;
         let mut generate_deserialize = false;
 
@@ -40,6 +42,9 @@ impl HolderAttr {
                 Attr::Field(ident) => {
                     field = Some(ident);
                 }
+                Attr::FromType(from_type_) => {
+                    from_type = Some(from_type_);
+                }
                 Attr::PlaceHolder => {
                     place_holder = true;
                 }
@@ -51,8 +56,31 @@ impl HolderAttr {
         HolderAttr {
             table,
             field,
+            from_type,
             place_holder,
             generate_deserialize,
+        }
+    }
+}
+
+#[derive(Clone, Debug, PartialEq)]
+pub enum FromType {
+    F64,
+    I64,
+    Str,
+}
+
+impl syn::parse::Parse for FromType {
+    fn parse(input: syn::parse::ParseStream) -> syn::parse::Result<Self> {
+        let ident: syn::Ident = input.parse()?;
+        match ident.to_string().as_str() {
+            "f64" => Ok(FromType::F64),
+            "i64" => Ok(FromType::I64),
+            "String" => Ok(FromType::Str),
+            other => Err(syn::parse::Error::new(
+                ident.span(),
+                &format!("unsupported type `{other}`"),
+            )),
         }
     }
 }
@@ -61,6 +89,7 @@ impl HolderAttr {
 enum Attr {
     Table(syn::Path),
     Field(syn::Ident),
+    FromType(FromType),
     PlaceHolder,
     GenerateDeserialize,
 }
@@ -78,6 +107,11 @@ impl syn::parse::Parse for Attr {
                 let _eq: syn::Token![=] = input.parse()?;
                 let ident = input.parse()?;
                 Ok(Attr::Field(ident))
+            }
+            "from" => {
+                let _eq: syn::Token![=] = input.parse()?;
+                let ty = input.parse()?;
+                Ok(Attr::FromType(ty))
             }
             "use_place_holder" => Ok(Attr::PlaceHolder),
             "generate_deserialize" => Ok(Attr::GenerateDeserialize),

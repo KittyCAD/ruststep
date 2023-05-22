@@ -23,6 +23,7 @@ impl ToTokens for Simple {
         let (derive, _) = simple_meta(&field_name);
         tokens.append_all(quote! {
             #derive
+        #[holder(from = #ty)]
             pub struct #id(pub #ty);
         });
     }
