@@ -1,4 +1,3 @@
-use inflector::Inflector;
 use proc_macro2::{Span, TokenStream as TokenStream2};
 use quote::{format_ident, quote};
 use std::convert::*;
@@ -6,7 +5,7 @@ use std::convert::*;
 use super::*;
 
 pub fn derive_holder(ident: &syn::Ident, st: &syn::DataStruct, attr: &HolderAttr) -> TokenStream2 {
-    let name = ident.to_string().to_screaming_snake_case();
+    let name = crate::entity::make_name(ident);
     let holder_ident = as_holder_ident(ident);
     let def_holder_tt = def_holder(ident, st);
     let impl_holder_tt = impl_holder(ident, attr, st);
@@ -43,7 +42,7 @@ pub fn def_holder(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStream2 {
 }
 
 pub fn impl_holder(ident: &syn::Ident, table: &HolderAttr, st: &syn::DataStruct) -> TokenStream2 {
-    let name = ident.to_string().to_screaming_snake_case();
+    let name = crate::entity::make_name(ident);
     let holder_ident = as_holder_ident(ident);
     let FieldEntries {
         holder_types,

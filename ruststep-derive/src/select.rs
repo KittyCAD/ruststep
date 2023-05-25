@@ -1,5 +1,4 @@
 use super::*;
-use inflector::Inflector;
 use proc_macro2::TokenStream as TokenStream2;
 use proc_macro_error::*;
 use quote::quote;
@@ -21,13 +20,13 @@ struct Input {
 
 impl Input {
     fn parse(ident: &syn::Ident, e: &syn::DataEnum, attr: &HolderAttr) -> Self {
-        let name = ident.to_string().to_screaming_snake_case();
+        let name = crate::entity::make_name(ident);
         let holder_ident = as_holder_ident(ident);
         let holder_visitor_ident = as_visitor_ident(&holder_ident);
         let variants: Vec<syn::Ident> = e.variants.iter().map(|var| var.ident.clone()).collect();
         let variant_names: Vec<_> = variants
             .iter()
-            .map(|id| id.to_string().to_screaming_snake_case())
+            .map(|id| crate::entity::make_name(id))
             .collect();
         let table = attr
             .table

@@ -6,8 +6,20 @@ use std::convert::*;
 
 use super::*;
 
+// HACK: fix special cases properly.
+pub fn make_name(ident: &syn::Ident) -> String {
+    let mut name = ident.to_string().to_screaming_snake_case();
+    match name.as_str() {
+        "AXIS_1_PLACEMENT" => name = "AXIS1_PLACEMENT".to_string(),
+        "AXIS_2_PLACEMENT_2D" => name = "AXIS2_PLACEMENT_2D".to_string(),
+        "AXIS_2_PLACEMENT_3D" => name = "AXIS2_PLACEMENT_3D".to_string(),
+        _ => {}
+    };
+    name
+}
+
 pub fn derive_deserialize(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStream2 {
-    let name = ident.to_string().to_screaming_snake_case();
+    let name = make_name(ident);
     let def_visitor_tt = def_visitor(ident, &name, st);
     let impl_deserialize_tt = impl_deserialize(ident, &name, st);
     quote! {
@@ -17,7 +29,7 @@ pub fn derive_deserialize(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
 }
 
 pub fn derive_holder(ident: &syn::Ident, st: &syn::DataStruct, attr: &HolderAttr) -> TokenStream2 {
-    let name = ident.to_string().to_screaming_snake_case();
+    let name = make_name(ident);
     let holder_ident = as_holder_ident(ident);
     let def_holder_tt = def_holder(ident, st);
     let impl_holder_tt = impl_holder(ident, attr, st);
@@ -68,11 +80,7 @@ impl FieldEntries {
 
             let ft: FieldType = field.ty.clone().try_into().unwrap();
 
-            let HolderAttr {
-                place_holder,
-                derived,
-                ..
-            } = HolderAttr::parse(&field.attrs);
+            let HolderAttr { place_holder, .. } = HolderAttr::parse(&field.attrs);
             if place_holder {
                 match &ft {
                     FieldType::Path(_) => {
@@ -121,7 +129,7 @@ pub fn def_holder(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStream2 {
 }
 
 pub fn impl_holder(ident: &syn::Ident, table: &HolderAttr, st: &syn::DataStruct) -> TokenStream2 {
-    let name = ident.to_string().to_screaming_snake_case();
+    let name = make_name(ident);
     let holder_ident = as_holder_ident(ident);
     let FieldEntries {
         attributes,

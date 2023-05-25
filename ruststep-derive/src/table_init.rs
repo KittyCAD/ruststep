@@ -1,4 +1,3 @@
-use inflector::Inflector;
 use proc_macro2::TokenStream as TokenStream2;
 use proc_macro_error::{abort_call_site, OptionExt};
 use quote::quote;
@@ -22,7 +21,7 @@ fn entity_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
     let mut entity_names = Vec::new();
     for field in &st.fields {
         let ident = field.ident.as_ref().expect_or_abort("unreachable!");
-        let name = ident.to_string().to_screaming_snake_case();
+        let name = crate::entity::make_name(ident);
         table_names.push(ident);
         entity_names.push(name);
     }
@@ -77,7 +76,7 @@ fn tuple_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStrea
     let mut entity_names = Vec::new();
     for field in &st.fields {
         let ty = &field.ty;
-        let ident = quote! { #ty }.to_string().to_screaming_snake_case();
+        let ident = quote! { crate::entity::make_name(#ty) };
         table_names.push(ident.clone());
         entity_names.push(ident);
     }
