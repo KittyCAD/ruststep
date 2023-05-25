@@ -4549,8 +4549,8 @@ pub mod config_control_design {
     pub struct OrientedClosedShell {
         #[holder(use_place_holder)]
         pub name: Label,
-        #[holder(use_place_holder)]
-        pub cfs_faces: Vec<FaceAny>,
+        #[holder(derived)]
+        pub cfs_faces: Derived<Vec<FaceAny>>,
         #[holder(use_place_holder)]
         pub closed_shell_element: ClosedShellAny,
         pub orientation: bool,
@@ -4562,10 +4562,10 @@ pub mod config_control_design {
     pub struct OrientedEdge {
         #[holder(use_place_holder)]
         pub name: Label,
-        #[holder(use_place_holder)]
-        pub edge_start: VertexAny,
-        #[holder(use_place_holder)]
-        pub edge_end: VertexAny,
+        #[holder(derived)]
+        pub edge_start: Derived<VertexAny>,
+        #[holder(derived)]
+        pub edge_end: Derived<VertexAny>,
         #[holder(use_place_holder)]
         pub edge_element: EdgeAny,
         pub orientation: bool,
@@ -4577,8 +4577,8 @@ pub mod config_control_design {
     pub struct OrientedFace {
         #[holder(use_place_holder)]
         pub name: Label,
-        #[holder(use_place_holder)]
-        pub bounds: Vec<FaceBoundAny>,
+        #[holder(derived)]
+        pub bounds: Derived<Vec<FaceBoundAny>>,
         #[holder(use_place_holder)]
         pub face_element: FaceAny,
         pub orientation: bool,
@@ -4590,8 +4590,8 @@ pub mod config_control_design {
     pub struct OrientedOpenShell {
         #[holder(use_place_holder)]
         pub name: Label,
-        #[holder(use_place_holder)]
-        pub cfs_faces: Vec<FaceAny>,
+        #[holder(derived)]
+        pub cfs_faces: Derived<Vec<FaceAny>>,
         #[holder(use_place_holder)]
         pub open_shell_element: OpenShellAny,
         pub orientation: bool,
@@ -4603,8 +4603,8 @@ pub mod config_control_design {
     pub struct OrientedPath {
         #[holder(use_place_holder)]
         pub name: Label,
-        #[holder(use_place_holder)]
-        pub edge_list: Vec<OrientedEdge>,
+        #[holder(derived)]
+        pub edge_list: Derived<Vec<OrientedEdge>>,
         #[holder(use_place_holder)]
         pub path_element: PathAny,
         pub orientation: bool,
@@ -5685,8 +5685,8 @@ pub mod config_control_design {
     # [holder (field = si_unit)]
     #[holder(generate_deserialize)]
     pub struct SiUnit {
-        #[holder(use_place_holder)]
-        pub dimensions: DimensionalExponents,
+        #[holder(derived)]
+        pub dimensions: Derived<DimensionalExponents>,
         pub prefix: Option<SiPrefix>,
         pub name: SiUnitName,
     }

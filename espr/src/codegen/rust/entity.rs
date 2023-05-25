@@ -32,16 +32,25 @@ fn use_place_holder(ty: &TypeRef) -> bool {
 
 impl From<EntityAttribute> for Field {
     fn from(attr: EntityAttribute) -> Self {
-        let EntityAttribute { name, ty, optional } = attr;
+        let EntityAttribute {
+            name,
+            ty,
+            optional,
+            derived,
+        } = attr;
 
         let name = format_ident!("{}", name.into_safe());
-        let attributes = if use_place_holder(&ty) {
+        let attributes = if derived {
+            vec![parse_quote! { #[holder(derived)] }]
+        } else if use_place_holder(&ty) {
             vec![parse_quote! { #[holder(use_place_holder)] }]
         } else {
             Vec::new()
         };
         let ty = if optional {
             parse_quote! { Option<#ty> }
+        } else if derived {
+            parse_quote! { Derived<#ty> }
         } else {
             parse_quote! { #ty }
         };

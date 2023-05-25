@@ -1,12 +1,13 @@
 //! Parse the associated attribute `#[holder(...)]` with `#[derive(Holder)]`
 //!
-//! There are three options:
+//! There are five options:
 //!
 //! - `#[holder(table = {path::to::table::struct})]`
 //! - `#[holder(field = {field_ident})]`
 //! - `#[holder(use_place_holder)]`
 //! - `#[holder(generate_deserialize)]`
-//!
+//! - `#[holder(from_type = {type})]`
+//! - `#[holder(derived)]`
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct HolderAttr {
@@ -15,6 +16,7 @@ pub struct HolderAttr {
     pub place_holder: bool,
     pub generate_deserialize: bool,
     pub from_type: Option<FromType>,
+    pub derived: bool,
 }
 
 impl HolderAttr {
@@ -24,6 +26,7 @@ impl HolderAttr {
         let mut from_type = None;
         let mut place_holder = false;
         let mut generate_deserialize = false;
+        let mut derived = false;
 
         for attr in attrs {
             // Only read `#[holder(...)]`
@@ -51,6 +54,9 @@ impl HolderAttr {
                 Attr::GenerateDeserialize => {
                     generate_deserialize = true;
                 }
+                Attr::Derived => {
+                    derived = true;
+                }
             }
         }
         HolderAttr {
@@ -59,6 +65,7 @@ impl HolderAttr {
             from_type,
             place_holder,
             generate_deserialize,
+            derived,
         }
     }
 }
@@ -92,6 +99,7 @@ enum Attr {
     FromType(FromType),
     PlaceHolder,
     GenerateDeserialize,
+    Derived,
 }
 
 impl syn::parse::Parse for Attr {
@@ -115,6 +123,7 @@ impl syn::parse::Parse for Attr {
             }
             "use_place_holder" => Ok(Attr::PlaceHolder),
             "generate_deserialize" => Ok(Attr::GenerateDeserialize),
+            "derived" => Ok(Attr::Derived),
             _ => Err(syn::parse::Error::new(
                 ident.span(),
                 "expected `table`, `field`, or `use_place_holder`",

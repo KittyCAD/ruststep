@@ -14,6 +14,8 @@ pub enum FieldType {
     List(Box<FieldType>),
     /// Like `Box<T>`
     Boxed(Box<FieldType>),
+    /// Like `Derived<T>`
+    Derived(Box<FieldType>),
 }
 
 impl FieldType {
@@ -48,6 +50,10 @@ impl FieldType {
                 let holder = ty.as_holder();
                 FieldType::Boxed(Box::new(holder))
             }
+            FieldType::Derived(ty) => {
+                let holder = ty.as_holder();
+                FieldType::Derived(Box::new(holder))
+            }
         }
     }
 
@@ -69,6 +75,10 @@ impl FieldType {
             FieldType::Boxed(ty) => {
                 let place_holder = ty.as_place_holder();
                 FieldType::Boxed(Box::new(place_holder))
+            }
+            FieldType::Derived(ty) => {
+                let place_holder = ty.as_place_holder();
+                FieldType::Derived(Box::new(place_holder))
             }
         }
     }
@@ -101,6 +111,10 @@ impl Into<syn::Type> for FieldType {
             FieldType::Boxed(ty) => {
                 let ty: syn::Type = (*ty).into();
                 syn::parse_quote! { Box<#ty> }
+            }
+            FieldType::Derived(ty) => {
+                let ty: syn::Type = (*ty).into();
+                syn::parse_quote! { Derived<#ty> }
             }
         };
         syn::Type::Path(syn::TypePath { qself: None, path })
@@ -137,6 +151,9 @@ impl TryFrom<syn::Type> for FieldType {
                     }
                     if last_seg.ident == "Box" {
                         return Ok(FieldType::Boxed(ty));
+                    }
+                    if last_seg.ident == "Derived" {
+                        return Ok(FieldType::Derived(ty));
                     }
                 }
                 Err(UnsupportedTypeError {})

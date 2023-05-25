@@ -68,7 +68,11 @@ impl FieldEntries {
 
             let ft: FieldType = field.ty.clone().try_into().unwrap();
 
-            let HolderAttr { place_holder, .. } = HolderAttr::parse(&field.attrs);
+            let HolderAttr {
+                place_holder,
+                derived,
+                ..
+            } = HolderAttr::parse(&field.attrs);
             if place_holder {
                 match &ft {
                     FieldType::Path(_) => {
@@ -83,6 +87,7 @@ impl FieldEntries {
                             .map(|v| v.into_owned(#table_arg))
                             .collect::<::std::result::Result<Vec<_>, _>>()?
                     }),
+                    FieldType::Derived(_) => abort_call_site!("Unexpected Derived<T>"),
                     FieldType::Boxed(_) => abort_call_site!("Unexpected Box<T>"),
                 }
                 holder_types.push(ft.as_holder().as_place_holder().into());

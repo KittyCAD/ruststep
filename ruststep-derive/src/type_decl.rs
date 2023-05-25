@@ -261,6 +261,7 @@ impl FieldEntries {
                             .map(|v| v.into_owned(#table_arg))
                             .collect::<::std::result::Result<Vec<_>, _>>()?
                     }),
+                    FieldType::Derived(_) => abort_call_site!("Unexpected Derived<T>"),
                     FieldType::Boxed(_) => abort_call_site!("Unexpected Box<T>"),
                 }
                 holder_types.push(ft.as_holder().as_place_holder().into());
