@@ -36,25 +36,47 @@ fn entity_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
                 &mut self,
                 data_sec: &#ruststep::ast::DataSection
             ) -> #ruststep::error::Result<()> {
-                use #ruststep::{error::Error, tables::insert_record, ast::EntityInstance};
+                use #ruststep::{error::Error, tables::{expand_complex_record, insert_record}, ast::EntityInstance};
                 for entity in &data_sec.entities {
-                    match entity {
-                        EntityInstance::Simple { id, record } => match record.name.as_str() {
-                            #(
-                            #entity_names => insert_record(&mut self.#table_names, *id, record)?,
-                            )*
-                            _ => {
-                                return Err(Error::UnknownEntityName {
-                                    entity_name: record.name.clone(),
-                                    schema: "".to_string(),
-                                });
+            match entity {
+            EntityInstance::Simple { id, record } => {
+                match record.name.as_str() {
+                #(
+                    #entity_names => insert_record(&mut self.#table_names, *id, record)?,
+                )*
+                _ => {
+                                    return Err(Error::UnknownEntityName {
+                    entity_name: record.name.clone(),
+                    schema: "".to_string(),
+                                    });
+                }
                             }
-                        },
-                        EntityInstance::Complex { .. } => {
-                            unimplemented!("Complex entity is not supported")
-                        }
+            }
+            EntityInstance::Complex { id, subsuper } => {
+                let partial_records = &subsuper.0;
+                for partial_record in partial_records {
+                let complete_record = expand_complex_record(
+                    self.partial_mappings(),
+                    self.complete_mappings(),
+                    &partial_record.name,
+                    partial_records
+                );
+                // This is the same as the simple case now.
+                match complete_record.name.as_str() {
+                    #(
+                    #entity_names => insert_record(&mut self.#table_names, *id, &complete_record)?,
+                    )*
+                    _ => {
+                    return Err(Error::UnknownEntityName {
+                        entity_name: partial_record.name.clone(),
+                        schema: "".to_string(),
+                    });
                     }
                 }
+                }
+            }
+                    }
+        }
                 Ok(())
             }
         }
@@ -91,24 +113,44 @@ fn tuple_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStrea
                 &mut self,
                 data_sec: &#ruststep::ast::DataSection
             ) -> #ruststep::error::Result<()> {
-                use #ruststep::{error::Error, tables::insert_record, ast::EntityInstance};
+                use #ruststep::{error::Error, tables::{expand_complex_record, insert_record}, ast::EntityInstance};
                 for entity in &data_sec.entities {
-                    match entity {
-                        EntityInstance::Simple { id, record } => match record.name.as_str() {
-                            #(
-                            #entity_names => insert_record(&mut self.#table_names, *id, record)?,
-                            )*
-                            _ => {
+            EntityInstance::Simple { id, record } => {
+            match record.name.as_str() {
+                #(
+                #entity_names => insert_record(&mut self.#table_names, *id, record)?,
+                )*
+                _ => {
                                 return Err(Error::UnknownEntityName {
-                                    entity_name: record.name.clone(),
-                                    schema: "".to_string(),
+                    entity_name: record.name.clone(),
+                    schema: "".to_string(),
                                 });
-                            }
-                        },
-                        EntityInstance::Complex { .. } => {
-                            unimplemented!("Complex entity is not supported")
+                }
                         }
-                    }
+            }
+            EntityInstance::Complex { id, subsuper } => {
+            let partial_records = &subsuper.0;
+            for partial_record in partial_records {
+                let complete_record = expand_complex_record(
+                    self.partial_mappings(),
+                    self.complete_mappings(),
+                    &partial_record.name,
+                    partial_records
+                );
+                // This is the same as the simple case now.
+                match complete_record.name.as_str() {
+                #(
+                    #entity_names => insert_record(&mut self.#table_names, *id, &complete_record)?,
+                )*
+                _ => {
+                    return Err(Error::UnknownEntityName {
+                    entity_name: partial_record.name.clone(),
+                    schema: "".to_string(),
+                    });
+                }
+                }
+            }
+            }
                 }
                 Ok(())
             }
