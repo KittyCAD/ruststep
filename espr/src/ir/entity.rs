@@ -155,6 +155,16 @@ impl Legalize for Entity {
             }
         }
 
+        // HACK: named_unit has a single field "dimensions" which is derived by
+        // one of its many subtypes. It is difficult (but not impossible) to
+        // handle this edge case.
+        match name.as_str() {
+            "named_unit" | "plane_angle_unit" | "length_unit" | "solid_angle_unit" => {
+                derived_attributes.push("dimensions".to_owned());
+            }
+            _ => {}
+        }
+
         let supertypes = if let Some(supertypes) = &entity.subtype_of {
             supertypes
                 .entity_references

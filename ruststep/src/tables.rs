@@ -188,7 +188,7 @@ where
     )
 }
 
-/// Helper function to implement TableInit trait
+/// Helper function to implement TableInit trait for simple entities.
 pub fn insert_record<'de, T: de::Deserialize<'de>>(
     table: &mut HashMap<u64, T>,
     id: u64,
@@ -202,6 +202,61 @@ pub fn insert_record<'de, T: de::Deserialize<'de>>(
     } else {
         Ok(())
     }
+}
+
+pub fn expand_complex_record(
+    partial_map: &phf::Map<&'static str, &'static [&'static str]>,
+    complete_map: &phf::Map<&'static str, &'static [&'static str]>,
+    name: &str,
+    partials: &[Record],
+) -> Record {
+    // The idea is we populate a 'complete' record from a set of 'partial' records.
+    // This has to be performed per attribute.
+    // TODO: ensure attribute identifiers are unique.
+
+    let mut complete_record = Record {
+        name: name.to_string(),
+        parameter: Parameter::List(Vec::new()),
+    };
+
+    for field in *complete_map.get(name).expect("unrecognized complete") {
+        // Find corresponding entry in partials.
+        let mut parameter = None;
+        'search: for partial in partials {
+            let avail = *partial_map
+                .get(&partial.name)
+                .expect("unrecognized partial");
+            let mut index = 0;
+            for ident in avail {
+                if ident == field {
+                    // Found partial entry
+                    match partial.parameter {
+                        Parameter::List(ref v) => {
+                            parameter = v.get(index).clone();
+                            break 'search;
+                        }
+                        _ => panic!("should not reach here"), // TODO: improve error handling.
+                    }
+                }
+                index += 1;
+            }
+        }
+
+        match complete_record.parameter {
+            Parameter::List(ref mut v) => {
+                // push parameter onto list
+                v.push(
+                    parameter
+                        .take()
+                        .expect("partial parameter not found")
+                        .clone(),
+                ); // TODO: improve error handling.
+            }
+            _ => unreachable!(),
+        }
+    }
+
+    complete_record
 }
 
 /// Owned value or reference through entity/value id

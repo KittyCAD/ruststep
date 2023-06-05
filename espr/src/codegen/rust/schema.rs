@@ -5,6 +5,18 @@ use inflector::Inflector;
 use proc_macro2::TokenStream;
 use quote::*;
 
+// HACK: fix special cases properly.
+pub fn make_name(ident: &str) -> String {
+    let mut name = ident.to_screaming_snake_case();
+    match name.as_str() {
+        "AXIS_1_PLACEMENT" => name = "AXIS1_PLACEMENT".to_string(),
+        "AXIS_2_PLACEMENT_2D" => name = "AXIS2_PLACEMENT_2D".to_string(),
+        "AXIS_2_PLACEMENT_3D" => name = "AXIS2_PLACEMENT_3D".to_string(),
+        _ => {}
+    };
+    name
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum CratePrefix {
     Internal,
@@ -31,6 +43,20 @@ impl IR {
     }
 }
 
+struct PartialEntityMapping {
+    pub name: String,
+    pub attributes: Vec<String>,
+}
+
+impl ToTokens for PartialEntityMapping {
+    fn to_tokens(&self, tokens: &mut TokenStream) {
+        let PartialEntityMapping { name, attributes } = self;
+        tokens.append_all(quote! {
+            #name => &[ #(#attributes,)* ],
+        });
+    }
+}
+
 impl Schema {
     pub fn to_token_stream(&self, prefix: CratePrefix) -> TokenStream {
         let name = format_ident!("{}", self.name);
@@ -41,7 +67,31 @@ impl Schema {
             _ => true,
         });
 
+        let mut partials = Vec::new();
+        for entity in entities {
+            let mut attributes = Vec::new();
+            for attribute in &entity.attributes {
+                attributes.push(attribute.name.clone());
+            }
+            partials.push(PartialEntityMapping {
+                name: make_name(&entity.name),
+                attributes,
+            });
+        }
+
         let expanded_entities: Vec<Entity> = entities.iter().map(|e| e.expand(entities)).collect();
+
+        let mut complete = Vec::new();
+        for ee in &expanded_entities {
+            let mut attributes = Vec::new();
+            for attribute in &ee.attributes {
+                attributes.push(attribute.name.clone());
+            }
+            complete.push(PartialEntityMapping {
+                name: make_name(&ee.name),
+                attributes,
+            });
+        }
 
         let entity_types: Vec<_> = entities
             .iter()
@@ -74,6 +124,14 @@ impl Schema {
                 use #ruststep_path::{as_holder, Holder, TableInit, primitive::*, derive_more::*};
                 use std::collections::HashMap;
 
+                static COMPLETE: ::phf::Map<&'static str, &'static [&'static str]> = ::phf::phf_map! {
+                    #( #complete )*
+                };
+
+                static PARTIALS: ::phf::Map<&'static str, &'static [&'static str]> = ::phf::phf_map! {
+                    #( #partials )*
+                };
+
                 #[derive(Debug, Clone, PartialEq, Default, TableInit)]
                 pub struct Tables {
                     #(
@@ -87,6 +145,14 @@ impl Schema {
                         &self.#holder_name
                     }
                     )*
+
+                    pub fn complete_mappings(&self) -> &::phf::Map<&'static str, &'static [&'static str]> {
+                        &COMPLETE
+                    }
+
+                    pub fn partial_mappings(&self) -> &::phf::Map<&'static str, &'static [&'static str]> {
+                        &PARTIALS
+                    }
                 }
 
                 #(#types)*
