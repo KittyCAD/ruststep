@@ -101,12 +101,110 @@
 //! These are automated by [ruststep_derive::Holder] proc-macro.
 //!
 
-use crate::{ast::*, error::*};
+use crate::{ast::*, error::*, primitive::*};
 use serde::{
     de::{self, IntoDeserializer, VariantAccess},
     Deserialize,
 };
-use std::{collections::HashMap, fmt, marker::PhantomData};
+use std::{boxed::Box, collections::HashMap, fmt, marker::PhantomData};
+
+/// Export helper trait.
+pub trait ToData {
+    /// Serialize to EXPRESS data record.
+    fn to_data(&self) -> String;
+}
+
+impl ToData for [&dyn ToData] {
+    fn to_data(&self) -> String {
+        let mut data = "(".to_string();
+        for (i, v) in self.iter().enumerate() {
+            data += &v.to_data();
+            if i != self.len() - 1 {
+                data += ", ";
+            }
+        }
+        data + ")"
+    }
+}
+
+impl ToData for String {
+    fn to_data(&self) -> String {
+        format!("'{self}'")
+    }
+}
+
+impl ToData for bool {
+    fn to_data(&self) -> String {
+        match self {
+            true => ".T.".to_string(),
+            false => ".F.".to_string(),
+        }
+    }
+}
+
+impl ToData for f64 {
+    fn to_data(&self) -> String {
+        format!("{self}")
+    }
+}
+
+impl ToData for i64 {
+    fn to_data(&self) -> String {
+        format!("{self}")
+    }
+}
+
+impl ToData for Logical {
+    fn to_data(&self) -> String {
+        match *self {
+            Logical::True => ".T.".to_string(),
+            Logical::False => ".F.".to_string(),
+            Logical::Unknown => ".U.".to_string(),
+        }
+    }
+}
+/*
+impl<T> ToData for Box<T>
+where T: ToData,
+{
+    fn to_data(&self) -> String {
+    (*self).to_data()
+    }
+}
+*/
+impl<T> ToData for Derived<T> {
+    fn to_data(&self) -> String {
+        "*".to_string()
+    }
+}
+
+impl<T> ToData for Option<T>
+where
+    T: ToData,
+{
+    fn to_data(&self) -> String {
+        match *self {
+            Some(ref value) => value.to_data(),
+            None => "$".to_string(),
+        }
+    }
+}
+
+impl<T> ToData for Vec<T>
+where
+    T: ToData,
+{
+    fn to_data(&self) -> String {
+        let mut data = "(".to_string();
+        for (i, v) in self.iter().enumerate() {
+            data += &v.to_data();
+            if i != self.len() - 1 {
+                data += ", ";
+            }
+        }
+        data + ")"
+    }
+}
 
 /// Trait for resolving a reference through entity id
 pub trait IntoOwned: Clone + 'static {
@@ -264,6 +362,23 @@ pub fn expand_complex_record(
 pub enum PlaceHolder<T> {
     Ref(Name),
     Owned(T),
+}
+
+impl<T> ToData for PlaceHolder<T>
+where
+    T: ToData,
+{
+    fn to_data(&self) -> String {
+        match self {
+            PlaceHolder::Ref(ref name) => match name {
+                Name::Entity(id) => format!("#{id}"),
+                Name::Value(id) => format!("@{id}"),
+                Name::ConstantEntity(id) => format!("#{id}"),
+                Name::ConstantValue(id) => format!("@{id}"),
+            },
+            PlaceHolder::Owned(ref item) => item.to_data(),
+        }
+    }
 }
 
 impl<T: Holder> IntoOwned for PlaceHolder<T>

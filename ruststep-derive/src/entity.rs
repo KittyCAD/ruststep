@@ -160,6 +160,17 @@ pub fn impl_holder(ident: &syn::Ident, table: &HolderAttr, st: &syn::DataStruct)
                 #attr_len
             }
         }
+
+    #[automatically_derived]
+    impl #ruststep::tables::ToData for #holder_ident {
+        fn to_data(&self) -> String {
+        let name = #name;
+        let fields: &[&dyn #ruststep::tables::ToData] = &[
+            #(&self. #attributes),*
+        ];
+        format!("{}{}", name, fields.to_data())
+        }
+    }
     } // quote!
 }
 

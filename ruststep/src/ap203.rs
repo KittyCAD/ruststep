@@ -1530,7 +1530,7 @@ pub mod config_control_design {
             &PARTIALS
         }
     }
-    #[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+    #[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
     pub enum AheadOrBehind {
         Ahead,
         Behind,
@@ -1579,7 +1579,7 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         Axis2Placement3D(Box<Axis2Placement3D>),
     }
-    #[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+    #[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
     pub enum BSplineCurveForm {
         PolylineForm,
         CircularArc,
@@ -1588,7 +1588,7 @@ pub mod config_control_design {
         HyperbolicArc,
         Unspecified,
     }
-    #[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+    #[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
     pub enum BSplineSurfaceForm {
         PlaneSurf,
         CylindricalSurf,
@@ -1794,7 +1794,7 @@ pub mod config_control_design {
     #[holder(generate_deserialize)]
     # [holder (from = String)]
     pub struct Identifier(pub String);
-    #[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+    #[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
     pub enum KnotType {
         UniformKnots,
         Unspecified,
@@ -1954,7 +1954,7 @@ pub mod config_control_design {
     # [holder (field = positive_plane_angle_measure)]
     #[holder(generate_deserialize)]
     pub struct PositivePlaneAngleMeasure(#[holder(use_place_holder)] pub PlaneAngleMeasure);
-    #[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+    #[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
     pub enum PreferredSurfaceCurveRepresentation {
         Curve3D,
         PcurveS1,
@@ -2029,7 +2029,7 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         ClosedShell(ClosedShellAny),
     }
-    #[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+    #[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
     pub enum SiPrefix {
         Exa,
         Peta,
@@ -2048,7 +2048,7 @@ pub mod config_control_design {
         Femto,
         Atto,
     }
-    #[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+    #[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
     pub enum SiUnitName {
         Metre,
         Gram,
@@ -2087,7 +2087,7 @@ pub mod config_control_design {
     #[holder(generate_deserialize)]
     # [holder (from = f64)]
     pub struct SolidAngleMeasure(pub f64);
-    #[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+    #[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
     pub enum Source {
         Made,
         Bought,
@@ -2144,14 +2144,14 @@ pub mod config_control_design {
         #[holder(use_place_holder)]
         FunctionallyDefinedTransformation(FunctionallyDefinedTransformationAny),
     }
-    #[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+    #[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
     pub enum TransitionCode {
         Discontinuous,
         Continuous,
         ContSameGradient,
         ContSameGradientSameCurvature,
     }
-    #[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+    #[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
     pub enum TrimmingPreference {
         Cartesian,
         Parameter,
