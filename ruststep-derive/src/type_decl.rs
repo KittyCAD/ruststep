@@ -45,6 +45,7 @@ pub fn impl_holder(ident: &syn::Ident, table: &HolderAttr, st: &syn::DataStruct)
     let name = crate::entity::make_name(ident);
     let holder_ident = as_holder_ident(ident);
     let FieldEntries {
+        indices,
         holder_types,
         into_owned,
     } = FieldEntries::parse(st);
@@ -71,6 +72,16 @@ pub fn impl_holder(ident: &syn::Ident, table: &HolderAttr, st: &syn::DataStruct)
                 #tuple_len
             }
         }
+    #[automatically_derived]
+    impl #ruststep::tables::ToData for #holder_ident {
+        fn to_data(&self) -> String {
+        let name = #name;
+        let fields: &[&dyn #ruststep::tables::ToData] = &[
+            #(&self. #indices),*
+        ];
+        format!("{}{}", name, fields.to_data())
+        }
+    }
     } // quote!
 }
 
@@ -230,6 +241,7 @@ fn impl_with_visitor(ident: &syn::Ident) -> TokenStream2 {
 }
 
 struct FieldEntries {
+    indices: Vec<syn::Index>,
     holder_types: Vec<syn::Type>,
     into_owned: Vec<TokenStream2>,
 }
@@ -238,12 +250,14 @@ impl FieldEntries {
     fn parse(st: &syn::DataStruct) -> Self {
         let table_arg = table_arg();
 
+        let mut indices = Vec::new();
         let mut holder_types = Vec::new();
         let mut into_owned = Vec::new();
 
         for (i, field) in st.fields.iter().enumerate() {
             let ft: FieldType = field.ty.clone().try_into().unwrap();
             let index = syn::Index::from(i);
+            indices.push(index.clone());
 
             let HolderAttr { place_holder, .. } = HolderAttr::parse(&field.attrs);
             if place_holder {
@@ -270,6 +284,7 @@ impl FieldEntries {
             }
         }
         FieldEntries {
+            indices,
             holder_types,
             into_owned,
         }

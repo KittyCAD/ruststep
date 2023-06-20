@@ -87,7 +87,7 @@ impl ToTokens for Enumeration {
             .map(|i| format_ident!("{}", i.to_pascal_case()))
             .collect();
         tokens.append_all(quote! {
-            #[derive(Debug, Clone, PartialEq, ::serde::Deserialize)]
+            #[derive(Debug, Clone, PartialEq, ::ruststep_derive::ToData, ::serde::Deserialize)]
             pub enum #id {
                 #( #items ),*
             }

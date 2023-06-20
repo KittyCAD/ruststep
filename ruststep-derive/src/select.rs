@@ -115,6 +115,7 @@ impl Input {
         let ruststep = ruststep_crate();
 
         quote! {
+        #[automatically_derived]
             impl #ruststep::tables::IntoOwned for #holder_ident {
                 type Owned = #ident;
                 type Table = #table;
@@ -124,6 +125,7 @@ impl Input {
                     })
                 }
             }
+        #[automatically_derived]
             impl #ruststep::tables::Holder for #holder_ident {
                 fn name() -> &'static str {
                     #name
@@ -132,6 +134,14 @@ impl Input {
                     0
                 }
             }
+        #[automatically_derived]
+        impl #ruststep::tables::ToData for #holder_ident {
+        fn to_data(&self) -> String {
+            match self {
+                        #(#holder_ident::#variants(sub) => sub.to_data()),*
+                    }
+        }
+        }
         } // quote!
     }
 

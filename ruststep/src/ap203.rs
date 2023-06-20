@@ -6380,7 +6380,7 @@ pub enum ActionRequestItem {
     #[holder(use_place_holder)]
     VersionedActionRequest(Box<VersionedActionRequest>),
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum AheadOrBehind {
     Ahead,
     Exact,
@@ -6414,7 +6414,7 @@ pub enum AngleDirectionReferenceWithA2P3DSelect {
     #[holder(use_place_holder)]
     Axis2Placement3D(Box<Axis2Placement3D>),
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum AngleRelator {
     Equal,
     Large,
@@ -6877,7 +6877,7 @@ pub enum Axis2Placement {
     #[holder(use_place_holder)]
     Axis2Placement3D(Box<Axis2Placement3D>),
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum BSplineCurveForm {
     PolylineForm,
     CircularArc,
@@ -6886,7 +6886,7 @@ pub enum BSplineCurveForm {
     HyperbolicArc,
     Unspecified,
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum BSplineSurfaceForm {
     PlaneSurf,
     CylindricalSurf,
@@ -6922,7 +6922,7 @@ pub enum BlendEndConditionSelect {
     #[holder(use_place_holder)]
     Vertex(VertexAny),
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum BlendRadiusVariationType {
     LinearBlend,
     CubicBlend,
@@ -6941,7 +6941,7 @@ pub enum BooleanOperand {
     #[holder(use_place_holder)]
     BooleanResult(Box<BooleanResult>),
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum BooleanOperator {
     Union,
     Intersection,
@@ -7072,7 +7072,7 @@ pub enum CcSpecifiedItem {
 #[holder(generate_deserialize)]
 # [holder (from = f64)]
 pub struct CelsiusTemperatureMeasure(pub f64);
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum CentralOrParallel {
     Central,
     Parallel,
@@ -7772,7 +7772,7 @@ pub struct DescriptiveMeasure(pub String);
 #[holder(generate_deserialize)]
 # [holder (from = i64)]
 pub struct DimensionCount(pub i64);
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum DimensionExtentUsage {
     Origin,
     Target,
@@ -8320,7 +8320,7 @@ pub enum InvisibleItem {
 # [holder (field = ir_usage_item)]
 #[holder(generate_deserialize)]
 pub struct IrUsageItem(#[holder(use_place_holder)] pub ActionItems);
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum KnotType {
     UniformKnots,
     QuasiUniformKnots,
@@ -8352,7 +8352,7 @@ pub enum LayeredItem {
 #[holder(generate_deserialize)]
 # [holder (from = f64)]
 pub struct LengthMeasure(pub f64);
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum LimitCondition {
     MaximumMaterialCondition,
     LeastMaterialCondition,
@@ -8414,7 +8414,7 @@ pub enum MarkerSelect {
     #[holder(use_place_holder)]
     PreDefinedMarker(PreDefinedMarkerAny),
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum MarkerType {
     Dot,
     X,
@@ -8784,7 +8784,7 @@ pub struct NonNegativeLengthMeasure(#[holder(use_place_holder)] pub LengthMeasur
 #[holder(generate_deserialize)]
 # [holder (from = i64)]
 pub struct NonnegativeInteger(pub i64);
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum NullStyle {
     Null,
 }
@@ -9038,7 +9038,7 @@ pub struct PositiveRatioMeasure(#[holder(use_place_holder)] pub RatioMeasure);
 #[holder(generate_deserialize)]
 # [holder (from = f64)]
 pub struct PowerMeasure(pub f64);
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum PreferredSurfaceCurveRepresentation {
     Curve3D,
     PcurveS1,
@@ -9372,12 +9372,12 @@ pub struct SetOfReversibleTopologyItem(#[holder(use_place_holder)] pub Vec<Rever
 # [holder (field = set_representation_item)]
 #[holder(generate_deserialize)]
 pub struct SetRepresentationItem(#[holder(use_place_holder)] pub Vec<RepresentationItemAny>);
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum ShadingCurveMethod {
     ConstantColour,
     LinearColour,
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum ShadingSurfaceMethod {
     ConstantShading,
     ColourShading,
@@ -9408,7 +9408,7 @@ pub enum Shell {
     #[holder(use_place_holder)]
     ClosedShell(ClosedShellAny),
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum SiPrefix {
     Exa,
     Peta,
@@ -9427,7 +9427,7 @@ pub enum SiPrefix {
     Femto,
     Atto,
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum SiUnitName {
     Metre,
     Gram,
@@ -9486,7 +9486,7 @@ pub enum SketchBasisSelect {
 #[holder(generate_deserialize)]
 # [holder (from = f64)]
 pub struct SolidAngleMeasure(pub f64);
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum Source {
     Made,
     Bought,
@@ -9536,7 +9536,7 @@ pub enum StyleContextSelect {
     #[holder(use_place_holder)]
     RepresentationRelationship(RepresentationRelationshipAny),
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum SurfaceSide {
     Positive,
     Negative,
@@ -9612,7 +9612,7 @@ pub enum TextOrCharacter {
     #[holder(use_place_holder)]
     TextLiteral(TextLiteralAny),
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum TextPath {
     Left,
     Right,
@@ -9677,7 +9677,7 @@ pub enum Transformation {
     #[holder(use_place_holder)]
     FunctionallyDefinedTransformation(FunctionallyDefinedTransformationAny),
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum TransitionCode {
     Discontinuous,
     Continuous,
@@ -9697,7 +9697,7 @@ pub enum TrimConditionSelect {
     #[holder(use_place_holder)]
     SolidModel(SolidModelAny),
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum TrimIntent {
     Blind,
     Offset,
@@ -9705,7 +9705,7 @@ pub enum TrimIntent {
     Unspecified,
     UpToNext,
 }
-#[derive(Debug, Clone, PartialEq, :: serde :: Deserialize)]
+#[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum TrimmingPreference {
     Cartesian,
     Parameter,

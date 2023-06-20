@@ -90,6 +90,52 @@ fn entity_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
                 Ok(Self::from_data_section(&data_sec)?)
             }
         }
+
+    #[automatically_derived]
+    impl #ruststep::tables::ToData for #ident {
+        fn to_data(&self) -> String {
+        use std::fmt::Write;
+
+        let mut data = String::new();
+
+        let mut max_id: u64 = 0;
+        #(
+            max_id = max_id.max(self.#table_names.keys().cloned().max().unwrap_or(0));
+        )*
+
+        let mut instances = Vec::<&dyn #ruststep::tables::ToData>::new();
+        for id in 0..=max_id {
+            instances.clear();
+
+            #(
+            if let Some(instance) = self.#table_names.get(&id) {
+                instances.push(instance);
+            }
+            )*
+
+            match instances.len() {
+            0 => continue,
+            1 => {
+                let simple = instances[0].to_data();
+                writeln!(&mut data, "#{id} = {simple}").unwrap();
+            }
+            _ => {
+                let mut complex = "(".to_string();
+                for (i, v) in instances.iter().enumerate() {
+                complex += &v.to_data();
+                if i != instances.len() - 1 {
+                    complex += " ";
+                }
+                }
+                complex += ")";
+                writeln!(&mut data, "#{id} = {complex}").unwrap();
+            }
+            }
+        }
+
+        data
+        }
+    }
     }
 }
 
