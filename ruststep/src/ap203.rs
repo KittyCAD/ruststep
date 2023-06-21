@@ -3344,8 +3344,8 @@ pub mod config_control_design {
     # [holder (field = conversion_based_unit)]
     #[holder(generate_deserialize)]
     pub struct ConversionBasedUnit {
-        #[holder(use_place_holder)]
-        pub dimensions: DimensionalExponents,
+        #[holder(derived)]
+        pub dimensions: Derived<DimensionalExponents>,
         #[holder(use_place_holder)]
         pub name: Label,
         #[holder(use_place_holder)]
