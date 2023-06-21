@@ -54,6 +54,10 @@ pub fn impl_holder(ident: &syn::Ident, table: &HolderAttr, st: &syn::DataStruct)
     let table_arg = table_arg();
     let ruststep = ruststep_crate();
 
+    if tuple_len != 1 {
+        abort_call_site!("unsupported type declaration");
+    }
+
     quote! {
         #[automatically_derived]
         impl #ruststep::tables::IntoOwned for #holder_ident {
@@ -75,11 +79,7 @@ pub fn impl_holder(ident: &syn::Ident, table: &HolderAttr, st: &syn::DataStruct)
     #[automatically_derived]
     impl #ruststep::tables::ToData for #holder_ident {
         fn to_data(&self) -> String {
-        let name = #name;
-        let fields: &[&dyn #ruststep::tables::ToData] = &[
-            #(&self. #indices),*
-        ];
-        format!("{}{}", name, fields.to_data())
+        self.0.to_data()
         }
     }
     } // quote!
