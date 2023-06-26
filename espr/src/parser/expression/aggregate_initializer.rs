@@ -45,6 +45,13 @@ mod tests {
     }
 
     #[test]
+    fn aggregate_initializer_open() {
+        let (res, (expr, _remarks)) = super::expression("[0:?]").finish().unwrap();
+        dbg!(expr);
+        assert_eq!(res, "");
+    }
+
+    #[test]
     fn aggregate_initializer() {
         let (res, (expr, _remarks)) = super::expression("[1, 3, 6, 9*8, -12]").finish().unwrap();
         assert_eq!(res, "");
