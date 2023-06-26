@@ -54,6 +54,19 @@ pub fn simple_string_literal(input: &str) -> RawParseResult<String> {
         .parse(input)
 }
 
+fn binary_prefix(input: &str) -> RawParseResult<u8> {
+    satisfy(|c| matches!(c, '0'..='3'))
+        .map(|c| c.to_digit(10).unwrap() as u8)
+        .parse(input)
+}
+
+/// §6.4.6 binary = `"` [digit] { [hex_digit] } `"`
+pub fn simple_binary(input: &str) -> RawParseResult<(u8, Vec<u8>)> {
+    tuple((char('"'), binary_prefix, many0(hex_digit), char('"')))
+        .map(|(_open, prefix, nibbles, _close)| (prefix, nibbles))
+        .parse(input)
+}
+
 /// 143 simple_id = [letter] { [letter] | [digit] | `_` } .
 /// According to the standard, identifiers cannot be reserved keywords.
 pub fn simple_id(input: &str) -> RawParseResult<String> {
@@ -125,6 +138,31 @@ mod tests {
         assert_eq!(residual, "23");
 
         assert!(super::hex_digit("x").finish().is_err());
+    }
+
+    #[test]
+    fn binary_prefix() {
+        let (residual, value) = super::binary_prefix("0").finish().unwrap();
+        assert_eq!(value, 0);
+        assert_eq!(residual, "");
+
+        let (residual, value) = super::binary_prefix("1").finish().unwrap();
+        assert_eq!(value, 1);
+        assert_eq!(residual, "");
+
+        let (residual, value) = super::binary_prefix("2").finish().unwrap();
+        assert_eq!(value, 2);
+        assert_eq!(residual, "");
+
+        let (residual, value) = super::binary_prefix("3").finish().unwrap();
+        assert_eq!(value, 3);
+        assert_eq!(residual, "");
+
+        let (residual, value) = super::binary_prefix("00").finish().unwrap();
+        assert_eq!(value, 0);
+        assert_eq!(residual, "0");
+
+        assert!(super::binary_prefix("4").finish().is_err());
     }
 
     #[test]

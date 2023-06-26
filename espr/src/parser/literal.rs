@@ -6,13 +6,20 @@ use crate::ast::*;
 /// Integer value, e.g. `23`, will be recognized as a real number `23.0`.
 /// Use [integer_literal] if you wish to parse it as an integer.
 pub fn literal(input: &str) -> ParseResult<Literal> {
-    // FIXME binary_literal,
     alt((
+        binary_literal.map(Literal::Binary),
         logical_literal.map(Literal::Logial),
         real_literal.map(Literal::Real),
         string_literal.map(Literal::String),
     ))
     .parse(input)
+}
+
+/// ? binary_literal = `"` digit [digit] `"`
+pub fn binary_literal(input: &str) -> ParseResult<Binary> {
+    remarked(simple_binary)
+        .map(|(prefix, nibbles)| Binary { prefix, nibbles })
+        .parse(input)
 }
 
 /// 255 logical_literal = `FALSE` | `TRUE` | `UNKNOWN` .
@@ -52,6 +59,36 @@ pub fn string_literal(input: &str) -> ParseResult<String> {
 #[cfg(test)]
 mod tests {
     use nom::Finish;
+
+    #[test]
+    fn binary_literal() {
+        let (residual, (value, _remarks)) = super::binary_literal("\"0\"").finish().unwrap();
+        assert_eq!(value.prefix, 0);
+        assert_eq!(value.nibbles, Vec::new());
+        assert_eq!(residual, "");
+
+        let (residual, (value, _remarks)) = super::binary_literal("\"30\"").finish().unwrap();
+        assert_eq!(value.prefix, 3);
+        assert_eq!(value.nibbles, vec![0]);
+        assert_eq!(residual, "");
+
+        let (residual, (value, _remarks)) = super::binary_literal("\"31\"").finish().unwrap();
+        assert_eq!(value.prefix, 3);
+        assert_eq!(value.nibbles, vec![1]);
+        assert_eq!(residual, "");
+
+        let (residual, (value, _remarks)) = super::binary_literal("\"23B\"").finish().unwrap();
+        assert_eq!(value.prefix, 2);
+        assert_eq!(value.nibbles, vec![3, 11]);
+        assert_eq!(residual, "");
+
+        let (residual, (value, _remarks)) = super::binary_literal("\"092A\"").finish().unwrap();
+        assert_eq!(value.prefix, 0);
+        assert_eq!(value.nibbles, vec![9, 2, 10]);
+        assert_eq!(residual, "");
+
+        assert!(super::binary_literal("\"0X\"").finish().is_err());
+    }
 
     #[test]
     fn integer_literal() {
