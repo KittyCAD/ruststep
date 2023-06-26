@@ -13,7 +13,7 @@ pub fn digit(input: &str) -> RawParseResult<char> {
 
 /// 127 hex_digit = [digit] | `a` | `b` | `c` | `d` | `e` | `f` .
 pub fn hex_digit(input: &str) -> RawParseResult<u8> {
-    let hex_letter = satisfy(|c| matches!(c, 'A'..='Z' | 'a'..='f'));
+    let hex_letter = satisfy(|c| matches!(c, 'A'..='F' | 'a'..='f'));
     alt((digit, hex_letter))
         .map(|c| c.to_digit(16).unwrap() as u8)
         .parse(input)
