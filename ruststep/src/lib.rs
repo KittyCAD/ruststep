@@ -107,7 +107,7 @@
 //!
 
 #![deny(rustdoc::broken_intra_doc_links)]
-#![recursion_limit = "256"]
+#![recursion_limit = "512"]
 
 pub mod ast;
 pub mod error;
