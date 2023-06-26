@@ -32,12 +32,12 @@ fn use_place_holder(ty: &TypeRef) -> bool {
 
 impl From<EntityAttribute> for Field {
     fn from(attr: EntityAttribute) -> Self {
-        let EntityAttribute {
+        let Variable {
             name,
             ty,
             optional,
             derived,
-        } = attr;
+        } = attr.into_variable().unwrap();
 
         let name = format_ident!("{}", name.into_safe());
         let attributes = if derived {
@@ -156,6 +156,7 @@ impl ToTokens for Entity {
         let fields = self
             .attributes
             .iter()
+            .filter(|attr| attr.is_variable())
             .map(|attr| Field::from(attr.clone()))
             .collect::<Vec<Field>>();
 

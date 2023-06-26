@@ -34,11 +34,11 @@ impl Entity {
         let constraints = self.constraints.clone();
         let supertypes = self.supertypes.clone();
         let derived_attributes = self.derived_attributes.clone();
-        let mut attributes = vec![];
+        let mut output = vec![];
 
-        fn has_attribute(attribute: &EntityAttribute, others: &[EntityAttribute]) -> bool {
-            for attr in others {
-                if attr.name == attribute.name {
+        fn has_variable(variable: &Variable, others: &[EntityAttribute]) -> bool {
+            for attr in others.iter().filter_map(EntityAttribute::as_variable) {
+                if attr.name == variable.name {
                     return true;
                 }
             }
@@ -49,7 +49,7 @@ impl Entity {
             root: &Entity,
             entity: &Entity,
             entities: &[Entity],
-            attributes: &mut Vec<EntityAttribute>,
+            output: &mut Vec<EntityAttribute>,
         ) {
             if !entity.supertypes.is_empty() {
                 for supertype in &entity.supertypes {
@@ -59,30 +59,35 @@ impl Entity {
                                 .iter()
                                 .find(|&e| &e.name == name)
                                 .expect("supertype not found");
-                            recurse(root, super_entity, entities, attributes);
+                            recurse(root, super_entity, entities, output);
                         }
                         _ => eprintln!("unhandled case"),
                     }
                 }
             }
-            for attribute in &entity.attributes {
-                if !has_attribute(attribute, attributes) {
-                    let mut final_attribute = attribute.clone();
+            for variable in entity
+                .attributes
+                .iter()
+                .cloned()
+                .filter_map(|x| x.into_variable())
+            {
+                if !has_variable(&variable, output) {
+                    let mut final_variable = variable.clone();
                     for derived_attribute in &root.derived_attributes {
-                        if *derived_attribute == attribute.name {
-                            final_attribute.derived = true;
+                        if *derived_attribute == variable.name {
+                            final_variable.derived = true;
                         }
                     }
-                    attributes.push(final_attribute);
+                    output.push(EntityAttribute::Variable(final_variable));
                 }
             }
         }
 
-        recurse(self, self, entities, &mut attributes);
+        recurse(self, self, entities, &mut output);
 
         Entity {
             name,
-            attributes,
+            attributes: output,
             constraints,
             supertypes,
             derived_attributes,
@@ -91,12 +96,48 @@ impl Entity {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct EntityAttribute {
+pub struct Variable {
     pub name: String,
     pub ty: TypeRef,
     pub optional: bool,
     // HACK: used by codegen and nowhere else.
     pub derived: bool,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Derivation {
+    /// Like `\point`
+    group: String,
+    /// Like `.x`
+    attribute: String,
+    /// For [redeclared_attribute]
+    rename: Option<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum EntityAttribute {
+    Variable(Variable),
+    Derivation(Derivation),
+}
+
+impl EntityAttribute {
+    pub fn is_variable(&self) -> bool {
+        self.as_variable().is_some()
+    }
+
+    pub fn as_variable(&self) -> Option<&Variable> {
+        match self {
+            EntityAttribute::Variable(ref variable) => Some(variable),
+            _ => None,
+        }
+    }
+
+    pub fn into_variable(self) -> Option<Variable> {
+        match self {
+            EntityAttribute::Variable(variable) => Some(variable),
+            _ => None,
+        }
+    }
 }
 
 impl Legalize for EntityAttribute {
@@ -109,15 +150,24 @@ impl Legalize for EntityAttribute {
         attr: &Self::Input,
     ) -> Result<Self, SemanticError> {
         let ty = TypeRef::legalize(ns, ss, scope, &attr.ty)?;
-        let name = match &attr.name {
-            ast::AttributeDecl::Reference(name) => name.clone(),
-            _ => unimplemented!(),
-        };
-        Ok(EntityAttribute {
-            name,
-            ty,
-            optional: attr.optional,
-            derived: false, // updated later
+        Ok(match attr.name.clone() {
+            ast::AttributeDecl::Reference(name) => {
+                EntityAttribute::Variable(Variable {
+                    name,
+                    ty,
+                    optional: attr.optional,
+                    derived: false, // updated later
+                })
+            }
+            ast::AttributeDecl::Qualified {
+                group,
+                attribute,
+                rename,
+            } => EntityAttribute::Derivation(Derivation {
+                group,
+                attribute,
+                rename,
+            }),
         })
     }
 }

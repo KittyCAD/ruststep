@@ -35,10 +35,10 @@ impl<'de, T: ?Sized> serde::de::Visitor<'de> for Derived<T> {
 
     fn visit_some<D>(self, _deserializer: D) -> Result<Self::Value, D::Error>
     where
-	D: serde::de::Deserializer<'de>,
+        D: serde::de::Deserializer<'de>,
     {
-	// Ignore any provided value for derived attributes.
-	Ok(Default::default())
+        // Ignore any provided value for derived attributes.
+        Ok(Default::default())
     }
 }
 
