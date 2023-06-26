@@ -59,7 +59,6 @@ impl ToTokens for PartialEntityMapping {
 
 impl Schema {
     pub fn to_token_stream(&self, prefix: CratePrefix) -> TokenStream {
-        let name = format_ident!("{}", self.name);
         let types = &self.types;
         let entities = &self.entities;
         let type_decls = self.types.iter().filter(|e| match e {
@@ -69,13 +68,13 @@ impl Schema {
 
         let mut partials = Vec::new();
         for entity in entities {
-            let mut attributes = Vec::new();
-            for attribute in &entity.attributes {
-                attributes.push(attribute.name.clone());
+            let mut variables = Vec::new();
+            for variable in entity.attributes.iter().filter_map(|attr| attr.as_variable()) {
+                variables.push(variable.name.clone());
             }
             partials.push(PartialEntityMapping {
                 name: make_name(&entity.name),
-                attributes,
+                attributes: variables,
             });
         }
 
@@ -83,13 +82,13 @@ impl Schema {
 
         let mut complete = Vec::new();
         for ee in &expanded_entities {
-            let mut attributes = Vec::new();
-            for attribute in &ee.attributes {
-                attributes.push(attribute.name.clone());
+            let mut variables = Vec::new();
+            for variable in ee.attributes.iter().filter_map(|attr| attr.as_variable()) {
+                variables.push(variable.name.clone());
             }
             complete.push(PartialEntityMapping {
                 name: make_name(&ee.name),
-                attributes,
+                attributes: variables,
             });
         }
 
@@ -120,9 +119,8 @@ impl Schema {
         let ruststep_path = prefix.as_path();
 
         quote! {
-            pub mod #name {
-                use #ruststep_path::{as_holder, Holder, TableInit, primitive::*, derive_more::*};
-                use std::collections::HashMap;
+            use #ruststep_path::{as_holder, Holder, TableInit, primitive::*, derive_more::*};
+            use std::collections::HashMap;
 
                 static COMPLETE: ::phf::Map<&'static str, &'static [&'static str]> = ::phf::phf_map! {
                     #( #complete )*
@@ -132,32 +130,32 @@ impl Schema {
                     #( #partials )*
                 };
 
-                #[derive(Debug, Clone, PartialEq, Default, TableInit)]
-                pub struct Tables {
-                    #(
-                    #holder_name: HashMap<u64, as_holder!(#entity_types)>,
-                    )*
-                }
 
-                impl Tables {
-                    #(
+            #[derive(Debug, Clone, PartialEq, Default, TableInit)]
+            pub struct Tables {
+                #(
+                    #holder_name: HashMap<u64, as_holder!(#entity_types)>,
+                )*
+            }
+
+            impl Tables {
+                #(
                     pub fn #holders_name(&self) -> &HashMap<u64, as_holder!(#entity_types)> {
                         &self.#holder_name
                     }
-                    )*
+                )*
 
-                    pub fn complete_mappings(&self) -> &::phf::Map<&'static str, &'static [&'static str]> {
-                        &COMPLETE
-                    }
-
-                    pub fn partial_mappings(&self) -> &::phf::Map<&'static str, &'static [&'static str]> {
-                        &PARTIALS
-                    }
+                pub fn complete_mappings(&self) -> &::phf::Map<&'static str, &'static [&'static str]> {
+                    &COMPLETE
                 }
 
-                #(#types)*
-                #(#expanded_entities)*
+                pub fn partial_mappings(&self) -> &::phf::Map<&'static str, &'static [&'static str]> {
+                    &PARTIALS
+                }
             }
+
+            #(#types)*
+            #(#expanded_entities)*
         }
     }
 }
