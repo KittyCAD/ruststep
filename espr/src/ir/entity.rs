@@ -78,6 +78,9 @@ impl Entity {
                             final_variable.derived = true;
                         }
                     }
+                    if root as *const _ != entity as *const _ {
+                        final_variable.supertype = Some(entity.name.clone());
+                    }
                     output.push(EntityAttribute::Variable(final_variable));
                 }
             }
@@ -99,6 +102,7 @@ impl Entity {
 pub struct Variable {
     pub name: String,
     pub ty: TypeRef,
+    pub supertype: Option<String>,
     pub optional: bool,
     // HACK: used by codegen and nowhere else.
     pub derived: bool,
@@ -155,8 +159,9 @@ impl Legalize for EntityAttribute {
                 EntityAttribute::Variable(Variable {
                     name,
                     ty,
+                    supertype: None, // updated later during expansion
                     optional: attr.optional,
-                    derived: false, // updated later
+                    derived: false, // updated later during expansion
                 })
             }
             ast::AttributeDecl::Qualified {

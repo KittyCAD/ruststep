@@ -35,18 +35,22 @@ impl From<EntityAttribute> for Field {
         let Variable {
             name,
             ty,
+            supertype,
             optional,
             derived,
         } = attr.into_variable().unwrap();
 
         let name = format_ident!("{}", name.into_safe());
-        let attributes = if derived {
+        let mut attributes = if derived {
             vec![parse_quote! { #[holder(derived)] }]
         } else if use_place_holder(&ty) {
             vec![parse_quote! { #[holder(use_place_holder)] }]
         } else {
             Vec::new()
         };
+        if let Some(ty) = supertype.as_ref() {
+            attributes.push(parse_quote! { #[holder(supertype = #ty)] });
+        }
         let ty = if optional {
             parse_quote! { Option<#ty> }
         } else if derived {
@@ -161,6 +165,16 @@ impl ToTokens for Entity {
             .collect::<Vec<Field>>();
 
         let derive = self.derives();
+
+        let mut supertypes = Vec::new();
+        for type_ref in &self.supertypes {
+            match type_ref {
+                TypeRef::Entity { ref name, .. } => {
+                    supertypes.push(name.clone());
+                }
+                _ => unreachable!(),
+            }
+        }
 
         tokens.append_all(quote! {
             #( #[derive(#derive)] )*

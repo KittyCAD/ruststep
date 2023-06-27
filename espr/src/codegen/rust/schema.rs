@@ -69,7 +69,11 @@ impl Schema {
         let mut partials = Vec::new();
         for entity in entities {
             let mut variables = Vec::new();
-            for variable in entity.attributes.iter().filter_map(|attr| attr.as_variable()) {
+            for variable in entity
+                .attributes
+                .iter()
+                .filter_map(|attr| attr.as_variable())
+            {
                 variables.push(variable.name.clone());
             }
             partials.push(PartialEntityMapping {

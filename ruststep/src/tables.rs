@@ -110,8 +110,16 @@ use std::{boxed::Box, collections::HashMap, fmt, marker::PhantomData};
 
 /// Export helper trait.
 pub trait ToData {
-    /// Serialize to EXPRESS data record.
+    /// Serialize to simple EXPRESS data record.
     fn to_data(&self) -> String;
+
+    /// Serialize to partial EXPRESS data record.
+    ///
+    /// `others` lists the type names of the accompanying partial records.
+    fn to_partial(&self, others: &[&str]) -> String {
+        let _ = others;
+        self.to_data()
+    }
 }
 
 impl ToData for [&dyn ToData] {
@@ -166,7 +174,7 @@ impl ToData for Logical {
 
 impl ToData for Binary {
     fn to_data(&self) -> String {
-	self.encode()
+        self.encode()
     }
 }
 

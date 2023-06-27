@@ -9810,8 +9810,10 @@ pub struct YearNumber(pub i64);
 #[holder(generate_deserialize)]
 pub struct AbsorbedDoseMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -9820,6 +9822,7 @@ pub struct AbsorbedDoseMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct AbsorbedDoseUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -9837,16 +9840,22 @@ pub enum AbsorbedDoseUnitAny {
 #[holder(generate_deserialize)]
 pub struct AbstractVariable {
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub definition: CharacterizedDefinition,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition_representation")]
     pub used_representation: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -9866,8 +9875,10 @@ pub enum AbstractVariableAny {
 #[holder(generate_deserialize)]
 pub struct AccelerationMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -9876,6 +9887,7 @@ pub struct AccelerationMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct AccelerationUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10157,10 +10169,13 @@ pub enum AddressAny {
 #[holder(generate_deserialize)]
 pub struct AdvancedBrepShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10169,11 +10184,15 @@ pub struct AdvancedBrepShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct AdvancedFace {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "face")]
     pub bounds: Vec<FaceBoundAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "face_surface")]
     pub face_geometry: SurfaceAny,
+    #[holder(supertype = "face_surface")]
     pub same_sense: bool,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10198,8 +10217,10 @@ pub struct AlternateProductRelationship {
 #[holder(generate_deserialize)]
 pub struct AmountOfSubstanceMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10208,6 +10229,7 @@ pub struct AmountOfSubstanceMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct AmountOfSubstanceUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10216,12 +10238,16 @@ pub struct AmountOfSubstanceUnit {
 #[holder(generate_deserialize)]
 pub struct AngleDirectionReference {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub relating_representation_item: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub related_representation_item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10230,8 +10256,10 @@ pub struct AngleDirectionReference {
 #[holder(generate_deserialize)]
 pub struct AngularDimension {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10240,12 +10268,16 @@ pub struct AngularDimension {
 #[holder(generate_deserialize)]
 pub struct AngularLocation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub relating_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub related_shape_aspect: ShapeAspectAny,
     pub angle_selection: AngleRelator,
 }
@@ -10255,8 +10287,10 @@ pub struct AngularLocation {
 #[holder(generate_deserialize)]
 pub struct AngularSize {
     #[holder(use_place_holder)]
+    #[holder(supertype = "dimensional_size")]
     pub applies_to: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "dimensional_size")]
     pub name: Label,
     pub angle_selection: AngleRelator,
 }
@@ -10266,14 +10300,19 @@ pub struct AngularSize {
 #[holder(generate_deserialize)]
 pub struct AngularityTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance_with_datum_reference")]
     pub datum_system: Vec<DatumReferenceAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10282,10 +10321,13 @@ pub struct AngularityTolerance {
 #[holder(generate_deserialize)]
 pub struct AnnotationCurveOccurrence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -10307,6 +10349,7 @@ pub enum AnnotationCurveOccurrenceAny {
 #[holder(generate_deserialize)]
 pub struct AnnotationFillArea {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub boundaries: Vec<CurveAny>,
@@ -10317,10 +10360,13 @@ pub struct AnnotationFillArea {
 #[holder(generate_deserialize)]
 pub struct AnnotationFillAreaOccurrence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
     #[holder(use_place_holder)]
     pub fill_style_target: PointAny,
@@ -10331,10 +10377,13 @@ pub struct AnnotationFillAreaOccurrence {
 #[holder(generate_deserialize)]
 pub struct AnnotationOccurrence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -10362,12 +10411,16 @@ pub enum AnnotationOccurrenceAny {
 #[holder(generate_deserialize)]
 pub struct AnnotationOccurrenceAssociativity {
     #[holder(use_place_holder)]
+    #[holder(supertype = "annotation_occurrence_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "annotation_occurrence_relationship")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "annotation_occurrence_relationship")]
     pub relating_annotation_occurrence: AnnotationOccurrenceAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "annotation_occurrence_relationship")]
     pub related_annotation_occurrence: AnnotationOccurrenceAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -10410,10 +10463,13 @@ pub enum AnnotationOccurrenceRelationshipAny {
 #[holder(generate_deserialize)]
 pub struct AnnotationPlane {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
     #[holder(use_place_holder)]
     pub elements: Option<Vec<AnnotationPlaneElement>>,
@@ -10424,10 +10480,13 @@ pub struct AnnotationPlane {
 #[holder(generate_deserialize)]
 pub struct AnnotationSubfigureOccurrence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10436,10 +10495,13 @@ pub struct AnnotationSubfigureOccurrence {
 #[holder(generate_deserialize)]
 pub struct AnnotationSymbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_source: RepresentationMapAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_target: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10448,10 +10510,13 @@ pub struct AnnotationSymbol {
 #[holder(generate_deserialize)]
 pub struct AnnotationSymbolOccurrence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -10471,10 +10536,13 @@ pub enum AnnotationSymbolOccurrenceAny {
 #[holder(generate_deserialize)]
 pub struct AnnotationText {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_source: RepresentationMapAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_target: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10483,10 +10551,13 @@ pub struct AnnotationText {
 #[holder(generate_deserialize)]
 pub struct AnnotationTextCharacter {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_source: RepresentationMapAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_target: RepresentationItemAny,
     #[holder(use_place_holder)]
     pub alignment: TextAlignment,
@@ -10497,10 +10568,13 @@ pub struct AnnotationTextCharacter {
 #[holder(generate_deserialize)]
 pub struct AnnotationTextOccurrence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10509,11 +10583,15 @@ pub struct AnnotationTextOccurrence {
 #[holder(generate_deserialize)]
 pub struct Apex {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10567,6 +10645,7 @@ pub struct ApplicationProtocolDefinition {
 #[holder(generate_deserialize)]
 pub struct AppliedActionAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_assignment")]
     pub assigned_action: ActionAny,
     #[holder(use_place_holder)]
     pub items: Vec<ActionItems>,
@@ -10586,8 +10665,10 @@ pub enum AppliedActionAssignmentAny {
 #[holder(generate_deserialize)]
 pub struct AppliedActionMethodAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method_assignment")]
     pub assigned_action_method: ActionMethodAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method_assignment")]
     pub role: ActionMethodRole,
     #[holder(use_place_holder)]
     pub items: Vec<ActionMethodItems>,
@@ -10598,6 +10679,7 @@ pub struct AppliedActionMethodAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedActionRequestAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_request_assignment")]
     pub assigned_action_request: VersionedActionRequest,
     #[holder(use_place_holder)]
     pub items: Vec<ActionRequestItem>,
@@ -10608,6 +10690,7 @@ pub struct AppliedActionRequestAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedApprovalAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "approval_assignment")]
     pub assigned_approval: Approval,
     #[holder(use_place_holder)]
     pub items: Vec<ApprovalItem>,
@@ -10618,10 +10701,13 @@ pub struct AppliedApprovalAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedAttributeClassificationAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "attribute_classification_assignment")]
     pub assigned_class: GroupAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "attribute_classification_assignment")]
     pub attribute_name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "attribute_classification_assignment")]
     pub role: ClassificationRole,
     #[holder(use_place_holder)]
     pub items: Vec<AttributeClassificationItem>,
@@ -10632,6 +10718,7 @@ pub struct AppliedAttributeClassificationAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedCertificationAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "certification_assignment")]
     pub assigned_certification: Certification,
     #[holder(use_place_holder)]
     pub items: Vec<CertificationItem>,
@@ -10642,8 +10729,10 @@ pub struct AppliedCertificationAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedClassificationAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "classification_assignment")]
     pub assigned_class: GroupAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "classification_assignment")]
     pub role: ClassificationRole,
     #[holder(use_place_holder)]
     pub items: Vec<ClassificationItem>,
@@ -10654,6 +10743,7 @@ pub struct AppliedClassificationAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedContractAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "contract_assignment")]
     pub assigned_contract: Contract,
     #[holder(use_place_holder)]
     pub items: Vec<ContractItem>,
@@ -10664,8 +10754,10 @@ pub struct AppliedContractAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedDateAndTimeAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "date_and_time_assignment")]
     pub assigned_date_and_time: DateAndTimeAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "date_and_time_assignment")]
     pub role: DateTimeRole,
     #[holder(use_place_holder)]
     pub items: Vec<DateAndTimeItem>,
@@ -10676,8 +10768,10 @@ pub struct AppliedDateAndTimeAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedDateAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "date_assignment")]
     pub assigned_date: DateAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "date_assignment")]
     pub role: DateRole,
     #[holder(use_place_holder)]
     pub items: Vec<DateItem>,
@@ -10688,8 +10782,10 @@ pub struct AppliedDateAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedDocumentReference {
     #[holder(use_place_holder)]
+    #[holder(supertype = "document_reference")]
     pub assigned_document: DocumentAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "document_reference")]
     pub source: Label,
     #[holder(use_place_holder)]
     pub items: Vec<DocumentReferenceItem>,
@@ -10700,8 +10796,10 @@ pub struct AppliedDocumentReference {
 #[holder(generate_deserialize)]
 pub struct AppliedDocumentUsageConstraintAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "document_usage_constraint_assignment")]
     pub assigned_document_usage: DocumentUsageConstraint,
     #[holder(use_place_holder)]
+    #[holder(supertype = "document_usage_constraint_assignment")]
     pub role: DocumentUsageRole,
     #[holder(use_place_holder)]
     pub items: Vec<DocumentReferenceItem>,
@@ -10723,6 +10821,7 @@ pub enum AppliedDocumentUsageConstraintAssignmentAny {
 #[holder(generate_deserialize)]
 pub struct AppliedEffectivityAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "effectivity_assignment")]
     pub assigned_effectivity: EffectivityAny,
     #[holder(use_place_holder)]
     pub items: Vec<EffectivityItem>,
@@ -10733,8 +10832,10 @@ pub struct AppliedEffectivityAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedEventOccurrenceAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "event_occurrence_assignment")]
     pub assigned_event_occurrence: EventOccurrenceAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "event_occurrence_assignment")]
     pub role: EventOccurrenceRole,
     #[holder(use_place_holder)]
     pub items: Vec<EventOccurrenceItem>,
@@ -10745,10 +10846,13 @@ pub struct AppliedEventOccurrenceAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedExternalIdentificationAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "identification_assignment")]
     pub assigned_id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "identification_assignment")]
     pub role: IdentificationRole,
     #[holder(use_place_holder)]
+    #[holder(supertype = "external_identification_assignment")]
     pub source: ExternalSourceAny,
     #[holder(use_place_holder)]
     pub items: Vec<ExternalIdentificationItem>,
@@ -10759,6 +10863,7 @@ pub struct AppliedExternalIdentificationAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedGroupAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group_assignment")]
     pub assigned_group: GroupAny,
     #[holder(use_place_holder)]
     pub items: Vec<GroupableItem>,
@@ -10769,8 +10874,10 @@ pub struct AppliedGroupAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedIdentificationAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "identification_assignment")]
     pub assigned_id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "identification_assignment")]
     pub role: IdentificationRole,
     #[holder(use_place_holder)]
     pub items: Vec<IdentificationItem>,
@@ -10781,6 +10888,7 @@ pub struct AppliedIdentificationAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedNameAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "name_assignment")]
     pub assigned_name: Label,
     #[holder(use_place_holder)]
     pub item: NameItem,
@@ -10791,8 +10899,10 @@ pub struct AppliedNameAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedOrganizationAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "organization_assignment")]
     pub assigned_organization: Organization,
     #[holder(use_place_holder)]
+    #[holder(supertype = "organization_assignment")]
     pub role: OrganizationRole,
     #[holder(use_place_holder)]
     pub items: Vec<OrganizationItem>,
@@ -10803,8 +10913,10 @@ pub struct AppliedOrganizationAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedOrganizationalProjectAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "organizational_project_assignment")]
     pub assigned_organizational_project: OrganizationalProject,
     #[holder(use_place_holder)]
+    #[holder(supertype = "organizational_project_assignment")]
     pub role: OrganizationalProjectRole,
     #[holder(use_place_holder)]
     pub items: Vec<ProjectItem>,
@@ -10815,8 +10927,10 @@ pub struct AppliedOrganizationalProjectAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedPersonAndOrganizationAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "person_and_organization_assignment")]
     pub assigned_person_and_organization: PersonAndOrganization,
     #[holder(use_place_holder)]
+    #[holder(supertype = "person_and_organization_assignment")]
     pub role: PersonAndOrganizationRole,
     #[holder(use_place_holder)]
     pub items: Vec<PersonAndOrganizationItem>,
@@ -10835,6 +10949,7 @@ pub struct AppliedPresentedItem {
 #[holder(generate_deserialize)]
 pub struct AppliedSecurityClassificationAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "security_classification_assignment")]
     pub assigned_security_classification: SecurityClassification,
     #[holder(use_place_holder)]
     pub items: Vec<SecurityClassificationItem>,
@@ -10845,8 +10960,10 @@ pub struct AppliedSecurityClassificationAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedTimeIntervalAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "time_interval_assignment")]
     pub assigned_time_interval: TimeIntervalAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "time_interval_assignment")]
     pub role: TimeIntervalRole,
     #[holder(use_place_holder)]
     pub items: Vec<TimeIntervalItem>,
@@ -10857,8 +10974,10 @@ pub struct AppliedTimeIntervalAssignment {
 #[holder(generate_deserialize)]
 pub struct AppliedUsageRight {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_assignment")]
     pub assigned_action: ActionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "applied_action_assignment")]
     pub items: Vec<ActionItems>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10967,8 +11086,10 @@ pub enum AreaInSetAny {
 #[holder(generate_deserialize)]
 pub struct AreaMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10977,6 +11098,7 @@ pub struct AreaMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct AreaUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -10985,14 +11107,19 @@ pub struct AreaUnit {
 #[holder(generate_deserialize)]
 pub struct AssemblyComponentUsage {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
     pub reference_designator: Option<Identifier>,
@@ -11032,6 +11159,7 @@ pub struct AssemblyComponentUsageSubstitute {
 #[holder(generate_deserialize)]
 pub struct AssignedRequirement {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group_assignment")]
     pub assigned_group: GroupAny,
     #[holder(use_place_holder)]
     pub items: Vec<ProductDefinitionAny>,
@@ -11042,8 +11170,10 @@ pub struct AssignedRequirement {
 #[holder(generate_deserialize)]
 pub struct AtomicFormula {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -11063,16 +11193,22 @@ pub enum AtomicFormulaAny {
 #[holder(generate_deserialize)]
 pub struct AttributeAssertion {
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub definition: CharacterizedDefinition,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition_representation")]
     pub used_representation: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11104,10 +11240,13 @@ pub enum AttributeClassificationAssignmentAny {
 #[holder(generate_deserialize)]
 pub struct AttributeLanguageAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "attribute_classification_assignment")]
     pub assigned_class: GroupAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "attribute_classification_assignment")]
     pub attribute_name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "attribute_classification_assignment")]
     pub role: ClassificationRole,
     #[holder(use_place_holder)]
     pub items: Vec<AttributeLanguageItem>,
@@ -11149,6 +11288,7 @@ pub struct AttributeValueRole {
 #[holder(generate_deserialize)]
 pub struct AuxiliaryGeometricRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11157,8 +11297,10 @@ pub struct AuxiliaryGeometricRepresentationItem {
 #[holder(generate_deserialize)]
 pub struct Axis1Placement {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "placement")]
     pub location: CartesianPoint,
     #[holder(use_place_holder)]
     pub axis: Option<Direction>,
@@ -11169,8 +11311,10 @@ pub struct Axis1Placement {
 #[holder(generate_deserialize)]
 pub struct Axis2Placement2D {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "placement")]
     pub location: CartesianPoint,
     #[holder(use_place_holder)]
     pub ref_direction: Option<Direction>,
@@ -11181,8 +11325,10 @@ pub struct Axis2Placement2D {
 #[holder(generate_deserialize)]
 pub struct Axis2Placement3D {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "placement")]
     pub location: CartesianPoint,
     #[holder(use_place_holder)]
     pub axis: Option<Direction>,
@@ -11195,6 +11341,7 @@ pub struct Axis2Placement3D {
 #[holder(generate_deserialize)]
 pub struct BSplineCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     pub degree: i64,
     #[holder(use_place_holder)]
@@ -11226,12 +11373,18 @@ pub enum BSplineCurveAny {
 #[holder(generate_deserialize)]
 pub struct BSplineCurveWithKnots {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "b_spline_curve")]
     pub degree: i64,
     #[holder(use_place_holder)]
+    #[holder(supertype = "b_spline_curve")]
     pub control_points_list: Vec<CartesianPoint>,
+    #[holder(supertype = "b_spline_curve")]
     pub curve_form: BSplineCurveForm,
+    #[holder(supertype = "b_spline_curve")]
     pub closed_curve: Logical,
+    #[holder(supertype = "b_spline_curve")]
     pub self_intersect: Logical,
     pub knot_multiplicities: Vec<i64>,
     #[holder(use_place_holder)]
@@ -11244,6 +11397,7 @@ pub struct BSplineCurveWithKnots {
 #[holder(generate_deserialize)]
 pub struct BSplineSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     pub u_degree: i64,
     pub v_degree: i64,
@@ -11277,14 +11431,22 @@ pub enum BSplineSurfaceAny {
 #[holder(generate_deserialize)]
 pub struct BSplineSurfaceWithKnots {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "b_spline_surface")]
     pub u_degree: i64,
+    #[holder(supertype = "b_spline_surface")]
     pub v_degree: i64,
     #[holder(use_place_holder)]
+    #[holder(supertype = "b_spline_surface")]
     pub control_points_list: Vec<Vec<CartesianPoint>>,
+    #[holder(supertype = "b_spline_surface")]
     pub surface_form: BSplineSurfaceForm,
+    #[holder(supertype = "b_spline_surface")]
     pub u_closed: Logical,
+    #[holder(supertype = "b_spline_surface")]
     pub v_closed: Logical,
+    #[holder(supertype = "b_spline_surface")]
     pub self_intersect: Logical,
     pub u_multiplicities: Vec<i64>,
     pub v_multiplicities: Vec<i64>,
@@ -11300,12 +11462,16 @@ pub struct BSplineSurfaceWithKnots {
 #[holder(generate_deserialize)]
 pub struct BackChainingRule {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11314,16 +11480,22 @@ pub struct BackChainingRule {
 #[holder(generate_deserialize)]
 pub struct BackChainingRuleBody {
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub definition: CharacterizedDefinition,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition_representation")]
     pub used_representation: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11340,10 +11512,13 @@ pub struct BackgroundColour {
 #[holder(generate_deserialize)]
 pub struct BeveledSheetRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11352,12 +11527,18 @@ pub struct BeveledSheetRepresentation {
 #[holder(generate_deserialize)]
 pub struct BezierCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "b_spline_curve")]
     pub degree: i64,
     #[holder(use_place_holder)]
+    #[holder(supertype = "b_spline_curve")]
     pub control_points_list: Vec<CartesianPoint>,
+    #[holder(supertype = "b_spline_curve")]
     pub curve_form: BSplineCurveForm,
+    #[holder(supertype = "b_spline_curve")]
     pub closed_curve: Logical,
+    #[holder(supertype = "b_spline_curve")]
     pub self_intersect: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11366,14 +11547,22 @@ pub struct BezierCurve {
 #[holder(generate_deserialize)]
 pub struct BezierSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "b_spline_surface")]
     pub u_degree: i64,
+    #[holder(supertype = "b_spline_surface")]
     pub v_degree: i64,
     #[holder(use_place_holder)]
+    #[holder(supertype = "b_spline_surface")]
     pub control_points_list: Vec<Vec<CartesianPoint>>,
+    #[holder(supertype = "b_spline_surface")]
     pub surface_form: BSplineSurfaceForm,
+    #[holder(supertype = "b_spline_surface")]
     pub u_closed: Logical,
+    #[holder(supertype = "b_spline_surface")]
     pub v_closed: Logical,
+    #[holder(supertype = "b_spline_surface")]
     pub self_intersect: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11401,6 +11590,7 @@ pub enum BinaryGenericExpressionAny {
 #[holder(generate_deserialize)]
 pub struct BinaryNumericExpression {
     #[holder(use_place_holder)]
+    #[holder(supertype = "binary_generic_expression")]
     pub operands: Vec<GenericExpressionAny>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -11418,6 +11608,7 @@ pub enum BinaryNumericExpressionAny {
 #[holder(generate_deserialize)]
 pub struct BinaryRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     pub binary_value: Binary,
 }
@@ -11436,6 +11627,7 @@ pub enum BinaryRepresentationItemAny {
 #[holder(generate_deserialize)]
 pub struct Block {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub position: Axis2Placement3D,
@@ -11488,7 +11680,9 @@ pub enum BooleanLiteralAny {
 #[holder(generate_deserialize)]
 pub struct BooleanRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "boolean_literal")]
     pub the_value: bool,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11497,6 +11691,7 @@ pub struct BooleanRepresentationItem {
 #[holder(generate_deserialize)]
 pub struct BooleanResult {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     pub operator: BooleanOperator,
     #[holder(use_place_holder)]
@@ -11510,9 +11705,12 @@ pub struct BooleanResult {
 #[holder(generate_deserialize)]
 pub struct BoundaryCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "composite_curve")]
     pub segments: Vec<CompositeCurveSegmentAny>,
+    #[holder(supertype = "composite_curve")]
     pub self_intersect: Logical,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -11530,6 +11728,7 @@ pub enum BoundaryCurveAny {
 #[holder(generate_deserialize)]
 pub struct BoundedCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -11557,10 +11756,13 @@ pub enum BoundedCurveAny {
 #[holder(generate_deserialize)]
 pub struct BoundedPcurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "pcurve")]
     pub basis_surface: SurfaceAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "pcurve")]
     pub reference_to_curve: DefinitionalRepresentation,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11569,6 +11771,7 @@ pub struct BoundedPcurve {
 #[holder(generate_deserialize)]
 pub struct BoundedSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -11592,11 +11795,15 @@ pub enum BoundedSurfaceAny {
 #[holder(generate_deserialize)]
 pub struct BoundedSurfaceCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "surface_curve")]
     pub curve_3d: CurveAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "surface_curve")]
     pub associated_geometry: Vec<PcurveOrSurface>,
+    #[holder(supertype = "surface_curve")]
     pub master_representation: PreferredSurfaceCurveRepresentation,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11619,9 +11826,12 @@ pub struct BoxDomain {
 #[holder(generate_deserialize)]
 pub struct BoxedHalfSpace {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "half_space_solid")]
     pub base_surface: SurfaceAny,
+    #[holder(supertype = "half_space_solid")]
     pub agreement_flag: bool,
     #[holder(use_place_holder)]
     pub enclosure: BoxDomain,
@@ -11632,14 +11842,19 @@ pub struct BoxedHalfSpace {
 #[holder(generate_deserialize)]
 pub struct BreakdownContext {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -11659,6 +11874,7 @@ pub enum BreakdownContextAny {
 #[holder(generate_deserialize)]
 pub struct BreakdownElementGroupAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group_assignment")]
     pub assigned_group: GroupAny,
     #[holder(use_place_holder)]
     pub items: Vec<ProductDefinitionOrBreakdownElementUsage>,
@@ -11669,8 +11885,10 @@ pub struct BreakdownElementGroupAssignment {
 #[holder(generate_deserialize)]
 pub struct BreakdownElementRealization {
     #[holder(use_place_holder)]
+    #[holder(supertype = "characterized_object")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "characterized_object")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11679,14 +11897,19 @@ pub struct BreakdownElementRealization {
 #[holder(generate_deserialize)]
 pub struct BreakdownElementUsage {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -11706,14 +11929,19 @@ pub enum BreakdownElementUsageAny {
 #[holder(generate_deserialize)]
 pub struct BreakdownOf {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11722,8 +11950,10 @@ pub struct BreakdownOf {
 #[holder(generate_deserialize)]
 pub struct BrepWithVoids {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "manifold_solid_brep")]
     pub outer: ClosedShellAny,
     #[holder(use_place_holder)]
     pub voids: Vec<OrientedClosedShell>,
@@ -11734,7 +11964,9 @@ pub struct BrepWithVoids {
 #[holder(generate_deserialize)]
 pub struct BytesRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "binary_representation_item")]
     pub binary_value: Binary,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -11752,6 +11984,7 @@ pub enum BytesRepresentationItemAny {
 #[holder(generate_deserialize)]
 pub struct CalendarDate {
     #[holder(use_place_holder)]
+    #[holder(supertype = "date")]
     pub year_component: YearNumber,
     #[holder(use_place_holder)]
     pub day_component: DayInMonthNumber,
@@ -11764,10 +11997,13 @@ pub struct CalendarDate {
 #[holder(generate_deserialize)]
 pub struct CameraImage {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_source: RepresentationMapAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_target: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -11785,10 +12021,13 @@ pub enum CameraImageAny {
 #[holder(generate_deserialize)]
 pub struct CameraImage3DWithScale {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_source: RepresentationMapAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_target: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11797,6 +12036,7 @@ pub struct CameraImage3DWithScale {
 #[holder(generate_deserialize)]
 pub struct CameraModel {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -11814,6 +12054,7 @@ pub enum CameraModelAny {
 #[holder(generate_deserialize)]
 pub struct CameraModelD3 {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub view_reference_system: Axis2Placement3D,
@@ -11839,10 +12080,13 @@ pub enum CameraModelD3Any {
 #[holder(generate_deserialize)]
 pub struct CameraModelD3MultiClipping {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "camera_model_d3")]
     pub view_reference_system: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "camera_model_d3")]
     pub perspective_of_volume: ViewVolume,
     #[holder(use_place_holder)]
     pub shape_clipping: Vec<CameraModelD3MultiClippingInterectionSelect>,
@@ -11853,6 +12097,7 @@ pub struct CameraModelD3MultiClipping {
 #[holder(generate_deserialize)]
 pub struct CameraModelD3MultiClippingIntersection {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub shape_clipping: Vec<CameraModelD3MultiClippingInterectionSelect>,
@@ -11863,6 +12108,7 @@ pub struct CameraModelD3MultiClippingIntersection {
 #[holder(generate_deserialize)]
 pub struct CameraModelD3MultiClippingUnion {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub shape_clipping: Vec<CameraModelD3MultiClippingUnionSelect>,
@@ -11873,10 +12119,13 @@ pub struct CameraModelD3MultiClippingUnion {
 #[holder(generate_deserialize)]
 pub struct CameraModelD3WithHlhsr {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "camera_model_d3")]
     pub view_reference_system: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "camera_model_d3")]
     pub perspective_of_volume: ViewVolume,
     pub hidden_line_surface_removal: bool,
 }
@@ -11886,10 +12135,13 @@ pub struct CameraModelD3WithHlhsr {
 #[holder(generate_deserialize)]
 pub struct CameraModelWithLightSources {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "camera_model_d3")]
     pub view_reference_system: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "camera_model_d3")]
     pub perspective_of_volume: ViewVolume,
     #[holder(use_place_holder)]
     pub sources: Vec<LightSourceAny>,
@@ -11900,8 +12152,10 @@ pub struct CameraModelWithLightSources {
 #[holder(generate_deserialize)]
 pub struct CameraUsage {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_map")]
     pub mapping_origin: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_map")]
     pub mapped_representation: RepresentationAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11910,8 +12164,10 @@ pub struct CameraUsage {
 #[holder(generate_deserialize)]
 pub struct CapacitanceMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11920,6 +12176,7 @@ pub struct CapacitanceMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct CapacitanceUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -11937,6 +12194,7 @@ pub enum CapacitanceUnitAny {
 #[holder(generate_deserialize)]
 pub struct CartesianPoint {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub coordinates: Vec<LengthMeasure>,
@@ -11947,8 +12205,10 @@ pub struct CartesianPoint {
 #[holder(generate_deserialize)]
 pub struct CartesianTransformationOperator {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "functionally_defined_transformation")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
     pub axis1: Option<Direction>,
@@ -11975,15 +12235,21 @@ pub enum CartesianTransformationOperatorAny {
 #[holder(generate_deserialize)]
 pub struct CartesianTransformationOperator2D {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "functionally_defined_transformation")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "cartesian_transformation_operator")]
     pub axis1: Option<Direction>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "cartesian_transformation_operator")]
     pub axis2: Option<Direction>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "cartesian_transformation_operator")]
     pub local_origin: CartesianPoint,
+    #[holder(supertype = "cartesian_transformation_operator")]
     pub scale: Option<f64>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -11992,15 +12258,21 @@ pub struct CartesianTransformationOperator2D {
 #[holder(generate_deserialize)]
 pub struct CartesianTransformationOperator3D {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "functionally_defined_transformation")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "cartesian_transformation_operator")]
     pub axis1: Option<Direction>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "cartesian_transformation_operator")]
     pub axis2: Option<Direction>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "cartesian_transformation_operator")]
     pub local_origin: CartesianPoint,
+    #[holder(supertype = "cartesian_transformation_operator")]
     pub scale: Option<f64>,
     #[holder(use_place_holder)]
     pub axis3: Option<Direction>,
@@ -12011,6 +12283,7 @@ pub struct CartesianTransformationOperator3D {
 #[holder(generate_deserialize)]
 pub struct CcDesignApproval {
     #[holder(use_place_holder)]
+    #[holder(supertype = "approval_assignment")]
     pub assigned_approval: Approval,
     #[holder(use_place_holder)]
     pub items: Vec<ApprovedItem>,
@@ -12021,6 +12294,7 @@ pub struct CcDesignApproval {
 #[holder(generate_deserialize)]
 pub struct CcDesignCertification {
     #[holder(use_place_holder)]
+    #[holder(supertype = "certification_assignment")]
     pub assigned_certification: Certification,
     #[holder(use_place_holder)]
     pub items: Vec<CertifiedItem>,
@@ -12031,6 +12305,7 @@ pub struct CcDesignCertification {
 #[holder(generate_deserialize)]
 pub struct CcDesignContract {
     #[holder(use_place_holder)]
+    #[holder(supertype = "contract_assignment")]
     pub assigned_contract: Contract,
     #[holder(use_place_holder)]
     pub items: Vec<ContractedItem>,
@@ -12041,8 +12316,10 @@ pub struct CcDesignContract {
 #[holder(generate_deserialize)]
 pub struct CcDesignDateAndTimeAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "date_and_time_assignment")]
     pub assigned_date_and_time: DateAndTimeAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "date_and_time_assignment")]
     pub role: DateTimeRole,
     #[holder(use_place_holder)]
     pub items: Vec<DateTimeItem>,
@@ -12053,8 +12330,10 @@ pub struct CcDesignDateAndTimeAssignment {
 #[holder(generate_deserialize)]
 pub struct CcDesignPersonAndOrganizationAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "person_and_organization_assignment")]
     pub assigned_person_and_organization: PersonAndOrganization,
     #[holder(use_place_holder)]
+    #[holder(supertype = "person_and_organization_assignment")]
     pub role: PersonAndOrganizationRole,
     #[holder(use_place_holder)]
     pub items: Vec<CcPersonOrganizationItem>,
@@ -12065,6 +12344,7 @@ pub struct CcDesignPersonAndOrganizationAssignment {
 #[holder(generate_deserialize)]
 pub struct CcDesignSecurityClassification {
     #[holder(use_place_holder)]
+    #[holder(supertype = "security_classification_assignment")]
     pub assigned_security_classification: SecurityClassification,
     #[holder(use_place_holder)]
     pub items: Vec<CcClassifiedItem>,
@@ -12075,8 +12355,10 @@ pub struct CcDesignSecurityClassification {
 #[holder(generate_deserialize)]
 pub struct CcDesignSpecificationReference {
     #[holder(use_place_holder)]
+    #[holder(supertype = "document_reference")]
     pub assigned_document: DocumentAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "document_reference")]
     pub source: Label,
     #[holder(use_place_holder)]
     pub items: Vec<CcSpecifiedItem>,
@@ -12087,8 +12369,10 @@ pub struct CcDesignSpecificationReference {
 #[holder(generate_deserialize)]
 pub struct CelsiusTemperatureMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12097,11 +12381,15 @@ pub struct CelsiusTemperatureMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct CentreOfSymmetry {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12149,6 +12437,7 @@ pub struct CertificationType {
 #[holder(generate_deserialize)]
 pub struct Change {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_assignment")]
     pub assigned_action: ActionAny,
     #[holder(use_place_holder)]
     pub items: Vec<WorkItem>,
@@ -12159,6 +12448,7 @@ pub struct Change {
 #[holder(generate_deserialize)]
 pub struct ChangeRequest {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_request_assignment")]
     pub assigned_action_request: VersionedActionRequest,
     #[holder(use_place_holder)]
     pub items: Vec<ChangeRequestItem>,
@@ -12195,10 +12485,13 @@ pub struct CharacterGlyphStyleStroke {
 #[holder(generate_deserialize)]
 pub struct CharacterGlyphSymbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
     #[holder(use_place_holder)]
     pub character_box: PlanarExtentAny,
@@ -12222,14 +12515,19 @@ pub enum CharacterGlyphSymbolAny {
 #[holder(generate_deserialize)]
 pub struct CharacterGlyphSymbolOutline {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "character_glyph_symbol")]
     pub character_box: PlanarExtentAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "character_glyph_symbol")]
     pub baseline_ratio: RatioMeasure,
     #[holder(use_place_holder)]
     pub outlines: Vec<AnnotationFillArea>,
@@ -12240,14 +12538,19 @@ pub struct CharacterGlyphSymbolOutline {
 #[holder(generate_deserialize)]
 pub struct CharacterGlyphSymbolStroke {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "character_glyph_symbol")]
     pub character_box: PlanarExtentAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "character_glyph_symbol")]
     pub baseline_ratio: RatioMeasure,
     #[holder(use_place_holder)]
     pub strokes: Vec<CurveAny>,
@@ -12258,10 +12561,13 @@ pub struct CharacterGlyphSymbolStroke {
 #[holder(generate_deserialize)]
 pub struct CharacteristicDataColumnHeader {
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12270,12 +12576,16 @@ pub struct CharacteristicDataColumnHeader {
 #[holder(generate_deserialize)]
 pub struct CharacteristicDataColumnHeaderLink {
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property_relationship")]
     pub relating_property: GeneralPropertyAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property_relationship")]
     pub related_property: GeneralPropertyAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12284,10 +12594,13 @@ pub struct CharacteristicDataColumnHeaderLink {
 #[holder(generate_deserialize)]
 pub struct CharacteristicDataTableHeader {
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12296,12 +12609,16 @@ pub struct CharacteristicDataTableHeader {
 #[holder(generate_deserialize)]
 pub struct CharacteristicDataTableHeaderDecomposition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property_relationship")]
     pub relating_property: GeneralPropertyAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property_relationship")]
     pub related_property: GeneralPropertyAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12310,8 +12627,10 @@ pub struct CharacteristicDataTableHeaderDecomposition {
 #[holder(generate_deserialize)]
 pub struct CharacteristicType {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12320,8 +12639,10 @@ pub struct CharacteristicType {
 #[holder(generate_deserialize)]
 pub struct CharacterizedClass {
     #[holder(use_place_holder)]
+    #[holder(supertype = "characterized_object")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "characterized_object")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12367,8 +12688,10 @@ pub enum CharacterizedObjectAny {
 #[holder(generate_deserialize)]
 pub struct Circle {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "conic")]
     pub position: Axis2Placement,
     #[holder(use_place_holder)]
     pub radius: PositiveLengthMeasure,
@@ -12379,14 +12702,19 @@ pub struct Circle {
 #[holder(generate_deserialize)]
 pub struct CircularRunoutTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance_with_datum_reference")]
     pub datum_system: Vec<DatumReferenceAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12395,8 +12723,10 @@ pub struct CircularRunoutTolerance {
 #[holder(generate_deserialize)]
 pub struct Class {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -12420,8 +12750,10 @@ pub enum ClassAny {
 #[holder(generate_deserialize)]
 pub struct ClassByExtension {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12430,8 +12762,10 @@ pub struct ClassByExtension {
 #[holder(generate_deserialize)]
 pub struct ClassByIntension {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12440,8 +12774,10 @@ pub struct ClassByIntension {
 #[holder(generate_deserialize)]
 pub struct ClassSystem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12450,8 +12786,10 @@ pub struct ClassSystem {
 #[holder(generate_deserialize)]
 pub struct ClassUsageEffectivityContextAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "effectivity_context_assignment")]
     pub assigned_effectivity_assignment: EffectivityAssignmentAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "effectivity_context_assignment")]
     pub role: EffectivityContextRole,
     #[holder(use_place_holder)]
     pub items: Vec<ClassUsageEffectivityContextItem>,
@@ -12491,8 +12829,10 @@ pub struct ClassificationRole {
 #[holder(generate_deserialize)]
 pub struct ClosedShell {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "connected_face_set")]
     pub cfs_faces: Vec<FaceAny>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -12510,14 +12850,19 @@ pub enum ClosedShellAny {
 #[holder(generate_deserialize)]
 pub struct CoaxialityTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance_with_datum_reference")]
     pub datum_system: Vec<DatumReferenceAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12544,6 +12889,7 @@ pub enum ColourAny {
 #[holder(generate_deserialize)]
 pub struct ColourRgb {
     #[holder(use_place_holder)]
+    #[holder(supertype = "colour_specification")]
     pub name: Label,
     pub red: f64,
     pub green: f64,
@@ -12574,13 +12920,18 @@ pub enum ColourSpecificationAny {
 #[holder(generate_deserialize)]
 pub struct CommonDatum {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
     #[holder(use_place_holder)]
+    #[holder(supertype = "datum")]
     pub identification: Identifier,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12589,6 +12940,7 @@ pub struct CommonDatum {
 #[holder(generate_deserialize)]
 pub struct ComparisonExpression {
     #[holder(use_place_holder)]
+    #[holder(supertype = "binary_generic_expression")]
     pub operands: Vec<GenericExpressionAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12597,8 +12949,10 @@ pub struct ComparisonExpression {
 #[holder(generate_deserialize)]
 pub struct ComplexClause {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -12618,8 +12972,10 @@ pub enum ComplexClauseAny {
 #[holder(generate_deserialize)]
 pub struct ComplexConjunctiveClause {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12628,8 +12984,10 @@ pub struct ComplexConjunctiveClause {
 #[holder(generate_deserialize)]
 pub struct ComplexDisjunctiveClause {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12638,14 +12996,19 @@ pub struct ComplexDisjunctiveClause {
 #[holder(generate_deserialize)]
 pub struct ComplexShelledSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shelled_solid")]
     pub deleted_face_set: Vec<FaceSurfaceAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shelled_solid")]
     pub thickness: LengthMeasure,
     #[holder(use_place_holder)]
     pub thickened_face_list: Vec<Vec<FaceSurfaceAny>>,
@@ -12658,12 +13021,16 @@ pub struct ComplexShelledSolid {
 #[holder(generate_deserialize)]
 pub struct CompositeAssemblyDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12672,12 +13039,16 @@ pub struct CompositeAssemblyDefinition {
 #[holder(generate_deserialize)]
 pub struct CompositeAssemblySequenceDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12686,12 +13057,16 @@ pub struct CompositeAssemblySequenceDefinition {
 #[holder(generate_deserialize)]
 pub struct CompositeAssemblyTable {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12700,6 +13075,7 @@ pub struct CompositeAssemblyTable {
 #[holder(generate_deserialize)]
 pub struct CompositeCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub segments: Vec<CompositeCurveSegmentAny>,
@@ -12720,9 +13096,12 @@ pub enum CompositeCurveAny {
 #[holder(generate_deserialize)]
 pub struct CompositeCurveOnSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "composite_curve")]
     pub segments: Vec<CompositeCurveSegmentAny>,
+    #[holder(supertype = "composite_curve")]
     pub self_intersect: Logical,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -12759,8 +13138,10 @@ pub enum CompositeCurveSegmentAny {
 #[holder(generate_deserialize)]
 pub struct CompositeMaterialDesignation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "material_designation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "material_designation")]
     pub definitions: Vec<CharacterizedDefinition>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12769,11 +13150,15 @@ pub struct CompositeMaterialDesignation {
 #[holder(generate_deserialize)]
 pub struct CompositeShapeAspect {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -12791,10 +13176,13 @@ pub enum CompositeShapeAspectAny {
 #[holder(generate_deserialize)]
 pub struct CompositeSheetRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12803,6 +13191,7 @@ pub struct CompositeSheetRepresentation {
 #[holder(generate_deserialize)]
 pub struct CompositeText {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub collected_text: Vec<TextOrCharacter>,
@@ -12828,8 +13217,10 @@ pub enum CompositeTextAny {
 #[holder(generate_deserialize)]
 pub struct CompositeTextWithAssociatedCurves {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "composite_text")]
     pub collected_text: Vec<TextOrCharacter>,
     #[holder(use_place_holder)]
     pub associated_curves: Vec<CurveAny>,
@@ -12840,8 +13231,10 @@ pub struct CompositeTextWithAssociatedCurves {
 #[holder(generate_deserialize)]
 pub struct CompositeTextWithBlankingBox {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "composite_text")]
     pub collected_text: Vec<TextOrCharacter>,
     #[holder(use_place_holder)]
     pub blanking: PlanarBox,
@@ -12852,8 +13245,10 @@ pub struct CompositeTextWithBlankingBox {
 #[holder(generate_deserialize)]
 pub struct CompositeTextWithDelineation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "composite_text")]
     pub collected_text: Vec<TextOrCharacter>,
     #[holder(use_place_holder)]
     pub delineation: TextDelineation,
@@ -12864,8 +13259,10 @@ pub struct CompositeTextWithDelineation {
 #[holder(generate_deserialize)]
 pub struct CompositeTextWithExtent {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "composite_text")]
     pub collected_text: Vec<TextOrCharacter>,
     #[holder(use_place_holder)]
     pub extent: PlanarExtentAny,
@@ -12876,6 +13273,7 @@ pub struct CompositeTextWithExtent {
 #[holder(generate_deserialize)]
 pub struct CompoundRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub item_element: CompoundItemDefinition,
@@ -12917,10 +13315,13 @@ pub enum CompoundRepresentationItemAny {
 #[holder(generate_deserialize)]
 pub struct CompoundShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12929,14 +13330,19 @@ pub struct CompoundShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct ConcentricityTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance_with_datum_reference")]
     pub datum_system: Vec<DatumReferenceAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -12978,12 +13384,16 @@ pub enum ConceptFeatureRelationshipAny {
 #[holder(generate_deserialize)]
 pub struct ConceptFeatureRelationshipWithCondition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "concept_feature_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "concept_feature_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "concept_feature_relationship")]
     pub relating_product_concept_feature: ProductConceptFeatureAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "concept_feature_relationship")]
     pub related_product_concept_feature: ProductConceptFeatureAny,
     #[holder(use_place_holder)]
     pub conditional_operator: ConceptFeatureOperator,
@@ -12994,10 +13404,13 @@ pub struct ConceptFeatureRelationshipWithCondition {
 #[holder(generate_deserialize)]
 pub struct ConditionalConceptFeature {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_concept_feature")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_concept_feature")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_concept_feature")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
     pub condition: ConceptFeatureRelationshipWithCondition,
@@ -13017,8 +13430,10 @@ pub enum ConditionalConceptFeatureAny {
 #[holder(generate_deserialize)]
 pub struct ConductanceMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13027,6 +13442,7 @@ pub struct ConductanceMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct ConductanceUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -13044,14 +13460,19 @@ pub enum ConductanceUnitAny {
 #[holder(generate_deserialize)]
 pub struct ConfigurableItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub item_concept: ProductConceptAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub purpose: Option<Label>,
     #[holder(use_place_holder)]
     pub item_concept_feature: Vec<ProductConceptFeatureAssociation>,
@@ -13081,8 +13502,10 @@ pub struct ConfigurationDesign {
 #[holder(generate_deserialize)]
 pub struct ConfigurationEffectivity {
     #[holder(use_place_holder)]
+    #[holder(supertype = "effectivity")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_effectivity")]
     pub usage: ProductDefinitionRelationshipAny,
     #[holder(use_place_holder)]
     pub configuration: ConfigurationDesign,
@@ -13120,12 +13543,16 @@ pub enum ConfigurationItemAny {
 #[holder(generate_deserialize)]
 pub struct ConfigurationItemHierarchicalRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item_relationship")]
     pub relating_configuration_item: ConfigurationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item_relationship")]
     pub related_configuration_item: ConfigurationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13159,12 +13586,16 @@ pub enum ConfigurationItemRelationshipAny {
 #[holder(generate_deserialize)]
 pub struct ConfigurationItemRevisionSequence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item_relationship")]
     pub relating_configuration_item: ConfigurationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item_relationship")]
     pub related_configuration_item: ConfigurationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13173,6 +13604,7 @@ pub struct ConfigurationItemRevisionSequence {
 #[holder(generate_deserialize)]
 pub struct ConfiguredEffectivityAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "effectivity_assignment")]
     pub assigned_effectivity: EffectivityAny,
     #[holder(use_place_holder)]
     pub items: Vec<ConfiguredEffectivityItem>,
@@ -13183,8 +13615,10 @@ pub struct ConfiguredEffectivityAssignment {
 #[holder(generate_deserialize)]
 pub struct ConfiguredEffectivityContextAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "effectivity_context_assignment")]
     pub assigned_effectivity_assignment: EffectivityAssignmentAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "effectivity_context_assignment")]
     pub role: EffectivityContextRole,
     #[holder(use_place_holder)]
     pub items: Vec<ConfiguredEffectivityContextItem>,
@@ -13195,6 +13629,7 @@ pub struct ConfiguredEffectivityContextAssignment {
 #[holder(generate_deserialize)]
 pub struct Conic {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub position: Axis2Placement,
@@ -13220,6 +13655,7 @@ pub enum ConicAny {
 #[holder(generate_deserialize)]
 pub struct ConicalSteppedHoleTransition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub transition_number: PositiveInteger,
@@ -13234,8 +13670,10 @@ pub struct ConicalSteppedHoleTransition {
 #[holder(generate_deserialize)]
 pub struct ConicalSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "elementary_surface")]
     pub position: Axis2Placement3D,
     #[holder(use_place_holder)]
     pub radius: LengthMeasure,
@@ -13248,6 +13686,7 @@ pub struct ConicalSurface {
 #[holder(generate_deserialize)]
 pub struct ConnectedEdgeSet {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub ces_edges: Vec<EdgeAny>,
@@ -13258,6 +13697,7 @@ pub struct ConnectedEdgeSet {
 #[holder(generate_deserialize)]
 pub struct ConnectedFaceSet {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub cfs_faces: Vec<FaceAny>,
@@ -13281,8 +13721,10 @@ pub enum ConnectedFaceSetAny {
 #[holder(generate_deserialize)]
 pub struct ConnectedFaceSubSet {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "connected_face_set")]
     pub cfs_faces: Vec<FaceAny>,
     #[holder(use_place_holder)]
     pub parent_face_set: ConnectedFaceSetAny,
@@ -13293,10 +13735,13 @@ pub struct ConnectedFaceSubSet {
 #[holder(generate_deserialize)]
 pub struct ConstructiveGeometryRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13305,12 +13750,16 @@ pub struct ConstructiveGeometryRepresentation {
 #[holder(generate_deserialize)]
 pub struct ConstructiveGeometryRepresentationRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_1: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_2: RepresentationAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13319,10 +13768,13 @@ pub struct ConstructiveGeometryRepresentationRelationship {
 #[holder(generate_deserialize)]
 pub struct ContactRatioRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13331,6 +13783,7 @@ pub struct ContactRatioRepresentation {
 #[holder(generate_deserialize)]
 pub struct ContextDependentInvisibility {
     #[holder(use_place_holder)]
+    #[holder(supertype = "invisibility")]
     pub invisible_items: Vec<InvisibleItem>,
     #[holder(use_place_holder)]
     pub presentation_context: InvisibilityContext,
@@ -13341,12 +13794,16 @@ pub struct ContextDependentInvisibility {
 #[holder(generate_deserialize)]
 pub struct ContextDependentOverRidingStyledItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "over_riding_styled_item")]
     pub over_ridden_style: StyledItemAny,
     #[holder(use_place_holder)]
     pub style_context: Vec<StyleContextSelect>,
@@ -13376,6 +13833,7 @@ pub struct ContextDependentShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct ContextDependentUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
     #[holder(use_place_holder)]
     pub name: Label,
@@ -13454,6 +13912,7 @@ pub struct ContractType {
 #[holder(generate_deserialize)]
 pub struct ConversionBasedUnit {
     #[holder(derived)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: Derived<DimensionalExponents>,
     #[holder(use_place_holder)]
     pub name: Label,
@@ -13484,10 +13943,13 @@ pub struct CoordinatedUniversalTimeOffset {
 #[holder(generate_deserialize)]
 pub struct CsgShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13496,6 +13958,7 @@ pub struct CsgShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct CsgSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub tree_root_expression: CsgSelect,
@@ -13506,8 +13969,10 @@ pub struct CsgSolid {
 #[holder(generate_deserialize)]
 pub struct Currency {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
     #[holder(use_place_holder)]
+    #[holder(supertype = "context_dependent_unit")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -13527,8 +13992,10 @@ pub enum CurrencyAny {
 #[holder(generate_deserialize)]
 pub struct CurrencyMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13537,6 +14004,7 @@ pub struct CurrencyMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct Curve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -13568,6 +14036,7 @@ pub enum CurveAny {
 #[holder(generate_deserialize)]
 pub struct CurveBoundedSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub basis_surface: SurfaceAny,
@@ -13581,8 +14050,10 @@ pub struct CurveBoundedSurface {
 #[holder(generate_deserialize)]
 pub struct CurveDimension {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13591,6 +14062,7 @@ pub struct CurveDimension {
 #[holder(generate_deserialize)]
 pub struct CurveReplica {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub parent_curve: CurveAny,
@@ -13675,10 +14147,13 @@ pub struct CurveStyleRendering {
 #[holder(generate_deserialize)]
 pub struct CurveSweptSolidShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13687,8 +14162,10 @@ pub struct CurveSweptSolidShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct CylindricalSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "elementary_surface")]
     pub position: Axis2Placement3D,
     #[holder(use_place_holder)]
     pub radius: PositiveLengthMeasure,
@@ -13699,12 +14176,16 @@ pub struct CylindricalSurface {
 #[holder(generate_deserialize)]
 pub struct CylindricityTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13809,8 +14290,10 @@ pub enum DateAssignmentAny {
 #[holder(generate_deserialize)]
 pub struct DateRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "date")]
     pub year_component: YearNumber,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13827,10 +14310,13 @@ pub struct DateRole {
 #[holder(generate_deserialize)]
 pub struct DateTimeRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "date_and_time")]
     pub date_component: DateAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "date_and_time")]
     pub time_component: LocalTime,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13847,6 +14333,7 @@ pub struct DateTimeRole {
 #[holder(generate_deserialize)]
 pub struct DatedEffectivity {
     #[holder(use_place_holder)]
+    #[holder(supertype = "effectivity")]
     pub id: Identifier,
     #[holder(use_place_holder)]
     pub effectivity_end_date: Option<DateTimeOrEventOccurrence>,
@@ -13859,11 +14346,15 @@ pub struct DatedEffectivity {
 #[holder(generate_deserialize)]
 pub struct Datum {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
     #[holder(use_place_holder)]
     pub identification: Identifier,
@@ -13883,11 +14374,15 @@ pub enum DatumAny {
 #[holder(generate_deserialize)]
 pub struct DatumFeature {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13896,8 +14391,10 @@ pub struct DatumFeature {
 #[holder(generate_deserialize)]
 pub struct DatumFeatureCallout {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13924,11 +14421,15 @@ pub enum DatumReferenceAny {
 #[holder(generate_deserialize)]
 pub struct DatumTarget {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
     #[holder(use_place_holder)]
     pub target_id: Identifier,
@@ -13948,8 +14449,10 @@ pub enum DatumTargetAny {
 #[holder(generate_deserialize)]
 pub struct DatumTargetCallout {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13958,10 +14461,13 @@ pub struct DatumTargetCallout {
 #[holder(generate_deserialize)]
 pub struct DefaultToleranceTable {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13970,8 +14476,10 @@ pub struct DefaultToleranceTable {
 #[holder(generate_deserialize)]
 pub struct DefaultToleranceTableCell {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -13980,6 +14488,7 @@ pub struct DefaultToleranceTableCell {
 #[holder(generate_deserialize)]
 pub struct DefinedSymbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub definition: DefinedSymbolSelect,
@@ -13992,10 +14501,13 @@ pub struct DefinedSymbol {
 #[holder(generate_deserialize)]
 pub struct DefinitionalRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14004,12 +14516,16 @@ pub struct DefinitionalRepresentation {
 #[holder(generate_deserialize)]
 pub struct DefinitionalRepresentationRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_1: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_2: RepresentationAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -14029,12 +14545,16 @@ pub enum DefinitionalRepresentationRelationshipAny {
 #[holder(generate_deserialize)]
 pub struct DefinitionalRepresentationRelationshipWithSameContext {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_1: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_2: RepresentationAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -14054,6 +14574,7 @@ pub enum DefinitionalRepresentationRelationshipWithSameContextAny {
 #[holder(generate_deserialize)]
 pub struct DegeneratePcurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub basis_surface: SurfaceAny,
@@ -14075,12 +14596,16 @@ pub enum DegeneratePcurveAny {
 #[holder(generate_deserialize)]
 pub struct DegenerateToroidalSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "elementary_surface")]
     pub position: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "toroidal_surface")]
     pub major_radius: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "toroidal_surface")]
     pub minor_radius: PositiveLengthMeasure,
     pub select_outer: bool,
 }
@@ -14090,11 +14615,15 @@ pub struct DegenerateToroidalSurface {
 #[holder(generate_deserialize)]
 pub struct DerivedShapeAspect {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -14204,6 +14733,7 @@ pub struct DescriptionAttribute {
 #[holder(generate_deserialize)]
 pub struct DescriptiveRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub description: Text,
@@ -14229,10 +14759,13 @@ pub enum DescriptiveRepresentationItemAny {
 #[holder(generate_deserialize)]
 pub struct DesignContext {
     #[holder(use_place_holder)]
+    #[holder(supertype = "application_context_element")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "application_context_element")]
     pub frame_of_reference: ApplicationContext,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_context")]
     pub life_cycle_stage: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14241,14 +14774,19 @@ pub struct DesignContext {
 #[holder(generate_deserialize)]
 pub struct DesignMakeFromRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14257,8 +14795,10 @@ pub struct DesignMakeFromRelationship {
 #[holder(generate_deserialize)]
 pub struct DiameterDimension {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14267,8 +14807,10 @@ pub struct DiameterDimension {
 #[holder(generate_deserialize)]
 pub struct DielectricConstantMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14277,8 +14819,10 @@ pub struct DielectricConstantMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct DimensionCallout {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14287,12 +14831,16 @@ pub struct DimensionCallout {
 #[holder(generate_deserialize)]
 pub struct DimensionCalloutComponentRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout_relationship")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout_relationship")]
     pub relating_draughting_callout: DraughtingCalloutAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout_relationship")]
     pub related_draughting_callout: DraughtingCalloutAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14301,12 +14849,16 @@ pub struct DimensionCalloutComponentRelationship {
 #[holder(generate_deserialize)]
 pub struct DimensionCalloutRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout_relationship")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout_relationship")]
     pub relating_draughting_callout: DraughtingCalloutAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout_relationship")]
     pub related_draughting_callout: DraughtingCalloutAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14315,10 +14867,13 @@ pub struct DimensionCalloutRelationship {
 #[holder(generate_deserialize)]
 pub struct DimensionCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14327,8 +14882,10 @@ pub struct DimensionCurve {
 #[holder(generate_deserialize)]
 pub struct DimensionCurveDirectedCallout {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -14354,12 +14911,16 @@ pub enum DimensionCurveDirectedCalloutAny {
 #[holder(generate_deserialize)]
 pub struct DimensionCurveTerminator {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "terminator_symbol")]
     pub annotated_curve: AnnotationCurveOccurrenceAny,
     pub role: DimensionExtentUsage,
 }
@@ -14369,12 +14930,16 @@ pub struct DimensionCurveTerminator {
 #[holder(generate_deserialize)]
 pub struct DimensionCurveTerminatorToProjectionCurveAssociativity {
     #[holder(use_place_holder)]
+    #[holder(supertype = "annotation_occurrence_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "annotation_occurrence_relationship")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "annotation_occurrence_relationship")]
     pub relating_annotation_occurrence: AnnotationOccurrenceAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "annotation_occurrence_relationship")]
     pub related_annotation_occurrence: AnnotationOccurrenceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14383,12 +14948,16 @@ pub struct DimensionCurveTerminatorToProjectionCurveAssociativity {
 #[holder(generate_deserialize)]
 pub struct DimensionPair {
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout_relationship")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout_relationship")]
     pub relating_draughting_callout: DraughtingCalloutAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout_relationship")]
     pub related_draughting_callout: DraughtingCalloutAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14407,19 +14976,27 @@ pub struct DimensionRelatedToleranceZoneElement {
 #[holder(generate_deserialize)]
 pub struct DimensionTextAssociativity {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub literal: PresentableText,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub placement: Axis2Placement,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub alignment: TextAlignment,
+    #[holder(supertype = "text_literal")]
     pub path: TextPath,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub font: FontSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_source: RepresentationMapAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_target: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14451,12 +15028,16 @@ pub struct DimensionalExponents {
 #[holder(generate_deserialize)]
 pub struct DimensionalLocation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub relating_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub related_shape_aspect: ShapeAspectAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -14478,12 +15059,16 @@ pub enum DimensionalLocationAny {
 #[holder(generate_deserialize)]
 pub struct DimensionalLocationWithPath {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub relating_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub related_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
     pub path: ShapeAspectAny,
@@ -14517,8 +15102,10 @@ pub enum DimensionalSizeAny {
 #[holder(generate_deserialize)]
 pub struct DimensionalSizeWithPath {
     #[holder(use_place_holder)]
+    #[holder(supertype = "dimensional_size")]
     pub applies_to: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "dimensional_size")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub path: ShapeAspectAny,
@@ -14529,10 +15116,13 @@ pub struct DimensionalSizeWithPath {
 #[holder(generate_deserialize)]
 pub struct DirectedAction {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action")]
     pub chosen_method: ActionMethodAny,
     #[holder(use_place_holder)]
     pub directive: ActionDirective,
@@ -14543,12 +15133,16 @@ pub struct DirectedAction {
 #[holder(generate_deserialize)]
 pub struct DirectedDimensionalLocation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub relating_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub related_shape_aspect: ShapeAspectAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14557,6 +15151,7 @@ pub struct DirectedDimensionalLocation {
 #[holder(generate_deserialize)]
 pub struct Direction {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     pub direction_ratios: Vec<f64>,
 }
@@ -14589,12 +15184,16 @@ pub enum DocumentAny {
 #[holder(generate_deserialize)]
 pub struct DocumentFile {
     #[holder(use_place_holder)]
+    #[holder(supertype = "document")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "document")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "document")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "document")]
     pub kind: DocumentType,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14603,8 +15202,10 @@ pub struct DocumentFile {
 #[holder(generate_deserialize)]
 pub struct DocumentIdentifier {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14613,6 +15214,7 @@ pub struct DocumentIdentifier {
 #[holder(generate_deserialize)]
 pub struct DocumentIdentifierAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group_assignment")]
     pub assigned_group: GroupAny,
     #[holder(use_place_holder)]
     pub items: Vec<DocumentIdentifierAssignedItem>,
@@ -14646,12 +15248,16 @@ pub enum DocumentProductAssociationAny {
 #[holder(generate_deserialize)]
 pub struct DocumentProductEquivalence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "document_product_association")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "document_product_association")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "document_product_association")]
     pub relating_document: DocumentAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "document_product_association")]
     pub related_product: ProductOrFormationOrDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14754,8 +15360,10 @@ pub struct DocumentUsageRole {
 #[holder(generate_deserialize)]
 pub struct DoseEquivalentMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14764,6 +15372,7 @@ pub struct DoseEquivalentMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct DoseEquivalentUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -14781,14 +15390,19 @@ pub enum DoseEquivalentUnitAny {
 #[holder(generate_deserialize)]
 pub struct DoubleOffsetShelledSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shelled_solid")]
     pub deleted_face_set: Vec<FaceSurfaceAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shelled_solid")]
     pub thickness: LengthMeasure,
     #[holder(use_place_holder)]
     pub thickness2: LengthMeasure,
@@ -14799,12 +15413,16 @@ pub struct DoubleOffsetShelledSolid {
 #[holder(generate_deserialize)]
 pub struct DrapedDefinedTransformation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_defined_transformation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_defined_transformation")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_defined_transformation")]
     pub transform_item_1: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_defined_transformation")]
     pub transform_item_2: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14813,10 +15431,13 @@ pub struct DrapedDefinedTransformation {
 #[holder(generate_deserialize)]
 pub struct DraughtingAnnotationOccurrence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14825,6 +15446,7 @@ pub struct DraughtingAnnotationOccurrence {
 #[holder(generate_deserialize)]
 pub struct DraughtingCallout {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub contents: Vec<DraughtingCalloutElement>,
@@ -14889,8 +15511,10 @@ pub enum DraughtingCalloutRelationshipAny {
 #[holder(generate_deserialize)]
 pub struct DraughtingElements {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14899,10 +15523,13 @@ pub struct DraughtingElements {
 #[holder(generate_deserialize)]
 pub struct DraughtingModel {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14911,14 +15538,19 @@ pub struct DraughtingModel {
 #[holder(generate_deserialize)]
 pub struct DraughtingModelItemAssociation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_identified_representation_usage")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_identified_representation_usage")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_identified_representation_usage")]
     pub definition: RepresentedDefinition,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_identified_representation_usage")]
     pub used_representation: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_identified_representation_usage")]
     pub identified_item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14927,6 +15559,7 @@ pub struct DraughtingModelItemAssociation {
 #[holder(generate_deserialize)]
 pub struct DraughtingPreDefinedColour {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14935,6 +15568,7 @@ pub struct DraughtingPreDefinedColour {
 #[holder(generate_deserialize)]
 pub struct DraughtingPreDefinedCurveFont {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14943,6 +15577,7 @@ pub struct DraughtingPreDefinedCurveFont {
 #[holder(generate_deserialize)]
 pub struct DraughtingPreDefinedTextFont {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14951,10 +15586,13 @@ pub struct DraughtingPreDefinedTextFont {
 #[holder(generate_deserialize)]
 pub struct DraughtingSubfigureRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14963,10 +15601,13 @@ pub struct DraughtingSubfigureRepresentation {
 #[holder(generate_deserialize)]
 pub struct DraughtingSymbolRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -14975,17 +15616,24 @@ pub struct DraughtingSymbolRepresentation {
 #[holder(generate_deserialize)]
 pub struct DraughtingTextLiteralWithDelineation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub literal: PresentableText,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub placement: Axis2Placement,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub alignment: TextAlignment,
+    #[holder(supertype = "text_literal")]
     pub path: TextPath,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub font: FontSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal_with_delineation")]
     pub delineation: TextDelineation,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15038,10 +15686,13 @@ pub struct DrawingRevisionSequence {
 #[holder(generate_deserialize)]
 pub struct DrawingSheetRevision {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
     #[holder(use_place_holder)]
     pub revision_identifier: Identifier,
@@ -15052,12 +15703,16 @@ pub struct DrawingSheetRevision {
 #[holder(generate_deserialize)]
 pub struct DrawingSheetRevisionSequence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_1: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_2: RepresentationAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15066,8 +15721,10 @@ pub struct DrawingSheetRevisionSequence {
 #[holder(generate_deserialize)]
 pub struct DrawingSheetRevisionUsage {
     #[holder(use_place_holder)]
+    #[holder(supertype = "area_in_set")]
     pub area: PresentationAreaAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "area_in_set")]
     pub in_set: PresentationSetAny,
     #[holder(use_place_holder)]
     pub sheet_number: Identifier,
@@ -15078,6 +15735,7 @@ pub struct DrawingSheetRevisionUsage {
 #[holder(generate_deserialize)]
 pub struct Edge {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub edge_start: VertexAny,
@@ -15103,6 +15761,7 @@ pub enum EdgeAny {
 #[holder(generate_deserialize)]
 pub struct EdgeBasedWireframeModel {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub ebwm_boundary: Vec<ConnectedEdgeSet>,
@@ -15113,10 +15772,13 @@ pub struct EdgeBasedWireframeModel {
 #[holder(generate_deserialize)]
 pub struct EdgeBasedWireframeShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15125,10 +15787,13 @@ pub struct EdgeBasedWireframeShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct EdgeBlendedSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
     pub blended_edges: Vec<EdgeCurve>,
@@ -15154,10 +15819,13 @@ pub enum EdgeBlendedSolidAny {
 #[holder(generate_deserialize)]
 pub struct EdgeCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "edge")]
     pub edge_start: VertexAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "edge")]
     pub edge_end: VertexAny,
     #[holder(use_place_holder)]
     pub edge_geometry: CurveAny,
@@ -15169,8 +15837,10 @@ pub struct EdgeCurve {
 #[holder(generate_deserialize)]
 pub struct EdgeLoop {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "path")]
     pub edge_list: Vec<OrientedEdge>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15268,8 +15938,10 @@ pub struct EffectivityRelationship {
 #[holder(generate_deserialize)]
 pub struct ElectricChargeMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15278,6 +15950,7 @@ pub struct ElectricChargeMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct ElectricChargeUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -15295,8 +15968,10 @@ pub enum ElectricChargeUnitAny {
 #[holder(generate_deserialize)]
 pub struct ElectricCurrentMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15305,6 +15980,7 @@ pub struct ElectricCurrentMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct ElectricCurrentUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15313,8 +15989,10 @@ pub struct ElectricCurrentUnit {
 #[holder(generate_deserialize)]
 pub struct ElectricPotentialMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15323,6 +16001,7 @@ pub struct ElectricPotentialMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct ElectricPotentialUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -15340,10 +16019,13 @@ pub enum ElectricPotentialUnitAny {
 #[holder(generate_deserialize)]
 pub struct ElementaryBrepShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15352,6 +16034,7 @@ pub struct ElementaryBrepShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct ElementarySurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub position: Axis2Placement3D,
@@ -15379,8 +16062,10 @@ pub enum ElementarySurfaceAny {
 #[holder(generate_deserialize)]
 pub struct Ellipse {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "conic")]
     pub position: Axis2Placement,
     #[holder(use_place_holder)]
     pub semi_axis_1: PositiveLengthMeasure,
@@ -15393,8 +16078,10 @@ pub struct Ellipse {
 #[holder(generate_deserialize)]
 pub struct EnergyMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15403,6 +16090,7 @@ pub struct EnergyMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct EnergyUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -15420,10 +16108,13 @@ pub enum EnergyUnitAny {
 #[holder(generate_deserialize)]
 pub struct EntityAssertion {
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub definition: CharacterizedDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15432,8 +16123,10 @@ pub struct EntityAssertion {
 #[holder(generate_deserialize)]
 pub struct EnumReferencePrefix {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "descriptive_representation_item")]
     pub description: Text,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15452,16 +16145,22 @@ pub struct Environment {
 #[holder(generate_deserialize)]
 pub struct EvaluatedCharacteristic {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_1: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_2: RepresentationAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15470,10 +16169,13 @@ pub struct EvaluatedCharacteristic {
 #[holder(generate_deserialize)]
 pub struct EvaluatedDegeneratePcurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "degenerate_pcurve")]
     pub basis_surface: SurfaceAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "degenerate_pcurve")]
     pub reference_to_curve: DefinitionalRepresentation,
     #[holder(use_place_holder)]
     pub equivalent_point: CartesianPoint,
@@ -15484,12 +16186,16 @@ pub struct EvaluatedDegeneratePcurve {
 #[holder(generate_deserialize)]
 pub struct EvaluationProductDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15562,8 +16268,10 @@ pub struct EventOccurrenceRole {
 #[holder(generate_deserialize)]
 pub struct ExclusiveProductConceptFeatureCategory {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15572,10 +16280,13 @@ pub struct ExclusiveProductConceptFeatureCategory {
 #[holder(generate_deserialize)]
 pub struct ExecutedAction {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action")]
     pub chosen_method: ActionMethodAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -15593,9 +16304,12 @@ pub enum ExecutedActionAny {
 #[holder(generate_deserialize)]
 pub struct ExpandedUncertainty {
     #[holder(use_place_holder)]
+    #[holder(supertype = "uncertainty_qualifier")]
     pub measure_name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "uncertainty_qualifier")]
     pub description: Text,
+    #[holder(supertype = "standard_uncertainty")]
     pub uncertainty_value: f64,
     pub coverage_factor: f64,
 }
@@ -15605,12 +16319,16 @@ pub struct ExpandedUncertainty {
 #[holder(generate_deserialize)]
 pub struct ExplicitProceduralGeometricRepresentationItemRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub relating_representation_item: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub related_representation_item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15619,12 +16337,16 @@ pub struct ExplicitProceduralGeometricRepresentationItemRelationship {
 #[holder(generate_deserialize)]
 pub struct ExplicitProceduralRepresentationItemRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub relating_representation_item: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub related_representation_item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -15646,12 +16368,16 @@ pub enum ExplicitProceduralRepresentationItemRelationshipAny {
 #[holder(generate_deserialize)]
 pub struct ExplicitProceduralRepresentationRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_1: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_2: RepresentationAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -15671,12 +16397,16 @@ pub enum ExplicitProceduralRepresentationRelationshipAny {
 #[holder(generate_deserialize)]
 pub struct ExplicitProceduralShapeRepresentationRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_1: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_2: RepresentationAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15701,8 +16431,10 @@ pub enum ExpressionAny {
 #[holder(generate_deserialize)]
 pub struct ExpressionConversionBasedUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
     #[holder(use_place_holder)]
+    #[holder(supertype = "context_dependent_unit")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15711,11 +16443,15 @@ pub struct ExpressionConversionBasedUnit {
 #[holder(generate_deserialize)]
 pub struct Extension {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15724,8 +16460,10 @@ pub struct Extension {
 #[holder(generate_deserialize)]
 pub struct Extent {
     #[holder(use_place_holder)]
+    #[holder(supertype = "characterized_object")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "characterized_object")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15734,6 +16472,7 @@ pub struct Extent {
 #[holder(generate_deserialize)]
 pub struct ExternalClassLibrary {
     #[holder(use_place_holder)]
+    #[holder(supertype = "external_source")]
     pub source_id: SourceItem,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15742,8 +16481,10 @@ pub struct ExternalClassLibrary {
 #[holder(generate_deserialize)]
 pub struct ExternalIdentificationAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "identification_assignment")]
     pub assigned_id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "identification_assignment")]
     pub role: IdentificationRole,
     #[holder(use_place_holder)]
     pub source: ExternalSourceAny,
@@ -15796,12 +16537,16 @@ pub struct ExternalSourceRelationship {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedClass {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15810,10 +16555,13 @@ pub struct ExternallyDefinedClass {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedColour {
     #[holder(use_place_holder)]
+    #[holder(supertype = "colour_specification")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15822,12 +16570,16 @@ pub struct ExternallyDefinedColour {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedContextDependentUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
     #[holder(use_place_holder)]
+    #[holder(supertype = "context_dependent_unit")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -15845,14 +16597,19 @@ pub enum ExternallyDefinedContextDependentUnitAny {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedConversionBasedUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
     #[holder(use_place_holder)]
+    #[holder(supertype = "conversion_based_unit")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "conversion_based_unit")]
     pub conversion_factor: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15861,12 +16618,16 @@ pub struct ExternallyDefinedConversionBasedUnit {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedCurrency {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
     #[holder(use_place_holder)]
+    #[holder(supertype = "context_dependent_unit")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15875,8 +16636,10 @@ pub struct ExternallyDefinedCurrency {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedCurveFont {
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15885,12 +16648,16 @@ pub struct ExternallyDefinedCurveFont {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedDimensionDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "dimensional_size")]
     pub applies_to: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "dimensional_size")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15899,14 +16666,19 @@ pub struct ExternallyDefinedDimensionDefinition {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedGeneralProperty {
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15915,10 +16687,13 @@ pub struct ExternallyDefinedGeneralProperty {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedHatchStyle {
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15984,10 +16759,13 @@ pub struct ExternallyDefinedItemRelationship {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedMarker {
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -15996,7 +16774,9 @@ pub struct ExternallyDefinedMarker {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedPictureRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "binary_representation_item")]
     pub binary_value: Binary,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16005,10 +16785,13 @@ pub struct ExternallyDefinedPictureRepresentationItem {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -16026,10 +16809,13 @@ pub enum ExternallyDefinedRepresentationItemAny {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedString {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16038,8 +16824,10 @@ pub struct ExternallyDefinedString {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedSymbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -16059,8 +16847,10 @@ pub enum ExternallyDefinedSymbolAny {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedTerminatorSymbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16069,8 +16859,10 @@ pub struct ExternallyDefinedTerminatorSymbol {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedTextFont {
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16079,8 +16871,10 @@ pub struct ExternallyDefinedTextFont {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedTile {
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16089,10 +16883,13 @@ pub struct ExternallyDefinedTile {
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedTileStyle {
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub item_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "externally_defined_item")]
     pub source: ExternalSourceAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16101,8 +16898,10 @@ pub struct ExternallyDefinedTileStyle {
 #[holder(generate_deserialize)]
 pub struct ExtrudedAreaSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "swept_area_solid")]
     pub swept_area: CurveBoundedSurface,
     #[holder(use_place_holder)]
     pub extruded_direction: Direction,
@@ -16115,8 +16914,10 @@ pub struct ExtrudedAreaSolid {
 #[holder(generate_deserialize)]
 pub struct ExtrudedFaceSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "swept_face_solid")]
     pub swept_face: FaceSurfaceAny,
     #[holder(use_place_holder)]
     pub extruded_direction: Direction,
@@ -16138,22 +16939,32 @@ pub enum ExtrudedFaceSolidAny {
 #[holder(generate_deserialize)]
 pub struct ExtrudedFaceSolidWithDraftAngle {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "swept_face_solid")]
     pub swept_face: FaceSurfaceAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "extruded_face_solid")]
     pub extruded_direction: Direction,
     #[holder(use_place_holder)]
+    #[holder(supertype = "extruded_face_solid")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "extruded_face_solid_with_trim_conditions")]
     pub first_trim_condition: TrimConditionSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "extruded_face_solid_with_trim_conditions")]
     pub second_trim_condition: TrimConditionSelect,
+    #[holder(supertype = "extruded_face_solid_with_trim_conditions")]
     pub first_trim_intent: TrimIntent,
+    #[holder(supertype = "extruded_face_solid_with_trim_conditions")]
     pub second_trim_intent: TrimIntent,
     #[holder(use_place_holder)]
+    #[holder(supertype = "extruded_face_solid_with_trim_conditions")]
     pub first_offset: NonNegativeLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "extruded_face_solid_with_trim_conditions")]
     pub second_offset: NonNegativeLengthMeasure,
     #[holder(use_place_holder)]
     pub draft_angle: PlaneAngleMeasure,
@@ -16164,22 +16975,32 @@ pub struct ExtrudedFaceSolidWithDraftAngle {
 #[holder(generate_deserialize)]
 pub struct ExtrudedFaceSolidWithMultipleDraftAngles {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "swept_face_solid")]
     pub swept_face: FaceSurfaceAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "extruded_face_solid")]
     pub extruded_direction: Direction,
     #[holder(use_place_holder)]
+    #[holder(supertype = "extruded_face_solid")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "extruded_face_solid_with_trim_conditions")]
     pub first_trim_condition: TrimConditionSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "extruded_face_solid_with_trim_conditions")]
     pub second_trim_condition: TrimConditionSelect,
+    #[holder(supertype = "extruded_face_solid_with_trim_conditions")]
     pub first_trim_intent: TrimIntent,
+    #[holder(supertype = "extruded_face_solid_with_trim_conditions")]
     pub second_trim_intent: TrimIntent,
     #[holder(use_place_holder)]
+    #[holder(supertype = "extruded_face_solid_with_trim_conditions")]
     pub first_offset: NonNegativeLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "extruded_face_solid_with_trim_conditions")]
     pub second_offset: NonNegativeLengthMeasure,
     #[holder(use_place_holder)]
     pub drafted_edges: Vec<Vec<EdgeCurve>>,
@@ -16192,12 +17013,16 @@ pub struct ExtrudedFaceSolidWithMultipleDraftAngles {
 #[holder(generate_deserialize)]
 pub struct ExtrudedFaceSolidWithTrimConditions {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "swept_face_solid")]
     pub swept_face: FaceSurfaceAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "extruded_face_solid")]
     pub extruded_direction: Direction,
     #[holder(use_place_holder)]
+    #[holder(supertype = "extruded_face_solid")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
     pub first_trim_condition: TrimConditionSelect,
@@ -16227,6 +17052,7 @@ pub enum ExtrudedFaceSolidWithTrimConditionsAny {
 #[holder(generate_deserialize)]
 pub struct Face {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub bounds: Vec<FaceBoundAny>,
@@ -16250,6 +17076,7 @@ pub enum FaceAny {
 #[holder(generate_deserialize)]
 pub struct FaceBasedSurfaceModel {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub fbsm_faces: Vec<ConnectedFaceSetAny>,
@@ -16260,6 +17087,7 @@ pub struct FaceBasedSurfaceModel {
 #[holder(generate_deserialize)]
 pub struct FaceBound {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub bound: LoopAny,
@@ -16280,9 +17108,12 @@ pub enum FaceBoundAny {
 #[holder(generate_deserialize)]
 pub struct FaceOuterBound {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "face_bound")]
     pub bound: LoopAny,
+    #[holder(supertype = "face_bound")]
     pub orientation: bool,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16291,8 +17122,10 @@ pub struct FaceOuterBound {
 #[holder(generate_deserialize)]
 pub struct FaceSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "face")]
     pub bounds: Vec<FaceBoundAny>,
     #[holder(use_place_holder)]
     pub face_geometry: SurfaceAny,
@@ -16313,8 +17146,10 @@ pub enum FaceSurfaceAny {
 #[holder(generate_deserialize)]
 pub struct FacetedBrep {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "manifold_solid_brep")]
     pub outer: ClosedShellAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16323,10 +17158,13 @@ pub struct FacetedBrep {
 #[holder(generate_deserialize)]
 pub struct FacetedBrepShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16335,10 +17173,13 @@ pub struct FacetedBrepShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct FactType {
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub definition: CharacterizedDefinition,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -16378,6 +17219,7 @@ pub struct FillAreaStyleColour {
 #[holder(generate_deserialize)]
 pub struct FillAreaStyleHatching {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub hatch_line_appearance: CurveStyleAny,
@@ -16396,6 +17238,7 @@ pub struct FillAreaStyleHatching {
 #[holder(generate_deserialize)]
 pub struct FillAreaStyleTileColouredRegion {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub closed_curve: CurveOrAnnotationCurveOccurrence,
@@ -16408,6 +17251,7 @@ pub struct FillAreaStyleTileColouredRegion {
 #[holder(generate_deserialize)]
 pub struct FillAreaStyleTileCurveWithStyle {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub styled_curve: AnnotationCurveOccurrenceAny,
@@ -16418,6 +17262,7 @@ pub struct FillAreaStyleTileCurveWithStyle {
 #[holder(generate_deserialize)]
 pub struct FillAreaStyleTileSymbolWithStyle {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub symbol: AnnotationSymbolOccurrenceAny,
@@ -16428,6 +17273,7 @@ pub struct FillAreaStyleTileSymbolWithStyle {
 #[holder(generate_deserialize)]
 pub struct FillAreaStyleTiles {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub tiling_pattern: TwoDirectionRepeatFactor,
@@ -16442,12 +17288,16 @@ pub struct FillAreaStyleTiles {
 #[holder(generate_deserialize)]
 pub struct FlatPatternPlyRepresentationRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_1: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_2: RepresentationAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16456,12 +17306,16 @@ pub struct FlatPatternPlyRepresentationRelationship {
 #[holder(generate_deserialize)]
 pub struct FlatnessTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16470,8 +17324,10 @@ pub struct FlatnessTolerance {
 #[holder(generate_deserialize)]
 pub struct ForceMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16480,6 +17336,7 @@ pub struct ForceMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct ForceUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -16497,12 +17354,16 @@ pub enum ForceUnitAny {
 #[holder(generate_deserialize)]
 pub struct ForwardChainingRule {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16511,16 +17372,22 @@ pub struct ForwardChainingRule {
 #[holder(generate_deserialize)]
 pub struct ForwardChainingRulePremise {
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub definition: CharacterizedDefinition,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition_representation")]
     pub used_representation: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16587,8 +17454,10 @@ pub enum FoundedItemAny {
 #[holder(generate_deserialize)]
 pub struct FrequencyMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16597,6 +17466,7 @@ pub struct FrequencyMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct FrequencyUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -16614,8 +17484,10 @@ pub enum FrequencyUnitAny {
 #[holder(generate_deserialize)]
 pub struct Func {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16624,14 +17496,19 @@ pub struct Func {
 #[holder(generate_deserialize)]
 pub struct FunctionalBreakdownContext {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16640,14 +17517,19 @@ pub struct FunctionalBreakdownContext {
 #[holder(generate_deserialize)]
 pub struct FunctionalElementUsage {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16675,10 +17557,13 @@ pub enum FunctionallyDefinedTransformationAny {
 #[holder(generate_deserialize)]
 pub struct GeneralMaterialProperty {
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "general_property")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16753,10 +17638,13 @@ pub enum GeneralPropertyRelationshipAny {
 #[holder(generate_deserialize)]
 pub struct GenericCharacterGlyphSymbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -16821,11 +17709,15 @@ pub struct GenericVariable {}
 #[holder(generate_deserialize)]
 pub struct GeometricAlignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16834,8 +17726,10 @@ pub struct GeometricAlignment {
 #[holder(generate_deserialize)]
 pub struct GeometricCurveSet {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_set")]
     pub elements: Vec<GeometricSetSelect>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16844,11 +17738,15 @@ pub struct GeometricCurveSet {
 #[holder(generate_deserialize)]
 pub struct GeometricIntersection {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16857,14 +17755,19 @@ pub struct GeometricIntersection {
 #[holder(generate_deserialize)]
 pub struct GeometricItemSpecificUsage {
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_identified_representation_usage")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_identified_representation_usage")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_identified_representation_usage")]
     pub definition: RepresentedDefinition,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_identified_representation_usage")]
     pub used_representation: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_identified_representation_usage")]
     pub identified_item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16873,12 +17776,16 @@ pub struct GeometricItemSpecificUsage {
 #[holder(generate_deserialize)]
 pub struct GeometricModelElementRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub relating_representation_item: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub related_representation_item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -16887,8 +17794,10 @@ pub struct GeometricModelElementRelationship {
 #[holder(generate_deserialize)]
 pub struct GeometricRepresentationContext {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_context")]
     pub context_identifier: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_context")]
     pub context_type: Text,
     #[holder(use_place_holder)]
     pub coordinate_space_dimension: DimensionCount,
@@ -16899,6 +17808,7 @@ pub struct GeometricRepresentationContext {
 #[holder(generate_deserialize)]
 pub struct GeometricRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -17022,6 +17932,7 @@ pub enum GeometricRepresentationItemAny {
 #[holder(generate_deserialize)]
 pub struct GeometricSet {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub elements: Vec<GeometricSetSelect>,
@@ -17096,12 +18007,16 @@ pub struct GeometricToleranceRelationship {
 #[holder(generate_deserialize)]
 pub struct GeometricToleranceWithDatumReference {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
     pub datum_system: Vec<DatumReferenceAny>,
@@ -17135,12 +18050,16 @@ pub enum GeometricToleranceWithDatumReferenceAny {
 #[holder(generate_deserialize)]
 pub struct GeometricToleranceWithDefinedUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
     pub unit_size: MeasureWithUnitAny,
@@ -17151,8 +18070,10 @@ pub struct GeometricToleranceWithDefinedUnit {
 #[holder(generate_deserialize)]
 pub struct GeometricalToleranceCallout {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17161,10 +18082,13 @@ pub struct GeometricalToleranceCallout {
 #[holder(generate_deserialize)]
 pub struct GeometricallyBounded2DWireframeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17173,10 +18097,13 @@ pub struct GeometricallyBounded2DWireframeRepresentation {
 #[holder(generate_deserialize)]
 pub struct GeometricallyBoundedSurfaceShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17185,10 +18112,13 @@ pub struct GeometricallyBoundedSurfaceShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct GeometricallyBoundedWireframeShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17197,12 +18127,16 @@ pub struct GeometricallyBoundedWireframeShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct GlobalAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub relating_representation_item: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub related_representation_item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17211,8 +18145,10 @@ pub struct GlobalAssignment {
 #[holder(generate_deserialize)]
 pub struct GlobalUncertaintyAssignedContext {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_context")]
     pub context_identifier: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_context")]
     pub context_type: Text,
     #[holder(use_place_holder)]
     pub uncertainty: Vec<UncertaintyMeasureWithUnit>,
@@ -17223,8 +18159,10 @@ pub struct GlobalUncertaintyAssignedContext {
 #[holder(generate_deserialize)]
 pub struct GlobalUnitAssignedContext {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_context")]
     pub context_identifier: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_context")]
     pub context_type: Text,
     #[holder(use_place_holder)]
     pub units: Vec<Unit>,
@@ -17235,8 +18173,10 @@ pub struct GlobalUnitAssignedContext {
 #[holder(generate_deserialize)]
 pub struct GroundFact {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17335,6 +18275,7 @@ pub struct GroupRelationship {
 #[holder(generate_deserialize)]
 pub struct HalfSpaceSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub base_surface: SurfaceAny,
@@ -17355,10 +18296,13 @@ pub enum HalfSpaceSolidAny {
 #[holder(generate_deserialize)]
 pub struct HardnessRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17367,14 +18311,19 @@ pub struct HardnessRepresentation {
 #[holder(generate_deserialize)]
 pub struct HiddenElementOverRidingStyledItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "over_riding_styled_item")]
     pub over_ridden_style: StyledItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "context_dependent_over_riding_styled_item")]
     pub style_context: Vec<StyleContextSelect>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17383,8 +18332,10 @@ pub struct HiddenElementOverRidingStyledItem {
 #[holder(generate_deserialize)]
 pub struct Hyperbola {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "conic")]
     pub position: Axis2Placement,
     #[holder(use_place_holder)]
     pub semi_axis: PositiveLengthMeasure,
@@ -17438,8 +18389,10 @@ pub struct IdentificationRole {
 #[holder(generate_deserialize)]
 pub struct IlluminanceMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17448,6 +18401,7 @@ pub struct IlluminanceMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct IlluminanceUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -17465,10 +18419,13 @@ pub enum IlluminanceUnitAny {
 #[holder(generate_deserialize)]
 pub struct IncludedTextBlock {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_source: RepresentationMapAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_target: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17477,12 +18434,16 @@ pub struct IncludedTextBlock {
 #[holder(generate_deserialize)]
 pub struct InclusionProductConceptFeature {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_concept_feature")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_concept_feature")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_concept_feature")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "conditional_concept_feature")]
     pub condition: ConceptFeatureRelationshipWithCondition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17491,8 +18452,10 @@ pub struct InclusionProductConceptFeature {
 #[holder(generate_deserialize)]
 pub struct IndirectlySelectedElements {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "user_selected_elements")]
     pub picked_items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
     pub indirectly_picked_items: Vec<RepresentationItemAny>,
@@ -17512,10 +18475,13 @@ pub enum IndirectlySelectedElementsAny {
 #[holder(generate_deserialize)]
 pub struct IndirectlySelectedShapeElements {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "user_selected_elements")]
     pub picked_items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "indirectly_selected_elements")]
     pub indirectly_picked_items: Vec<RepresentationItemAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17524,8 +18490,10 @@ pub struct IndirectlySelectedShapeElements {
 #[holder(generate_deserialize)]
 pub struct InductanceMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17534,6 +18502,7 @@ pub struct InductanceMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct InductanceUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -17551,12 +18520,16 @@ pub enum InductanceUnitAny {
 #[holder(generate_deserialize)]
 pub struct InformationRight {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method")]
     pub consequence: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method")]
     pub purpose: Text,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17565,12 +18538,16 @@ pub struct InformationRight {
 #[holder(generate_deserialize)]
 pub struct InformationUsageRight {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method")]
     pub consequence: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method")]
     pub purpose: Text,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17579,10 +18556,13 @@ pub struct InformationUsageRight {
 #[holder(generate_deserialize)]
 pub struct InstanceUsageContextAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "application_context_element")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "application_context_element")]
     pub frame_of_reference: ApplicationContext,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_context")]
     pub life_cycle_stage: Label,
     #[holder(use_place_holder)]
     pub items: Vec<InstanceUsageContextSelect>,
@@ -17593,11 +18573,15 @@ pub struct InstanceUsageContextAssignment {
 #[holder(generate_deserialize)]
 pub struct InstancedFeature {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17605,6 +18589,7 @@ pub struct InstancedFeature {
 # [holder (field = int_literal)]
 #[holder(generate_deserialize)]
 pub struct IntLiteral {
+    #[holder(supertype = "literal_number")]
     pub the_value: f64,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -17622,7 +18607,9 @@ pub enum IntLiteralAny {
 #[holder(generate_deserialize)]
 pub struct IntegerRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "literal_number")]
     pub the_value: f64,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17631,11 +18618,15 @@ pub struct IntegerRepresentationItem {
 #[holder(generate_deserialize)]
 pub struct IntersectionCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "surface_curve")]
     pub curve_3d: CurveAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "surface_curve")]
     pub associated_geometry: Vec<PcurveOrSurface>,
+    #[holder(supertype = "surface_curve")]
     pub master_representation: PreferredSurfaceCurveRepresentation,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17644,6 +18635,7 @@ pub struct IntersectionCurve {
 #[holder(generate_deserialize)]
 pub struct IntervalExpression {
     #[holder(use_place_holder)]
+    #[holder(supertype = "multiple_arity_generic_expression")]
     pub operands: Vec<GenericExpressionAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17669,8 +18661,10 @@ pub enum InvisibilityAny {
 #[holder(generate_deserialize)]
 pub struct Iso4217Currency {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
     #[holder(use_place_holder)]
+    #[holder(supertype = "context_dependent_unit")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17729,8 +18723,10 @@ pub enum ItemIdentifiedRepresentationUsageAny {
 #[holder(generate_deserialize)]
 pub struct KnownSource {
     #[holder(use_place_holder)]
+    #[holder(supertype = "external_source")]
     pub source_id: SourceItem,
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17739,12 +18735,16 @@ pub struct KnownSource {
 #[holder(generate_deserialize)]
 pub struct LaidDefinedTransformation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_defined_transformation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_defined_transformation")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_defined_transformation")]
     pub transform_item_1: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_defined_transformation")]
     pub transform_item_2: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17753,12 +18753,16 @@ pub struct LaidDefinedTransformation {
 #[holder(generate_deserialize)]
 pub struct LaminateTable {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -17778,8 +18782,10 @@ pub enum LaminateTableAny {
 #[holder(generate_deserialize)]
 pub struct Language {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17788,10 +18794,13 @@ pub struct Language {
 #[holder(generate_deserialize)]
 pub struct LeaderCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17800,8 +18809,10 @@ pub struct LeaderCurve {
 #[holder(generate_deserialize)]
 pub struct LeaderDirectedCallout {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -17819,8 +18830,10 @@ pub enum LeaderDirectedCalloutAny {
 #[holder(generate_deserialize)]
 pub struct LeaderDirectedDimension {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17829,12 +18842,16 @@ pub struct LeaderDirectedDimension {
 #[holder(generate_deserialize)]
 pub struct LeaderTerminator {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "terminator_symbol")]
     pub annotated_curve: AnnotationCurveOccurrenceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17843,8 +18860,10 @@ pub struct LeaderTerminator {
 #[holder(generate_deserialize)]
 pub struct LengthMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17853,6 +18872,7 @@ pub struct LengthMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct LengthUnit {
     #[holder(derived)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: Derived<DimensionalExponents>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17861,6 +18881,7 @@ pub struct LengthUnit {
 #[holder(generate_deserialize)]
 pub struct LightSource {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub light_colour: ColourAny,
@@ -17886,8 +18907,10 @@ pub enum LightSourceAny {
 #[holder(generate_deserialize)]
 pub struct LightSourceAmbient {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "light_source")]
     pub light_colour: ColourAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17896,8 +18919,10 @@ pub struct LightSourceAmbient {
 #[holder(generate_deserialize)]
 pub struct LightSourceDirectional {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "light_source")]
     pub light_colour: ColourAny,
     #[holder(use_place_holder)]
     pub orientation: Direction,
@@ -17908,8 +18933,10 @@ pub struct LightSourceDirectional {
 #[holder(generate_deserialize)]
 pub struct LightSourcePositional {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "light_source")]
     pub light_colour: ColourAny,
     #[holder(use_place_holder)]
     pub position: CartesianPoint,
@@ -17922,8 +18949,10 @@ pub struct LightSourcePositional {
 #[holder(generate_deserialize)]
 pub struct LightSourceSpot {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "light_source")]
     pub light_colour: ColourAny,
     #[holder(use_place_holder)]
     pub position: CartesianPoint,
@@ -17955,6 +18984,7 @@ pub struct LimitsAndFits {
 #[holder(generate_deserialize)]
 pub struct Line {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub pnt: CartesianPoint,
@@ -17967,12 +18997,16 @@ pub struct Line {
 #[holder(generate_deserialize)]
 pub struct LineProfileTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17981,8 +19015,10 @@ pub struct LineProfileTolerance {
 #[holder(generate_deserialize)]
 pub struct LinearDimension {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -17991,8 +19027,10 @@ pub struct LinearDimension {
 #[holder(generate_deserialize)]
 pub struct LiteralConjunction {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18001,8 +19039,10 @@ pub struct LiteralConjunction {
 #[holder(generate_deserialize)]
 pub struct LiteralDisjunction {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18059,7 +19099,9 @@ pub enum LogicalLiteralAny {
 #[holder(generate_deserialize)]
 pub struct LogicalRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "logical_literal")]
     pub lit_value: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18068,6 +19110,7 @@ pub struct LogicalRepresentationItem {
 #[holder(generate_deserialize)]
 pub struct Loop {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -18089,8 +19132,10 @@ pub enum LoopAny {
 #[holder(generate_deserialize)]
 pub struct LossTangentMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18099,6 +19144,7 @@ pub struct LossTangentMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct LotEffectivity {
     #[holder(use_place_holder)]
+    #[holder(supertype = "effectivity")]
     pub id: Identifier,
     #[holder(use_place_holder)]
     pub effectivity_lot_id: Identifier,
@@ -18111,8 +19157,10 @@ pub struct LotEffectivity {
 #[holder(generate_deserialize)]
 pub struct LuminousFluxMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18121,6 +19169,7 @@ pub struct LuminousFluxMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct LuminousFluxUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18129,8 +19178,10 @@ pub struct LuminousFluxUnit {
 #[holder(generate_deserialize)]
 pub struct LuminousIntensityMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18139,6 +19190,7 @@ pub struct LuminousIntensityMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct LuminousIntensityUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18147,8 +19199,10 @@ pub struct LuminousIntensityUnit {
 #[holder(generate_deserialize)]
 pub struct MagneticFluxDensityMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18157,6 +19211,7 @@ pub struct MagneticFluxDensityMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct MagneticFluxDensityUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -18174,8 +19229,10 @@ pub enum MagneticFluxDensityUnitAny {
 #[holder(generate_deserialize)]
 pub struct MagneticFluxMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18184,6 +19241,7 @@ pub struct MagneticFluxMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct MagneticFluxUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -18201,14 +19259,19 @@ pub enum MagneticFluxUnitAny {
 #[holder(generate_deserialize)]
 pub struct MakeFromUsageOption {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
     pub ranking: i64,
     #[holder(use_place_holder)]
@@ -18222,6 +19285,7 @@ pub struct MakeFromUsageOption {
 #[holder(generate_deserialize)]
 pub struct ManifoldSolidBrep {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub outer: ClosedShellAny,
@@ -18243,10 +19307,13 @@ pub enum ManifoldSolidBrepAny {
 #[holder(generate_deserialize)]
 pub struct ManifoldSubsurfaceShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18255,10 +19322,13 @@ pub struct ManifoldSubsurfaceShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct ManifoldSurfaceShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18267,6 +19337,7 @@ pub struct ManifoldSurfaceShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct MappedItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub mapping_source: RepresentationMapAny,
@@ -18304,8 +19375,10 @@ pub enum MappedItemAny {
 #[holder(generate_deserialize)]
 pub struct MassMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18314,6 +19387,7 @@ pub struct MassMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct MassUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18355,10 +19429,13 @@ pub struct MaterialDesignationCharacterization {
 #[holder(generate_deserialize)]
 pub struct MaterialProperty {
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub definition: CharacterizedDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18367,8 +19444,10 @@ pub struct MaterialProperty {
 #[holder(generate_deserialize)]
 pub struct MaterialPropertyRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition_representation")]
     pub definition: RepresentedDefinition,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition_representation")]
     pub used_representation: RepresentationAny,
     #[holder(use_place_holder)]
     pub dependent_environment: DataEnvironment,
@@ -18393,10 +19472,13 @@ pub struct MeasureQualification {
 #[holder(generate_deserialize)]
 pub struct MeasureRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18496,10 +19578,13 @@ pub enum MeasureWithUnitAny {
 #[holder(generate_deserialize)]
 pub struct MechanicalContext {
     #[holder(use_place_holder)]
+    #[holder(supertype = "application_context_element")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "application_context_element")]
     pub frame_of_reference: ApplicationContext,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_context")]
     pub discipline_type: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18508,12 +19593,16 @@ pub struct MechanicalContext {
 #[holder(generate_deserialize)]
 pub struct MechanicalDesignAndDraughtingRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_1: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_2: RepresentationAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18522,10 +19611,13 @@ pub struct MechanicalDesignAndDraughtingRelationship {
 #[holder(generate_deserialize)]
 pub struct MechanicalDesignGeometricPresentationArea {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18534,10 +19626,13 @@ pub struct MechanicalDesignGeometricPresentationArea {
 #[holder(generate_deserialize)]
 pub struct MechanicalDesignGeometricPresentationRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18546,10 +19641,13 @@ pub struct MechanicalDesignGeometricPresentationRepresentation {
 #[holder(generate_deserialize)]
 pub struct MechanicalDesignPresentationRepresentationWithDraughting {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18558,10 +19656,13 @@ pub struct MechanicalDesignPresentationRepresentationWithDraughting {
 #[holder(generate_deserialize)]
 pub struct MechanicalDesignShadedPresentationArea {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18570,10 +19671,13 @@ pub struct MechanicalDesignShadedPresentationArea {
 #[holder(generate_deserialize)]
 pub struct MechanicalDesignShadedPresentationRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18582,12 +19686,16 @@ pub struct MechanicalDesignShadedPresentationRepresentation {
 #[holder(generate_deserialize)]
 pub struct MinAndMajorPlyOrientationBasis {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub relating_representation_item: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item_relationship")]
     pub related_representation_item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18596,12 +19704,16 @@ pub struct MinAndMajorPlyOrientationBasis {
 #[holder(generate_deserialize)]
 pub struct ModifiedGeometricTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
     pub modifier: LimitCondition,
 }
@@ -18611,6 +19723,7 @@ pub struct ModifiedGeometricTolerance {
 #[holder(generate_deserialize)]
 pub struct ModifiedSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub rationale: Text,
@@ -18638,10 +19751,13 @@ pub enum ModifiedSolidAny {
 #[holder(generate_deserialize)]
 pub struct ModifiedSolidWithPlacedConfiguration {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
     pub placing: Axis2Placement3D,
@@ -18665,10 +19781,13 @@ pub enum ModifiedSolidWithPlacedConfigurationAny {
 #[holder(generate_deserialize)]
 pub struct MomentsOfInertiaRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18677,10 +19796,13 @@ pub struct MomentsOfInertiaRepresentation {
 #[holder(generate_deserialize)]
 pub struct MultiLanguageAttributeAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "attribute_value_assignment")]
     pub attribute_name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "attribute_value_assignment")]
     pub attribute_value: AttributeType,
     #[holder(use_place_holder)]
+    #[holder(supertype = "attribute_value_assignment")]
     pub role: AttributeValueRole,
     #[holder(use_place_holder)]
     pub items: Vec<MultiLanguageAttributeItem>,
@@ -18691,6 +19813,7 @@ pub struct MultiLanguageAttributeAssignment {
 #[holder(generate_deserialize)]
 pub struct MultipleArityBooleanExpression {
     #[holder(use_place_holder)]
+    #[holder(supertype = "multiple_arity_generic_expression")]
     pub operands: Vec<GenericExpressionAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18720,6 +19843,7 @@ pub enum MultipleArityGenericExpressionAny {
 #[holder(generate_deserialize)]
 pub struct MultipleArityNumericExpression {
     #[holder(use_place_holder)]
+    #[holder(supertype = "multiple_arity_generic_expression")]
     pub operands: Vec<GenericExpressionAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18798,16 +19922,22 @@ pub enum NamedUnitAny {
 #[holder(generate_deserialize)]
 pub struct NextAssemblyUsageOccurrence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "assembly_component_usage")]
     pub reference_designator: Option<Identifier>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18816,10 +19946,13 @@ pub struct NextAssemblyUsageOccurrence {
 #[holder(generate_deserialize)]
 pub struct NonManifoldSurfaceShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18828,6 +19961,7 @@ pub struct NonManifoldSurfaceShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct NullRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -18866,6 +20000,7 @@ pub struct ObjectRole {
 #[holder(generate_deserialize)]
 pub struct OffsetCurve2D {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub basis_curve: CurveAny,
@@ -18879,6 +20014,7 @@ pub struct OffsetCurve2D {
 #[holder(generate_deserialize)]
 pub struct OffsetCurve3D {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub basis_curve: CurveAny,
@@ -18894,6 +20030,7 @@ pub struct OffsetCurve3D {
 #[holder(generate_deserialize)]
 pub struct OffsetSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub basis_surface: SurfaceAny,
@@ -18907,6 +20044,7 @@ pub struct OffsetSurface {
 #[holder(generate_deserialize)]
 pub struct OneDirectionRepeatFactor {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub repeat_factor: Vector,
@@ -18926,8 +20064,10 @@ pub enum OneDirectionRepeatFactorAny {
 #[holder(generate_deserialize)]
 pub struct OpenShell {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "connected_face_set")]
     pub cfs_faces: Vec<FaceAny>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -18947,6 +20087,7 @@ pub enum OpenShellAny {
 #[holder(generate_deserialize)]
 pub struct OrdinalDate {
     #[holder(use_place_holder)]
+    #[holder(supertype = "date")]
     pub year_component: YearNumber,
     #[holder(use_place_holder)]
     pub day_component: DayInYearNumber,
@@ -18957,8 +20098,10 @@ pub struct OrdinalDate {
 #[holder(generate_deserialize)]
 pub struct OrdinateDimension {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19020,28 +20163,40 @@ pub struct OrganizationRole {
 #[holder(generate_deserialize)]
 pub struct OrganizationalAddress {
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub internal_location: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub street_number: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub street: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub postal_box: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub town: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub region: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub postal_code: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub country: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub facsimile_number: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub telephone_number: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub electronic_mail_address: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub telex_number: Option<Label>,
     #[holder(use_place_holder)]
     pub organizations: Vec<Organization>,
@@ -19118,8 +20273,10 @@ pub struct OrganizationalProjectRole {
 #[holder(generate_deserialize)]
 pub struct OrientedClosedShell {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(derived)]
+    #[holder(supertype = "connected_face_set")]
     pub cfs_faces: Derived<Vec<FaceAny>>,
     #[holder(use_place_holder)]
     pub closed_shell_element: ClosedShellAny,
@@ -19131,10 +20288,13 @@ pub struct OrientedClosedShell {
 #[holder(generate_deserialize)]
 pub struct OrientedEdge {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(derived)]
+    #[holder(supertype = "edge")]
     pub edge_start: Derived<VertexAny>,
     #[holder(derived)]
+    #[holder(supertype = "edge")]
     pub edge_end: Derived<VertexAny>,
     #[holder(use_place_holder)]
     pub edge_element: EdgeAny,
@@ -19146,8 +20306,10 @@ pub struct OrientedEdge {
 #[holder(generate_deserialize)]
 pub struct OrientedFace {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(derived)]
+    #[holder(supertype = "face")]
     pub bounds: Derived<Vec<FaceBoundAny>>,
     #[holder(use_place_holder)]
     pub face_element: FaceAny,
@@ -19159,8 +20321,10 @@ pub struct OrientedFace {
 #[holder(generate_deserialize)]
 pub struct OrientedOpenShell {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(derived)]
+    #[holder(supertype = "connected_face_set")]
     pub cfs_faces: Derived<Vec<FaceAny>>,
     #[holder(use_place_holder)]
     pub open_shell_element: OpenShellAny,
@@ -19172,8 +20336,10 @@ pub struct OrientedOpenShell {
 #[holder(generate_deserialize)]
 pub struct OrientedPath {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(derived)]
+    #[holder(supertype = "path")]
     pub edge_list: Derived<Vec<OrientedEdge>>,
     #[holder(use_place_holder)]
     pub path_element: PathAny,
@@ -19185,6 +20351,7 @@ pub struct OrientedPath {
 #[holder(generate_deserialize)]
 pub struct OrientedSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     pub orientation: bool,
 }
@@ -19194,9 +20361,12 @@ pub struct OrientedSurface {
 #[holder(generate_deserialize)]
 pub struct OuterBoundaryCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "composite_curve")]
     pub segments: Vec<CompositeCurveSegmentAny>,
+    #[holder(supertype = "composite_curve")]
     pub self_intersect: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19205,10 +20375,13 @@ pub struct OuterBoundaryCurve {
 #[holder(generate_deserialize)]
 pub struct OverRidingStyledItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
     #[holder(use_place_holder)]
     pub over_ridden_style: StyledItemAny,
@@ -19228,10 +20401,13 @@ pub enum OverRidingStyledItemAny {
 #[holder(generate_deserialize)]
 pub struct PackageProductConceptFeature {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_concept_feature")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_concept_feature")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_concept_feature")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19240,8 +20416,10 @@ pub struct PackageProductConceptFeature {
 #[holder(generate_deserialize)]
 pub struct Parabola {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "conic")]
     pub position: Axis2Placement,
     #[holder(use_place_holder)]
     pub focal_dist: LengthMeasure,
@@ -19252,11 +20430,15 @@ pub struct Parabola {
 #[holder(generate_deserialize)]
 pub struct ParallelOffset {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
     #[holder(use_place_holder)]
     pub offset: MeasureWithUnitAny,
@@ -19267,14 +20449,19 @@ pub struct ParallelOffset {
 #[holder(generate_deserialize)]
 pub struct ParallelismTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance_with_datum_reference")]
     pub datum_system: Vec<DatumReferenceAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19283,8 +20470,10 @@ pub struct ParallelismTolerance {
 #[holder(generate_deserialize)]
 pub struct ParametricRepresentationContext {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_context")]
     pub context_identifier: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_context")]
     pub context_type: Text,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19293,12 +20482,16 @@ pub struct ParametricRepresentationContext {
 #[holder(generate_deserialize)]
 pub struct PartLaminateTable {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -19318,14 +20511,19 @@ pub enum PartLaminateTableAny {
 #[holder(generate_deserialize)]
 pub struct PartialDocumentWithStructuredTextRepresentationAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "document_usage_constraint_assignment")]
     pub assigned_document_usage: DocumentUsageConstraint,
     #[holder(use_place_holder)]
+    #[holder(supertype = "document_usage_constraint_assignment")]
     pub role: DocumentUsageRole,
     #[holder(use_place_holder)]
+    #[holder(supertype = "applied_document_usage_constraint_assignment")]
     pub items: Vec<DocumentReferenceItem>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "characterized_object")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "characterized_object")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19334,6 +20532,7 @@ pub struct PartialDocumentWithStructuredTextRepresentationAssignment {
 #[holder(generate_deserialize)]
 pub struct Path {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub edge_list: Vec<OrientedEdge>,
@@ -19355,6 +20554,7 @@ pub enum PathAny {
 #[holder(generate_deserialize)]
 pub struct Pcurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub basis_surface: SurfaceAny,
@@ -19376,12 +20576,16 @@ pub enum PcurveAny {
 #[holder(generate_deserialize)]
 pub struct PercentageLaminateDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19390,12 +20594,16 @@ pub struct PercentageLaminateDefinition {
 #[holder(generate_deserialize)]
 pub struct PercentageLaminateTable {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19404,12 +20612,16 @@ pub struct PercentageLaminateTable {
 #[holder(generate_deserialize)]
 pub struct PercentagePlyDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19418,11 +20630,15 @@ pub struct PercentagePlyDefinition {
 #[holder(generate_deserialize)]
 pub struct PerpendicularTo {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19431,14 +20647,19 @@ pub struct PerpendicularTo {
 #[holder(generate_deserialize)]
 pub struct PerpendicularityTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance_with_datum_reference")]
     pub datum_system: Vec<DatumReferenceAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19475,34 +20696,49 @@ pub struct PersonAndOrganization {
 #[holder(generate_deserialize)]
 pub struct PersonAndOrganizationAddress {
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub internal_location: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub street_number: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub street: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub postal_box: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub town: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub region: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub postal_code: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub country: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub facsimile_number: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub telephone_number: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub electronic_mail_address: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub telex_number: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "organizational_address")]
     pub organizations: Vec<Organization>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "organizational_address")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "personal_address")]
     pub people: Vec<Person>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19540,28 +20776,40 @@ pub struct PersonAndOrganizationRole {
 #[holder(generate_deserialize)]
 pub struct PersonalAddress {
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub internal_location: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub street_number: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub street: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub postal_box: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub town: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub region: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub postal_code: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub country: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub facsimile_number: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub telephone_number: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub electronic_mail_address: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
     pub telex_number: Option<Label>,
     #[holder(use_place_holder)]
     pub people: Vec<Person>,
@@ -19583,14 +20831,19 @@ pub enum PersonalAddressAny {
 #[holder(generate_deserialize)]
 pub struct PhysicalBreakdownContext {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19599,14 +20852,19 @@ pub struct PhysicalBreakdownContext {
 #[holder(generate_deserialize)]
 pub struct PhysicalElementUsage {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19615,10 +20873,13 @@ pub struct PhysicalElementUsage {
 #[holder(generate_deserialize)]
 pub struct PictureRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19627,7 +20888,9 @@ pub struct PictureRepresentation {
 #[holder(generate_deserialize)]
 pub struct PictureRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "binary_representation_item")]
     pub binary_value: Binary,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -19647,13 +20910,18 @@ pub enum PictureRepresentationItemAny {
 #[holder(generate_deserialize)]
 pub struct PlacedDatumTargetFeature {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
     #[holder(use_place_holder)]
+    #[holder(supertype = "datum_target")]
     pub target_id: Identifier,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19662,11 +20930,15 @@ pub struct PlacedDatumTargetFeature {
 #[holder(generate_deserialize)]
 pub struct PlacedFeature {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19675,6 +20947,7 @@ pub struct PlacedFeature {
 #[holder(generate_deserialize)]
 pub struct Placement {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub location: CartesianPoint,
@@ -19698,10 +20971,13 @@ pub enum PlacementAny {
 #[holder(generate_deserialize)]
 pub struct PlanarBox {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "planar_extent")]
     pub size_in_x: LengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "planar_extent")]
     pub size_in_y: LengthMeasure,
     #[holder(use_place_holder)]
     pub placement: Axis2Placement,
@@ -19712,6 +20988,7 @@ pub struct PlanarBox {
 #[holder(generate_deserialize)]
 pub struct PlanarExtent {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub size_in_x: LengthMeasure,
@@ -19733,8 +21010,10 @@ pub enum PlanarExtentAny {
 #[holder(generate_deserialize)]
 pub struct Plane {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "elementary_surface")]
     pub position: Axis2Placement3D,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19743,8 +21022,10 @@ pub struct Plane {
 #[holder(generate_deserialize)]
 pub struct PlaneAngleMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19753,6 +21034,7 @@ pub struct PlaneAngleMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct PlaneAngleUnit {
     #[holder(derived)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: Derived<DimensionalExponents>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19771,12 +21053,16 @@ pub struct PlusMinusTolerance {
 #[holder(generate_deserialize)]
 pub struct PlyLaminateDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19785,12 +21071,16 @@ pub struct PlyLaminateDefinition {
 #[holder(generate_deserialize)]
 pub struct PlyLaminateSequenceDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19799,12 +21089,16 @@ pub struct PlyLaminateSequenceDefinition {
 #[holder(generate_deserialize)]
 pub struct PlyLaminateTable {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19813,6 +21107,7 @@ pub struct PlyLaminateTable {
 #[holder(generate_deserialize)]
 pub struct Point {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -19838,8 +21133,10 @@ pub enum PointAny {
 #[holder(generate_deserialize)]
 pub struct PointAndVector {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19848,6 +21145,7 @@ pub struct PointAndVector {
 #[holder(generate_deserialize)]
 pub struct PointOnCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub basis_curve: CurveAny,
@@ -19860,6 +21158,7 @@ pub struct PointOnCurve {
 #[holder(generate_deserialize)]
 pub struct PointOnSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub basis_surface: SurfaceAny,
@@ -19874,8 +21173,10 @@ pub struct PointOnSurface {
 #[holder(generate_deserialize)]
 pub struct PointPath {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19884,6 +21185,7 @@ pub struct PointPath {
 #[holder(generate_deserialize)]
 pub struct PointReplica {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub parent_pt: PointAny,
@@ -19927,6 +21229,7 @@ pub enum PolarComplexNumberLiteralAny {
 #[holder(generate_deserialize)]
 pub struct PolyLoop {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub polygon: Vec<CartesianPoint>,
@@ -19937,6 +21240,7 @@ pub struct PolyLoop {
 #[holder(generate_deserialize)]
 pub struct Polyline {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub points: Vec<CartesianPoint>,
@@ -19947,12 +21251,16 @@ pub struct Polyline {
 #[holder(generate_deserialize)]
 pub struct PositionTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19961,6 +21269,7 @@ pub struct PositionTolerance {
 #[holder(generate_deserialize)]
 pub struct PositionedSketch {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub sketch_basis: SketchBasisSelect,
@@ -19973,8 +21282,10 @@ pub struct PositionedSketch {
 #[holder(generate_deserialize)]
 pub struct PowerMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -19983,6 +21294,7 @@ pub struct PowerMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct PowerUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20000,6 +21312,7 @@ pub enum PowerUnitAny {
 #[holder(generate_deserialize)]
 pub struct PreDefinedColour {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20017,6 +21330,7 @@ pub enum PreDefinedColourAny {
 #[holder(generate_deserialize)]
 pub struct PreDefinedCurveFont {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20036,6 +21350,7 @@ pub enum PreDefinedCurveFontAny {
 #[holder(generate_deserialize)]
 pub struct PreDefinedDimensionSymbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -20044,6 +21359,7 @@ pub struct PreDefinedDimensionSymbol {
 #[holder(generate_deserialize)]
 pub struct PreDefinedGeometricalToleranceSymbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -20083,6 +21399,7 @@ pub enum PreDefinedItemAny {
 #[holder(generate_deserialize)]
 pub struct PreDefinedMarker {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20104,6 +21421,7 @@ pub enum PreDefinedMarkerAny {
 #[holder(generate_deserialize)]
 pub struct PreDefinedPointMarkerSymbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -20112,6 +21430,7 @@ pub struct PreDefinedPointMarkerSymbol {
 #[holder(generate_deserialize)]
 pub struct PreDefinedSurfaceConditionSymbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -20120,6 +21439,7 @@ pub struct PreDefinedSurfaceConditionSymbol {
 #[holder(generate_deserialize)]
 pub struct PreDefinedSurfaceSideStyle {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -20128,6 +21448,7 @@ pub struct PreDefinedSurfaceSideStyle {
 #[holder(generate_deserialize)]
 pub struct PreDefinedSymbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20155,6 +21476,7 @@ pub enum PreDefinedSymbolAny {
 #[holder(generate_deserialize)]
 pub struct PreDefinedTerminatorSymbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20172,6 +21494,7 @@ pub enum PreDefinedTerminatorSymbolAny {
 #[holder(generate_deserialize)]
 pub struct PreDefinedTextFont {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20189,6 +21512,7 @@ pub enum PreDefinedTextFontAny {
 #[holder(generate_deserialize)]
 pub struct PreDefinedTile {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -20204,7 +21528,9 @@ pub struct PrecisionQualifier {
 #[holder(generate_deserialize)]
 pub struct PredefinedPictureRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "binary_representation_item")]
     pub binary_value: Binary,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -20213,10 +21539,13 @@ pub struct PredefinedPictureRepresentationItem {
 #[holder(generate_deserialize)]
 pub struct PresentationArea {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20250,10 +21579,13 @@ pub struct PresentationLayerAssignment {
 #[holder(generate_deserialize)]
 pub struct PresentationRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20314,6 +21646,7 @@ pub enum PresentationStyleAssignmentAny {
 #[holder(generate_deserialize)]
 pub struct PresentationStyleByContext {
     #[holder(use_place_holder)]
+    #[holder(supertype = "presentation_style_assignment")]
     pub styles: Vec<PresentationStyleSelect>,
     #[holder(use_place_holder)]
     pub style_context: StyleContextSelect,
@@ -20324,10 +21657,13 @@ pub struct PresentationStyleByContext {
 #[holder(generate_deserialize)]
 pub struct PresentationView {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20369,8 +21705,10 @@ pub struct PresentedItemRepresentation {
 #[holder(generate_deserialize)]
 pub struct PressureMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -20379,6 +21717,7 @@ pub struct PressureMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct PressureUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20396,10 +21735,13 @@ pub enum PressureUnitAny {
 #[holder(generate_deserialize)]
 pub struct ProceduralRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20417,6 +21759,7 @@ pub enum ProceduralRepresentationAny {
 #[holder(generate_deserialize)]
 pub struct ProceduralRepresentationSequence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub elements: Vec<RepresentationItemAny>,
@@ -20440,10 +21783,13 @@ pub enum ProceduralRepresentationSequenceAny {
 #[holder(generate_deserialize)]
 pub struct ProceduralShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -20452,12 +21798,16 @@ pub struct ProceduralShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct ProceduralShapeRepresentationSequence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "procedural_representation_sequence")]
     pub elements: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "procedural_representation_sequence")]
     pub suppressed_items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "procedural_representation_sequence")]
     pub rationale: Text,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -20499,12 +21849,16 @@ pub enum ProductCategoryAny {
 #[holder(generate_deserialize)]
 pub struct ProductClass {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_concept")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_concept")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_concept")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_concept")]
     pub market_context: ProductConceptContext,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -20536,8 +21890,10 @@ pub enum ProductConceptAny {
 #[holder(generate_deserialize)]
 pub struct ProductConceptContext {
     #[holder(use_place_holder)]
+    #[holder(supertype = "application_context_element")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "application_context_element")]
     pub frame_of_reference: ApplicationContext,
     #[holder(use_place_holder)]
     pub market_segment_type: Label,
@@ -20585,8 +21941,10 @@ pub struct ProductConceptFeatureAssociation {
 #[holder(generate_deserialize)]
 pub struct ProductConceptFeatureCategory {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20604,6 +21962,7 @@ pub enum ProductConceptFeatureCategoryAny {
 #[holder(generate_deserialize)]
 pub struct ProductConceptFeatureCategoryUsage {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group_assignment")]
     pub assigned_group: GroupAny,
     #[holder(use_place_holder)]
     pub items: Vec<CategoryUsageItem>,
@@ -20628,8 +21987,10 @@ pub struct ProductConceptRelationship {
 #[holder(generate_deserialize)]
 pub struct ProductContext {
     #[holder(use_place_holder)]
+    #[holder(supertype = "application_context_element")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "application_context_element")]
     pub frame_of_reference: ApplicationContext,
     #[holder(use_place_holder)]
     pub discipline_type: Label,
@@ -20694,8 +22055,10 @@ pub enum ProductDefinitionAny {
 #[holder(generate_deserialize)]
 pub struct ProductDefinitionContext {
     #[holder(use_place_holder)]
+    #[holder(supertype = "application_context_element")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "application_context_element")]
     pub frame_of_reference: ApplicationContext,
     #[holder(use_place_holder)]
     pub life_cycle_stage: Label,
@@ -20739,6 +22102,7 @@ pub struct ProductDefinitionContextRole {
 #[holder(generate_deserialize)]
 pub struct ProductDefinitionEffectivity {
     #[holder(use_place_holder)]
+    #[holder(supertype = "effectivity")]
     pub id: Identifier,
     #[holder(use_place_holder)]
     pub usage: ProductDefinitionRelationshipAny,
@@ -20758,8 +22122,10 @@ pub enum ProductDefinitionEffectivityAny {
 #[holder(generate_deserialize)]
 pub struct ProductDefinitionElementRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20816,10 +22182,13 @@ pub struct ProductDefinitionFormationRelationship {
 #[holder(generate_deserialize)]
 pub struct ProductDefinitionFormationWithSpecifiedSource {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_formation")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_formation")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_formation")]
     pub of_product: Product,
     pub make_or_buy: Source,
 }
@@ -20829,6 +22198,7 @@ pub struct ProductDefinitionFormationWithSpecifiedSource {
 #[holder(generate_deserialize)]
 pub struct ProductDefinitionGroupAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group_assignment")]
     pub assigned_group: GroupAny,
     #[holder(use_place_holder)]
     pub items: Vec<ProductDefinitionOrProductDefinitionRelationship>,
@@ -20892,10 +22262,13 @@ pub enum ProductDefinitionRelationshipAny {
 #[holder(generate_deserialize)]
 pub struct ProductDefinitionShape {
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub definition: CharacterizedDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -20916,14 +22289,19 @@ pub struct ProductDefinitionSubstitute {
 #[holder(generate_deserialize)]
 pub struct ProductDefinitionUsage {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20943,12 +22321,16 @@ pub enum ProductDefinitionUsageAny {
 #[holder(generate_deserialize)]
 pub struct ProductDefinitionWithAssociatedDocuments {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
     #[holder(use_place_holder)]
     pub documentation_ids: Vec<DocumentAny>,
@@ -20959,14 +22341,19 @@ pub struct ProductDefinitionWithAssociatedDocuments {
 #[holder(generate_deserialize)]
 pub struct ProductIdentification {
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub item_concept: ProductConceptAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub purpose: Option<Label>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -20984,14 +22371,19 @@ pub enum ProductIdentificationAny {
 #[holder(generate_deserialize)]
 pub struct ProductMaterialCompositionRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
     pub class: Label,
@@ -21008,8 +22400,10 @@ pub struct ProductMaterialCompositionRelationship {
 #[holder(generate_deserialize)]
 pub struct ProductRelatedProductCategory {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_category")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_category")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
     pub products: Vec<Product>,
@@ -21020,16 +22414,22 @@ pub struct ProductRelatedProductCategory {
 #[holder(generate_deserialize)]
 pub struct ProductSpecification {
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub item_concept: ProductConceptAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configuration_item")]
     pub purpose: Option<Label>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "configurable_item")]
     pub item_concept_feature: Vec<ProductConceptFeatureAssociation>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21038,8 +22438,10 @@ pub struct ProductSpecification {
 #[holder(generate_deserialize)]
 pub struct ProjectedZoneDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "tolerance_zone_definition")]
     pub zone: ToleranceZone,
     #[holder(use_place_holder)]
+    #[holder(supertype = "tolerance_zone_definition")]
     pub boundaries: Vec<ShapeAspectAny>,
     #[holder(use_place_holder)]
     pub projection_end: ShapeAspectAny,
@@ -21052,10 +22454,13 @@ pub struct ProjectedZoneDefinition {
 #[holder(generate_deserialize)]
 pub struct ProjectionCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21064,8 +22469,10 @@ pub struct ProjectionCurve {
 #[holder(generate_deserialize)]
 pub struct ProjectionDirectedCallout {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -21083,16 +22490,22 @@ pub enum ProjectionDirectedCalloutAny {
 #[holder(generate_deserialize)]
 pub struct PromissoryUsageOccurrence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "assembly_component_usage")]
     pub reference_designator: Option<Identifier>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21175,6 +22588,7 @@ pub enum PropertyDefinitionRepresentationAny {
 #[holder(generate_deserialize)]
 pub struct QualifiedRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub qualifiers: Vec<ValueQualifier>,
@@ -21185,8 +22599,10 @@ pub struct QualifiedRepresentationItem {
 #[holder(generate_deserialize)]
 pub struct QualitativeUncertainty {
     #[holder(use_place_holder)]
+    #[holder(supertype = "uncertainty_qualifier")]
     pub measure_name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "uncertainty_qualifier")]
     pub description: Text,
     #[holder(use_place_holder)]
     pub uncertainty_value: Text,
@@ -21197,16 +22613,22 @@ pub struct QualitativeUncertainty {
 #[holder(generate_deserialize)]
 pub struct QuantifiedAssemblyComponentUsage {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "assembly_component_usage")]
     pub reference_designator: Option<Identifier>,
     #[holder(use_place_holder)]
     pub quantity: MeasureWithUnitAny,
@@ -21217,12 +22639,18 @@ pub struct QuantifiedAssemblyComponentUsage {
 #[holder(generate_deserialize)]
 pub struct QuasiUniformCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "b_spline_curve")]
     pub degree: i64,
     #[holder(use_place_holder)]
+    #[holder(supertype = "b_spline_curve")]
     pub control_points_list: Vec<CartesianPoint>,
+    #[holder(supertype = "b_spline_curve")]
     pub curve_form: BSplineCurveForm,
+    #[holder(supertype = "b_spline_curve")]
     pub closed_curve: Logical,
+    #[holder(supertype = "b_spline_curve")]
     pub self_intersect: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21231,14 +22659,22 @@ pub struct QuasiUniformCurve {
 #[holder(generate_deserialize)]
 pub struct QuasiUniformSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "b_spline_surface")]
     pub u_degree: i64,
+    #[holder(supertype = "b_spline_surface")]
     pub v_degree: i64,
     #[holder(use_place_holder)]
+    #[holder(supertype = "b_spline_surface")]
     pub control_points_list: Vec<Vec<CartesianPoint>>,
+    #[holder(supertype = "b_spline_surface")]
     pub surface_form: BSplineSurfaceForm,
+    #[holder(supertype = "b_spline_surface")]
     pub u_closed: Logical,
+    #[holder(supertype = "b_spline_surface")]
     pub v_closed: Logical,
+    #[holder(supertype = "b_spline_surface")]
     pub self_intersect: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21247,8 +22683,10 @@ pub struct QuasiUniformSurface {
 #[holder(generate_deserialize)]
 pub struct RadioactivityMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21257,6 +22695,7 @@ pub struct RadioactivityMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct RadioactivityUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -21274,8 +22713,10 @@ pub enum RadioactivityUnitAny {
 #[holder(generate_deserialize)]
 pub struct RadiusDimension {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21284,12 +22725,16 @@ pub struct RadiusDimension {
 #[holder(generate_deserialize)]
 pub struct RangeCharacteristic {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "descriptive_representation_item")]
     pub description: Text,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21298,8 +22743,10 @@ pub struct RangeCharacteristic {
 #[holder(generate_deserialize)]
 pub struct RatioMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -21319,6 +22766,7 @@ pub enum RatioMeasureWithUnitAny {
 #[holder(generate_deserialize)]
 pub struct RatioUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21327,12 +22775,18 @@ pub struct RatioUnit {
 #[holder(generate_deserialize)]
 pub struct RationalBSplineCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "b_spline_curve")]
     pub degree: i64,
     #[holder(use_place_holder)]
+    #[holder(supertype = "b_spline_curve")]
     pub control_points_list: Vec<CartesianPoint>,
+    #[holder(supertype = "b_spline_curve")]
     pub curve_form: BSplineCurveForm,
+    #[holder(supertype = "b_spline_curve")]
     pub closed_curve: Logical,
+    #[holder(supertype = "b_spline_curve")]
     pub self_intersect: Logical,
     pub weights_data: Vec<f64>,
 }
@@ -21342,14 +22796,22 @@ pub struct RationalBSplineCurve {
 #[holder(generate_deserialize)]
 pub struct RationalBSplineSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "b_spline_surface")]
     pub u_degree: i64,
+    #[holder(supertype = "b_spline_surface")]
     pub v_degree: i64,
     #[holder(use_place_holder)]
+    #[holder(supertype = "b_spline_surface")]
     pub control_points_list: Vec<Vec<CartesianPoint>>,
+    #[holder(supertype = "b_spline_surface")]
     pub surface_form: BSplineSurfaceForm,
+    #[holder(supertype = "b_spline_surface")]
     pub u_closed: Logical,
+    #[holder(supertype = "b_spline_surface")]
     pub v_closed: Logical,
+    #[holder(supertype = "b_spline_surface")]
     pub self_intersect: Logical,
     pub weights_data: Vec<Vec<f64>>,
 }
@@ -21359,8 +22821,10 @@ pub struct RationalBSplineSurface {
 #[holder(generate_deserialize)]
 pub struct RationalRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "binary_generic_expression")]
     pub operands: Vec<GenericExpressionAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21368,6 +22832,7 @@ pub struct RationalRepresentationItem {
 # [holder (field = real_literal)]
 #[holder(generate_deserialize)]
 pub struct RealLiteral {
+    #[holder(supertype = "literal_number")]
     pub the_value: f64,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -21385,7 +22850,9 @@ pub enum RealLiteralAny {
 #[holder(generate_deserialize)]
 pub struct RealRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "literal_number")]
     pub the_value: f64,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21394,6 +22861,7 @@ pub struct RealRepresentationItem {
 #[holder(generate_deserialize)]
 pub struct RectangularCompositeSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub segments: Vec<Vec<SurfacePatch>>,
@@ -21404,6 +22872,7 @@ pub struct RectangularCompositeSurface {
 #[holder(generate_deserialize)]
 pub struct RectangularTrimmedSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub basis_surface: SurfaceAny,
@@ -21423,8 +22892,10 @@ pub struct RectangularTrimmedSurface {
 # [holder (field = referenced_modified_datum)]
 #[holder(generate_deserialize)]
 pub struct ReferencedModifiedDatum {
+    #[holder(supertype = "datum_reference")]
     pub precedence: i64,
     #[holder(use_place_holder)]
+    #[holder(supertype = "datum_reference")]
     pub referenced_datum: DatumAny,
     pub modifier: LimitCondition,
 }
@@ -21434,10 +22905,13 @@ pub struct ReferencedModifiedDatum {
 #[holder(generate_deserialize)]
 pub struct RelativeEventOccurrence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "event_occurrence")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "event_occurrence")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "event_occurrence")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
     pub base_event: EventOccurrenceAny,
@@ -21450,8 +22924,10 @@ pub struct RelativeEventOccurrence {
 #[holder(generate_deserialize)]
 pub struct RepItemGroup {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21459,9 +22935,12 @@ pub struct RepItemGroup {
 # [holder (field = reparametrised_composite_curve_segment)]
 #[holder(generate_deserialize)]
 pub struct ReparametrisedCompositeCurveSegment {
+    #[holder(supertype = "composite_curve_segment")]
     pub transition: TransitionCode,
+    #[holder(supertype = "composite_curve_segment")]
     pub same_sense: bool,
     #[holder(use_place_holder)]
+    #[holder(supertype = "composite_curve_segment")]
     pub parent_curve: CurveAny,
     #[holder(use_place_holder)]
     pub param_length: ParameterValue,
@@ -21734,12 +23213,16 @@ pub enum RepresentationRelationshipAny {
 #[holder(generate_deserialize)]
 pub struct RepresentationRelationshipWithTransformation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_1: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_2: RepresentationAny,
     #[holder(use_place_holder)]
     pub transformation_operator: Transformation,
@@ -21750,6 +23233,7 @@ pub struct RepresentationRelationshipWithTransformation {
 #[holder(generate_deserialize)]
 pub struct RequirementAssignedObject {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group_assignment")]
     pub assigned_group: GroupAny,
     #[holder(use_place_holder)]
     pub items: Vec<RequirementAssignedItem>,
@@ -21760,8 +23244,10 @@ pub struct RequirementAssignedObject {
 #[holder(generate_deserialize)]
 pub struct RequirementAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "characterized_object")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "characterized_object")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21770,8 +23256,10 @@ pub struct RequirementAssignment {
 #[holder(generate_deserialize)]
 pub struct RequirementSource {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21780,14 +23268,19 @@ pub struct RequirementSource {
 #[holder(generate_deserialize)]
 pub struct RequirementViewDefinitionRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21796,8 +23289,10 @@ pub struct RequirementViewDefinitionRelationship {
 #[holder(generate_deserialize)]
 pub struct ResistanceMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21806,6 +23301,7 @@ pub struct ResistanceMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct ResistanceUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -21823,8 +23319,10 @@ pub enum ResistanceUnitAny {
 #[holder(generate_deserialize)]
 pub struct RevolvedAreaSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "swept_area_solid")]
     pub swept_area: CurveBoundedSurface,
     #[holder(use_place_holder)]
     pub axis: Axis1Placement,
@@ -21837,8 +23335,10 @@ pub struct RevolvedAreaSolid {
 #[holder(generate_deserialize)]
 pub struct RevolvedFaceSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "swept_face_solid")]
     pub swept_face: FaceSurfaceAny,
     #[holder(use_place_holder)]
     pub axis: Axis1Placement,
@@ -21860,12 +23360,16 @@ pub enum RevolvedFaceSolidAny {
 #[holder(generate_deserialize)]
 pub struct RevolvedFaceSolidWithTrimConditions {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "swept_face_solid")]
     pub swept_face: FaceSurfaceAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "revolved_face_solid")]
     pub axis: Axis1Placement,
     #[holder(use_place_holder)]
+    #[holder(supertype = "revolved_face_solid")]
     pub angle: PlaneAngleMeasure,
     #[holder(use_place_holder)]
     pub first_trim_condition: TrimConditionSelect,
@@ -21878,6 +23382,7 @@ pub struct RevolvedFaceSolidWithTrimConditions {
 #[holder(generate_deserialize)]
 pub struct RightAngularWedge {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub position: Axis2Placement3D,
@@ -21896,6 +23401,7 @@ pub struct RightAngularWedge {
 #[holder(generate_deserialize)]
 pub struct RightCircularCone {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub position: Axis1Placement,
@@ -21912,6 +23418,7 @@ pub struct RightCircularCone {
 #[holder(generate_deserialize)]
 pub struct RightCircularCylinder {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub position: Axis1Placement,
@@ -21926,12 +23433,16 @@ pub struct RightCircularCylinder {
 #[holder(generate_deserialize)]
 pub struct RightToUsageAssociation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method_relationship")]
     pub relating_method: ActionMethodAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method_relationship")]
     pub related_method: ActionMethodAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21950,12 +23461,16 @@ pub struct RoleAssociation {
 #[holder(generate_deserialize)]
 pub struct RoundnessTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21964,8 +23479,10 @@ pub struct RoundnessTolerance {
 #[holder(generate_deserialize)]
 pub struct RowRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21974,8 +23491,10 @@ pub struct RowRepresentationItem {
 #[holder(generate_deserialize)]
 pub struct RowValue {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -21984,16 +23503,22 @@ pub struct RowValue {
 #[holder(generate_deserialize)]
 pub struct RowVariable {
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub definition: CharacterizedDefinition,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition_representation")]
     pub used_representation: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22002,10 +23527,13 @@ pub struct RowVariable {
 #[holder(generate_deserialize)]
 pub struct RuleAction {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action")]
     pub chosen_method: ActionMethodAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -22023,8 +23551,10 @@ pub enum RuleActionAny {
 #[holder(generate_deserialize)]
 pub struct RuleCondition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22033,12 +23563,16 @@ pub struct RuleCondition {
 #[holder(generate_deserialize)]
 pub struct RuleDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -22058,12 +23592,16 @@ pub enum RuleDefinitionAny {
 #[holder(generate_deserialize)]
 pub struct RuleSet {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22072,12 +23610,16 @@ pub struct RuleSet {
 #[holder(generate_deserialize)]
 pub struct RuleSetGroup {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22086,12 +23628,16 @@ pub struct RuleSetGroup {
 #[holder(generate_deserialize)]
 pub struct RuleSoftwareDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -22113,6 +23659,7 @@ pub enum RuleSoftwareDefinitionAny {
 #[holder(generate_deserialize)]
 pub struct RuleSupersededAssignment {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_assignment")]
     pub assigned_action: ActionAny,
     #[holder(use_place_holder)]
     pub items: Vec<RuleSupersededItem>,
@@ -22123,10 +23670,13 @@ pub struct RuleSupersededAssignment {
 #[holder(generate_deserialize)]
 pub struct RuleSupersedence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action")]
     pub chosen_method: ActionMethodAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22135,14 +23685,20 @@ pub struct RuleSupersedence {
 #[holder(generate_deserialize)]
 pub struct RuledSurfaceSweptAreaSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "swept_area_solid")]
     pub swept_area: CurveBoundedSurface,
     #[holder(use_place_holder)]
+    #[holder(supertype = "surface_curve_swept_area_solid")]
     pub directrix: CurveAny,
+    #[holder(supertype = "surface_curve_swept_area_solid")]
     pub start_param: f64,
+    #[holder(supertype = "surface_curve_swept_area_solid")]
     pub end_param: f64,
     #[holder(use_place_holder)]
+    #[holder(supertype = "surface_curve_swept_area_solid")]
     pub reference_surface: SurfaceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22151,8 +23707,10 @@ pub struct RuledSurfaceSweptAreaSolid {
 #[holder(generate_deserialize)]
 pub struct RunoutZoneDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "tolerance_zone_definition")]
     pub zone: ToleranceZone,
     #[holder(use_place_holder)]
+    #[holder(supertype = "tolerance_zone_definition")]
     pub boundaries: Vec<ShapeAspectAny>,
     #[holder(use_place_holder)]
     pub orientation: RunoutZoneOrientationAny,
@@ -22180,6 +23738,7 @@ pub enum RunoutZoneOrientationAny {
 #[holder(generate_deserialize)]
 pub struct RunoutZoneOrientationReferenceDirection {
     #[holder(use_place_holder)]
+    #[holder(supertype = "runout_zone_orientation")]
     pub angle: MeasureWithUnitAny,
     #[holder(use_place_holder)]
     pub orientation_defining_relationship: ShapeAspectRelationshipAny,
@@ -22190,6 +23749,7 @@ pub struct RunoutZoneOrientationReferenceDirection {
 #[holder(generate_deserialize)]
 pub struct SatisfiedRequirement {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group_assignment")]
     pub assigned_group: GroupAny,
     #[holder(use_place_holder)]
     pub items: Vec<ProductDefinitionAny>,
@@ -22200,8 +23760,10 @@ pub struct SatisfiedRequirement {
 #[holder(generate_deserialize)]
 pub struct SatisfiesRequirement {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22210,6 +23772,7 @@ pub struct SatisfiesRequirement {
 #[holder(generate_deserialize)]
 pub struct SatisfyingItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group_assignment")]
     pub assigned_group: GroupAny,
     #[holder(use_place_holder)]
     pub items: Vec<RequirementSatisfactionItem>,
@@ -22220,16 +23783,22 @@ pub struct SatisfyingItem {
 #[holder(generate_deserialize)]
 pub struct ScalarVariable {
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition")]
     pub definition: CharacterizedDefinition,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition_representation")]
     pub used_representation: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22237,7 +23806,9 @@ pub struct ScalarVariable {
 # [holder (field = scattering_parameter)]
 #[holder(generate_deserialize)]
 pub struct ScatteringParameter {
+    #[holder(supertype = "polar_complex_number_literal")]
     pub radius: f64,
+    #[holder(supertype = "polar_complex_number_literal")]
     pub angle: f64,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22246,10 +23817,13 @@ pub struct ScatteringParameter {
 #[holder(generate_deserialize)]
 pub struct SculpturedSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
     pub sculpturing_element: GeneralizedSurfaceSelect,
@@ -22261,11 +23835,15 @@ pub struct SculpturedSolid {
 #[holder(generate_deserialize)]
 pub struct SeamCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "surface_curve")]
     pub curve_3d: CurveAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "surface_curve")]
     pub associated_geometry: Vec<PcurveOrSurface>,
+    #[holder(supertype = "surface_curve")]
     pub master_representation: PreferredSurfaceCurveRepresentation,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22313,6 +23891,7 @@ pub struct SecurityClassificationLevel {
 #[holder(generate_deserialize)]
 pub struct SerialNumberedEffectivity {
     #[holder(use_place_holder)]
+    #[holder(supertype = "effectivity")]
     pub id: Identifier,
     #[holder(use_place_holder)]
     pub effectivity_start_id: Identifier,
@@ -22363,12 +23942,16 @@ pub enum ShapeAspectAny {
 #[holder(generate_deserialize)]
 pub struct ShapeAspectAssociativity {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub relating_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub related_shape_aspect: ShapeAspectAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22377,12 +23960,16 @@ pub struct ShapeAspectAssociativity {
 #[holder(generate_deserialize)]
 pub struct ShapeAspectDerivingRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub relating_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
     pub related_shape_aspect: ShapeAspectAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22418,8 +24005,10 @@ pub enum ShapeAspectRelationshipAny {
 #[holder(generate_deserialize)]
 pub struct ShapeDefinitionRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition_representation")]
     pub definition: RepresentedDefinition,
     #[holder(use_place_holder)]
+    #[holder(supertype = "property_definition_representation")]
     pub used_representation: RepresentationAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22428,10 +24017,13 @@ pub struct ShapeDefinitionRepresentation {
 #[holder(generate_deserialize)]
 pub struct ShapeDimensionRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22440,8 +24032,10 @@ pub struct ShapeDimensionRepresentation {
 #[holder(generate_deserialize)]
 pub struct ShapeFeatureDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "characterized_object")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "characterized_object")]
     pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -22459,10 +24053,13 @@ pub enum ShapeFeatureDefinitionAny {
 #[holder(generate_deserialize)]
 pub struct ShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -22522,12 +24119,16 @@ pub enum ShapeRepresentationAny {
 #[holder(generate_deserialize)]
 pub struct ShapeRepresentationRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_1: RepresentationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_relationship")]
     pub rep_2: RepresentationAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -22545,10 +24146,13 @@ pub enum ShapeRepresentationRelationshipAny {
 #[holder(generate_deserialize)]
 pub struct ShapeRepresentationWithParameters {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22557,6 +24161,7 @@ pub struct ShapeRepresentationWithParameters {
 #[holder(generate_deserialize)]
 pub struct ShellBasedSurfaceModel {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub sbsm_boundary: Vec<Shell>,
@@ -22567,6 +24172,7 @@ pub struct ShellBasedSurfaceModel {
 #[holder(generate_deserialize)]
 pub struct ShellBasedWireframeModel {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub sbwm_boundary: Vec<Shell>,
@@ -22577,10 +24183,13 @@ pub struct ShellBasedWireframeModel {
 #[holder(generate_deserialize)]
 pub struct ShellBasedWireframeShapeRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22589,10 +24198,13 @@ pub struct ShellBasedWireframeShapeRepresentation {
 #[holder(generate_deserialize)]
 pub struct ShelledSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
     pub deleted_face_set: Vec<FaceSurfaceAny>,
@@ -22616,10 +24228,14 @@ pub enum ShelledSolidAny {
 #[holder(generate_deserialize)]
 pub struct SiAbsorbedDoseUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22628,10 +24244,14 @@ pub struct SiAbsorbedDoseUnit {
 #[holder(generate_deserialize)]
 pub struct SiCapacitanceUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22640,10 +24260,14 @@ pub struct SiCapacitanceUnit {
 #[holder(generate_deserialize)]
 pub struct SiConductanceUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22652,10 +24276,14 @@ pub struct SiConductanceUnit {
 #[holder(generate_deserialize)]
 pub struct SiDoseEquivalentUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22664,10 +24292,14 @@ pub struct SiDoseEquivalentUnit {
 #[holder(generate_deserialize)]
 pub struct SiElectricChargeUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22676,10 +24308,14 @@ pub struct SiElectricChargeUnit {
 #[holder(generate_deserialize)]
 pub struct SiElectricPotentialUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22688,10 +24324,14 @@ pub struct SiElectricPotentialUnit {
 #[holder(generate_deserialize)]
 pub struct SiEnergyUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22700,10 +24340,14 @@ pub struct SiEnergyUnit {
 #[holder(generate_deserialize)]
 pub struct SiForceUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22712,10 +24356,14 @@ pub struct SiForceUnit {
 #[holder(generate_deserialize)]
 pub struct SiFrequencyUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22724,10 +24372,14 @@ pub struct SiFrequencyUnit {
 #[holder(generate_deserialize)]
 pub struct SiIlluminanceUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22736,10 +24388,14 @@ pub struct SiIlluminanceUnit {
 #[holder(generate_deserialize)]
 pub struct SiInductanceUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22748,10 +24404,14 @@ pub struct SiInductanceUnit {
 #[holder(generate_deserialize)]
 pub struct SiMagneticFluxDensityUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22760,10 +24420,14 @@ pub struct SiMagneticFluxDensityUnit {
 #[holder(generate_deserialize)]
 pub struct SiMagneticFluxUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22772,10 +24436,14 @@ pub struct SiMagneticFluxUnit {
 #[holder(generate_deserialize)]
 pub struct SiPowerUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22784,10 +24452,14 @@ pub struct SiPowerUnit {
 #[holder(generate_deserialize)]
 pub struct SiPressureUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22796,10 +24468,14 @@ pub struct SiPressureUnit {
 #[holder(generate_deserialize)]
 pub struct SiRadioactivityUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22808,10 +24484,14 @@ pub struct SiRadioactivityUnit {
 #[holder(generate_deserialize)]
 pub struct SiResistanceUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
+    #[holder(supertype = "si_unit")]
     pub prefix: Option<SiPrefix>,
+    #[holder(supertype = "si_unit")]
     pub name: SiUnitName,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22820,6 +24500,7 @@ pub struct SiResistanceUnit {
 #[holder(generate_deserialize)]
 pub struct SiUnit {
     #[holder(derived)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: Derived<DimensionalExponents>,
     pub prefix: Option<SiPrefix>,
     pub name: SiUnitName,
@@ -22885,8 +24566,10 @@ pub enum SimpleBooleanExpressionAny {
 #[holder(generate_deserialize)]
 pub struct SimpleClause {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -22940,6 +24623,7 @@ pub enum SimpleNumericExpressionAny {
 #[holder(generate_deserialize)]
 pub struct SlashExpression {
     #[holder(use_place_holder)]
+    #[holder(supertype = "binary_generic_expression")]
     pub operands: Vec<GenericExpressionAny>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -22957,12 +24641,16 @@ pub enum SlashExpressionAny {
 #[holder(generate_deserialize)]
 pub struct SmearedMaterialDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22971,8 +24659,10 @@ pub struct SmearedMaterialDefinition {
 #[holder(generate_deserialize)]
 pub struct SolidAngleMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22981,6 +24671,7 @@ pub struct SolidAngleMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct SolidAngleUnit {
     #[holder(derived)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: Derived<DimensionalExponents>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22989,6 +24680,7 @@ pub struct SolidAngleUnit {
 #[holder(generate_deserialize)]
 pub struct SolidCurveFont {
     #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -22997,6 +24689,7 @@ pub struct SolidCurveFont {
 #[holder(generate_deserialize)]
 pub struct SolidModel {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -23028,6 +24721,7 @@ pub enum SolidModelAny {
 #[holder(generate_deserialize)]
 pub struct SolidReplica {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub parent_solid: SolidModelAny,
@@ -23040,12 +24734,16 @@ pub struct SolidReplica {
 #[holder(generate_deserialize)]
 pub struct SolidWithAngleBasedChamfer {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "edge_blended_solid")]
     pub blended_edges: Vec<EdgeCurve>,
     #[holder(use_place_holder)]
     pub offset_distance: PositiveLengthMeasure,
@@ -23059,12 +24757,16 @@ pub struct SolidWithAngleBasedChamfer {
 #[holder(generate_deserialize)]
 pub struct SolidWithChamferedEdges {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "edge_blended_solid")]
     pub blended_edges: Vec<EdgeCurve>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -23086,14 +24788,19 @@ pub enum SolidWithChamferedEdgesAny {
 #[holder(generate_deserialize)]
 pub struct SolidWithCircularPattern {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_shape_element_pattern")]
     pub replicated_element: ModifiedSolidWithPlacedConfigurationAny,
     #[holder(use_place_holder)]
     pub replicate_count: PositiveInteger,
@@ -23118,18 +24825,25 @@ pub enum SolidWithCircularPatternAny {
 #[holder(generate_deserialize)]
 pub struct SolidWithCircularPocket {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_pocket")]
     pub floor_blend_radius: NonNegativeLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_pocket")]
     pub draft_angle: PlaneAngleMeasure,
     #[holder(use_place_holder)]
     pub pocket_radius: PositiveLengthMeasure,
@@ -23140,16 +24854,22 @@ pub struct SolidWithCircularPocket {
 #[holder(generate_deserialize)]
 pub struct SolidWithCircularProtrusion {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_protrusion")]
     pub protrusion_height: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_protrusion")]
     pub protrusion_draft_angle: PlaneAngleMeasure,
     #[holder(use_place_holder)]
     pub protrusion_radius: PositiveLengthMeasure,
@@ -23160,20 +24880,28 @@ pub struct SolidWithCircularProtrusion {
 #[holder(generate_deserialize)]
 pub struct SolidWithConicalBottomRoundHole {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_stepped_round_hole")]
     pub segments: PositiveInteger,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_stepped_round_hole")]
     pub segment_radii: Vec<PositiveLengthMeasure>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_stepped_round_hole")]
     pub segment_depths: Vec<PositiveLengthMeasure>,
     #[holder(use_place_holder)]
     pub semi_apex_angle: PositivePlaneAngleMeasure,
@@ -23186,12 +24914,16 @@ pub struct SolidWithConicalBottomRoundHole {
 #[holder(generate_deserialize)]
 pub struct SolidWithConstantRadiusEdgeBlend {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "edge_blended_solid")]
     pub blended_edges: Vec<EdgeCurve>,
     #[holder(use_place_holder)]
     pub radius: PositiveLengthMeasure,
@@ -23202,19 +24934,27 @@ pub struct SolidWithConstantRadiusEdgeBlend {
 #[holder(generate_deserialize)]
 pub struct SolidWithCurvedSlot {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_slot")]
     pub slot_width: PositiveLengthMeasure,
+    #[holder(supertype = "solid_with_slot")]
     pub closed_ends: Vec<Logical>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_slot")]
     pub end_exit_faces: Vec<Vec<FaceSurfaceAny>>,
     #[holder(use_place_holder)]
     pub slot_centreline: BoundedCurveAny,
@@ -23225,12 +24965,16 @@ pub struct SolidWithCurvedSlot {
 #[holder(generate_deserialize)]
 pub struct SolidWithDepression {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
     pub depth: PositiveLengthMeasure,
@@ -23258,12 +25002,16 @@ pub enum SolidWithDepressionAny {
 #[holder(generate_deserialize)]
 pub struct SolidWithDoubleOffsetChamfer {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "edge_blended_solid")]
     pub blended_edges: Vec<EdgeCurve>,
     #[holder(use_place_holder)]
     pub left_offset_distance: PositiveLengthMeasure,
@@ -23276,20 +25024,28 @@ pub struct SolidWithDoubleOffsetChamfer {
 #[holder(generate_deserialize)]
 pub struct SolidWithFlatBottomRoundHole {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_stepped_round_hole")]
     pub segments: PositiveInteger,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_stepped_round_hole")]
     pub segment_radii: Vec<PositiveLengthMeasure>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_stepped_round_hole")]
     pub segment_depths: Vec<PositiveLengthMeasure>,
     #[holder(use_place_holder)]
     pub fillet_radius: NonNegativeLengthMeasure,
@@ -23300,18 +25056,25 @@ pub struct SolidWithFlatBottomRoundHole {
 #[holder(generate_deserialize)]
 pub struct SolidWithGeneralPocket {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_pocket")]
     pub floor_blend_radius: NonNegativeLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_pocket")]
     pub draft_angle: PlaneAngleMeasure,
     #[holder(use_place_holder)]
     pub profile: PositionedSketch,
@@ -23324,16 +25087,22 @@ pub struct SolidWithGeneralPocket {
 #[holder(generate_deserialize)]
 pub struct SolidWithGeneralProtrusion {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_protrusion")]
     pub protrusion_height: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_protrusion")]
     pub protrusion_draft_angle: PlaneAngleMeasure,
     #[holder(use_place_holder)]
     pub profile: PositionedSketch,
@@ -23346,14 +25115,19 @@ pub struct SolidWithGeneralProtrusion {
 #[holder(generate_deserialize)]
 pub struct SolidWithGroove {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
     pub groove_radius: PositiveLengthMeasure,
@@ -23371,14 +25145,19 @@ pub struct SolidWithGroove {
 #[holder(generate_deserialize)]
 pub struct SolidWithHole {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -23396,21 +25175,30 @@ pub enum SolidWithHoleAny {
 #[holder(generate_deserialize)]
 pub struct SolidWithIncompleteCircularPattern {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_shape_element_pattern")]
     pub replicated_element: ModifiedSolidWithPlacedConfigurationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_circular_pattern")]
     pub replicate_count: PositiveInteger,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_circular_pattern")]
     pub angular_spacing: PlaneAngleMeasure,
+    #[holder(supertype = "solid_with_circular_pattern")]
     pub radial_alignment: bool,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_circular_pattern")]
     pub reference_point: PointAny,
     #[holder(use_place_holder)]
     pub omitted_instances: Vec<PositiveInteger>,
@@ -23421,22 +25209,31 @@ pub struct SolidWithIncompleteCircularPattern {
 #[holder(generate_deserialize)]
 pub struct SolidWithIncompleteRectangularPattern {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_shape_element_pattern")]
     pub replicated_element: ModifiedSolidWithPlacedConfigurationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_rectangular_pattern")]
     pub row_count: PositiveInteger,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_rectangular_pattern")]
     pub column_count: PositiveInteger,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_rectangular_pattern")]
     pub row_spacing: LengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_rectangular_pattern")]
     pub column_spacing: LengthMeasure,
     #[holder(use_place_holder)]
     pub omitted_instances: Vec<Vec<PositiveInteger>>,
@@ -23447,14 +25244,19 @@ pub struct SolidWithIncompleteRectangularPattern {
 #[holder(generate_deserialize)]
 pub struct SolidWithPocket {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
     pub floor_blend_radius: NonNegativeLengthMeasure,
@@ -23480,12 +25282,16 @@ pub enum SolidWithPocketAny {
 #[holder(generate_deserialize)]
 pub struct SolidWithProtrusion {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
     pub protrusion_height: PositiveLengthMeasure,
@@ -23511,14 +25317,19 @@ pub enum SolidWithProtrusionAny {
 #[holder(generate_deserialize)]
 pub struct SolidWithRectangularPattern {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_shape_element_pattern")]
     pub replicated_element: ModifiedSolidWithPlacedConfigurationAny,
     #[holder(use_place_holder)]
     pub row_count: PositiveInteger,
@@ -23544,18 +25355,25 @@ pub enum SolidWithRectangularPatternAny {
 #[holder(generate_deserialize)]
 pub struct SolidWithRectangularPocket {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_pocket")]
     pub floor_blend_radius: NonNegativeLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_pocket")]
     pub draft_angle: PlaneAngleMeasure,
     #[holder(use_place_holder)]
     pub pocket_length: PositiveLengthMeasure,
@@ -23570,16 +25388,22 @@ pub struct SolidWithRectangularPocket {
 #[holder(generate_deserialize)]
 pub struct SolidWithRectangularProtrusion {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_protrusion")]
     pub protrusion_height: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_protrusion")]
     pub protrusion_draft_angle: PlaneAngleMeasure,
     #[holder(use_place_holder)]
     pub protrusion_length: PositiveLengthMeasure,
@@ -23594,12 +25418,16 @@ pub struct SolidWithRectangularProtrusion {
 #[holder(generate_deserialize)]
 pub struct SolidWithShapeElementPattern {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
     pub replicated_element: ModifiedSolidWithPlacedConfigurationAny,
@@ -23621,12 +25449,16 @@ pub enum SolidWithShapeElementPatternAny {
 #[holder(generate_deserialize)]
 pub struct SolidWithSingleOffsetChamfer {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "edge_blended_solid")]
     pub blended_edges: Vec<EdgeCurve>,
     #[holder(use_place_holder)]
     pub offset_distance: PositiveLengthMeasure,
@@ -23637,14 +25469,19 @@ pub struct SolidWithSingleOffsetChamfer {
 #[holder(generate_deserialize)]
 pub struct SolidWithSlot {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
     pub slot_width: PositiveLengthMeasure,
@@ -23673,20 +25510,28 @@ pub enum SolidWithSlotAny {
 #[holder(generate_deserialize)]
 pub struct SolidWithSphericalBottomRoundHole {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_stepped_round_hole")]
     pub segments: PositiveInteger,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_stepped_round_hole")]
     pub segment_radii: Vec<PositiveLengthMeasure>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_stepped_round_hole")]
     pub segment_depths: Vec<PositiveLengthMeasure>,
     #[holder(use_place_holder)]
     pub sphere_radius: PositiveLengthMeasure,
@@ -23697,14 +25542,19 @@ pub struct SolidWithSphericalBottomRoundHole {
 #[holder(generate_deserialize)]
 pub struct SolidWithSteppedRoundHole {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(derived)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: Derived<PositiveLengthMeasure>,
     #[holder(use_place_holder)]
     pub segments: PositiveInteger,
@@ -23736,20 +25586,28 @@ pub enum SolidWithSteppedRoundHoleAny {
 #[holder(generate_deserialize)]
 pub struct SolidWithSteppedRoundHoleAndConicalTransitions {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_stepped_round_hole")]
     pub segments: PositiveInteger,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_stepped_round_hole")]
     pub segment_radii: Vec<PositiveLengthMeasure>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_stepped_round_hole")]
     pub segment_depths: Vec<PositiveLengthMeasure>,
     #[holder(use_place_holder)]
     pub conical_transitions: Vec<ConicalSteppedHoleTransition>,
@@ -23760,19 +25618,27 @@ pub struct SolidWithSteppedRoundHoleAndConicalTransitions {
 #[holder(generate_deserialize)]
 pub struct SolidWithStraightSlot {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_slot")]
     pub slot_width: PositiveLengthMeasure,
+    #[holder(supertype = "solid_with_slot")]
     pub closed_ends: Vec<Logical>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_slot")]
     pub end_exit_faces: Vec<Vec<FaceSurfaceAny>>,
     #[holder(use_place_holder)]
     pub slot_length: PositiveLengthMeasure,
@@ -23783,19 +25649,27 @@ pub struct SolidWithStraightSlot {
 #[holder(generate_deserialize)]
 pub struct SolidWithTeeSectionSlot {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_slot")]
     pub slot_width: PositiveLengthMeasure,
+    #[holder(supertype = "solid_with_slot")]
     pub closed_ends: Vec<Logical>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_slot")]
     pub end_exit_faces: Vec<Vec<FaceSurfaceAny>>,
     #[holder(use_place_holder)]
     pub tee_section_width: PositiveLengthMeasure,
@@ -23808,14 +25682,19 @@ pub struct SolidWithTeeSectionSlot {
 #[holder(generate_deserialize)]
 pub struct SolidWithThroughDepression {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
     pub exit_faces: Vec<FaceSurfaceAny>,
@@ -23826,19 +25705,27 @@ pub struct SolidWithThroughDepression {
 #[holder(generate_deserialize)]
 pub struct SolidWithTrapezoidalSectionSlot {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid_with_placed_configuration")]
     pub placing: Axis2Placement3D,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_depression")]
     pub depth: PositiveLengthMeasure,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_slot")]
     pub slot_width: PositiveLengthMeasure,
+    #[holder(supertype = "solid_with_slot")]
     pub closed_ends: Vec<Logical>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "solid_with_slot")]
     pub end_exit_faces: Vec<Vec<FaceSurfaceAny>>,
     #[holder(use_place_holder)]
     pub draft_angle: PlaneAngleMeasure,
@@ -23851,12 +25738,16 @@ pub struct SolidWithTrapezoidalSectionSlot {
 #[holder(generate_deserialize)]
 pub struct SolidWithVariableRadiusEdgeBlend {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "edge_blended_solid")]
     pub blended_edges: Vec<EdgeCurve>,
     #[holder(use_place_holder)]
     pub point_list: Vec<PointAny>,
@@ -23870,6 +25761,7 @@ pub struct SolidWithVariableRadiusEdgeBlend {
 #[holder(generate_deserialize)]
 pub struct SourceForRequirement {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group_assignment")]
     pub assigned_group: GroupAny,
     #[holder(use_place_holder)]
     pub items: Vec<RequirementSourceItem>,
@@ -23880,6 +25772,7 @@ pub struct SourceForRequirement {
 #[holder(generate_deserialize)]
 pub struct SourcedRequirement {
     #[holder(use_place_holder)]
+    #[holder(supertype = "group_assignment")]
     pub assigned_group: GroupAny,
     #[holder(use_place_holder)]
     pub items: Vec<ProductDefinitionAny>,
@@ -23890,12 +25783,16 @@ pub struct SourcedRequirement {
 #[holder(generate_deserialize)]
 pub struct SpecificationDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -23904,16 +25801,22 @@ pub struct SpecificationDefinition {
 #[holder(generate_deserialize)]
 pub struct SpecifiedHigherUsageOccurrence {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "assembly_component_usage")]
     pub reference_designator: Option<Identifier>,
     #[holder(use_place_holder)]
     pub upper_usage: AssemblyComponentUsageAny,
@@ -23926,6 +25829,7 @@ pub struct SpecifiedHigherUsageOccurrence {
 #[holder(generate_deserialize)]
 pub struct Sphere {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub radius: PositiveLengthMeasure,
@@ -23938,8 +25842,10 @@ pub struct Sphere {
 #[holder(generate_deserialize)]
 pub struct SphericalSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "elementary_surface")]
     pub position: Axis2Placement3D,
     #[holder(use_place_holder)]
     pub radius: PositiveLengthMeasure,
@@ -23950,8 +25856,10 @@ pub struct SphericalSurface {
 #[holder(generate_deserialize)]
 pub struct StandardUncertainty {
     #[holder(use_place_holder)]
+    #[holder(supertype = "uncertainty_qualifier")]
     pub measure_name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "uncertainty_qualifier")]
     pub description: Text,
     pub uncertainty_value: f64,
 }
@@ -23970,6 +25878,7 @@ pub enum StandardUncertaintyAny {
 #[holder(generate_deserialize)]
 pub struct StartRequest {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_request_assignment")]
     pub assigned_action_request: VersionedActionRequest,
     #[holder(use_place_holder)]
     pub items: Vec<StartRequestItem>,
@@ -23980,6 +25889,7 @@ pub struct StartRequest {
 #[holder(generate_deserialize)]
 pub struct StartWork {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_assignment")]
     pub assigned_action: ActionAny,
     #[holder(use_place_holder)]
     pub items: Vec<WorkItem>,
@@ -23990,12 +25900,16 @@ pub struct StartWork {
 #[holder(generate_deserialize)]
 pub struct StraightnessTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24004,8 +25918,10 @@ pub struct StraightnessTolerance {
 #[holder(generate_deserialize)]
 pub struct StructuredDimensionCallout {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24014,8 +25930,10 @@ pub struct StructuredDimensionCallout {
 #[holder(generate_deserialize)]
 pub struct StructuredTextComposition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24024,10 +25942,13 @@ pub struct StructuredTextComposition {
 #[holder(generate_deserialize)]
 pub struct StructuredTextRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24036,6 +25957,7 @@ pub struct StructuredTextRepresentation {
 #[holder(generate_deserialize)]
 pub struct StyledItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub styles: Vec<PresentationStyleAssignmentAny>,
@@ -24059,10 +25981,13 @@ pub enum StyledItemAny {
 #[holder(generate_deserialize)]
 pub struct Subedge {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "edge")]
     pub edge_start: VertexAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "edge")]
     pub edge_end: VertexAny,
     #[holder(use_place_holder)]
     pub parent_edge: EdgeAny,
@@ -24073,8 +25998,10 @@ pub struct Subedge {
 #[holder(generate_deserialize)]
 pub struct Subface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "face")]
     pub bounds: Vec<FaceBoundAny>,
     #[holder(use_place_holder)]
     pub parent_face: FaceAny,
@@ -24085,14 +26012,19 @@ pub struct Subface {
 #[holder(generate_deserialize)]
 pub struct SuppliedPartRelationship {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub relating_product_definition: ProductDefinitionAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24101,6 +26033,7 @@ pub struct SuppliedPartRelationship {
 #[holder(generate_deserialize)]
 pub struct Surface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -24128,8 +26061,10 @@ pub enum SurfaceAny {
 #[holder(generate_deserialize)]
 pub struct SurfaceConditionCallout {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
     pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24138,6 +26073,7 @@ pub struct SurfaceConditionCallout {
 #[holder(generate_deserialize)]
 pub struct SurfaceCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub curve_3d: CurveAny,
@@ -24164,8 +26100,10 @@ pub enum SurfaceCurveAny {
 #[holder(generate_deserialize)]
 pub struct SurfaceCurveSweptAreaSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "swept_area_solid")]
     pub swept_area: CurveBoundedSurface,
     #[holder(use_place_holder)]
     pub directrix: CurveAny,
@@ -24189,8 +26127,10 @@ pub enum SurfaceCurveSweptAreaSolidAny {
 #[holder(generate_deserialize)]
 pub struct SurfaceOfLinearExtrusion {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "swept_surface")]
     pub swept_curve: CurveAny,
     #[holder(use_place_holder)]
     pub extrusion_axis: Vector,
@@ -24201,8 +26141,10 @@ pub struct SurfaceOfLinearExtrusion {
 #[holder(generate_deserialize)]
 pub struct SurfaceOfRevolution {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "swept_surface")]
     pub swept_curve: CurveAny,
     #[holder(use_place_holder)]
     pub axis_position: Axis1Placement,
@@ -24225,12 +26167,16 @@ pub struct SurfacePatch {
 #[holder(generate_deserialize)]
 pub struct SurfaceProfileTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24247,6 +26193,7 @@ pub struct SurfaceRenderingProperties {
 #[holder(generate_deserialize)]
 pub struct SurfaceReplica {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub parent_surface: SurfaceAny,
@@ -24318,6 +26265,7 @@ pub enum SurfaceStyleReflectanceAmbientAny {
 # [holder (field = surface_style_reflectance_ambient_diffuse)]
 #[holder(generate_deserialize)]
 pub struct SurfaceStyleReflectanceAmbientDiffuse {
+    #[holder(supertype = "surface_style_reflectance_ambient")]
     pub ambient_reflectance: f64,
     pub diffuse_reflectance: f64,
 }
@@ -24337,7 +26285,9 @@ pub enum SurfaceStyleReflectanceAmbientDiffuseAny {
 # [holder (field = surface_style_reflectance_ambient_diffuse_specular)]
 #[holder(generate_deserialize)]
 pub struct SurfaceStyleReflectanceAmbientDiffuseSpecular {
+    #[holder(supertype = "surface_style_reflectance_ambient")]
     pub ambient_reflectance: f64,
+    #[holder(supertype = "surface_style_reflectance_ambient_diffuse")]
     pub diffuse_reflectance: f64,
     pub specular_reflectance: f64,
     pub specular_exponent: f64,
@@ -24367,8 +26317,10 @@ pub enum SurfaceStyleRenderingAny {
 # [holder (field = surface_style_rendering_with_properties)]
 #[holder(generate_deserialize)]
 pub struct SurfaceStyleRenderingWithProperties {
+    #[holder(supertype = "surface_style_rendering")]
     pub rendering_method: ShadingSurfaceMethod,
     #[holder(use_place_holder)]
+    #[holder(supertype = "surface_style_rendering")]
     pub surface_colour: ColourAny,
     #[holder(use_place_holder)]
     pub properties: Vec<RenderingPropertiesSelect>,
@@ -24411,10 +26363,13 @@ pub struct SurfaceStyleUsage {
 #[holder(generate_deserialize)]
 pub struct SurfaceTextureRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24423,8 +26378,10 @@ pub struct SurfaceTextureRepresentation {
 #[holder(generate_deserialize)]
 pub struct SurfacedOpenShell {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "connected_face_set")]
     pub cfs_faces: Vec<FaceAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24433,6 +26390,7 @@ pub struct SurfacedOpenShell {
 #[holder(generate_deserialize)]
 pub struct SweptAreaSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub swept_area: CurveBoundedSurface,
@@ -24456,6 +26414,7 @@ pub enum SweptAreaSolidAny {
 #[holder(generate_deserialize)]
 pub struct SweptDiskSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub directrix: CurveAny,
@@ -24472,6 +26431,7 @@ pub struct SweptDiskSolid {
 #[holder(generate_deserialize)]
 pub struct SweptFaceSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub swept_face: FaceSurfaceAny,
@@ -24493,6 +26453,7 @@ pub enum SweptFaceSolidAny {
 #[holder(generate_deserialize)]
 pub struct SweptSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub swept_curve: CurveAny,
@@ -24514,6 +26475,7 @@ pub enum SweptSurfaceAny {
 #[holder(generate_deserialize)]
 pub struct Symbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24530,10 +26492,13 @@ pub struct SymbolColour {
 #[holder(generate_deserialize)]
 pub struct SymbolRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -24555,8 +26520,10 @@ pub enum SymbolRepresentationAny {
 #[holder(generate_deserialize)]
 pub struct SymbolRepresentationMap {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_map")]
     pub mapping_origin: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_map")]
     pub mapped_representation: RepresentationAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24575,6 +26542,7 @@ pub struct SymbolStyle {
 #[holder(generate_deserialize)]
 pub struct SymbolTarget {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub placement: Axis2Placement,
@@ -24589,11 +26557,15 @@ pub struct SymbolTarget {
 #[holder(generate_deserialize)]
 pub struct SymmetricShapeAspect {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24602,14 +26574,19 @@ pub struct SymmetricShapeAspect {
 #[holder(generate_deserialize)]
 pub struct SymmetryTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance_with_datum_reference")]
     pub datum_system: Vec<DatumReferenceAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24618,8 +26595,10 @@ pub struct SymmetryTolerance {
 #[holder(generate_deserialize)]
 pub struct TableRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24628,10 +26607,13 @@ pub struct TableRepresentationItem {
 #[holder(generate_deserialize)]
 pub struct TactileAppearanceRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24640,8 +26622,10 @@ pub struct TactileAppearanceRepresentation {
 #[holder(generate_deserialize)]
 pub struct TaggedTextFormat {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_context")]
     pub context_identifier: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_context")]
     pub context_type: Text,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24650,8 +26634,10 @@ pub struct TaggedTextFormat {
 #[holder(generate_deserialize)]
 pub struct TaggedTextItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "descriptive_representation_item")]
     pub description: Text,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24660,11 +26646,15 @@ pub struct TaggedTextItem {
 #[holder(generate_deserialize)]
 pub struct Tangent {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24673,10 +26663,13 @@ pub struct Tangent {
 #[holder(generate_deserialize)]
 pub struct TerminatorSymbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub styles: Vec<PresentationStyleAssignmentAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "styled_item")]
     pub item: RepresentationItemAny,
     #[holder(use_place_holder)]
     pub annotated_curve: AnnotationCurveOccurrenceAny,
@@ -24732,6 +26725,7 @@ pub struct TextFontInFamily {
 #[holder(generate_deserialize)]
 pub struct TextLiteral {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub literal: PresentableText,
@@ -24766,15 +26760,21 @@ pub enum TextLiteralAny {
 #[holder(generate_deserialize)]
 pub struct TextLiteralWithAssociatedCurves {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub literal: PresentableText,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub placement: Axis2Placement,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub alignment: TextAlignment,
+    #[holder(supertype = "text_literal")]
     pub path: TextPath,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub font: FontSelect,
     #[holder(use_place_holder)]
     pub associated_curves: Vec<CurveAny>,
@@ -24785,15 +26785,21 @@ pub struct TextLiteralWithAssociatedCurves {
 #[holder(generate_deserialize)]
 pub struct TextLiteralWithBlankingBox {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub literal: PresentableText,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub placement: Axis2Placement,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub alignment: TextAlignment,
+    #[holder(supertype = "text_literal")]
     pub path: TextPath,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub font: FontSelect,
     #[holder(use_place_holder)]
     pub blanking: PlanarBox,
@@ -24804,15 +26810,21 @@ pub struct TextLiteralWithBlankingBox {
 #[holder(generate_deserialize)]
 pub struct TextLiteralWithDelineation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub literal: PresentableText,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub placement: Axis2Placement,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub alignment: TextAlignment,
+    #[holder(supertype = "text_literal")]
     pub path: TextPath,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub font: FontSelect,
     #[holder(use_place_holder)]
     pub delineation: TextDelineation,
@@ -24832,15 +26844,21 @@ pub enum TextLiteralWithDelineationAny {
 #[holder(generate_deserialize)]
 pub struct TextLiteralWithExtent {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub literal: PresentableText,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub placement: Axis2Placement,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub alignment: TextAlignment,
+    #[holder(supertype = "text_literal")]
     pub path: TextPath,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_literal")]
     pub font: FontSelect,
     #[holder(use_place_holder)]
     pub extent: PlanarExtentAny,
@@ -24851,10 +26869,13 @@ pub struct TextLiteralWithExtent {
 #[holder(generate_deserialize)]
 pub struct TextStringRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24894,8 +26915,10 @@ pub struct TextStyleForDefinedFont {
 #[holder(generate_deserialize)]
 pub struct TextStyleWithBoxCharacteristics {
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_style")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_style")]
     pub character_appearance: CharacterStyleSelect,
     #[holder(use_place_holder)]
     pub characteristics: Vec<BoxCharacteristicSelect>,
@@ -24906,8 +26929,10 @@ pub struct TextStyleWithBoxCharacteristics {
 #[holder(generate_deserialize)]
 pub struct TextStyleWithMirror {
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_style")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_style")]
     pub character_appearance: CharacterStyleSelect,
     #[holder(use_place_holder)]
     pub mirror_placement: Axis2Placement,
@@ -24918,8 +26943,10 @@ pub struct TextStyleWithMirror {
 #[holder(generate_deserialize)]
 pub struct TextStyleWithSpacing {
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_style")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "text_style")]
     pub character_appearance: CharacterStyleSelect,
     #[holder(use_place_holder)]
     pub character_spacing: CharacterSpacingSelect,
@@ -24930,8 +26957,10 @@ pub struct TextStyleWithSpacing {
 #[holder(generate_deserialize)]
 pub struct ThermalResistanceMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24940,6 +26969,7 @@ pub struct ThermalResistanceMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct ThermalResistanceUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24948,8 +26978,10 @@ pub struct ThermalResistanceUnit {
 #[holder(generate_deserialize)]
 pub struct ThermodynamicTemperatureMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24958,6 +26990,7 @@ pub struct ThermodynamicTemperatureMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct ThermodynamicTemperatureUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24966,6 +26999,7 @@ pub struct ThermodynamicTemperatureUnit {
 #[holder(generate_deserialize)]
 pub struct ThickenedFaceSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub base_element: GeneralizedSurfaceSelect,
@@ -24980,12 +27014,16 @@ pub struct ThickenedFaceSolid {
 #[holder(generate_deserialize)]
 pub struct ThicknessLaminateDefinition {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -24994,12 +27032,16 @@ pub struct ThicknessLaminateDefinition {
 #[holder(generate_deserialize)]
 pub struct ThicknessLaminateTable {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25048,6 +27090,7 @@ pub enum TimeIntervalAssignmentAny {
 #[holder(generate_deserialize)]
 pub struct TimeIntervalBasedEffectivity {
     #[holder(use_place_holder)]
+    #[holder(supertype = "effectivity")]
     pub id: Identifier,
     #[holder(use_place_holder)]
     pub effectivity_period: TimeIntervalAny,
@@ -25082,10 +27125,13 @@ pub struct TimeIntervalRole {
 #[holder(generate_deserialize)]
 pub struct TimeIntervalWithBounds {
     #[holder(use_place_holder)]
+    #[holder(supertype = "time_interval")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "time_interval")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "time_interval")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
     pub primary_bound: Option<DateTimeOrEventOccurrence>,
@@ -25100,8 +27146,10 @@ pub struct TimeIntervalWithBounds {
 #[holder(generate_deserialize)]
 pub struct TimeMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25110,6 +27158,7 @@ pub struct TimeMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct TimeUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
     pub dimensions: DimensionalExponents,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25128,11 +27177,15 @@ pub struct ToleranceValue {
 #[holder(generate_deserialize)]
 pub struct ToleranceZone {
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
     pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
     pub product_definitional: Logical,
     #[holder(use_place_holder)]
     pub defining_tolerance: Vec<GeometricToleranceAny>,
@@ -25174,6 +27227,7 @@ pub struct ToleranceZoneForm {
 #[holder(generate_deserialize)]
 pub struct TopologicalRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -25209,8 +27263,10 @@ pub enum TopologicalRepresentationItemAny {
 #[holder(generate_deserialize)]
 pub struct ToroidalSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "elementary_surface")]
     pub position: Axis2Placement3D,
     #[holder(use_place_holder)]
     pub major_radius: PositiveLengthMeasure,
@@ -25232,6 +27288,7 @@ pub enum ToroidalSurfaceAny {
 #[holder(generate_deserialize)]
 pub struct Torus {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub position: Axis1Placement,
@@ -25246,14 +27303,19 @@ pub struct Torus {
 #[holder(generate_deserialize)]
 pub struct TotalRunoutTolerance {
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub description: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance_with_datum_reference")]
     pub datum_system: Vec<DatumReferenceAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25262,12 +27324,16 @@ pub struct TotalRunoutTolerance {
 #[holder(generate_deserialize)]
 pub struct TrackBlendedSolid {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "edge_blended_solid")]
     pub blended_edges: Vec<EdgeCurve>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -25287,12 +27353,16 @@ pub enum TrackBlendedSolidAny {
 #[holder(generate_deserialize)]
 pub struct TrackBlendedSolidWithEndConditions {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub rationale: Text,
     #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
     pub base_solid: BaseSolidSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "edge_blended_solid")]
     pub blended_edges: Vec<EdgeCurve>,
     #[holder(use_place_holder)]
     pub end_conditions: Vec<BlendEndConditionSelect>,
@@ -25303,12 +27373,16 @@ pub struct TrackBlendedSolidWithEndConditions {
 #[holder(generate_deserialize)]
 pub struct TransformationWithDerivedAngle {
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_defined_transformation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_defined_transformation")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_defined_transformation")]
     pub transform_item_1: RepresentationItemAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "item_defined_transformation")]
     pub transform_item_2: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -25328,6 +27402,7 @@ pub enum TransformationWithDerivedAngleAny {
 #[holder(generate_deserialize)]
 pub struct TrimmedCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub basis_curve: CurveAny,
@@ -25344,8 +27419,10 @@ pub struct TrimmedCurve {
 #[holder(generate_deserialize)]
 pub struct TwoDirectionRepeatFactor {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "one_direction_repeat_factor")]
     pub repeat_factor: Vector,
     #[holder(use_place_holder)]
     pub second_repeat_factor: Vector,
@@ -25381,6 +27458,7 @@ pub enum UnaryGenericExpressionAny {
 #[holder(generate_deserialize)]
 pub struct UnaryNumericExpression {
     #[holder(use_place_holder)]
+    #[holder(supertype = "unary_generic_expression")]
     pub operand: GenericExpressionAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25389,10 +27467,13 @@ pub struct UnaryNumericExpression {
 #[holder(generate_deserialize)]
 pub struct UncertaintyAssignedRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
     #[holder(use_place_holder)]
     pub uncertainty: Vec<UncertaintyMeasureWithUnit>,
@@ -25403,8 +27484,10 @@ pub struct UncertaintyAssignedRepresentation {
 #[holder(generate_deserialize)]
 pub struct UncertaintyMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
     #[holder(use_place_holder)]
     pub name: Label,
@@ -25438,12 +27521,18 @@ pub enum UncertaintyQualifierAny {
 #[holder(generate_deserialize)]
 pub struct UniformCurve {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "b_spline_curve")]
     pub degree: i64,
     #[holder(use_place_holder)]
+    #[holder(supertype = "b_spline_curve")]
     pub control_points_list: Vec<CartesianPoint>,
+    #[holder(supertype = "b_spline_curve")]
     pub curve_form: BSplineCurveForm,
+    #[holder(supertype = "b_spline_curve")]
     pub closed_curve: Logical,
+    #[holder(supertype = "b_spline_curve")]
     pub self_intersect: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25452,8 +27541,10 @@ pub struct UniformCurve {
 #[holder(generate_deserialize)]
 pub struct UniformResourceIdentifier {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "descriptive_representation_item")]
     pub description: Text,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25462,14 +27553,22 @@ pub struct UniformResourceIdentifier {
 #[holder(generate_deserialize)]
 pub struct UniformSurface {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
+    #[holder(supertype = "b_spline_surface")]
     pub u_degree: i64,
+    #[holder(supertype = "b_spline_surface")]
     pub v_degree: i64,
     #[holder(use_place_holder)]
+    #[holder(supertype = "b_spline_surface")]
     pub control_points_list: Vec<Vec<CartesianPoint>>,
+    #[holder(supertype = "b_spline_surface")]
     pub surface_form: BSplineSurfaceForm,
+    #[holder(supertype = "b_spline_surface")]
     pub u_closed: Logical,
+    #[holder(supertype = "b_spline_surface")]
     pub v_closed: Logical,
+    #[holder(supertype = "b_spline_surface")]
     pub self_intersect: Logical,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25478,12 +27577,16 @@ pub struct UniformSurface {
 #[holder(generate_deserialize)]
 pub struct UsageAssociation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method_relationship")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method_relationship")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method_relationship")]
     pub relating_method: ActionMethodAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "action_method_relationship")]
     pub related_method: ActionMethodAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25492,12 +27595,16 @@ pub struct UsageAssociation {
 #[holder(generate_deserialize)]
 pub struct UserDefinedCurveFont {
     #[holder(use_place_holder)]
+    #[holder(supertype = "curve_style_font")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "curve_style_font")]
     pub pattern_list: Vec<CurveStyleFontPattern>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_source: RepresentationMapAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_target: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25506,10 +27613,13 @@ pub struct UserDefinedCurveFont {
 #[holder(generate_deserialize)]
 pub struct UserDefinedMarker {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_source: RepresentationMapAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_target: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25518,10 +27628,13 @@ pub struct UserDefinedMarker {
 #[holder(generate_deserialize)]
 pub struct UserDefinedTerminatorSymbol {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_source: RepresentationMapAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "mapped_item")]
     pub mapping_target: RepresentationItemAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25530,6 +27643,7 @@ pub struct UserDefinedTerminatorSymbol {
 #[holder(generate_deserialize)]
 pub struct UserSelectedElements {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub picked_items: Vec<RepresentationItemAny>,
@@ -25551,8 +27665,10 @@ pub enum UserSelectedElementsAny {
 #[holder(generate_deserialize)]
 pub struct UserSelectedShapeElements {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "user_selected_elements")]
     pub picked_items: Vec<RepresentationItemAny>,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -25570,8 +27686,10 @@ pub enum UserSelectedShapeElementsAny {
 #[holder(generate_deserialize)]
 pub struct ValueRange {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "compound_representation_item")]
     pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25580,6 +27698,7 @@ pub struct ValueRange {
 #[holder(generate_deserialize)]
 pub struct ValueRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub value_component: MeasureValue,
@@ -25604,6 +27723,7 @@ pub enum VariableSemanticsAny {
 #[holder(generate_deserialize)]
 pub struct VariationalRepresentationItem {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -25621,6 +27741,7 @@ pub enum VariationalRepresentationItemAny {
 #[holder(generate_deserialize)]
 pub struct Vector {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub orientation: Direction,
@@ -25633,12 +27754,16 @@ pub struct Vector {
 #[holder(generate_deserialize)]
 pub struct VectorStyle {
     #[holder(use_place_holder)]
+    #[holder(supertype = "curve_style")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "curve_style")]
     pub curve_font: CurveFontOrScaledCurveFontSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "curve_style")]
     pub curve_width: SizeSelect,
     #[holder(use_place_holder)]
+    #[holder(supertype = "curve_style")]
     pub curve_colour: ColourAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25647,8 +27772,10 @@ pub struct VectorStyle {
 #[holder(generate_deserialize)]
 pub struct VelocityMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25657,6 +27784,7 @@ pub struct VelocityMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct VelocityUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25679,6 +27807,7 @@ pub struct VersionedActionRequest {
 #[holder(generate_deserialize)]
 pub struct Vertex {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
@@ -25696,6 +27825,7 @@ pub enum VertexAny {
 #[holder(generate_deserialize)]
 pub struct VertexLoop {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub loop_vertex: VertexAny,
@@ -25706,6 +27836,7 @@ pub struct VertexLoop {
 #[holder(generate_deserialize)]
 pub struct VertexPoint {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub vertex_geometry: PointAny,
@@ -25716,6 +27847,7 @@ pub struct VertexPoint {
 #[holder(generate_deserialize)]
 pub struct VertexShell {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub vertex_shell_extent: VertexLoop,
@@ -25746,10 +27878,13 @@ pub struct ViewVolume {
 #[holder(generate_deserialize)]
 pub struct VisualAppearanceRepresentation {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub name: Label,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub items: Vec<RepresentationItemAny>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25758,8 +27893,10 @@ pub struct VisualAppearanceRepresentation {
 #[holder(generate_deserialize)]
 pub struct VolumeMeasureWithUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub value_component: MeasureValue,
     #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
     pub unit_component: Unit,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25768,6 +27905,7 @@ pub struct VolumeMeasureWithUnit {
 #[holder(generate_deserialize)]
 pub struct VolumeUnit {
     #[holder(use_place_holder)]
+    #[holder(supertype = "derived_unit")]
     pub elements: Vec<DerivedUnitElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
@@ -25776,6 +27914,7 @@ pub struct VolumeUnit {
 #[holder(generate_deserialize)]
 pub struct WeekOfYearAndDayDate {
     #[holder(use_place_holder)]
+    #[holder(supertype = "date")]
     pub year_component: YearNumber,
     #[holder(use_place_holder)]
     pub week_component: WeekInYearNumber,
@@ -25788,6 +27927,7 @@ pub struct WeekOfYearAndDayDate {
 #[holder(generate_deserialize)]
 pub struct WireShell {
     #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
     pub wire_shell_extent: Vec<LoopAny>,
@@ -25798,6 +27938,7 @@ pub struct WireShell {
 #[holder(generate_deserialize)]
 pub struct YearMonth {
     #[holder(use_place_holder)]
+    #[holder(supertype = "date")]
     pub year_component: YearNumber,
     #[holder(use_place_holder)]
     pub month_component: MonthInYearNumber,
@@ -25808,12 +27949,16 @@ pub struct YearMonth {
 #[holder(generate_deserialize)]
 pub struct ZoneStructuralMakeup {
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub id: Identifier,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub description: Option<Text>,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub formation: ProductDefinitionFormationAny,
     #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition")]
     pub frame_of_reference: ProductDefinitionContextAny,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]

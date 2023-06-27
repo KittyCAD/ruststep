@@ -17,6 +17,7 @@ pub struct HolderAttr {
     pub generate_deserialize: bool,
     pub from_type: Option<FromType>,
     pub derived: bool,
+    pub supertype: Option<syn::LitStr>,
 }
 
 impl HolderAttr {
@@ -27,6 +28,7 @@ impl HolderAttr {
         let mut place_holder = false;
         let mut generate_deserialize = false;
         let mut derived = false;
+        let mut supertype = None;
 
         for attr in attrs {
             // Only read `#[holder(...)]`
@@ -57,6 +59,9 @@ impl HolderAttr {
                 Attr::Derived => {
                     derived = true;
                 }
+                Attr::Supertype(name) => {
+                    supertype = Some(name);
+                }
             }
         }
         HolderAttr {
@@ -66,6 +71,7 @@ impl HolderAttr {
             place_holder,
             generate_deserialize,
             derived,
+            supertype,
         }
     }
 }
@@ -97,6 +103,7 @@ enum Attr {
     Table(syn::Path),
     Field(syn::Ident),
     FromType(FromType),
+    Supertype(syn::LitStr),
     PlaceHolder,
     GenerateDeserialize,
     Derived,
@@ -124,6 +131,11 @@ impl syn::parse::Parse for Attr {
             "use_place_holder" => Ok(Attr::PlaceHolder),
             "generate_deserialize" => Ok(Attr::GenerateDeserialize),
             "derived" => Ok(Attr::Derived),
+            "supertype" => {
+                let _eq: syn::Token![=] = input.parse()?;
+                let name = input.parse()?;
+                Ok(Attr::Supertype(name))
+            }
             _ => Err(syn::parse::Error::new(
                 ident.span(),
                 "expected `table`, `field`, or `use_place_holder`",

@@ -93,7 +93,7 @@ fn entity_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
 
     #[automatically_derived]
     impl #ruststep::tables::ToData for #ident {
-        fn to_data(&self) -> String {
+            fn to_data(&self) -> String {
         use std::fmt::Write;
 
         let mut data = String::new();
@@ -104,12 +104,14 @@ fn entity_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
         )*
 
         let mut instances = Vec::<&dyn #ruststep::tables::ToData>::new();
+        let mut type_names = Vec::<&str>::new();
         for id in 0..=max_id {
             instances.clear();
 
             #(
             if let Some(instance) = self.#table_names.get(&id) {
                 instances.push(instance);
+                type_names.push(stringify!(#table_names));
             }
             )*
 
@@ -122,7 +124,7 @@ fn entity_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
             _ => {
                 let mut complex = "(".to_string();
                 for (i, v) in instances.iter().enumerate() {
-                complex += &v.to_data();
+                complex += &v.to_partial(&type_names);
                 if i != instances.len() - 1 {
                     complex += " ";
                 }
@@ -134,7 +136,7 @@ fn entity_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
         }
 
         data
-        }
+            }
     }
     }
 }
