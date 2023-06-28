@@ -24,8 +24,6 @@ espr_derive::inline_express!(
     "#
 );
 
-use test_schema::*;
-
 #[test]
 fn deserialize_list_a() {
     let (residual, p): (_, Record) = exchange::simple_record("A((1.0, 2.0))").finish().unwrap();

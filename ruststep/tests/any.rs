@@ -21,8 +21,6 @@ espr_derive::inline_express!(
     "#
 );
 
-use test_schema::*;
-
 const EXAMPLE: &str = r#"
 DATA;
   #1 = BASE(1.0);
@@ -47,18 +45,10 @@ fn deserialize_sub1() {
     test(
         "SUB_1(BASE((1.0)), 2.0)",
         Sub1Holder {
-            base: BaseHolder { x: 1.0 }.into(),
+            x: 1.0.into(),
             y1: 2.0,
         },
     );
-    test(
-        "SUB_1(#3, 2.0)",
-        Sub1Holder {
-            base: Name::Entity(3).into(),
-            y1: 2.0,
-        },
-    );
-
     fn test(input: &str, answer: Sub1Holder) {
         let (residual, p): (_, Record) = exchange::simple_record(input).finish().unwrap();
         dbg!(&p);
@@ -74,19 +64,8 @@ fn deserialize_sub1() {
 fn deserialize_base_any() {
     test(
         "SUB_1(BASE((1.0)), 2.0)",
-        BaseAnyHolder::Sub1(Box::new(Sub1Holder {
-            base: BaseHolder { x: 1.0 }.into(),
-            y1: 2.0,
-        })),
+        BaseAnyHolder::Sub1(Box::new(Sub1Holder { x: 1.0, y1: 2.0 })),
     );
-    test(
-        "SUB_1(#3, 2.0)",
-        BaseAnyHolder::Sub1(Box::new(Sub1Holder {
-            base: Name::Entity(3).into(),
-            y1: 2.0,
-        })),
-    );
-
     fn test(input: &str, answer: BaseAnyHolder) {
         let (residual, p): (_, Record) = exchange::simple_record(input).finish().unwrap();
         dbg!(&p);
@@ -103,14 +82,7 @@ fn deserialize_base_any_placeholder() {
     test(
         "SUB_1(BASE((1.0)), 2.0)",
         PlaceHolder::Owned(BaseAnyHolder::Sub1(Box::new(Sub1Holder {
-            base: BaseHolder { x: 1.0 }.into(),
-            y1: 2.0,
-        }))),
-    );
-    test(
-        "SUB_1(#3, 2.0)",
-        PlaceHolder::Owned(BaseAnyHolder::Sub1(Box::new(Sub1Holder {
-            base: Name::Entity(3).into(),
+            x: 1.0,
             y1: 2.0,
         }))),
     );
@@ -130,19 +102,8 @@ fn deserialize_base_any_placeholder() {
 fn into_base_any() {
     test(
         "SUB_1(BASE((1.0)), 2.0)",
-        BaseAny::Sub1(Box::new(Sub1 {
-            base: Base { x: 1.0 },
-            y1: 2.0,
-        })),
+        BaseAny::Sub1(Box::new(Sub1 { x: 1.0, y1: 2.0 })),
     );
-    test(
-        "SUB_1(#1, 2.0)",
-        BaseAny::Sub1(Box::new(Sub1 {
-            base: Base { x: 1.0 },
-            y1: 2.0,
-        })),
-    );
-
     fn test(input: &str, answer: BaseAny) {
         let table = Tables::from_str(EXAMPLE).unwrap();
 
@@ -167,17 +128,11 @@ fn lookup_base_any() {
     );
     test(
         Parameter::Ref(Name::Entity(2)),
-        BaseAny::Sub1(Box::new(Sub1 {
-            base: Base { x: 1.0 },
-            y1: 2.0,
-        })),
+        BaseAny::Sub1(Box::new(Sub1 { x: 1.0, y1: 2.0 })),
     );
     test(
         Parameter::Ref(Name::Entity(3)),
-        BaseAny::Sub2(Box::new(Sub2 {
-            base: Base { x: 1.0 },
-            y2: 4.0,
-        })),
+        BaseAny::Sub2(Box::new(Sub2 { x: 1.0, y2: 4.0 })),
     );
 
     fn test(p: Parameter, answer: BaseAny) {
@@ -203,13 +158,7 @@ fn get_owned_base() {
 fn get_owned_sub1() {
     let table = Tables::from_str(EXAMPLE).unwrap();
     let sub1 = EntityTable::<Sub1Holder>::get_owned(&table, 2).unwrap();
-    assert_eq!(
-        sub1,
-        Sub1 {
-            base: Base { x: 1.0 },
-            y1: 2.0
-        }
-    );
+    assert_eq!(sub1, Sub1 { x: 1.0, y1: 2.0 });
 }
 
 #[test]
@@ -222,42 +171,9 @@ fn get_owned_any() {
 
     // #2 = SUB_1(BASE((1.0)), 2.0);
     let any2 = EntityTable::<BaseAnyHolder>::get_owned(&table, 2).unwrap();
-    assert_eq!(
-        any2,
-        BaseAny::Sub1(Box::new(Sub1 {
-            base: Base { x: 1.0 },
-            y1: 2.0
-        }))
-    );
+    assert_eq!(any2, BaseAny::Sub1(Box::new(Sub1 { x: 1.0, y1: 2.0 })));
 
     // #3 = SUB_2(#1, 4.0);
     let any3 = EntityTable::<BaseAnyHolder>::get_owned(&table, 3).unwrap();
-    assert_eq!(
-        any3,
-        BaseAny::Sub2(Box::new(Sub2 {
-            base: Base { x: 1.0 },
-            y2: 4.0
-        }))
-    );
-}
-
-#[test]
-fn as_ref_base_any() {
-    let table = Tables::from_str(EXAMPLE).unwrap();
-
-    // #1 = BASE(1.0);
-    let any1 = EntityTable::<BaseAnyHolder>::get_owned(&table, 1).unwrap();
-    assert_eq!(any1.as_ref(), &Base { x: 1.0 });
-
-    // #2 = SUB_1(BASE((1.0)), 2.0);
-    let any2 = EntityTable::<BaseAnyHolder>::get_owned(&table, 2).unwrap();
-    assert_eq!(any2.as_ref(), &Base { x: 1.0 });
-    let sub2 = EntityTable::<Sub1Holder>::get_owned(&table, 2).unwrap();
-    assert_eq!(sub2.as_ref(), &Base { x: 1.0 });
-
-    // #3 = SUB_2(#1, 4.0);
-    let any3 = EntityTable::<BaseAnyHolder>::get_owned(&table, 3).unwrap();
-    assert_eq!(any3.as_ref(), &Base { x: 1.0 });
-    let sub3 = EntityTable::<Sub2Holder>::get_owned(&table, 3).unwrap();
-    assert_eq!(sub3.as_ref(), &Base { x: 1.0 });
+    assert_eq!(any3, BaseAny::Sub2(Box::new(Sub2 { x: 1.0, y2: 4.0 })));
 }

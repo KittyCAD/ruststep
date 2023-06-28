@@ -32,8 +32,6 @@ espr_derive::inline_express!(
     "#
 );
 
-use test_schema::*;
-
 const EXAMPLE: &str = r#"
 DATA;
   #1 = A('KORE');
