@@ -230,6 +230,13 @@ pub fn impl_entity_table(ident: &syn::Ident, table: &HolderAttr) -> TokenStream2
                 #ruststep::tables::owned_iter(self, &self.#field)
             }
         }
+
+	#[automatically_derived]
+	impl #ruststep::tables::Insert<#holder_ident> for #table {
+	    fn insert(&mut self, index: u64, value: #holder_ident) {
+		#ruststep::tables::insert(&mut self.#field, index, value);
+	    }
+	}
     }
 }
 

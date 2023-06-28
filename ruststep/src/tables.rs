@@ -108,6 +108,30 @@ use serde::{
 };
 use std::{boxed::Box, collections::HashMap, fmt, marker::PhantomData};
 
+/// Helper trait for inserting entities into tables.
+pub trait Insert<T> {
+    /// Insert a value with the given index into the table.
+    ///
+    /// # Panics
+    ///
+    /// May panic if the table already contains the value.
+    fn insert(&mut self, index: u64, value: T);
+}
+
+/// Helper function used by the automatically generated `Insert` implementations for tables.
+///
+/// # Panics
+///
+/// Panics if the map already has a value associated with the given id.
+pub fn insert<T>(map: &mut HashMap<u64, T>, id: u64, value: T) {
+    match map.entry(id) {
+        std::collections::hash_map::Entry::Vacant(vacancy) => {
+            vacancy.insert(value);
+        }
+        _ => panic!("map already contains value with ID {id}"),
+    }
+}
+
 /// Export helper trait.
 pub trait ToData {
     /// Serialize to simple EXPRESS data record.
