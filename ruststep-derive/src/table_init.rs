@@ -115,11 +115,12 @@ fn entity_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
 			}
 		    )*
 
+		    let hash = '#';
 		    match instances.len() {
 			0 => continue,
 			1 => {
 			    let simple = instances[0].to_data();
-			    writeln!(&mut data, "#{id} = {simple};").unwrap();
+			    writeln!(&mut data, "{}{} = {};", hash, id, simple).unwrap();
 			}
 			_ => {
 			    let mut complex = "(".to_string();
@@ -130,7 +131,7 @@ fn entity_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
 				}
 			    }
 			    complex += ")";
-			    writeln!(&mut data, "#{id} = {complex};").unwrap();
+			    writeln!(&mut data, "{}{} = {};", hash, id, complex).unwrap();
 			}
 		    }
 		}
