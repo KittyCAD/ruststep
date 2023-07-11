@@ -1,21 +1,10 @@
 use crate::ir::*;
 
 use check_keyword::CheckKeyword;
-use inflector::Inflector;
 use proc_macro2::TokenStream;
 use quote::*;
 
-// HACK: fix special cases properly.
-pub fn make_name(ident: &str) -> String {
-    let mut name = ident.to_screaming_snake_case();
-    match name.as_str() {
-        "AXIS_1_PLACEMENT" => name = "AXIS1_PLACEMENT".to_string(),
-        "AXIS_2_PLACEMENT_2D" => name = "AXIS2_PLACEMENT_2D".to_string(),
-        "AXIS_2_PLACEMENT_3D" => name = "AXIS2_PLACEMENT_3D".to_string(),
-        _ => {}
-    };
-    name
-}
+use inflector::Inflector;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum CratePrefix {
@@ -77,7 +66,7 @@ impl Schema {
                 variables.push(variable.name.clone());
             }
             partials.push(PartialEntityMapping {
-                name: make_name(&entity.name),
+                name: super::make_name(&entity.name),
                 attributes: variables,
             });
         }
@@ -91,7 +80,7 @@ impl Schema {
                 variables.push(variable.name.clone());
             }
             complete.push(PartialEntityMapping {
-                name: make_name(&ee.name),
+                name: super::make_name(&ee.name),
                 attributes: variables,
             });
         }

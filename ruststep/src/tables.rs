@@ -459,7 +459,8 @@ impl<'de, T: Holder + WithVisitor + Deserialize<'de>> Deserialize<'de> for Place
     }
 }
 
-struct PlaceHolderVisitor<T> {
+#[doc(hidden)]
+pub struct PlaceHolderVisitor<T> {
     phantom: PhantomData<T>,
 }
 

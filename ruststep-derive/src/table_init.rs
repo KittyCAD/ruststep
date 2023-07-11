@@ -38,48 +38,48 @@ fn entity_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
             ) -> #ruststep::error::Result<()> {
                 use #ruststep::{error::Error, tables::{expand_complex_record, insert_record}, ast::EntityInstance};
                 for entity in &data_sec.entities {
-		    match entity {
-			EntityInstance::Simple { id, record } => {
-			    match record.name.as_str() {
-				#(
-				    #entity_names => insert_record(&mut self.#table_names, *id, record)?,
-				)*
-				_ => {
+            match entity {
+            EntityInstance::Simple { id, record } => {
+                match record.name.as_str() {
+                #(
+                    #entity_names => insert_record(&mut self.#table_names, *id, record)?,
+                )*
+                _ => {
                                     return Err(Error::UnknownEntityName {
-					entity_name: record.name.clone(),
-					schema: "".to_string(),
+                    entity_name: record.name.clone(),
+                    schema: "".to_string(),
                                     });
-				}
+                }
                             }
-			}
-			EntityInstance::Complex { id, subsuper } => {
-			    let partial_records = &subsuper.0;
-			    for partial_record in partial_records {
-				let complete_record = expand_complex_record(
-				    self.partial_mappings(),
-				    self.complete_mappings(),
-				    &partial_record.name,
-				    partial_records
-				);
-				// This is the same as the simple case now.
-				match complete_record.name.as_str() {
-				    #(
-					#entity_names => insert_record(&mut self.#table_names, *id, &complete_record)?,
-				    )*
-				    _ => {
-					return Err(Error::UnknownEntityName {
-					    entity_name: partial_record.name.clone(),
-					    schema: "".to_string(),
-					});
-				    }
-				}
-			    }
-			}
+            }
+            EntityInstance::Complex { id, subsuper } => {
+                let partial_records = &subsuper.0;
+                for partial_record in partial_records {
+                let complete_record = expand_complex_record(
+                    self.partial_mappings(),
+                    self.complete_mappings(),
+                    &partial_record.name,
+                    partial_records
+                );
+                // This is the same as the simple case now.
+                match complete_record.name.as_str() {
+                    #(
+                    #entity_names => insert_record(&mut self.#table_names, *id, &complete_record)?,
+                    )*
+                    _ => {
+                    return Err(Error::UnknownEntityName {
+                        entity_name: partial_record.name.clone(),
+                        schema: "".to_string(),
+                    });
                     }
-		}
+                }
+                }
+            }
+                    }
+        }
                 Ok(())
             }
-	}
+    }
 
         #[automatically_derived]
         impl ::std::str::FromStr for #ident {
@@ -91,124 +91,124 @@ fn entity_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
             }
         }
 
-	#[automatically_derived]
-	impl #ruststep::tables::ToData for #ident {
+    #[automatically_derived]
+    impl #ruststep::tables::ToData for #ident {
             fn to_data(&self) -> String {
-		use std::fmt::Write;
+        use std::fmt::Write;
 
-		let mut data = String::new();
+        let mut data = String::new();
 
-		let mut max_id: u64 = 0;
-		#(
-		    max_id = max_id.max(self.#table_names.keys().cloned().max().unwrap_or(0));
-		)*
+        let mut max_id: u64 = 0;
+        #(
+            max_id = max_id.max(self.#table_names.keys().cloned().max().unwrap_or(0));
+        )*
 
-		let mut instances = Vec::<&dyn #ruststep::tables::ToData>::new();
-		let mut type_names = Vec::<&str>::new();
-		for id in 0..=max_id {
-		    instances.clear();
+        let mut instances = Vec::<&dyn #ruststep::tables::ToData>::new();
+        let mut type_names = Vec::<&str>::new();
+        for id in 0..=max_id {
+            instances.clear();
 
-		    #(
-			if let Some(instance) = self.#table_names.get(&id) {
-			    instances.push(instance);
-			    type_names.push(stringify!(#table_names));
-			}
-		    )*
-
-		    let hash = '#';
-		    match instances.len() {
-			0 => continue,
-			1 => {
-			    let simple = instances[0].to_data();
-			    writeln!(&mut data, "{}{} = {};", hash, id, simple).unwrap();
-			}
-			_ => {
-			    let mut complex = "(".to_string();
-			    for (i, v) in instances.iter().enumerate() {
-				complex += &v.to_partial(&type_names);
-				if i != instances.len() - 1 {
-				    complex += " ";
-				}
-			    }
-			    complex += ")";
-			    writeln!(&mut data, "{}{} = {};", hash, id, complex).unwrap();
-			}
-		    }
-		}
-
-		data
+            #(
+            if let Some(instance) = self.#table_names.get(&id) {
+                instances.push(instance);
+                type_names.push(stringify!(#table_names));
             }
-	}
+            )*
 
-	#[automatically_derived]
-	impl<T1> #ruststep::tables::Insert<(T1,)> for #ident
-	where
-	    Self: #ruststep::tables::Insert<T1>,
-	{
-	    fn insert(&mut self, id: u64, value: (T1,)) {
-		self.insert(id, value.0);
-	    }
-	}
+            let hash = '#';
+            match instances.len() {
+            0 => continue,
+            1 => {
+                let simple = instances[0].to_data();
+                writeln!(&mut data, "{}{} = {};", hash, id, simple).unwrap();
+            }
+            _ => {
+                let mut complex = "(".to_string();
+                for (i, v) in instances.iter().enumerate() {
+                complex += &v.to_partial(&type_names);
+                if i != instances.len() - 1 {
+                    complex += " ";
+                }
+                }
+                complex += ")";
+                writeln!(&mut data, "{}{} = {};", hash, id, complex).unwrap();
+            }
+            }
+        }
 
-	#[automatically_derived]
-	impl<T1, T2> #ruststep::tables::Insert<(T1, T2)> for #ident
-	where
-	    Self: #ruststep::tables::Insert<T1>,
-	    Self: #ruststep::tables::Insert<T2>,
-	{
-	    fn insert(&mut self, id: u64, value: (T1, T2)) {
-		self.insert(id, value.0);
-		self.insert(id, value.1);
-	    }
-	}
+        data
+            }
+    }
 
-	#[automatically_derived]
-	impl<T1, T2, T3> #ruststep::tables::Insert<(T1, T2, T3)> for #ident
-	where
-	    Self: #ruststep::tables::Insert<T1>,
-	    Self: #ruststep::tables::Insert<T2>,
-	    Self: #ruststep::tables::Insert<T3>,
-	{
-	    fn insert(&mut self, id: u64, value: (T1, T2, T3)) {
-		self.insert(id, value.0);
-		self.insert(id, value.1);
-		self.insert(id, value.2);
-	    }
-	}
+    #[automatically_derived]
+    impl<T1> #ruststep::tables::Insert<(T1,)> for #ident
+    where
+        Self: #ruststep::tables::Insert<T1>,
+    {
+        fn insert(&mut self, id: u64, value: (T1,)) {
+        self.insert(id, value.0);
+        }
+    }
 
-	#[automatically_derived]
-	impl<T1, T2, T3, T4> #ruststep::tables::Insert<(T1, T2, T3, T4)> for #ident
-	where
-	    Self: #ruststep::tables::Insert<T1>,
-	    Self: #ruststep::tables::Insert<T2>,
-	    Self: #ruststep::tables::Insert<T3>,
-	    Self: #ruststep::tables::Insert<T4>,
-	{
-	    fn insert(&mut self, id: u64, value: (T1, T2, T3, T4)) {
-		self.insert(id, value.0);
-		self.insert(id, value.1);
-		self.insert(id, value.2);
-		self.insert(id, value.3);
-	    }
-	}
+    #[automatically_derived]
+    impl<T1, T2> #ruststep::tables::Insert<(T1, T2)> for #ident
+    where
+        Self: #ruststep::tables::Insert<T1>,
+        Self: #ruststep::tables::Insert<T2>,
+    {
+        fn insert(&mut self, id: u64, value: (T1, T2)) {
+        self.insert(id, value.0);
+        self.insert(id, value.1);
+        }
+    }
 
-	#[automatically_derived]
-	impl<T1, T2, T3, T4, T5> #ruststep::tables::Insert<(T1, T2, T3, T4, T5)> for #ident
-	where
-	    Self: #ruststep::tables::Insert<T1>,
-	    Self: #ruststep::tables::Insert<T2>,
-	    Self: #ruststep::tables::Insert<T3>,
-	    Self: #ruststep::tables::Insert<T4>,
-	    Self: #ruststep::tables::Insert<T5>,
-	{
-	    fn insert(&mut self, id: u64, value: (T1, T2, T3, T4, T5)) {
-		self.insert(id, value.0);
-		self.insert(id, value.1);
-		self.insert(id, value.2);
-		self.insert(id, value.3);
-		self.insert(id, value.4);
-	    }
-	}
+    #[automatically_derived]
+    impl<T1, T2, T3> #ruststep::tables::Insert<(T1, T2, T3)> for #ident
+    where
+        Self: #ruststep::tables::Insert<T1>,
+        Self: #ruststep::tables::Insert<T2>,
+        Self: #ruststep::tables::Insert<T3>,
+    {
+        fn insert(&mut self, id: u64, value: (T1, T2, T3)) {
+        self.insert(id, value.0);
+        self.insert(id, value.1);
+        self.insert(id, value.2);
+        }
+    }
+
+    #[automatically_derived]
+    impl<T1, T2, T3, T4> #ruststep::tables::Insert<(T1, T2, T3, T4)> for #ident
+    where
+        Self: #ruststep::tables::Insert<T1>,
+        Self: #ruststep::tables::Insert<T2>,
+        Self: #ruststep::tables::Insert<T3>,
+        Self: #ruststep::tables::Insert<T4>,
+    {
+        fn insert(&mut self, id: u64, value: (T1, T2, T3, T4)) {
+        self.insert(id, value.0);
+        self.insert(id, value.1);
+        self.insert(id, value.2);
+        self.insert(id, value.3);
+        }
+    }
+
+    #[automatically_derived]
+    impl<T1, T2, T3, T4, T5> #ruststep::tables::Insert<(T1, T2, T3, T4, T5)> for #ident
+    where
+        Self: #ruststep::tables::Insert<T1>,
+        Self: #ruststep::tables::Insert<T2>,
+        Self: #ruststep::tables::Insert<T3>,
+        Self: #ruststep::tables::Insert<T4>,
+        Self: #ruststep::tables::Insert<T5>,
+    {
+        fn insert(&mut self, id: u64, value: (T1, T2, T3, T4, T5)) {
+        self.insert(id, value.0);
+        self.insert(id, value.1);
+        self.insert(id, value.2);
+        self.insert(id, value.3);
+        self.insert(id, value.4);
+        }
+    }
     }
 }
 

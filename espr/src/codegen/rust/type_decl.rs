@@ -36,15 +36,19 @@ impl ToTokens for Rename {
         let ty = &self.ty;
         let (derive, use_place_holder) = match ty {
             TypeRef::SimpleType(_) => simple_meta(&field_name),
-            TypeRef::Named { is_enumerate, .. } => {
+            TypeRef::Named {
+                name, is_enumerate, ..
+            } => {
                 // Enumeration does not have Holder.
                 if *is_enumerate {
                     simple_meta(&field_name)
                 } else {
-                    rename_meta(&field_name)
+                    let inner_type_ident =
+                        syn::Ident::new(&name.to_pascal_case(), proc_macro2::Span::call_site());
+                    rename_meta(&field_name, Some(&inner_type_ident))
                 }
             }
-            _ => rename_meta(&field_name),
+            _ => rename_meta(&field_name, None),
         };
 
         tokens.append_all(quote! {
@@ -66,16 +70,32 @@ fn simple_meta(field_name: &syn::Ident) -> (TokenStream, TokenStream) {
     )
 }
 
-fn rename_meta(field_name: &syn::Ident) -> (TokenStream, TokenStream) {
-    (
-        quote! {
+fn rename_meta(
+    field_name: &syn::Ident,
+    inner_type: Option<&syn::Ident>,
+) -> (TokenStream, TokenStream) {
+    if let Some(inner) = inner_type {
+        (
+            quote! {
             #[derive(Clone, Debug, PartialEq, AsRef, Deref, DerefMut, Into, From, ::ruststep_derive::Holder)]
             #[holder(table = Tables)]
             #[holder(field = #field_name)]
             #[holder(generate_deserialize)]
-        },
-        quote! {#[holder(use_place_holder)]},
-    )
+            #[holder(inner = #inner)]
+                },
+            quote! {#[holder(use_place_holder)]},
+        )
+    } else {
+        (
+            quote! {
+            #[derive(Clone, Debug, PartialEq, AsRef, Deref, DerefMut, Into, From, ::ruststep_derive::Holder)]
+            #[holder(table = Tables)]
+            #[holder(field = #field_name)]
+            #[holder(generate_deserialize)]
+                },
+            quote! {#[holder(use_place_holder)]},
+        )
+    }
 }
 
 impl ToTokens for Enumeration {

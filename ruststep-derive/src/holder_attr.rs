@@ -18,6 +18,7 @@ pub struct HolderAttr {
     pub from_type: Option<FromType>,
     pub derived: bool,
     pub supertype: Option<syn::LitStr>,
+    pub inner_type: Option<syn::Ident>,
 }
 
 impl HolderAttr {
@@ -29,6 +30,7 @@ impl HolderAttr {
         let mut generate_deserialize = false;
         let mut derived = false;
         let mut supertype = None;
+        let mut inner_type = None;
 
         for attr in attrs {
             // Only read `#[holder(...)]`
@@ -62,6 +64,9 @@ impl HolderAttr {
                 Attr::Supertype(name) => {
                     supertype = Some(name);
                 }
+                Attr::InnerType(ident) => {
+                    inner_type = Some(ident);
+                }
             }
         }
         HolderAttr {
@@ -72,6 +77,7 @@ impl HolderAttr {
             generate_deserialize,
             derived,
             supertype,
+            inner_type,
         }
     }
 }
@@ -107,6 +113,7 @@ enum Attr {
     PlaceHolder,
     GenerateDeserialize,
     Derived,
+    InnerType(syn::Ident),
 }
 
 impl syn::parse::Parse for Attr {
@@ -135,6 +142,11 @@ impl syn::parse::Parse for Attr {
                 let _eq: syn::Token![=] = input.parse()?;
                 let name = input.parse()?;
                 Ok(Attr::Supertype(name))
+            }
+            "inner" => {
+                let _eq: syn::Token![=] = input.parse()?;
+                let name = input.parse()?;
+                Ok(Attr::InnerType(name))
             }
             _ => Err(syn::parse::Error::new(
                 ident.span(),

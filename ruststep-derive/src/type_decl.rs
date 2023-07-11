@@ -119,69 +119,146 @@ fn def_visitor(
     let serde = serde_crate();
 
     let mut conversions = Vec::new();
-    match attr.from_type.as_ref() {
-        Some(FromType::F64) => {
-            conversions.push(quote! {
-                fn visit_f64<E>(self, v: f64) -> ::std::result::Result<Self::Value, E>
-                where
-                E: #serde::de::Error,
-                {
-                Ok(#ident(v))
-                }
-            });
-        }
-        Some(FromType::I64) => {
-            conversions.push(quote! {
-                fn visit_i64<E>(self, v: i64) -> ::std::result::Result<Self::Value, E>
-                where
-                E: #serde::de::Error,
-                {
-                Ok(#ident(v))
-                }
-            });
-        }
-        Some(FromType::Str) => {
-            conversions.push(quote! {
-                fn visit_str<E>(self, v: &str) -> ::std::result::Result<Self::Value, E>
-                where
-                E: #serde::de::Error,
-                {
-                Ok(#ident(v.to_string()))
-                }
-            });
-        }
-        None => {
-            conversions.push(quote! {
-                fn visit_seq<A>(self, mut seq: A) -> ::std::result::Result<Self::Value, A::Error>
-                where
-                A: #serde::de::SeqAccess<'de>,
-                {
-                if let Some(size) = seq.size_hint() {
-                    if size != #attr_len {
-                    use #serde::de::Error;
-                    return Err(A::Error::invalid_length(size, &self));
-                    }
-                }
-                #( let #attributes = seq.next_element()?.unwrap(); )*
-                Ok(#ident ( #(#attributes),* ))
-                }
+    if let Some(inner_type_ident) = attr.inner_type.as_ref() {
+        let inner_type_holder_ident = &as_holder_ident(&inner_type_ident);
+        conversions.push(quote!{
+	    fn visit_bool<E>(self, v: bool) -> Result<Self::Value, E>
+	    where
+		E: #serde::de::Error,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_bool(v)?;
+		Ok(#ident(value))
+	    }
 
-                // Entry point for Record or Parameter::Typed
-                fn visit_map<A>(self, mut map: A) -> ::std::result::Result<Self::Value, A::Error>
-                where
-                A: #serde::de::MapAccess<'de>,
-                {
-                let key: String = map
-                    .next_key()?
-                    .expect("Empty map cannot be accepted as ruststep Holder"); // this must be a bug, not runtime error
-                if key != #name {
-                    use #serde::de::{Error, Unexpected};
-                    return Err(A::Error::invalid_value(Unexpected::Other(&key), &self));
-                }
-                let value = map.next_value()?; // send to Self::visit_seq
-                Ok(value)
-                }
-            });
+	    fn visit_i64<E>(self, v: i64) -> Result<Self::Value, E>
+	    where
+		E: #serde::de::Error,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_i64(v)?;
+		Ok(#ident(value))
+	    }
+
+	    fn visit_f64<E>(self, v: f64) -> Result<Self::Value, E>
+	    where
+		E: #serde::de::Error,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_f64(v)?;
+		Ok(#ident(value))
+	    }
+
+	    fn visit_str<E>(self, v: &str) -> Result<Self::Value, E>
+	    where
+		E: #serde::de::Error,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_str(v)?;
+		Ok(#ident(value))
+	    }
+
+	    fn visit_none<E>(self) -> Result<Self::Value, E>
+	    where
+		E: #serde::de::Error,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_none()?;
+		Ok(#ident(value))
+	    }
+
+	    fn visit_seq<A>(self, seq: A) -> Result<Self::Value, A::Error>
+	    where
+		A: #serde::de::SeqAccess<'de>,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_seq(seq)?;
+		Ok(#ident(value))
+	    }
+
+	    fn visit_map<A>(self, map: A) -> Result<Self::Value, A::Error>
+	    where
+		A: #serde::de::MapAccess<'de>,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_map(map)?;
+		Ok(#ident(value))
+	    }
+
+	    fn visit_enum<A>(self, data: A) -> Result<Self::Value, A::Error>
+	    where
+		A: #serde::de::EnumAccess<'de>,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_enum(data)?;
+		Ok(#ident(value))
+	    }
+	});
+    } else {
+        match attr.from_type.as_ref() {
+            Some(FromType::F64) => {
+                conversions.push(quote! {
+                            fn visit_f64<E>(self, v: f64) -> ::std::result::Result<Self::Value, E>
+                            where
+                    E: #serde::de::Error,
+                            {
+                    Ok(#ident(v))
+                            }
+                });
+            }
+            Some(FromType::I64) => {
+                conversions.push(quote! {
+                            fn visit_i64<E>(self, v: i64) -> ::std::result::Result<Self::Value, E>
+                            where
+                    E: #serde::de::Error,
+                            {
+                    Ok(#ident(v))
+                            }
+                });
+            }
+            Some(FromType::Str) => {
+                conversions.push(quote! {
+                            fn visit_str<E>(self, v: &str) -> ::std::result::Result<Self::Value, E>
+                            where
+                    E: #serde::de::Error,
+                            {
+                    Ok(#ident(v.to_string()))
+                            }
+                });
+            }
+            None => {
+                conversions.push(quote! {
+                    fn visit_seq<A>(self, mut seq: A) -> ::std::result::Result<Self::Value, A::Error>
+                    where
+			A: #serde::de::SeqAccess<'de>,
+                    {
+			if let Some(size) = seq.size_hint() {
+			    if size != #attr_len {
+				use #serde::de::Error;
+				return Err(A::Error::invalid_length(size, &self));
+			    }
+			}
+			#( let #attributes = seq.next_element()?.unwrap(); )*
+			Ok(#ident ( #(#attributes),* ))
+                    }
+
+                    // Entry point for Record or Parameter::Typed
+                    fn visit_map<A>(self, mut map: A) -> ::std::result::Result<Self::Value, A::Error>
+                    where
+			A: #serde::de::MapAccess<'de>,
+                    {
+			let key: String = map
+			    .next_key()?
+			    .expect("Empty map cannot be accepted as ruststep Holder"); // this must be a bug, not runtime error
+			if key != #name {
+			    use #serde::de::{Error, Unexpected};
+			    return Err(A::Error::invalid_value(Unexpected::Other(&key), &self));
+			}
+			let value = map.next_value()?; // send to Self::visit_seq
+			Ok(value)
+                    }
+		});
+            }
         }
     }
 

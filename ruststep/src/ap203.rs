@@ -6966,6 +6966,7 @@ pub enum BoxCharacteristicSelect {
 # [holder (table = Tables)]
 # [holder (field = box_height)]
 #[holder(generate_deserialize)]
+# [holder (inner = PositiveRatioMeasure)]
 pub struct BoxHeight(#[holder(use_place_holder)] pub PositiveRatioMeasure);
 #[derive(
     Clone, Debug, PartialEq, AsRef, Deref, DerefMut, Into, From, :: ruststep_derive :: Holder,
@@ -6973,6 +6974,7 @@ pub struct BoxHeight(#[holder(use_place_holder)] pub PositiveRatioMeasure);
 # [holder (table = Tables)]
 # [holder (field = box_rotate_angle)]
 #[holder(generate_deserialize)]
+# [holder (inner = PlaneAngleMeasure)]
 pub struct BoxRotateAngle(#[holder(use_place_holder)] pub PlaneAngleMeasure);
 #[derive(
     Clone, Debug, PartialEq, AsRef, Deref, DerefMut, Into, From, :: ruststep_derive :: Holder,
@@ -6980,6 +6982,7 @@ pub struct BoxRotateAngle(#[holder(use_place_holder)] pub PlaneAngleMeasure);
 # [holder (table = Tables)]
 # [holder (field = box_slant_angle)]
 #[holder(generate_deserialize)]
+# [holder (inner = PlaneAngleMeasure)]
 pub struct BoxSlantAngle(#[holder(use_place_holder)] pub PlaneAngleMeasure);
 #[derive(
     Clone, Debug, PartialEq, AsRef, Deref, DerefMut, Into, From, :: ruststep_derive :: Holder,
@@ -6987,6 +6990,7 @@ pub struct BoxSlantAngle(#[holder(use_place_holder)] pub PlaneAngleMeasure);
 # [holder (table = Tables)]
 # [holder (field = box_width)]
 #[holder(generate_deserialize)]
+# [holder (inner = PositiveRatioMeasure)]
 pub struct BoxWidth(#[holder(use_place_holder)] pub PositiveRatioMeasure);
 #[derive(Debug, Clone, PartialEq, Holder)]
 # [holder (table = Tables)]
@@ -8319,6 +8323,7 @@ pub enum InvisibleItem {
 # [holder (table = Tables)]
 # [holder (field = ir_usage_item)]
 #[holder(generate_deserialize)]
+# [holder (inner = ActionItems)]
 pub struct IrUsageItem(#[holder(use_place_holder)] pub ActionItems);
 #[derive(Debug, Clone, PartialEq, :: ruststep_derive :: ToData, :: serde :: Deserialize)]
 pub enum KnotType {
@@ -8775,6 +8780,7 @@ pub enum NameItem {
 # [holder (table = Tables)]
 # [holder (field = non_negative_length_measure)]
 #[holder(generate_deserialize)]
+# [holder (inner = LengthMeasure)]
 pub struct NonNegativeLengthMeasure(#[holder(use_place_holder)] pub LengthMeasure);
 #[derive(
     Clone, Debug, PartialEq, AsRef, Deref, DerefMut, Into, From, :: ruststep_derive :: Holder,
@@ -9008,6 +9014,7 @@ pub struct PointPathMembers(#[holder(use_place_holder)] pub Vec<PointAndVector>)
 # [holder (table = Tables)]
 # [holder (field = positive_integer)]
 #[holder(generate_deserialize)]
+# [holder (inner = NonnegativeInteger)]
 pub struct PositiveInteger(#[holder(use_place_holder)] pub NonnegativeInteger);
 #[derive(
     Clone, Debug, PartialEq, AsRef, Deref, DerefMut, Into, From, :: ruststep_derive :: Holder,
@@ -9015,6 +9022,7 @@ pub struct PositiveInteger(#[holder(use_place_holder)] pub NonnegativeInteger);
 # [holder (table = Tables)]
 # [holder (field = positive_length_measure)]
 #[holder(generate_deserialize)]
+# [holder (inner = NonNegativeLengthMeasure)]
 pub struct PositiveLengthMeasure(#[holder(use_place_holder)] pub NonNegativeLengthMeasure);
 #[derive(
     Clone, Debug, PartialEq, AsRef, Deref, DerefMut, Into, From, :: ruststep_derive :: Holder,
@@ -9022,6 +9030,7 @@ pub struct PositiveLengthMeasure(#[holder(use_place_holder)] pub NonNegativeLeng
 # [holder (table = Tables)]
 # [holder (field = positive_plane_angle_measure)]
 #[holder(generate_deserialize)]
+# [holder (inner = PlaneAngleMeasure)]
 pub struct PositivePlaneAngleMeasure(#[holder(use_place_holder)] pub PlaneAngleMeasure);
 #[derive(
     Clone, Debug, PartialEq, AsRef, Deref, DerefMut, Into, From, :: ruststep_derive :: Holder,
@@ -9029,6 +9038,7 @@ pub struct PositivePlaneAngleMeasure(#[holder(use_place_holder)] pub PlaneAngleM
 # [holder (table = Tables)]
 # [holder (field = positive_ratio_measure)]
 #[holder(generate_deserialize)]
+# [holder (inner = RatioMeasure)]
 pub struct PositiveRatioMeasure(#[holder(use_place_holder)] pub RatioMeasure);
 #[derive(
     Clone, Debug, PartialEq, AsRef, Deref, DerefMut, Into, From, :: ruststep_derive :: Holder,
@@ -9591,6 +9601,7 @@ pub struct Text(pub String);
 # [holder (table = Tables)]
 # [holder (field = text_alignment)]
 #[holder(generate_deserialize)]
+# [holder (inner = Label)]
 pub struct TextAlignment(#[holder(use_place_holder)] pub Label);
 #[derive(
     Clone, Debug, PartialEq, AsRef, Deref, DerefMut, Into, From, :: ruststep_derive :: Holder,
@@ -9598,6 +9609,7 @@ pub struct TextAlignment(#[holder(use_place_holder)] pub Label);
 # [holder (table = Tables)]
 # [holder (field = text_delineation)]
 #[holder(generate_deserialize)]
+# [holder (inner = Label)]
 pub struct TextDelineation(#[holder(use_place_holder)] pub Label);
 #[derive(Debug, Clone, PartialEq, Holder)]
 # [holder (table = Tables)]
