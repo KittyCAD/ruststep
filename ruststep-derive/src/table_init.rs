@@ -209,6 +209,72 @@ fn entity_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
         self.insert(id, value.4);
         }
     }
+
+    #[automatically_derived]
+    impl<T1, T2, T3, T4, T5, T6> #ruststep::tables::Insert<(T1, T2, T3, T4, T5, T6)> for #ident
+    where
+        Self: #ruststep::tables::Insert<T1>,
+        Self: #ruststep::tables::Insert<T2>,
+        Self: #ruststep::tables::Insert<T3>,
+        Self: #ruststep::tables::Insert<T4>,
+        Self: #ruststep::tables::Insert<T5>,
+        Self: #ruststep::tables::Insert<T6>,
+    {
+        fn insert(&mut self, id: u64, value: (T1, T2, T3, T4, T5, T6)) {
+        self.insert(id, value.0);
+        self.insert(id, value.1);
+        self.insert(id, value.2);
+        self.insert(id, value.3);
+        self.insert(id, value.4);
+        self.insert(id, value.5);
+        }
+    }
+
+    #[automatically_derived]
+    impl<T1, T2, T3, T4, T5, T6, T7> #ruststep::tables::Insert<(T1, T2, T3, T4, T5, T6, T7)> for #ident
+    where
+        Self: #ruststep::tables::Insert<T1>,
+        Self: #ruststep::tables::Insert<T2>,
+        Self: #ruststep::tables::Insert<T3>,
+        Self: #ruststep::tables::Insert<T4>,
+        Self: #ruststep::tables::Insert<T5>,
+        Self: #ruststep::tables::Insert<T6>,
+        Self: #ruststep::tables::Insert<T7>,
+    {
+        fn insert(&mut self, id: u64, value: (T1, T2, T3, T4, T5, T6, T7)) {
+        self.insert(id, value.0);
+        self.insert(id, value.1);
+        self.insert(id, value.2);
+        self.insert(id, value.3);
+        self.insert(id, value.4);
+        self.insert(id, value.5);
+        self.insert(id, value.6);
+        }
+    }
+
+    #[automatically_derived]
+    impl<T1, T2, T3, T4, T5, T6, T7, T8> #ruststep::tables::Insert<(T1, T2, T3, T4, T5, T6, T7, T8)> for #ident
+    where
+        Self: #ruststep::tables::Insert<T1>,
+        Self: #ruststep::tables::Insert<T2>,
+        Self: #ruststep::tables::Insert<T3>,
+        Self: #ruststep::tables::Insert<T4>,
+        Self: #ruststep::tables::Insert<T5>,
+        Self: #ruststep::tables::Insert<T6>,
+        Self: #ruststep::tables::Insert<T7>,
+        Self: #ruststep::tables::Insert<T8>,
+    {
+        fn insert(&mut self, id: u64, value: (T1, T2, T3, T4, T5, T6, T7, T8)) {
+        self.insert(id, value.0);
+        self.insert(id, value.1);
+        self.insert(id, value.2);
+        self.insert(id, value.3);
+        self.insert(id, value.4);
+        self.insert(id, value.5);
+        self.insert(id, value.6);
+        self.insert(id, value.7);
+        }
+    }
     }
 }
 
