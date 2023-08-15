@@ -1,8 +1,8 @@
 #![allow(dead_code)]
 use crate::{as_holder, derive_more::*, primitive::*, Holder, TableInit};
 use std::collections::HashMap;
-static COMPLETE: ::phf::Map<&'static str, &'static [&'static str]> = ::phf::phf_map! { "ABSORBED_DOSE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "ABSORBED_DOSE_UNIT" => & ["elements" ,] , "ABSTRACT_VARIABLE" => & ["name" , "description" , "definition" , "used_representation" , "items" , "context_of_items" ,] , "ACCELERATION_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "ACCELERATION_UNIT" => & ["elements" ,] , "ACTION" => & ["name" , "description" , "chosen_method" ,] , "ACTION_ASSIGNMENT" => & ["assigned_action" ,] , "ACTION_DIRECTIVE" => & ["name" , "description" , "analysis" , "comment" , "requests" ,] , "ACTION_METHOD" => & ["name" , "description" , "consequence" , "purpose" ,] , "ACTION_METHOD_ASSIGNMENT" => & ["assigned_action_method" , "role" ,] , "ACTION_METHOD_RELATIONSHIP" => & ["name" , "description" , "relating_method" , "related_method" ,] , "ACTION_METHOD_ROLE" => & ["name" , "description" ,] , "ACTION_PROPERTY" => & ["name" , "description" , "definition" ,] , "ACTION_PROPERTY_REPRESENTATION" => & ["name" , "description" , "property" , "representation" ,] , "ACTION_RELATIONSHIP" => & ["name" , "description" , "relating_action" , "related_action" ,] , "ACTION_REQUEST_ASSIGNMENT" => & ["assigned_action_request" ,] , "ACTION_REQUEST_SOLUTION" => & ["method" , "request" ,] , "ACTION_REQUEST_STATUS" => & ["status" , "assigned_request" ,] , "ACTION_STATUS" => & ["status" , "assigned_action" ,] , "ADDRESS" => & ["internal_location" , "street_number" , "street" , "postal_box" , "town" , "region" , "postal_code" , "country" , "facsimile_number" , "telephone_number" , "electronic_mail_address" , "telex_number" ,] , "ADVANCED_BREP_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "ADVANCED_FACE" => & ["name" , "bounds" , "face_geometry" , "same_sense" ,] , "ALTERNATE_PRODUCT_RELATIONSHIP" => & ["name" , "definition" , "alternate" , "base" , "basis" ,] , "AMOUNT_OF_SUBSTANCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "AMOUNT_OF_SUBSTANCE_UNIT" => & ["dimensions" ,] , "ANGLE_DIRECTION_REFERENCE" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "ANGULAR_DIMENSION" => & ["name" , "contents" ,] , "ANGULAR_LOCATION" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" , "angle_selection" ,] , "ANGULAR_SIZE" => & ["applies_to" , "name" , "angle_selection" ,] , "ANGULARITY_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "ANNOTATION_CURVE_OCCURRENCE" => & ["name" , "styles" , "item" ,] , "ANNOTATION_FILL_AREA" => & ["name" , "boundaries" ,] , "ANNOTATION_FILL_AREA_OCCURRENCE" => & ["name" , "styles" , "item" , "fill_style_target" ,] , "ANNOTATION_OCCURRENCE" => & ["name" , "styles" , "item" ,] , "ANNOTATION_OCCURRENCE_ASSOCIATIVITY" => & ["name" , "description" , "relating_annotation_occurrence" , "related_annotation_occurrence" ,] , "ANNOTATION_OCCURRENCE_RELATIONSHIP" => & ["name" , "description" , "relating_annotation_occurrence" , "related_annotation_occurrence" ,] , "ANNOTATION_PLANE" => & ["name" , "styles" , "item" , "elements" ,] , "ANNOTATION_SUBFIGURE_OCCURRENCE" => & ["name" , "styles" , "item" ,] , "ANNOTATION_SYMBOL" => & ["name" , "mapping_source" , "mapping_target" ,] , "ANNOTATION_SYMBOL_OCCURRENCE" => & ["name" , "styles" , "item" ,] , "ANNOTATION_TEXT" => & ["name" , "mapping_source" , "mapping_target" ,] , "ANNOTATION_TEXT_CHARACTER" => & ["name" , "mapping_source" , "mapping_target" , "alignment" ,] , "ANNOTATION_TEXT_OCCURRENCE" => & ["name" , "styles" , "item" ,] , "APEX" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "APPLICATION_CONTEXT" => & ["application" ,] , "APPLICATION_CONTEXT_ELEMENT" => & ["name" , "frame_of_reference" ,] , "APPLICATION_PROTOCOL_DEFINITION" => & ["status" , "application_interpreted_model_schema_name" , "application_protocol_year" , "application" ,] , "APPLIED_ACTION_ASSIGNMENT" => & ["assigned_action" , "items" ,] , "APPLIED_ACTION_METHOD_ASSIGNMENT" => & ["assigned_action_method" , "role" , "items" ,] , "APPLIED_ACTION_REQUEST_ASSIGNMENT" => & ["assigned_action_request" , "items" ,] , "APPLIED_APPROVAL_ASSIGNMENT" => & ["assigned_approval" , "items" ,] , "APPLIED_ATTRIBUTE_CLASSIFICATION_ASSIGNMENT" => & ["assigned_class" , "attribute_name" , "role" , "items" ,] , "APPLIED_CERTIFICATION_ASSIGNMENT" => & ["assigned_certification" , "items" ,] , "APPLIED_CLASSIFICATION_ASSIGNMENT" => & ["assigned_class" , "role" , "items" ,] , "APPLIED_CONTRACT_ASSIGNMENT" => & ["assigned_contract" , "items" ,] , "APPLIED_DATE_AND_TIME_ASSIGNMENT" => & ["assigned_date_and_time" , "role" , "items" ,] , "APPLIED_DATE_ASSIGNMENT" => & ["assigned_date" , "role" , "items" ,] , "APPLIED_DOCUMENT_REFERENCE" => & ["assigned_document" , "source" , "items" ,] , "APPLIED_DOCUMENT_USAGE_CONSTRAINT_ASSIGNMENT" => & ["assigned_document_usage" , "role" , "items" ,] , "APPLIED_EFFECTIVITY_ASSIGNMENT" => & ["assigned_effectivity" , "items" ,] , "APPLIED_EVENT_OCCURRENCE_ASSIGNMENT" => & ["assigned_event_occurrence" , "role" , "items" ,] , "APPLIED_EXTERNAL_IDENTIFICATION_ASSIGNMENT" => & ["assigned_id" , "role" , "source" , "items" ,] , "APPLIED_GROUP_ASSIGNMENT" => & ["assigned_group" , "items" ,] , "APPLIED_IDENTIFICATION_ASSIGNMENT" => & ["assigned_id" , "role" , "items" ,] , "APPLIED_NAME_ASSIGNMENT" => & ["assigned_name" , "item" ,] , "APPLIED_ORGANIZATION_ASSIGNMENT" => & ["assigned_organization" , "role" , "items" ,] , "APPLIED_ORGANIZATIONAL_PROJECT_ASSIGNMENT" => & ["assigned_organizational_project" , "role" , "items" ,] , "APPLIED_PERSON_AND_ORGANIZATION_ASSIGNMENT" => & ["assigned_person_and_organization" , "role" , "items" ,] , "APPLIED_PRESENTED_ITEM" => & ["items" ,] , "APPLIED_SECURITY_CLASSIFICATION_ASSIGNMENT" => & ["assigned_security_classification" , "items" ,] , "APPLIED_TIME_INTERVAL_ASSIGNMENT" => & ["assigned_time_interval" , "role" , "items" ,] , "APPLIED_USAGE_RIGHT" => & ["assigned_action" , "items" ,] , "APPROVAL" => & ["status" , "level" ,] , "APPROVAL_ASSIGNMENT" => & ["assigned_approval" ,] , "APPROVAL_DATE_TIME" => & ["date_time" , "dated_approval" ,] , "APPROVAL_PERSON_ORGANIZATION" => & ["person_organization" , "authorized_approval" , "role" ,] , "APPROVAL_RELATIONSHIP" => & ["name" , "description" , "relating_approval" , "related_approval" ,] , "APPROVAL_ROLE" => & ["role" ,] , "APPROVAL_STATUS" => & ["name" ,] , "AREA_IN_SET" => & ["area" , "in_set" ,] , "AREA_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "AREA_UNIT" => & ["elements" ,] , "ASSEMBLY_COMPONENT_USAGE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" , "reference_designator" ,] , "ASSEMBLY_COMPONENT_USAGE_SUBSTITUTE" => & ["name" , "definition" , "base" , "substitute" ,] , "ASSIGNED_REQUIREMENT" => & ["assigned_group" , "items" ,] , "ATOMIC_FORMULA" => & ["name" , "item_element" ,] , "ATTRIBUTE_ASSERTION" => & ["name" , "description" , "definition" , "used_representation" , "items" , "context_of_items" ,] , "ATTRIBUTE_CLASSIFICATION_ASSIGNMENT" => & ["assigned_class" , "attribute_name" , "role" ,] , "ATTRIBUTE_LANGUAGE_ASSIGNMENT" => & ["assigned_class" , "attribute_name" , "role" , "items" ,] , "ATTRIBUTE_VALUE_ASSIGNMENT" => & ["attribute_name" , "attribute_value" , "role" ,] , "ATTRIBUTE_VALUE_ROLE" => & ["name" , "description" ,] , "AUXILIARY_GEOMETRIC_REPRESENTATION_ITEM" => & ["name" ,] , "AXIS1_PLACEMENT" => & ["name" , "location" , "axis" ,] , "AXIS2_PLACEMENT_2D" => & ["name" , "location" , "ref_direction" ,] , "AXIS2_PLACEMENT_3D" => & ["name" , "location" , "axis" , "ref_direction" ,] , "B_SPLINE_CURVE" => & ["name" , "degree" , "control_points_list" , "curve_form" , "closed_curve" , "self_intersect" ,] , "B_SPLINE_CURVE_WITH_KNOTS" => & ["name" , "degree" , "control_points_list" , "curve_form" , "closed_curve" , "self_intersect" , "knot_multiplicities" , "knots" , "knot_spec" ,] , "B_SPLINE_SURFACE" => & ["name" , "u_degree" , "v_degree" , "control_points_list" , "surface_form" , "u_closed" , "v_closed" , "self_intersect" ,] , "B_SPLINE_SURFACE_WITH_KNOTS" => & ["name" , "u_degree" , "v_degree" , "control_points_list" , "surface_form" , "u_closed" , "v_closed" , "self_intersect" , "u_multiplicities" , "v_multiplicities" , "u_knots" , "v_knots" , "knot_spec" ,] , "BACK_CHAINING_RULE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "BACK_CHAINING_RULE_BODY" => & ["name" , "description" , "definition" , "used_representation" , "items" , "context_of_items" ,] , "BACKGROUND_COLOUR" => & ["presentation" ,] , "BEVELED_SHEET_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "BEZIER_CURVE" => & ["name" , "degree" , "control_points_list" , "curve_form" , "closed_curve" , "self_intersect" ,] , "BEZIER_SURFACE" => & ["name" , "u_degree" , "v_degree" , "control_points_list" , "surface_form" , "u_closed" , "v_closed" , "self_intersect" ,] , "BINARY_GENERIC_EXPRESSION" => & ["operands" ,] , "BINARY_NUMERIC_EXPRESSION" => & ["operands" ,] , "BINARY_REPRESENTATION_ITEM" => & ["name" , "binary_value" ,] , "BLOCK" => & ["name" , "position" , "x" , "y" , "z" ,] , "BOOLEAN_EXPRESSION" => & [] , "BOOLEAN_LITERAL" => & ["the_value" ,] , "BOOLEAN_REPRESENTATION_ITEM" => & ["name" , "the_value" ,] , "BOOLEAN_RESULT" => & ["name" , "operator" , "first_operand" , "second_operand" ,] , "BOUNDARY_CURVE" => & ["name" , "segments" , "self_intersect" ,] , "BOUNDED_CURVE" => & ["name" ,] , "BOUNDED_PCURVE" => & ["name" , "basis_surface" , "reference_to_curve" ,] , "BOUNDED_SURFACE" => & ["name" ,] , "BOUNDED_SURFACE_CURVE" => & ["name" , "curve_3d" , "associated_geometry" , "master_representation" ,] , "BOX_DOMAIN" => & ["corner" , "xlength" , "ylength" , "zlength" ,] , "BOXED_HALF_SPACE" => & ["name" , "base_surface" , "agreement_flag" , "enclosure" ,] , "BREAKDOWN_CONTEXT" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "BREAKDOWN_ELEMENT_GROUP_ASSIGNMENT" => & ["assigned_group" , "items" ,] , "BREAKDOWN_ELEMENT_REALIZATION" => & ["name" , "description" ,] , "BREAKDOWN_ELEMENT_USAGE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "BREAKDOWN_OF" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "BREP_WITH_VOIDS" => & ["name" , "outer" , "voids" ,] , "BYTES_REPRESENTATION_ITEM" => & ["name" , "binary_value" ,] , "CALENDAR_DATE" => & ["year_component" , "day_component" , "month_component" ,] , "CAMERA_IMAGE" => & ["name" , "mapping_source" , "mapping_target" ,] , "CAMERA_IMAGE_3D_WITH_SCALE" => & ["name" , "mapping_source" , "mapping_target" ,] , "CAMERA_MODEL" => & ["name" ,] , "CAMERA_MODEL_D_3" => & ["name" , "view_reference_system" , "perspective_of_volume" ,] , "CAMERA_MODEL_D_3_MULTI_CLIPPING" => & ["name" , "view_reference_system" , "perspective_of_volume" , "shape_clipping" ,] , "CAMERA_MODEL_D_3_MULTI_CLIPPING_INTERSECTION" => & ["name" , "shape_clipping" ,] , "CAMERA_MODEL_D_3_MULTI_CLIPPING_UNION" => & ["name" , "shape_clipping" ,] , "CAMERA_MODEL_D_3_WITH_HLHSR" => & ["name" , "view_reference_system" , "perspective_of_volume" , "hidden_line_surface_removal" ,] , "CAMERA_MODEL_WITH_LIGHT_SOURCES" => & ["name" , "view_reference_system" , "perspective_of_volume" , "sources" ,] , "CAMERA_USAGE" => & ["mapping_origin" , "mapped_representation" ,] , "CAPACITANCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "CAPACITANCE_UNIT" => & ["elements" ,] , "CARTESIAN_POINT" => & ["name" , "coordinates" ,] , "CARTESIAN_TRANSFORMATION_OPERATOR" => & ["name" , "description" , "axis1" , "axis2" , "local_origin" , "scale" ,] , "CARTESIAN_TRANSFORMATION_OPERATOR_2D" => & ["name" , "description" , "axis1" , "axis2" , "local_origin" , "scale" ,] , "CARTESIAN_TRANSFORMATION_OPERATOR_3D" => & ["name" , "description" , "axis1" , "axis2" , "local_origin" , "scale" , "axis3" ,] , "CC_DESIGN_APPROVAL" => & ["assigned_approval" , "items" ,] , "CC_DESIGN_CERTIFICATION" => & ["assigned_certification" , "items" ,] , "CC_DESIGN_CONTRACT" => & ["assigned_contract" , "items" ,] , "CC_DESIGN_DATE_AND_TIME_ASSIGNMENT" => & ["assigned_date_and_time" , "role" , "items" ,] , "CC_DESIGN_PERSON_AND_ORGANIZATION_ASSIGNMENT" => & ["assigned_person_and_organization" , "role" , "items" ,] , "CC_DESIGN_SECURITY_CLASSIFICATION" => & ["assigned_security_classification" , "items" ,] , "CC_DESIGN_SPECIFICATION_REFERENCE" => & ["assigned_document" , "source" , "items" ,] , "CELSIUS_TEMPERATURE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "CENTRE_OF_SYMMETRY" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "CERTIFICATION" => & ["name" , "purpose" , "kind" ,] , "CERTIFICATION_ASSIGNMENT" => & ["assigned_certification" ,] , "CERTIFICATION_TYPE" => & ["description" ,] , "CHANGE" => & ["assigned_action" , "items" ,] , "CHANGE_REQUEST" => & ["assigned_action_request" , "items" ,] , "CHARACTER_GLYPH_FONT_USAGE" => & ["character" , "font" ,] , "CHARACTER_GLYPH_STYLE_OUTLINE" => & ["outline_style" ,] , "CHARACTER_GLYPH_STYLE_STROKE" => & ["stroke_style" ,] , "CHARACTER_GLYPH_SYMBOL" => & ["name" , "items" , "context_of_items" , "character_box" , "baseline_ratio" ,] , "CHARACTER_GLYPH_SYMBOL_OUTLINE" => & ["name" , "items" , "context_of_items" , "character_box" , "baseline_ratio" , "outlines" ,] , "CHARACTER_GLYPH_SYMBOL_STROKE" => & ["name" , "items" , "context_of_items" , "character_box" , "baseline_ratio" , "strokes" ,] , "CHARACTERISTIC_DATA_COLUMN_HEADER" => & ["id" , "name" , "description" ,] , "CHARACTERISTIC_DATA_COLUMN_HEADER_LINK" => & ["name" , "description" , "relating_property" , "related_property" ,] , "CHARACTERISTIC_DATA_TABLE_HEADER" => & ["id" , "name" , "description" ,] , "CHARACTERISTIC_DATA_TABLE_HEADER_DECOMPOSITION" => & ["name" , "description" , "relating_property" , "related_property" ,] , "CHARACTERISTIC_TYPE" => & ["name" , "description" ,] , "CHARACTERIZED_CLASS" => & ["name" , "description" ,] , "CHARACTERIZED_OBJECT" => & ["name" , "description" ,] , "CIRCLE" => & ["name" , "position" , "radius" ,] , "CIRCULAR_RUNOUT_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "CLASS" => & ["name" , "description" ,] , "CLASS_BY_EXTENSION" => & ["name" , "description" ,] , "CLASS_BY_INTENSION" => & ["name" , "description" ,] , "CLASS_SYSTEM" => & ["name" , "description" ,] , "CLASS_USAGE_EFFECTIVITY_CONTEXT_ASSIGNMENT" => & ["assigned_effectivity_assignment" , "role" , "items" ,] , "CLASSIFICATION_ASSIGNMENT" => & ["assigned_class" , "role" ,] , "CLASSIFICATION_ROLE" => & ["name" , "description" ,] , "CLOSED_SHELL" => & ["name" , "cfs_faces" ,] , "COAXIALITY_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "COLOUR" => & [] , "COLOUR_RGB" => & ["name" , "red" , "green" , "blue" ,] , "COLOUR_SPECIFICATION" => & ["name" ,] , "COMMON_DATUM" => & ["name" , "description" , "of_shape" , "product_definitional" , "identification" ,] , "COMPARISON_EXPRESSION" => & ["operands" ,] , "COMPLEX_CLAUSE" => & ["name" , "item_element" ,] , "COMPLEX_CONJUNCTIVE_CLAUSE" => & ["name" , "item_element" ,] , "COMPLEX_DISJUNCTIVE_CLAUSE" => & ["name" , "item_element" ,] , "COMPLEX_SHELLED_SOLID" => & ["name" , "rationale" , "base_solid" , "deleted_face_set" , "thickness" , "thickened_face_list" , "thickness_list" ,] , "COMPOSITE_ASSEMBLY_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "COMPOSITE_ASSEMBLY_SEQUENCE_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "COMPOSITE_ASSEMBLY_TABLE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "COMPOSITE_CURVE" => & ["name" , "segments" , "self_intersect" ,] , "COMPOSITE_CURVE_ON_SURFACE" => & ["name" , "segments" , "self_intersect" ,] , "COMPOSITE_CURVE_SEGMENT" => & ["transition" , "same_sense" , "parent_curve" ,] , "COMPOSITE_MATERIAL_DESIGNATION" => & ["name" , "definitions" ,] , "COMPOSITE_SHAPE_ASPECT" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "COMPOSITE_SHEET_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "COMPOSITE_TEXT" => & ["name" , "collected_text" ,] , "COMPOSITE_TEXT_WITH_ASSOCIATED_CURVES" => & ["name" , "collected_text" , "associated_curves" ,] , "COMPOSITE_TEXT_WITH_BLANKING_BOX" => & ["name" , "collected_text" , "blanking" ,] , "COMPOSITE_TEXT_WITH_DELINEATION" => & ["name" , "collected_text" , "delineation" ,] , "COMPOSITE_TEXT_WITH_EXTENT" => & ["name" , "collected_text" , "extent" ,] , "COMPOUND_REPRESENTATION_ITEM" => & ["name" , "item_element" ,] , "COMPOUND_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "CONCENTRICITY_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "CONCEPT_FEATURE_OPERATOR" => & ["name" , "description" ,] , "CONCEPT_FEATURE_RELATIONSHIP" => & ["name" , "description" , "relating_product_concept_feature" , "related_product_concept_feature" ,] , "CONCEPT_FEATURE_RELATIONSHIP_WITH_CONDITION" => & ["name" , "description" , "relating_product_concept_feature" , "related_product_concept_feature" , "conditional_operator" ,] , "CONDITIONAL_CONCEPT_FEATURE" => & ["id" , "name" , "description" , "condition" ,] , "CONDUCTANCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "CONDUCTANCE_UNIT" => & ["elements" ,] , "CONFIGURABLE_ITEM" => & ["id" , "name" , "description" , "item_concept" , "purpose" , "item_concept_feature" ,] , "CONFIGURATION_DESIGN" => & ["configuration" , "design" ,] , "CONFIGURATION_EFFECTIVITY" => & ["id" , "usage" , "configuration" ,] , "CONFIGURATION_ITEM" => & ["id" , "name" , "description" , "item_concept" , "purpose" ,] , "CONFIGURATION_ITEM_HIERARCHICAL_RELATIONSHIP" => & ["name" , "description" , "relating_configuration_item" , "related_configuration_item" ,] , "CONFIGURATION_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_configuration_item" , "related_configuration_item" ,] , "CONFIGURATION_ITEM_REVISION_SEQUENCE" => & ["name" , "description" , "relating_configuration_item" , "related_configuration_item" ,] , "CONFIGURED_EFFECTIVITY_ASSIGNMENT" => & ["assigned_effectivity" , "items" ,] , "CONFIGURED_EFFECTIVITY_CONTEXT_ASSIGNMENT" => & ["assigned_effectivity_assignment" , "role" , "items" ,] , "CONIC" => & ["name" , "position" ,] , "CONICAL_STEPPED_HOLE_TRANSITION" => & ["name" , "transition_number" , "cone_apex_angle" , "cone_base_radius" ,] , "CONICAL_SURFACE" => & ["name" , "position" , "radius" , "semi_angle" ,] , "CONNECTED_EDGE_SET" => & ["name" , "ces_edges" ,] , "CONNECTED_FACE_SET" => & ["name" , "cfs_faces" ,] , "CONNECTED_FACE_SUB_SET" => & ["name" , "cfs_faces" , "parent_face_set" ,] , "CONSTRUCTIVE_GEOMETRY_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "CONSTRUCTIVE_GEOMETRY_REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "CONTACT_RATIO_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "CONTEXT_DEPENDENT_INVISIBILITY" => & ["invisible_items" , "presentation_context" ,] , "CONTEXT_DEPENDENT_OVER_RIDING_STYLED_ITEM" => & ["name" , "styles" , "item" , "over_ridden_style" , "style_context" ,] , "CONTEXT_DEPENDENT_SHAPE_REPRESENTATION" => & ["representation_relation" , "represented_product_relation" ,] , "CONTEXT_DEPENDENT_UNIT" => & ["dimensions" , "name" ,] , "CONTRACT" => & ["name" , "purpose" , "kind" ,] , "CONTRACT_ASSIGNMENT" => & ["assigned_contract" ,] , "CONTRACT_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_contract" , "related_contract" ,] , "CONTRACT_TYPE" => & ["description" ,] , "CONVERSION_BASED_UNIT" => & ["dimensions" , "name" , "conversion_factor" ,] , "COORDINATED_UNIVERSAL_TIME_OFFSET" => & ["hour_offset" , "minute_offset" , "sense" ,] , "CSG_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "CSG_SOLID" => & ["name" , "tree_root_expression" ,] , "CURRENCY" => & ["dimensions" , "name" ,] , "CURRENCY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "CURVE" => & ["name" ,] , "CURVE_BOUNDED_SURFACE" => & ["name" , "basis_surface" , "boundaries" , "implicit_outer" ,] , "CURVE_DIMENSION" => & ["name" , "contents" ,] , "CURVE_REPLICA" => & ["name" , "parent_curve" , "transformation" ,] , "CURVE_STYLE" => & ["name" , "curve_font" , "curve_width" , "curve_colour" ,] , "CURVE_STYLE_FONT" => & ["name" , "pattern_list" ,] , "CURVE_STYLE_FONT_AND_SCALING" => & ["name" , "curve_font" , "curve_font_scaling" ,] , "CURVE_STYLE_FONT_PATTERN" => & ["visible_segment_length" , "invisible_segment_length" ,] , "CURVE_STYLE_RENDERING" => & ["rendering_method" , "rendering_properties" ,] , "CURVE_SWEPT_SOLID_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "CYLINDRICAL_SURFACE" => & ["name" , "position" , "radius" ,] , "CYLINDRICITY_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "DATA_ENVIRONMENT" => & ["name" , "description" , "elements" ,] , "DATE" => & ["year_component" ,] , "DATE_AND_TIME" => & ["date_component" , "time_component" ,] , "DATE_AND_TIME_ASSIGNMENT" => & ["assigned_date_and_time" , "role" ,] , "DATE_ASSIGNMENT" => & ["assigned_date" , "role" ,] , "DATE_REPRESENTATION_ITEM" => & ["name" , "year_component" ,] , "DATE_ROLE" => & ["name" ,] , "DATE_TIME_REPRESENTATION_ITEM" => & ["name" , "date_component" , "time_component" ,] , "DATE_TIME_ROLE" => & ["name" ,] , "DATED_EFFECTIVITY" => & ["id" , "effectivity_end_date" , "effectivity_start_date" ,] , "DATUM" => & ["name" , "description" , "of_shape" , "product_definitional" , "identification" ,] , "DATUM_FEATURE" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "DATUM_FEATURE_CALLOUT" => & ["name" , "contents" ,] , "DATUM_REFERENCE" => & ["precedence" , "referenced_datum" ,] , "DATUM_TARGET" => & ["name" , "description" , "of_shape" , "product_definitional" , "target_id" ,] , "DATUM_TARGET_CALLOUT" => & ["name" , "contents" ,] , "DEFAULT_TOLERANCE_TABLE" => & ["name" , "items" , "context_of_items" ,] , "DEFAULT_TOLERANCE_TABLE_CELL" => & ["name" , "item_element" ,] , "DEFINED_SYMBOL" => & ["name" , "definition" , "target" ,] , "DEFINITIONAL_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "DEFINITIONAL_REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "DEFINITIONAL_REPRESENTATION_RELATIONSHIP_WITH_SAME_CONTEXT" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "DEGENERATE_PCURVE" => & ["name" , "basis_surface" , "reference_to_curve" ,] , "DEGENERATE_TOROIDAL_SURFACE" => & ["name" , "position" , "major_radius" , "minor_radius" , "select_outer" ,] , "DERIVED_SHAPE_ASPECT" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "DERIVED_UNIT" => & ["elements" ,] , "DERIVED_UNIT_ELEMENT" => & ["unit" , "exponent" ,] , "DESCRIPTION_ATTRIBUTE" => & ["attribute_value" , "described_item" ,] , "DESCRIPTIVE_REPRESENTATION_ITEM" => & ["name" , "description" ,] , "DESIGN_CONTEXT" => & ["name" , "frame_of_reference" , "life_cycle_stage" ,] , "DESIGN_MAKE_FROM_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "DIAMETER_DIMENSION" => & ["name" , "contents" ,] , "DIELECTRIC_CONSTANT_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "DIMENSION_CALLOUT" => & ["name" , "contents" ,] , "DIMENSION_CALLOUT_COMPONENT_RELATIONSHIP" => & ["name" , "description" , "relating_draughting_callout" , "related_draughting_callout" ,] , "DIMENSION_CALLOUT_RELATIONSHIP" => & ["name" , "description" , "relating_draughting_callout" , "related_draughting_callout" ,] , "DIMENSION_CURVE" => & ["name" , "styles" , "item" ,] , "DIMENSION_CURVE_DIRECTED_CALLOUT" => & ["name" , "contents" ,] , "DIMENSION_CURVE_TERMINATOR" => & ["name" , "styles" , "item" , "annotated_curve" , "role" ,] , "DIMENSION_CURVE_TERMINATOR_TO_PROJECTION_CURVE_ASSOCIATIVITY" => & ["name" , "description" , "relating_annotation_occurrence" , "related_annotation_occurrence" ,] , "DIMENSION_PAIR" => & ["name" , "description" , "relating_draughting_callout" , "related_draughting_callout" ,] , "DIMENSION_RELATED_TOLERANCE_ZONE_ELEMENT" => & ["related_dimension" , "related_element" ,] , "DIMENSION_TEXT_ASSOCIATIVITY" => & ["name" , "literal" , "placement" , "alignment" , "path" , "font" , "mapping_source" , "mapping_target" ,] , "DIMENSIONAL_CHARACTERISTIC_REPRESENTATION" => & ["dimension" , "representation" ,] , "DIMENSIONAL_EXPONENTS" => & ["length_exponent" , "mass_exponent" , "time_exponent" , "electric_current_exponent" , "thermodynamic_temperature_exponent" , "amount_of_substance_exponent" , "luminous_intensity_exponent" ,] , "DIMENSIONAL_LOCATION" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" ,] , "DIMENSIONAL_LOCATION_WITH_PATH" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" , "path" ,] , "DIMENSIONAL_SIZE" => & ["applies_to" , "name" ,] , "DIMENSIONAL_SIZE_WITH_PATH" => & ["applies_to" , "name" , "path" ,] , "DIRECTED_ACTION" => & ["name" , "description" , "chosen_method" , "directive" ,] , "DIRECTED_DIMENSIONAL_LOCATION" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" ,] , "DIRECTION" => & ["name" , "direction_ratios" ,] , "DOCUMENT" => & ["id" , "name" , "description" , "kind" ,] , "DOCUMENT_FILE" => & ["id" , "name" , "description" , "kind" ,] , "DOCUMENT_IDENTIFIER" => & ["name" , "description" ,] , "DOCUMENT_IDENTIFIER_ASSIGNMENT" => & ["assigned_group" , "items" ,] , "DOCUMENT_PRODUCT_ASSOCIATION" => & ["name" , "description" , "relating_document" , "related_product" ,] , "DOCUMENT_PRODUCT_EQUIVALENCE" => & ["name" , "description" , "relating_document" , "related_product" ,] , "DOCUMENT_REFERENCE" => & ["assigned_document" , "source" ,] , "DOCUMENT_RELATIONSHIP" => & ["name" , "description" , "relating_document" , "related_document" ,] , "DOCUMENT_REPRESENTATION_TYPE" => & ["name" , "represented_document" ,] , "DOCUMENT_TYPE" => & ["product_data_type" ,] , "DOCUMENT_USAGE_CONSTRAINT" => & ["source" , "subject_element" , "subject_element_value" ,] , "DOCUMENT_USAGE_CONSTRAINT_ASSIGNMENT" => & ["assigned_document_usage" , "role" ,] , "DOCUMENT_USAGE_ROLE" => & ["name" , "description" ,] , "DOSE_EQUIVALENT_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "DOSE_EQUIVALENT_UNIT" => & ["elements" ,] , "DOUBLE_OFFSET_SHELLED_SOLID" => & ["name" , "rationale" , "base_solid" , "deleted_face_set" , "thickness" , "thickness2" ,] , "DRAPED_DEFINED_TRANSFORMATION" => & ["name" , "description" , "transform_item_1" , "transform_item_2" ,] , "DRAUGHTING_ANNOTATION_OCCURRENCE" => & ["name" , "styles" , "item" ,] , "DRAUGHTING_CALLOUT" => & ["name" , "contents" ,] , "DRAUGHTING_CALLOUT_RELATIONSHIP" => & ["name" , "description" , "relating_draughting_callout" , "related_draughting_callout" ,] , "DRAUGHTING_ELEMENTS" => & ["name" , "contents" ,] , "DRAUGHTING_MODEL" => & ["name" , "items" , "context_of_items" ,] , "DRAUGHTING_MODEL_ITEM_ASSOCIATION" => & ["name" , "description" , "definition" , "used_representation" , "identified_item" ,] , "DRAUGHTING_PRE_DEFINED_COLOUR" => & ["name" ,] , "DRAUGHTING_PRE_DEFINED_CURVE_FONT" => & ["name" ,] , "DRAUGHTING_PRE_DEFINED_TEXT_FONT" => & ["name" ,] , "DRAUGHTING_SUBFIGURE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "DRAUGHTING_SYMBOL_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "DRAUGHTING_TEXT_LITERAL_WITH_DELINEATION" => & ["name" , "literal" , "placement" , "alignment" , "path" , "font" , "delineation" ,] , "DRAUGHTING_TITLE" => & ["items" , "language" , "contents" ,] , "DRAWING_DEFINITION" => & ["drawing_number" , "drawing_type" ,] , "DRAWING_REVISION" => & ["revision_identifier" , "drawing_identifier" , "intended_scale" ,] , "DRAWING_REVISION_SEQUENCE" => & ["predecessor" , "successor" ,] , "DRAWING_SHEET_REVISION" => & ["name" , "items" , "context_of_items" , "revision_identifier" ,] , "DRAWING_SHEET_REVISION_SEQUENCE" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "DRAWING_SHEET_REVISION_USAGE" => & ["area" , "in_set" , "sheet_number" ,] , "EDGE" => & ["name" , "edge_start" , "edge_end" ,] , "EDGE_BASED_WIREFRAME_MODEL" => & ["name" , "ebwm_boundary" ,] , "EDGE_BASED_WIREFRAME_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "EDGE_BLENDED_SOLID" => & ["name" , "rationale" , "base_solid" , "blended_edges" ,] , "EDGE_CURVE" => & ["name" , "edge_start" , "edge_end" , "edge_geometry" , "same_sense" ,] , "EDGE_LOOP" => & ["name" , "edge_list" ,] , "EFFECTIVITY" => & ["id" ,] , "EFFECTIVITY_ASSIGNMENT" => & ["assigned_effectivity" ,] , "EFFECTIVITY_CONTEXT_ASSIGNMENT" => & ["assigned_effectivity_assignment" , "role" ,] , "EFFECTIVITY_CONTEXT_ROLE" => & ["name" , "description" ,] , "EFFECTIVITY_RELATIONSHIP" => & ["name" , "description" , "related_effectivity" , "relating_effectivity" ,] , "ELECTRIC_CHARGE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "ELECTRIC_CHARGE_UNIT" => & ["elements" ,] , "ELECTRIC_CURRENT_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "ELECTRIC_CURRENT_UNIT" => & ["dimensions" ,] , "ELECTRIC_POTENTIAL_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "ELECTRIC_POTENTIAL_UNIT" => & ["elements" ,] , "ELEMENTARY_BREP_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "ELEMENTARY_SURFACE" => & ["name" , "position" ,] , "ELLIPSE" => & ["name" , "position" , "semi_axis_1" , "semi_axis_2" ,] , "ENERGY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "ENERGY_UNIT" => & ["elements" ,] , "ENTITY_ASSERTION" => & ["name" , "description" , "definition" ,] , "ENUM_REFERENCE_PREFIX" => & ["name" , "description" ,] , "ENVIRONMENT" => & ["syntactic_representation" , "semantics" ,] , "EVALUATED_CHARACTERISTIC" => & ["name" , "items" , "context_of_items" , "description" , "rep_1" , "rep_2" ,] , "EVALUATED_DEGENERATE_PCURVE" => & ["name" , "basis_surface" , "reference_to_curve" , "equivalent_point" ,] , "EVALUATION_PRODUCT_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "EVENT_OCCURRENCE" => & ["id" , "name" , "description" ,] , "EVENT_OCCURRENCE_ASSIGNMENT" => & ["assigned_event_occurrence" , "role" ,] , "EVENT_OCCURRENCE_RELATIONSHIP" => & ["name" , "description" , "relating_event" , "related_event" ,] , "EVENT_OCCURRENCE_ROLE" => & ["name" , "description" ,] , "EXCLUSIVE_PRODUCT_CONCEPT_FEATURE_CATEGORY" => & ["name" , "description" ,] , "EXECUTED_ACTION" => & ["name" , "description" , "chosen_method" ,] , "EXPANDED_UNCERTAINTY" => & ["measure_name" , "description" , "uncertainty_value" , "coverage_factor" ,] , "EXPLICIT_PROCEDURAL_GEOMETRIC_REPRESENTATION_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "EXPLICIT_PROCEDURAL_REPRESENTATION_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "EXPLICIT_PROCEDURAL_REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "EXPLICIT_PROCEDURAL_SHAPE_REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "EXPRESSION" => & [] , "EXPRESSION_CONVERSION_BASED_UNIT" => & ["dimensions" , "name" ,] , "EXTENSION" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "EXTENT" => & ["name" , "description" ,] , "EXTERNAL_CLASS_LIBRARY" => & ["source_id" ,] , "EXTERNAL_IDENTIFICATION_ASSIGNMENT" => & ["assigned_id" , "role" , "source" ,] , "EXTERNAL_SOURCE" => & ["source_id" ,] , "EXTERNAL_SOURCE_RELATIONSHIP" => & ["name" , "description" , "relating_source" , "related_source" ,] , "EXTERNALLY_DEFINED_CLASS" => & ["name" , "description" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_COLOUR" => & ["name" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_CONTEXT_DEPENDENT_UNIT" => & ["dimensions" , "name" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_CONVERSION_BASED_UNIT" => & ["dimensions" , "name" , "conversion_factor" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_CURRENCY" => & ["dimensions" , "name" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_CURVE_FONT" => & ["item_id" , "source" ,] , "EXTERNALLY_DEFINED_DIMENSION_DEFINITION" => & ["applies_to" , "name" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_GENERAL_PROPERTY" => & ["id" , "name" , "description" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_HATCH_STYLE" => & ["item_id" , "source" , "name" ,] , "EXTERNALLY_DEFINED_ITEM" => & ["item_id" , "source" ,] , "EXTERNALLY_DEFINED_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_item" , "related_item" ,] , "EXTERNALLY_DEFINED_MARKER" => & ["item_id" , "source" , "name" ,] , "EXTERNALLY_DEFINED_PICTURE_REPRESENTATION_ITEM" => & ["name" , "binary_value" ,] , "EXTERNALLY_DEFINED_REPRESENTATION_ITEM" => & ["name" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_STRING" => & ["name" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_SYMBOL" => & ["item_id" , "source" ,] , "EXTERNALLY_DEFINED_TERMINATOR_SYMBOL" => & ["item_id" , "source" ,] , "EXTERNALLY_DEFINED_TEXT_FONT" => & ["item_id" , "source" ,] , "EXTERNALLY_DEFINED_TILE" => & ["item_id" , "source" ,] , "EXTERNALLY_DEFINED_TILE_STYLE" => & ["item_id" , "source" , "name" ,] , "EXTRUDED_AREA_SOLID" => & ["name" , "swept_area" , "extruded_direction" , "depth" ,] , "EXTRUDED_FACE_SOLID" => & ["name" , "swept_face" , "extruded_direction" , "depth" ,] , "EXTRUDED_FACE_SOLID_WITH_DRAFT_ANGLE" => & ["name" , "swept_face" , "extruded_direction" , "depth" , "first_trim_condition" , "second_trim_condition" , "first_trim_intent" , "second_trim_intent" , "first_offset" , "second_offset" , "draft_angle" ,] , "EXTRUDED_FACE_SOLID_WITH_MULTIPLE_DRAFT_ANGLES" => & ["name" , "swept_face" , "extruded_direction" , "depth" , "first_trim_condition" , "second_trim_condition" , "first_trim_intent" , "second_trim_intent" , "first_offset" , "second_offset" , "drafted_edges" , "draft_angles" ,] , "EXTRUDED_FACE_SOLID_WITH_TRIM_CONDITIONS" => & ["name" , "swept_face" , "extruded_direction" , "depth" , "first_trim_condition" , "second_trim_condition" , "first_trim_intent" , "second_trim_intent" , "first_offset" , "second_offset" ,] , "FACE" => & ["name" , "bounds" ,] , "FACE_BASED_SURFACE_MODEL" => & ["name" , "fbsm_faces" ,] , "FACE_BOUND" => & ["name" , "bound" , "orientation" ,] , "FACE_OUTER_BOUND" => & ["name" , "bound" , "orientation" ,] , "FACE_SURFACE" => & ["name" , "bounds" , "face_geometry" , "same_sense" ,] , "FACETED_BREP" => & ["name" , "outer" ,] , "FACETED_BREP_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "FACT_TYPE" => & ["name" , "description" , "definition" ,] , "FILL_AREA_STYLE" => & ["name" , "fill_styles" ,] , "FILL_AREA_STYLE_COLOUR" => & ["name" , "fill_colour" ,] , "FILL_AREA_STYLE_HATCHING" => & ["name" , "hatch_line_appearance" , "start_of_next_hatch_line" , "point_of_reference_hatch_line" , "pattern_start" , "hatch_line_angle" ,] , "FILL_AREA_STYLE_TILE_COLOURED_REGION" => & ["name" , "closed_curve" , "region_colour" ,] , "FILL_AREA_STYLE_TILE_CURVE_WITH_STYLE" => & ["name" , "styled_curve" ,] , "FILL_AREA_STYLE_TILE_SYMBOL_WITH_STYLE" => & ["name" , "symbol" ,] , "FILL_AREA_STYLE_TILES" => & ["name" , "tiling_pattern" , "tiles" , "tiling_scale" ,] , "FLAT_PATTERN_PLY_REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "FLATNESS_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "FORCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "FORCE_UNIT" => & ["elements" ,] , "FORWARD_CHAINING_RULE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "FORWARD_CHAINING_RULE_PREMISE" => & ["name" , "description" , "definition" , "used_representation" , "items" , "context_of_items" ,] , "FOUNDED_ITEM" => & [] , "FREQUENCY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "FREQUENCY_UNIT" => & ["elements" ,] , "FUNC" => & ["name" , "item_element" ,] , "FUNCTIONAL_BREAKDOWN_CONTEXT" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "FUNCTIONAL_ELEMENT_USAGE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "FUNCTIONALLY_DEFINED_TRANSFORMATION" => & ["name" , "description" ,] , "GENERAL_MATERIAL_PROPERTY" => & ["id" , "name" , "description" ,] , "GENERAL_PROPERTY" => & ["id" , "name" , "description" ,] , "GENERAL_PROPERTY_ASSOCIATION" => & ["name" , "description" , "base_definition" , "derived_definition" ,] , "GENERAL_PROPERTY_RELATIONSHIP" => & ["name" , "description" , "relating_property" , "related_property" ,] , "GENERIC_CHARACTER_GLYPH_SYMBOL" => & ["name" , "items" , "context_of_items" ,] , "GENERIC_EXPRESSION" => & [] , "GENERIC_LITERAL" => & [] , "GENERIC_VARIABLE" => & [] , "GEOMETRIC_ALIGNMENT" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "GEOMETRIC_CURVE_SET" => & ["name" , "elements" ,] , "GEOMETRIC_INTERSECTION" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "GEOMETRIC_ITEM_SPECIFIC_USAGE" => & ["name" , "description" , "definition" , "used_representation" , "identified_item" ,] , "GEOMETRIC_MODEL_ELEMENT_RELATIONSHIP" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "GEOMETRIC_REPRESENTATION_CONTEXT" => & ["context_identifier" , "context_type" , "coordinate_space_dimension" ,] , "GEOMETRIC_REPRESENTATION_ITEM" => & ["name" ,] , "GEOMETRIC_SET" => & ["name" , "elements" ,] , "GEOMETRIC_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "GEOMETRIC_TOLERANCE_RELATIONSHIP" => & ["name" , "description" , "relating_geometric_tolerance" , "related_geometric_tolerance" ,] , "GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "GEOMETRIC_TOLERANCE_WITH_DEFINED_UNIT" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "unit_size" ,] , "GEOMETRICAL_TOLERANCE_CALLOUT" => & ["name" , "contents" ,] , "GEOMETRICALLY_BOUNDED_2D_WIREFRAME_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "GEOMETRICALLY_BOUNDED_SURFACE_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "GEOMETRICALLY_BOUNDED_WIREFRAME_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "GLOBAL_ASSIGNMENT" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "GLOBAL_UNCERTAINTY_ASSIGNED_CONTEXT" => & ["context_identifier" , "context_type" , "uncertainty" ,] , "GLOBAL_UNIT_ASSIGNED_CONTEXT" => & ["context_identifier" , "context_type" , "units" ,] , "GROUND_FACT" => & ["name" , "item_element" ,] , "GROUP" => & ["name" , "description" ,] , "GROUP_ASSIGNMENT" => & ["assigned_group" ,] , "GROUP_RELATIONSHIP" => & ["name" , "description" , "relating_group" , "related_group" ,] , "HALF_SPACE_SOLID" => & ["name" , "base_surface" , "agreement_flag" ,] , "HARDNESS_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "HIDDEN_ELEMENT_OVER_RIDING_STYLED_ITEM" => & ["name" , "styles" , "item" , "over_ridden_style" , "style_context" ,] , "HYPERBOLA" => & ["name" , "position" , "semi_axis" , "semi_imag_axis" ,] , "ID_ATTRIBUTE" => & ["attribute_value" , "identified_item" ,] , "IDENTIFICATION_ASSIGNMENT" => & ["assigned_id" , "role" ,] , "IDENTIFICATION_ROLE" => & ["name" , "description" ,] , "ILLUMINANCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "ILLUMINANCE_UNIT" => & ["elements" ,] , "INCLUDED_TEXT_BLOCK" => & ["name" , "mapping_source" , "mapping_target" ,] , "INCLUSION_PRODUCT_CONCEPT_FEATURE" => & ["id" , "name" , "description" , "condition" ,] , "INDIRECTLY_SELECTED_ELEMENTS" => & ["name" , "picked_items" , "indirectly_picked_items" ,] , "INDIRECTLY_SELECTED_SHAPE_ELEMENTS" => & ["name" , "picked_items" , "indirectly_picked_items" ,] , "INDUCTANCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "INDUCTANCE_UNIT" => & ["elements" ,] , "INFORMATION_RIGHT" => & ["name" , "description" , "consequence" , "purpose" ,] , "INFORMATION_USAGE_RIGHT" => & ["name" , "description" , "consequence" , "purpose" ,] , "INSTANCE_USAGE_CONTEXT_ASSIGNMENT" => & ["name" , "frame_of_reference" , "life_cycle_stage" , "items" ,] , "INSTANCED_FEATURE" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "INT_LITERAL" => & ["the_value" ,] , "INTEGER_REPRESENTATION_ITEM" => & ["name" , "the_value" ,] , "INTERSECTION_CURVE" => & ["name" , "curve_3d" , "associated_geometry" , "master_representation" ,] , "INTERVAL_EXPRESSION" => & ["operands" ,] , "INVISIBILITY" => & ["invisible_items" ,] , "ISO_4217_CURRENCY" => & ["dimensions" , "name" ,] , "ITEM_DEFINED_TRANSFORMATION" => & ["name" , "description" , "transform_item_1" , "transform_item_2" ,] , "ITEM_IDENTIFIED_REPRESENTATION_USAGE" => & ["name" , "description" , "definition" , "used_representation" , "identified_item" ,] , "KNOWN_SOURCE" => & ["source_id" , "name" ,] , "LAID_DEFINED_TRANSFORMATION" => & ["name" , "description" , "transform_item_1" , "transform_item_2" ,] , "LAMINATE_TABLE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "LANGUAGE" => & ["name" , "description" ,] , "LEADER_CURVE" => & ["name" , "styles" , "item" ,] , "LEADER_DIRECTED_CALLOUT" => & ["name" , "contents" ,] , "LEADER_DIRECTED_DIMENSION" => & ["name" , "contents" ,] , "LEADER_TERMINATOR" => & ["name" , "styles" , "item" , "annotated_curve" ,] , "LENGTH_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "LENGTH_UNIT" => & ["dimensions" ,] , "LIGHT_SOURCE" => & ["name" , "light_colour" ,] , "LIGHT_SOURCE_AMBIENT" => & ["name" , "light_colour" ,] , "LIGHT_SOURCE_DIRECTIONAL" => & ["name" , "light_colour" , "orientation" ,] , "LIGHT_SOURCE_POSITIONAL" => & ["name" , "light_colour" , "position" , "constant_attenuation" , "distance_attenuation" ,] , "LIGHT_SOURCE_SPOT" => & ["name" , "light_colour" , "position" , "orientation" , "concentration_exponent" , "constant_attenuation" , "distance_attenuation" , "spread_angle" ,] , "LIMITS_AND_FITS" => & ["form_variance" , "zone_variance" , "grade" , "source" ,] , "LINE" => & ["name" , "pnt" , "dir" ,] , "LINE_PROFILE_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "LINEAR_DIMENSION" => & ["name" , "contents" ,] , "LITERAL_CONJUNCTION" => & ["name" , "item_element" ,] , "LITERAL_DISJUNCTION" => & ["name" , "item_element" ,] , "LITERAL_NUMBER" => & ["the_value" ,] , "LOCAL_TIME" => & ["hour_component" , "minute_component" , "second_component" , "zone" ,] , "LOGICAL_LITERAL" => & ["lit_value" ,] , "LOGICAL_REPRESENTATION_ITEM" => & ["name" , "lit_value" ,] , "LOOP" => & ["name" ,] , "LOSS_TANGENT_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "LOT_EFFECTIVITY" => & ["id" , "effectivity_lot_id" , "effectivity_lot_size" ,] , "LUMINOUS_FLUX_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "LUMINOUS_FLUX_UNIT" => & ["dimensions" ,] , "LUMINOUS_INTENSITY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "LUMINOUS_INTENSITY_UNIT" => & ["dimensions" ,] , "MAGNETIC_FLUX_DENSITY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "MAGNETIC_FLUX_DENSITY_UNIT" => & ["elements" ,] , "MAGNETIC_FLUX_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "MAGNETIC_FLUX_UNIT" => & ["elements" ,] , "MAKE_FROM_USAGE_OPTION" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" , "ranking" , "ranking_rationale" , "quantity" ,] , "MANIFOLD_SOLID_BREP" => & ["name" , "outer" ,] , "MANIFOLD_SUBSURFACE_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "MANIFOLD_SURFACE_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "MAPPED_ITEM" => & ["name" , "mapping_source" , "mapping_target" ,] , "MASS_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "MASS_UNIT" => & ["dimensions" ,] , "MATERIAL_DESIGNATION" => & ["name" , "definitions" ,] , "MATERIAL_DESIGNATION_CHARACTERIZATION" => & ["name" , "description" , "designation" , "property" ,] , "MATERIAL_PROPERTY" => & ["name" , "description" , "definition" ,] , "MATERIAL_PROPERTY_REPRESENTATION" => & ["definition" , "used_representation" , "dependent_environment" ,] , "MEASURE_QUALIFICATION" => & ["name" , "description" , "qualified_measure" , "qualifiers" ,] , "MEASURE_REPRESENTATION_ITEM" => & ["name" , "value_component" , "unit_component" ,] , "MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "MECHANICAL_CONTEXT" => & ["name" , "frame_of_reference" , "discipline_type" ,] , "MECHANICAL_DESIGN_AND_DRAUGHTING_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "MECHANICAL_DESIGN_GEOMETRIC_PRESENTATION_AREA" => & ["name" , "items" , "context_of_items" ,] , "MECHANICAL_DESIGN_GEOMETRIC_PRESENTATION_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "MECHANICAL_DESIGN_PRESENTATION_REPRESENTATION_WITH_DRAUGHTING" => & ["name" , "items" , "context_of_items" ,] , "MECHANICAL_DESIGN_SHADED_PRESENTATION_AREA" => & ["name" , "items" , "context_of_items" ,] , "MECHANICAL_DESIGN_SHADED_PRESENTATION_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "MIN_AND_MAJOR_PLY_ORIENTATION_BASIS" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "MODIFIED_GEOMETRIC_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "modifier" ,] , "MODIFIED_SOLID" => & ["name" , "rationale" , "base_solid" ,] , "MODIFIED_SOLID_WITH_PLACED_CONFIGURATION" => & ["name" , "rationale" , "base_solid" , "placing" ,] , "MOMENTS_OF_INERTIA_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "MULTI_LANGUAGE_ATTRIBUTE_ASSIGNMENT" => & ["attribute_name" , "attribute_value" , "role" , "items" ,] , "MULTIPLE_ARITY_BOOLEAN_EXPRESSION" => & ["operands" ,] , "MULTIPLE_ARITY_GENERIC_EXPRESSION" => & ["operands" ,] , "MULTIPLE_ARITY_NUMERIC_EXPRESSION" => & ["operands" ,] , "NAME_ASSIGNMENT" => & ["assigned_name" ,] , "NAME_ATTRIBUTE" => & ["attribute_value" , "named_item" ,] , "NAMED_UNIT" => & ["dimensions" ,] , "NEXT_ASSEMBLY_USAGE_OCCURRENCE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" , "reference_designator" ,] , "NON_MANIFOLD_SURFACE_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "NULL_REPRESENTATION_ITEM" => & ["name" ,] , "NUMERIC_EXPRESSION" => & [] , "OBJECT_ROLE" => & ["name" , "description" ,] , "OFFSET_CURVE_2D" => & ["name" , "basis_curve" , "distance" , "self_intersect" ,] , "OFFSET_CURVE_3D" => & ["name" , "basis_curve" , "distance" , "self_intersect" , "ref_direction" ,] , "OFFSET_SURFACE" => & ["name" , "basis_surface" , "distance" , "self_intersect" ,] , "ONE_DIRECTION_REPEAT_FACTOR" => & ["name" , "repeat_factor" ,] , "OPEN_SHELL" => & ["name" , "cfs_faces" ,] , "ORDINAL_DATE" => & ["year_component" , "day_component" ,] , "ORDINATE_DIMENSION" => & ["name" , "contents" ,] , "ORGANIZATION" => & ["id" , "name" , "description" ,] , "ORGANIZATION_ASSIGNMENT" => & ["assigned_organization" , "role" ,] , "ORGANIZATION_RELATIONSHIP" => & ["name" , "description" , "relating_organization" , "related_organization" ,] , "ORGANIZATION_ROLE" => & ["name" ,] , "ORGANIZATIONAL_ADDRESS" => & ["internal_location" , "street_number" , "street" , "postal_box" , "town" , "region" , "postal_code" , "country" , "facsimile_number" , "telephone_number" , "electronic_mail_address" , "telex_number" , "organizations" , "description" ,] , "ORGANIZATIONAL_PROJECT" => & ["name" , "description" , "responsible_organizations" ,] , "ORGANIZATIONAL_PROJECT_ASSIGNMENT" => & ["assigned_organizational_project" , "role" ,] , "ORGANIZATIONAL_PROJECT_RELATIONSHIP" => & ["name" , "description" , "relating_organizational_project" , "related_organizational_project" ,] , "ORGANIZATIONAL_PROJECT_ROLE" => & ["name" , "description" ,] , "ORIENTED_CLOSED_SHELL" => & ["name" , "cfs_faces" , "closed_shell_element" , "orientation" ,] , "ORIENTED_EDGE" => & ["name" , "edge_start" , "edge_end" , "edge_element" , "orientation" ,] , "ORIENTED_FACE" => & ["name" , "bounds" , "face_element" , "orientation" ,] , "ORIENTED_OPEN_SHELL" => & ["name" , "cfs_faces" , "open_shell_element" , "orientation" ,] , "ORIENTED_PATH" => & ["name" , "edge_list" , "path_element" , "orientation" ,] , "ORIENTED_SURFACE" => & ["name" , "orientation" ,] , "OUTER_BOUNDARY_CURVE" => & ["name" , "segments" , "self_intersect" ,] , "OVER_RIDING_STYLED_ITEM" => & ["name" , "styles" , "item" , "over_ridden_style" ,] , "PACKAGE_PRODUCT_CONCEPT_FEATURE" => & ["id" , "name" , "description" ,] , "PARABOLA" => & ["name" , "position" , "focal_dist" ,] , "PARALLEL_OFFSET" => & ["name" , "description" , "of_shape" , "product_definitional" , "offset" ,] , "PARALLELISM_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "PARAMETRIC_REPRESENTATION_CONTEXT" => & ["context_identifier" , "context_type" ,] , "PART_LAMINATE_TABLE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PARTIAL_DOCUMENT_WITH_STRUCTURED_TEXT_REPRESENTATION_ASSIGNMENT" => & ["assigned_document_usage" , "role" , "items" , "name" , "description" ,] , "PATH" => & ["name" , "edge_list" ,] , "PCURVE" => & ["name" , "basis_surface" , "reference_to_curve" ,] , "PERCENTAGE_LAMINATE_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PERCENTAGE_LAMINATE_TABLE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PERCENTAGE_PLY_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PERPENDICULAR_TO" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "PERPENDICULARITY_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "PERSON" => & ["id" , "last_name" , "first_name" , "middle_names" , "prefix_titles" , "suffix_titles" ,] , "PERSON_AND_ORGANIZATION" => & ["the_person" , "the_organization" ,] , "PERSON_AND_ORGANIZATION_ADDRESS" => & ["internal_location" , "street_number" , "street" , "postal_box" , "town" , "region" , "postal_code" , "country" , "facsimile_number" , "telephone_number" , "electronic_mail_address" , "telex_number" , "organizations" , "description" , "people" ,] , "PERSON_AND_ORGANIZATION_ASSIGNMENT" => & ["assigned_person_and_organization" , "role" ,] , "PERSON_AND_ORGANIZATION_ROLE" => & ["name" ,] , "PERSONAL_ADDRESS" => & ["internal_location" , "street_number" , "street" , "postal_box" , "town" , "region" , "postal_code" , "country" , "facsimile_number" , "telephone_number" , "electronic_mail_address" , "telex_number" , "people" , "description" ,] , "PHYSICAL_BREAKDOWN_CONTEXT" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "PHYSICAL_ELEMENT_USAGE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "PICTURE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "PICTURE_REPRESENTATION_ITEM" => & ["name" , "binary_value" ,] , "PLACED_DATUM_TARGET_FEATURE" => & ["name" , "description" , "of_shape" , "product_definitional" , "target_id" ,] , "PLACED_FEATURE" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "PLACEMENT" => & ["name" , "location" ,] , "PLANAR_BOX" => & ["name" , "size_in_x" , "size_in_y" , "placement" ,] , "PLANAR_EXTENT" => & ["name" , "size_in_x" , "size_in_y" ,] , "PLANE" => & ["name" , "position" ,] , "PLANE_ANGLE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "PLANE_ANGLE_UNIT" => & ["dimensions" ,] , "PLUS_MINUS_TOLERANCE" => & ["range" , "toleranced_dimension" ,] , "PLY_LAMINATE_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PLY_LAMINATE_SEQUENCE_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PLY_LAMINATE_TABLE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "POINT" => & ["name" ,] , "POINT_AND_VECTOR" => & ["name" , "item_element" ,] , "POINT_ON_CURVE" => & ["name" , "basis_curve" , "point_parameter" ,] , "POINT_ON_SURFACE" => & ["name" , "basis_surface" , "point_parameter_u" , "point_parameter_v" ,] , "POINT_PATH" => & ["name" , "item_element" ,] , "POINT_REPLICA" => & ["name" , "parent_pt" , "transformation" ,] , "POINT_STYLE" => & ["name" , "marker" , "marker_size" , "marker_colour" ,] , "POLAR_COMPLEX_NUMBER_LITERAL" => & ["radius" , "angle" ,] , "POLY_LOOP" => & ["name" , "polygon" ,] , "POLYLINE" => & ["name" , "points" ,] , "POSITION_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "POSITIONED_SKETCH" => & ["name" , "sketch_basis" , "auxiliary_elements" ,] , "POWER_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "POWER_UNIT" => & ["elements" ,] , "PRE_DEFINED_COLOUR" => & ["name" ,] , "PRE_DEFINED_CURVE_FONT" => & ["name" ,] , "PRE_DEFINED_DIMENSION_SYMBOL" => & ["name" ,] , "PRE_DEFINED_GEOMETRICAL_TOLERANCE_SYMBOL" => & ["name" ,] , "PRE_DEFINED_ITEM" => & ["name" ,] , "PRE_DEFINED_MARKER" => & ["name" ,] , "PRE_DEFINED_POINT_MARKER_SYMBOL" => & ["name" ,] , "PRE_DEFINED_SURFACE_CONDITION_SYMBOL" => & ["name" ,] , "PRE_DEFINED_SURFACE_SIDE_STYLE" => & ["name" ,] , "PRE_DEFINED_SYMBOL" => & ["name" ,] , "PRE_DEFINED_TERMINATOR_SYMBOL" => & ["name" ,] , "PRE_DEFINED_TEXT_FONT" => & ["name" ,] , "PRE_DEFINED_TILE" => & ["name" ,] , "PRECISION_QUALIFIER" => & ["precision_value" ,] , "PREDEFINED_PICTURE_REPRESENTATION_ITEM" => & ["name" , "binary_value" ,] , "PRESENTATION_AREA" => & ["name" , "items" , "context_of_items" ,] , "PRESENTATION_LAYER_ASSIGNMENT" => & ["name" , "description" , "assigned_items" ,] , "PRESENTATION_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "PRESENTATION_SET" => & [] , "PRESENTATION_SIZE" => & ["unit" , "size" ,] , "PRESENTATION_STYLE_ASSIGNMENT" => & ["styles" ,] , "PRESENTATION_STYLE_BY_CONTEXT" => & ["styles" , "style_context" ,] , "PRESENTATION_VIEW" => & ["name" , "items" , "context_of_items" ,] , "PRESENTED_ITEM" => & [] , "PRESENTED_ITEM_REPRESENTATION" => & ["presentation" , "item" ,] , "PRESSURE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "PRESSURE_UNIT" => & ["elements" ,] , "PROCEDURAL_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "PROCEDURAL_REPRESENTATION_SEQUENCE" => & ["name" , "elements" , "suppressed_items" , "rationale" ,] , "PROCEDURAL_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "PROCEDURAL_SHAPE_REPRESENTATION_SEQUENCE" => & ["name" , "elements" , "suppressed_items" , "rationale" ,] , "PRODUCT" => & ["id" , "name" , "description" , "frame_of_reference" ,] , "PRODUCT_CATEGORY" => & ["name" , "description" ,] , "PRODUCT_CLASS" => & ["id" , "name" , "description" , "market_context" ,] , "PRODUCT_CONCEPT" => & ["id" , "name" , "description" , "market_context" ,] , "PRODUCT_CONCEPT_CONTEXT" => & ["name" , "frame_of_reference" , "market_segment_type" ,] , "PRODUCT_CONCEPT_FEATURE" => & ["id" , "name" , "description" ,] , "PRODUCT_CONCEPT_FEATURE_ASSOCIATION" => & ["name" , "description" , "concept" , "feature" ,] , "PRODUCT_CONCEPT_FEATURE_CATEGORY" => & ["name" , "description" ,] , "PRODUCT_CONCEPT_FEATURE_CATEGORY_USAGE" => & ["assigned_group" , "items" ,] , "PRODUCT_CONCEPT_RELATIONSHIP" => & ["name" , "description" , "relating_product_concept" , "related_product_concept" ,] , "PRODUCT_CONTEXT" => & ["name" , "frame_of_reference" , "discipline_type" ,] , "PRODUCT_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PRODUCT_DEFINITION_CONTEXT" => & ["name" , "frame_of_reference" , "life_cycle_stage" ,] , "PRODUCT_DEFINITION_CONTEXT_ASSOCIATION" => & ["definition" , "frame_of_reference" , "role" ,] , "PRODUCT_DEFINITION_CONTEXT_ROLE" => & ["name" , "description" ,] , "PRODUCT_DEFINITION_EFFECTIVITY" => & ["id" , "usage" ,] , "PRODUCT_DEFINITION_ELEMENT_RELATIONSHIP" => & ["name" , "description" ,] , "PRODUCT_DEFINITION_FORMATION" => & ["id" , "description" , "of_product" ,] , "PRODUCT_DEFINITION_FORMATION_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition_formation" , "related_product_definition_formation" ,] , "PRODUCT_DEFINITION_FORMATION_WITH_SPECIFIED_SOURCE" => & ["id" , "description" , "of_product" , "make_or_buy" ,] , "PRODUCT_DEFINITION_GROUP_ASSIGNMENT" => & ["assigned_group" , "items" ,] , "PRODUCT_DEFINITION_OCCURRENCE_RELATIONSHIP" => & ["name" , "description" , "occurrence" , "occurrence_usage" ,] , "PRODUCT_DEFINITION_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "PRODUCT_DEFINITION_SHAPE" => & ["name" , "description" , "definition" ,] , "PRODUCT_DEFINITION_SUBSTITUTE" => & ["description" , "context_relationship" , "substitute_definition" ,] , "PRODUCT_DEFINITION_USAGE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "PRODUCT_DEFINITION_WITH_ASSOCIATED_DOCUMENTS" => & ["id" , "description" , "formation" , "frame_of_reference" , "documentation_ids" ,] , "PRODUCT_IDENTIFICATION" => & ["id" , "name" , "description" , "item_concept" , "purpose" ,] , "PRODUCT_MATERIAL_COMPOSITION_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" , "class" , "constituent_amount" , "composition_basis" , "determination_method" ,] , "PRODUCT_RELATED_PRODUCT_CATEGORY" => & ["name" , "description" , "products" ,] , "PRODUCT_SPECIFICATION" => & ["id" , "name" , "description" , "item_concept" , "purpose" , "item_concept_feature" ,] , "PROJECTED_ZONE_DEFINITION" => & ["zone" , "boundaries" , "projection_end" , "projected_length" ,] , "PROJECTION_CURVE" => & ["name" , "styles" , "item" ,] , "PROJECTION_DIRECTED_CALLOUT" => & ["name" , "contents" ,] , "PROMISSORY_USAGE_OCCURRENCE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" , "reference_designator" ,] , "PROPERTY_DEFINITION" => & ["name" , "description" , "definition" ,] , "PROPERTY_DEFINITION_RELATIONSHIP" => & ["name" , "description" , "relating_property_definition" , "related_property_definition" ,] , "PROPERTY_DEFINITION_REPRESENTATION" => & ["definition" , "used_representation" ,] , "QUALIFIED_REPRESENTATION_ITEM" => & ["name" , "qualifiers" ,] , "QUALITATIVE_UNCERTAINTY" => & ["measure_name" , "description" , "uncertainty_value" ,] , "QUANTIFIED_ASSEMBLY_COMPONENT_USAGE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" , "reference_designator" , "quantity" ,] , "QUASI_UNIFORM_CURVE" => & ["name" , "degree" , "control_points_list" , "curve_form" , "closed_curve" , "self_intersect" ,] , "QUASI_UNIFORM_SURFACE" => & ["name" , "u_degree" , "v_degree" , "control_points_list" , "surface_form" , "u_closed" , "v_closed" , "self_intersect" ,] , "RADIOACTIVITY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "RADIOACTIVITY_UNIT" => & ["elements" ,] , "RADIUS_DIMENSION" => & ["name" , "contents" ,] , "RANGE_CHARACTERISTIC" => & ["name" , "items" , "context_of_items" , "description" ,] , "RATIO_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "RATIO_UNIT" => & ["dimensions" ,] , "RATIONAL_B_SPLINE_CURVE" => & ["name" , "degree" , "control_points_list" , "curve_form" , "closed_curve" , "self_intersect" , "weights_data" ,] , "RATIONAL_B_SPLINE_SURFACE" => & ["name" , "u_degree" , "v_degree" , "control_points_list" , "surface_form" , "u_closed" , "v_closed" , "self_intersect" , "weights_data" ,] , "RATIONAL_REPRESENTATION_ITEM" => & ["name" , "operands" ,] , "REAL_LITERAL" => & ["the_value" ,] , "REAL_REPRESENTATION_ITEM" => & ["name" , "the_value" ,] , "RECTANGULAR_COMPOSITE_SURFACE" => & ["name" , "segments" ,] , "RECTANGULAR_TRIMMED_SURFACE" => & ["name" , "basis_surface" , "u1" , "u2" , "v1" , "v2" , "usense" , "vsense" ,] , "REFERENCED_MODIFIED_DATUM" => & ["precedence" , "referenced_datum" , "modifier" ,] , "RELATIVE_EVENT_OCCURRENCE" => & ["id" , "name" , "description" , "base_event" , "offset" ,] , "REP_ITEM_GROUP" => & ["name" , "description" ,] , "REPARAMETRISED_COMPOSITE_CURVE_SEGMENT" => & ["transition" , "same_sense" , "parent_curve" , "param_length" ,] , "REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "REPRESENTATION_CONTEXT" => & ["context_identifier" , "context_type" ,] , "REPRESENTATION_ITEM" => & ["name" ,] , "REPRESENTATION_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "REPRESENTATION_MAP" => & ["mapping_origin" , "mapped_representation" ,] , "REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "REPRESENTATION_RELATIONSHIP_WITH_TRANSFORMATION" => & ["name" , "description" , "rep_1" , "rep_2" , "transformation_operator" ,] , "REQUIREMENT_ASSIGNED_OBJECT" => & ["assigned_group" , "items" ,] , "REQUIREMENT_ASSIGNMENT" => & ["name" , "description" ,] , "REQUIREMENT_SOURCE" => & ["name" , "description" ,] , "REQUIREMENT_VIEW_DEFINITION_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "RESISTANCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "RESISTANCE_UNIT" => & ["elements" ,] , "REVOLVED_AREA_SOLID" => & ["name" , "swept_area" , "axis" , "angle" ,] , "REVOLVED_FACE_SOLID" => & ["name" , "swept_face" , "axis" , "angle" ,] , "REVOLVED_FACE_SOLID_WITH_TRIM_CONDITIONS" => & ["name" , "swept_face" , "axis" , "angle" , "first_trim_condition" , "second_trim_condition" ,] , "RIGHT_ANGULAR_WEDGE" => & ["name" , "position" , "x" , "y" , "z" , "ltx" ,] , "RIGHT_CIRCULAR_CONE" => & ["name" , "position" , "height" , "radius" , "semi_angle" ,] , "RIGHT_CIRCULAR_CYLINDER" => & ["name" , "position" , "height" , "radius" ,] , "RIGHT_TO_USAGE_ASSOCIATION" => & ["name" , "description" , "relating_method" , "related_method" ,] , "ROLE_ASSOCIATION" => & ["role" , "item_with_role" ,] , "ROUNDNESS_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "ROW_REPRESENTATION_ITEM" => & ["name" , "item_element" ,] , "ROW_VALUE" => & ["name" , "item_element" ,] , "ROW_VARIABLE" => & ["name" , "description" , "definition" , "used_representation" , "items" , "context_of_items" ,] , "RULE_ACTION" => & ["name" , "description" , "chosen_method" ,] , "RULE_CONDITION" => & ["name" , "item_element" ,] , "RULE_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "RULE_SET" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "RULE_SET_GROUP" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "RULE_SOFTWARE_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "RULE_SUPERSEDED_ASSIGNMENT" => & ["assigned_action" , "items" ,] , "RULE_SUPERSEDENCE" => & ["name" , "description" , "chosen_method" ,] , "RULED_SURFACE_SWEPT_AREA_SOLID" => & ["name" , "swept_area" , "directrix" , "start_param" , "end_param" , "reference_surface" ,] , "RUNOUT_ZONE_DEFINITION" => & ["zone" , "boundaries" , "orientation" ,] , "RUNOUT_ZONE_ORIENTATION" => & ["angle" ,] , "RUNOUT_ZONE_ORIENTATION_REFERENCE_DIRECTION" => & ["angle" , "orientation_defining_relationship" ,] , "SATISFIED_REQUIREMENT" => & ["assigned_group" , "items" ,] , "SATISFIES_REQUIREMENT" => & ["name" , "description" ,] , "SATISFYING_ITEM" => & ["assigned_group" , "items" ,] , "SCALAR_VARIABLE" => & ["name" , "description" , "definition" , "used_representation" , "items" , "context_of_items" ,] , "SCATTERING_PARAMETER" => & ["radius" , "angle" ,] , "SCULPTURED_SOLID" => & ["name" , "rationale" , "base_solid" , "sculpturing_element" , "positive_side" ,] , "SEAM_CURVE" => & ["name" , "curve_3d" , "associated_geometry" , "master_representation" ,] , "SECURITY_CLASSIFICATION" => & ["name" , "purpose" , "security_level" ,] , "SECURITY_CLASSIFICATION_ASSIGNMENT" => & ["assigned_security_classification" ,] , "SECURITY_CLASSIFICATION_LEVEL" => & ["name" ,] , "SERIAL_NUMBERED_EFFECTIVITY" => & ["id" , "effectivity_start_id" , "effectivity_end_id" ,] , "SHAPE_ASPECT" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "SHAPE_ASPECT_ASSOCIATIVITY" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" ,] , "SHAPE_ASPECT_DERIVING_RELATIONSHIP" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" ,] , "SHAPE_ASPECT_RELATIONSHIP" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" ,] , "SHAPE_DEFINITION_REPRESENTATION" => & ["definition" , "used_representation" ,] , "SHAPE_DIMENSION_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "SHAPE_FEATURE_DEFINITION" => & ["name" , "description" ,] , "SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "SHAPE_REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "SHAPE_REPRESENTATION_WITH_PARAMETERS" => & ["name" , "items" , "context_of_items" ,] , "SHELL_BASED_SURFACE_MODEL" => & ["name" , "sbsm_boundary" ,] , "SHELL_BASED_WIREFRAME_MODEL" => & ["name" , "sbwm_boundary" ,] , "SHELL_BASED_WIREFRAME_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "SHELLED_SOLID" => & ["name" , "rationale" , "base_solid" , "deleted_face_set" , "thickness" ,] , "SI_ABSORBED_DOSE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_CAPACITANCE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_CONDUCTANCE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_DOSE_EQUIVALENT_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_ELECTRIC_CHARGE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_ELECTRIC_POTENTIAL_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_ENERGY_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_FORCE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_FREQUENCY_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_ILLUMINANCE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_INDUCTANCE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_MAGNETIC_FLUX_DENSITY_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_MAGNETIC_FLUX_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_POWER_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_PRESSURE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_RADIOACTIVITY_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_RESISTANCE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_UNIT" => & ["dimensions" , "prefix" , "name" ,] , "SIMPLE_BOOLEAN_EXPRESSION" => & [] , "SIMPLE_CLAUSE" => & ["name" , "item_element" ,] , "SIMPLE_GENERIC_EXPRESSION" => & [] , "SIMPLE_NUMERIC_EXPRESSION" => & [] , "SLASH_EXPRESSION" => & ["operands" ,] , "SMEARED_MATERIAL_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "SOLID_ANGLE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "SOLID_ANGLE_UNIT" => & ["dimensions" ,] , "SOLID_CURVE_FONT" => & ["name" ,] , "SOLID_MODEL" => & ["name" ,] , "SOLID_REPLICA" => & ["name" , "parent_solid" , "transformation" ,] , "SOLID_WITH_ANGLE_BASED_CHAMFER" => & ["name" , "rationale" , "base_solid" , "blended_edges" , "offset_distance" , "left_offset" , "offset_angle" ,] , "SOLID_WITH_CHAMFERED_EDGES" => & ["name" , "rationale" , "base_solid" , "blended_edges" ,] , "SOLID_WITH_CIRCULAR_PATTERN" => & ["name" , "rationale" , "base_solid" , "placing" , "replicated_element" , "replicate_count" , "angular_spacing" , "radial_alignment" , "reference_point" ,] , "SOLID_WITH_CIRCULAR_POCKET" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "floor_blend_radius" , "draft_angle" , "pocket_radius" ,] , "SOLID_WITH_CIRCULAR_PROTRUSION" => & ["name" , "rationale" , "base_solid" , "placing" , "protrusion_height" , "protrusion_draft_angle" , "protrusion_radius" ,] , "SOLID_WITH_CONICAL_BOTTOM_ROUND_HOLE" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "segments" , "segment_radii" , "segment_depths" , "semi_apex_angle" , "tip_radius" ,] , "SOLID_WITH_CONSTANT_RADIUS_EDGE_BLEND" => & ["name" , "rationale" , "base_solid" , "blended_edges" , "radius" ,] , "SOLID_WITH_CURVED_SLOT" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "slot_width" , "closed_ends" , "end_exit_faces" , "slot_centreline" ,] , "SOLID_WITH_DEPRESSION" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" ,] , "SOLID_WITH_DOUBLE_OFFSET_CHAMFER" => & ["name" , "rationale" , "base_solid" , "blended_edges" , "left_offset_distance" , "right_offset_distance" ,] , "SOLID_WITH_FLAT_BOTTOM_ROUND_HOLE" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "segments" , "segment_radii" , "segment_depths" , "fillet_radius" ,] , "SOLID_WITH_GENERAL_POCKET" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "floor_blend_radius" , "draft_angle" , "profile" , "reference_point" ,] , "SOLID_WITH_GENERAL_PROTRUSION" => & ["name" , "rationale" , "base_solid" , "placing" , "protrusion_height" , "protrusion_draft_angle" , "profile" , "reference_point" ,] , "SOLID_WITH_GROOVE" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "groove_radius" , "groove_width" , "draft_angle" , "floor_fillet_radius" , "external_groove" ,] , "SOLID_WITH_HOLE" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" ,] , "SOLID_WITH_INCOMPLETE_CIRCULAR_PATTERN" => & ["name" , "rationale" , "base_solid" , "placing" , "replicated_element" , "replicate_count" , "angular_spacing" , "radial_alignment" , "reference_point" , "omitted_instances" ,] , "SOLID_WITH_INCOMPLETE_RECTANGULAR_PATTERN" => & ["name" , "rationale" , "base_solid" , "placing" , "replicated_element" , "row_count" , "column_count" , "row_spacing" , "column_spacing" , "omitted_instances" ,] , "SOLID_WITH_POCKET" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "floor_blend_radius" , "draft_angle" ,] , "SOLID_WITH_PROTRUSION" => & ["name" , "rationale" , "base_solid" , "placing" , "protrusion_height" , "protrusion_draft_angle" ,] , "SOLID_WITH_RECTANGULAR_PATTERN" => & ["name" , "rationale" , "base_solid" , "placing" , "replicated_element" , "row_count" , "column_count" , "row_spacing" , "column_spacing" ,] , "SOLID_WITH_RECTANGULAR_POCKET" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "floor_blend_radius" , "draft_angle" , "pocket_length" , "pocket_width" , "corner_radius" ,] , "SOLID_WITH_RECTANGULAR_PROTRUSION" => & ["name" , "rationale" , "base_solid" , "placing" , "protrusion_height" , "protrusion_draft_angle" , "protrusion_length" , "protrusion_width" , "protrusion_corner_radius" ,] , "SOLID_WITH_SHAPE_ELEMENT_PATTERN" => & ["name" , "rationale" , "base_solid" , "placing" , "replicated_element" ,] , "SOLID_WITH_SINGLE_OFFSET_CHAMFER" => & ["name" , "rationale" , "base_solid" , "blended_edges" , "offset_distance" ,] , "SOLID_WITH_SLOT" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "slot_width" , "closed_ends" , "end_exit_faces" ,] , "SOLID_WITH_SPHERICAL_BOTTOM_ROUND_HOLE" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "segments" , "segment_radii" , "segment_depths" , "sphere_radius" ,] , "SOLID_WITH_STEPPED_ROUND_HOLE" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "segments" , "segment_radii" , "segment_depths" ,] , "SOLID_WITH_STEPPED_ROUND_HOLE_AND_CONICAL_TRANSITIONS" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "segments" , "segment_radii" , "segment_depths" , "conical_transitions" ,] , "SOLID_WITH_STRAIGHT_SLOT" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "slot_width" , "closed_ends" , "end_exit_faces" , "slot_length" ,] , "SOLID_WITH_TEE_SECTION_SLOT" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "slot_width" , "closed_ends" , "end_exit_faces" , "tee_section_width" , "collar_depth" ,] , "SOLID_WITH_THROUGH_DEPRESSION" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "exit_faces" ,] , "SOLID_WITH_TRAPEZOIDAL_SECTION_SLOT" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "slot_width" , "closed_ends" , "end_exit_faces" , "draft_angle" , "floor_fillet_radius" ,] , "SOLID_WITH_VARIABLE_RADIUS_EDGE_BLEND" => & ["name" , "rationale" , "base_solid" , "blended_edges" , "point_list" , "radius_list" , "edge_function_list" ,] , "SOURCE_FOR_REQUIREMENT" => & ["assigned_group" , "items" ,] , "SOURCED_REQUIREMENT" => & ["assigned_group" , "items" ,] , "SPECIFICATION_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "SPECIFIED_HIGHER_USAGE_OCCURRENCE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" , "reference_designator" , "upper_usage" , "next_usage" ,] , "SPHERE" => & ["name" , "radius" , "centre" ,] , "SPHERICAL_SURFACE" => & ["name" , "position" , "radius" ,] , "STANDARD_UNCERTAINTY" => & ["measure_name" , "description" , "uncertainty_value" ,] , "START_REQUEST" => & ["assigned_action_request" , "items" ,] , "START_WORK" => & ["assigned_action" , "items" ,] , "STRAIGHTNESS_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "STRUCTURED_DIMENSION_CALLOUT" => & ["name" , "contents" ,] , "STRUCTURED_TEXT_COMPOSITION" => & ["name" , "item_element" ,] , "STRUCTURED_TEXT_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "STYLED_ITEM" => & ["name" , "styles" , "item" ,] , "SUBEDGE" => & ["name" , "edge_start" , "edge_end" , "parent_edge" ,] , "SUBFACE" => & ["name" , "bounds" , "parent_face" ,] , "SUPPLIED_PART_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "SURFACE" => & ["name" ,] , "SURFACE_CONDITION_CALLOUT" => & ["name" , "contents" ,] , "SURFACE_CURVE" => & ["name" , "curve_3d" , "associated_geometry" , "master_representation" ,] , "SURFACE_CURVE_SWEPT_AREA_SOLID" => & ["name" , "swept_area" , "directrix" , "start_param" , "end_param" , "reference_surface" ,] , "SURFACE_OF_LINEAR_EXTRUSION" => & ["name" , "swept_curve" , "extrusion_axis" ,] , "SURFACE_OF_REVOLUTION" => & ["name" , "swept_curve" , "axis_position" ,] , "SURFACE_PATCH" => & ["parent_surface" , "u_transition" , "v_transition" , "u_sense" , "v_sense" ,] , "SURFACE_PROFILE_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "SURFACE_RENDERING_PROPERTIES" => & ["rendered_colour" ,] , "SURFACE_REPLICA" => & ["name" , "parent_surface" , "transformation" ,] , "SURFACE_SIDE_STYLE" => & ["name" , "styles" ,] , "SURFACE_STYLE_BOUNDARY" => & ["style_of_boundary" ,] , "SURFACE_STYLE_CONTROL_GRID" => & ["style_of_control_grid" ,] , "SURFACE_STYLE_FILL_AREA" => & ["fill_area" ,] , "SURFACE_STYLE_PARAMETER_LINE" => & ["style_of_parameter_lines" , "direction_counts" ,] , "SURFACE_STYLE_REFLECTANCE_AMBIENT" => & ["ambient_reflectance" ,] , "SURFACE_STYLE_REFLECTANCE_AMBIENT_DIFFUSE" => & ["ambient_reflectance" , "diffuse_reflectance" ,] , "SURFACE_STYLE_REFLECTANCE_AMBIENT_DIFFUSE_SPECULAR" => & ["ambient_reflectance" , "diffuse_reflectance" , "specular_reflectance" , "specular_exponent" , "specular_colour" ,] , "SURFACE_STYLE_RENDERING" => & ["rendering_method" , "surface_colour" ,] , "SURFACE_STYLE_RENDERING_WITH_PROPERTIES" => & ["rendering_method" , "surface_colour" , "properties" ,] , "SURFACE_STYLE_SEGMENTATION_CURVE" => & ["style_of_segmentation_curve" ,] , "SURFACE_STYLE_SILHOUETTE" => & ["style_of_silhouette" ,] , "SURFACE_STYLE_TRANSPARENT" => & ["transparency" ,] , "SURFACE_STYLE_USAGE" => & ["side" , "style" ,] , "SURFACE_TEXTURE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "SURFACED_OPEN_SHELL" => & ["name" , "cfs_faces" ,] , "SWEPT_AREA_SOLID" => & ["name" , "swept_area" ,] , "SWEPT_DISK_SOLID" => & ["name" , "directrix" , "radius" , "inner_radius" , "start_param" , "end_param" ,] , "SWEPT_FACE_SOLID" => & ["name" , "swept_face" ,] , "SWEPT_SURFACE" => & ["name" , "swept_curve" ,] , "SYMBOL" => & ["name" ,] , "SYMBOL_COLOUR" => & ["colour_of_symbol" ,] , "SYMBOL_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "SYMBOL_REPRESENTATION_MAP" => & ["mapping_origin" , "mapped_representation" ,] , "SYMBOL_STYLE" => & ["name" , "style_of_symbol" ,] , "SYMBOL_TARGET" => & ["name" , "placement" , "x_scale" , "y_scale" ,] , "SYMMETRIC_SHAPE_ASPECT" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "SYMMETRY_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "TABLE_REPRESENTATION_ITEM" => & ["name" , "item_element" ,] , "TACTILE_APPEARANCE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "TAGGED_TEXT_FORMAT" => & ["context_identifier" , "context_type" ,] , "TAGGED_TEXT_ITEM" => & ["name" , "description" ,] , "TANGENT" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "TERMINATOR_SYMBOL" => & ["name" , "styles" , "item" , "annotated_curve" ,] , "TEXT_FONT" => & ["id" , "name" , "description" ,] , "TEXT_FONT_FAMILY" => & ["id" , "name" , "description" ,] , "TEXT_FONT_IN_FAMILY" => & ["font" , "family" ,] , "TEXT_LITERAL" => & ["name" , "literal" , "placement" , "alignment" , "path" , "font" ,] , "TEXT_LITERAL_WITH_ASSOCIATED_CURVES" => & ["name" , "literal" , "placement" , "alignment" , "path" , "font" , "associated_curves" ,] , "TEXT_LITERAL_WITH_BLANKING_BOX" => & ["name" , "literal" , "placement" , "alignment" , "path" , "font" , "blanking" ,] , "TEXT_LITERAL_WITH_DELINEATION" => & ["name" , "literal" , "placement" , "alignment" , "path" , "font" , "delineation" ,] , "TEXT_LITERAL_WITH_EXTENT" => & ["name" , "literal" , "placement" , "alignment" , "path" , "font" , "extent" ,] , "TEXT_STRING_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "TEXT_STYLE" => & ["name" , "character_appearance" ,] , "TEXT_STYLE_FOR_DEFINED_FONT" => & ["text_colour" ,] , "TEXT_STYLE_WITH_BOX_CHARACTERISTICS" => & ["name" , "character_appearance" , "characteristics" ,] , "TEXT_STYLE_WITH_MIRROR" => & ["name" , "character_appearance" , "mirror_placement" ,] , "TEXT_STYLE_WITH_SPACING" => & ["name" , "character_appearance" , "character_spacing" ,] , "THERMAL_RESISTANCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "THERMAL_RESISTANCE_UNIT" => & ["elements" ,] , "THERMODYNAMIC_TEMPERATURE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "THERMODYNAMIC_TEMPERATURE_UNIT" => & ["dimensions" ,] , "THICKENED_FACE_SOLID" => & ["name" , "base_element" , "offset1" , "offset2" ,] , "THICKNESS_LAMINATE_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "THICKNESS_LAMINATE_TABLE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "TIME_INTERVAL" => & ["id" , "name" , "description" ,] , "TIME_INTERVAL_ASSIGNMENT" => & ["assigned_time_interval" , "role" ,] , "TIME_INTERVAL_BASED_EFFECTIVITY" => & ["id" , "effectivity_period" ,] , "TIME_INTERVAL_RELATIONSHIP" => & ["name" , "description" , "relating_time_interval" , "related_time_interval" ,] , "TIME_INTERVAL_ROLE" => & ["name" , "description" ,] , "TIME_INTERVAL_WITH_BOUNDS" => & ["id" , "name" , "description" , "primary_bound" , "secondary_bound" , "duration" ,] , "TIME_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "TIME_UNIT" => & ["dimensions" ,] , "TOLERANCE_VALUE" => & ["lower_bound" , "upper_bound" ,] , "TOLERANCE_ZONE" => & ["name" , "description" , "of_shape" , "product_definitional" , "defining_tolerance" , "form" ,] , "TOLERANCE_ZONE_DEFINITION" => & ["zone" , "boundaries" ,] , "TOLERANCE_ZONE_FORM" => & ["name" ,] , "TOPOLOGICAL_REPRESENTATION_ITEM" => & ["name" ,] , "TOROIDAL_SURFACE" => & ["name" , "position" , "major_radius" , "minor_radius" ,] , "TORUS" => & ["name" , "position" , "major_radius" , "minor_radius" ,] , "TOTAL_RUNOUT_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "TRACK_BLENDED_SOLID" => & ["name" , "rationale" , "base_solid" , "blended_edges" ,] , "TRACK_BLENDED_SOLID_WITH_END_CONDITIONS" => & ["name" , "rationale" , "base_solid" , "blended_edges" , "end_conditions" ,] , "TRANSFORMATION_WITH_DERIVED_ANGLE" => & ["name" , "description" , "transform_item_1" , "transform_item_2" ,] , "TRIMMED_CURVE" => & ["name" , "basis_curve" , "trim_1" , "trim_2" , "sense_agreement" , "master_representation" ,] , "TWO_DIRECTION_REPEAT_FACTOR" => & ["name" , "repeat_factor" , "second_repeat_factor" ,] , "TYPE_QUALIFIER" => & ["name" ,] , "UNARY_GENERIC_EXPRESSION" => & ["operand" ,] , "UNARY_NUMERIC_EXPRESSION" => & ["operand" ,] , "UNCERTAINTY_ASSIGNED_REPRESENTATION" => & ["name" , "items" , "context_of_items" , "uncertainty" ,] , "UNCERTAINTY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" , "name" , "description" ,] , "UNCERTAINTY_QUALIFIER" => & ["measure_name" , "description" ,] , "UNIFORM_CURVE" => & ["name" , "degree" , "control_points_list" , "curve_form" , "closed_curve" , "self_intersect" ,] , "UNIFORM_RESOURCE_IDENTIFIER" => & ["name" , "description" ,] , "UNIFORM_SURFACE" => & ["name" , "u_degree" , "v_degree" , "control_points_list" , "surface_form" , "u_closed" , "v_closed" , "self_intersect" ,] , "USAGE_ASSOCIATION" => & ["name" , "description" , "relating_method" , "related_method" ,] , "USER_DEFINED_CURVE_FONT" => & ["name" , "pattern_list" , "mapping_source" , "mapping_target" ,] , "USER_DEFINED_MARKER" => & ["name" , "mapping_source" , "mapping_target" ,] , "USER_DEFINED_TERMINATOR_SYMBOL" => & ["name" , "mapping_source" , "mapping_target" ,] , "USER_SELECTED_ELEMENTS" => & ["name" , "picked_items" ,] , "USER_SELECTED_SHAPE_ELEMENTS" => & ["name" , "picked_items" ,] , "VALUE_RANGE" => & ["name" , "item_element" ,] , "VALUE_REPRESENTATION_ITEM" => & ["name" , "value_component" ,] , "VARIABLE_SEMANTICS" => & [] , "VARIATIONAL_REPRESENTATION_ITEM" => & ["name" ,] , "VECTOR" => & ["name" , "orientation" , "magnitude" ,] , "VECTOR_STYLE" => & ["name" , "curve_font" , "curve_width" , "curve_colour" ,] , "VELOCITY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "VELOCITY_UNIT" => & ["elements" ,] , "VERSIONED_ACTION_REQUEST" => & ["id" , "version" , "purpose" , "description" ,] , "VERTEX" => & ["name" ,] , "VERTEX_LOOP" => & ["name" , "loop_vertex" ,] , "VERTEX_POINT" => & ["name" , "vertex_geometry" ,] , "VERTEX_SHELL" => & ["name" , "vertex_shell_extent" ,] , "VIEW_VOLUME" => & ["projection_type" , "projection_point" , "view_plane_distance" , "front_plane_distance" , "front_plane_clipping" , "back_plane_distance" , "back_plane_clipping" , "view_volume_sides_clipping" , "view_window" ,] , "VISUAL_APPEARANCE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "VOLUME_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "VOLUME_UNIT" => & ["elements" ,] , "WEEK_OF_YEAR_AND_DAY_DATE" => & ["year_component" , "week_component" , "day_component" ,] , "WIRE_SHELL" => & ["name" , "wire_shell_extent" ,] , "YEAR_MONTH" => & ["year_component" , "month_component" ,] , "ZONE_STRUCTURAL_MAKEUP" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , };
-static PARTIALS: ::phf::Map<&'static str, &'static [&'static str]> = ::phf::phf_map! { "ABSORBED_DOSE_MEASURE_WITH_UNIT" => & [] , "ABSORBED_DOSE_UNIT" => & [] , "ABSTRACT_VARIABLE" => & [] , "ACCELERATION_MEASURE_WITH_UNIT" => & [] , "ACCELERATION_UNIT" => & [] , "ACTION" => & ["name" , "description" , "chosen_method" ,] , "ACTION_ASSIGNMENT" => & ["assigned_action" ,] , "ACTION_DIRECTIVE" => & ["name" , "description" , "analysis" , "comment" , "requests" ,] , "ACTION_METHOD" => & ["name" , "description" , "consequence" , "purpose" ,] , "ACTION_METHOD_ASSIGNMENT" => & ["assigned_action_method" , "role" ,] , "ACTION_METHOD_RELATIONSHIP" => & ["name" , "description" , "relating_method" , "related_method" ,] , "ACTION_METHOD_ROLE" => & ["name" , "description" ,] , "ACTION_PROPERTY" => & ["name" , "description" , "definition" ,] , "ACTION_PROPERTY_REPRESENTATION" => & ["name" , "description" , "property" , "representation" ,] , "ACTION_RELATIONSHIP" => & ["name" , "description" , "relating_action" , "related_action" ,] , "ACTION_REQUEST_ASSIGNMENT" => & ["assigned_action_request" ,] , "ACTION_REQUEST_SOLUTION" => & ["method" , "request" ,] , "ACTION_REQUEST_STATUS" => & ["status" , "assigned_request" ,] , "ACTION_STATUS" => & ["status" , "assigned_action" ,] , "ADDRESS" => & ["internal_location" , "street_number" , "street" , "postal_box" , "town" , "region" , "postal_code" , "country" , "facsimile_number" , "telephone_number" , "electronic_mail_address" , "telex_number" ,] , "ADVANCED_BREP_SHAPE_REPRESENTATION" => & [] , "ADVANCED_FACE" => & [] , "ALTERNATE_PRODUCT_RELATIONSHIP" => & ["name" , "definition" , "alternate" , "base" , "basis" ,] , "AMOUNT_OF_SUBSTANCE_MEASURE_WITH_UNIT" => & [] , "AMOUNT_OF_SUBSTANCE_UNIT" => & [] , "ANGLE_DIRECTION_REFERENCE" => & [] , "ANGULAR_DIMENSION" => & [] , "ANGULAR_LOCATION" => & ["angle_selection" ,] , "ANGULAR_SIZE" => & ["angle_selection" ,] , "ANGULARITY_TOLERANCE" => & [] , "ANNOTATION_CURVE_OCCURRENCE" => & [] , "ANNOTATION_FILL_AREA" => & ["boundaries" ,] , "ANNOTATION_FILL_AREA_OCCURRENCE" => & ["fill_style_target" ,] , "ANNOTATION_OCCURRENCE" => & [] , "ANNOTATION_OCCURRENCE_ASSOCIATIVITY" => & [] , "ANNOTATION_OCCURRENCE_RELATIONSHIP" => & ["name" , "description" , "relating_annotation_occurrence" , "related_annotation_occurrence" ,] , "ANNOTATION_PLANE" => & ["elements" ,] , "ANNOTATION_SUBFIGURE_OCCURRENCE" => & [] , "ANNOTATION_SYMBOL" => & [] , "ANNOTATION_SYMBOL_OCCURRENCE" => & [] , "ANNOTATION_TEXT" => & [] , "ANNOTATION_TEXT_CHARACTER" => & ["alignment" ,] , "ANNOTATION_TEXT_OCCURRENCE" => & [] , "APEX" => & [] , "APPLICATION_CONTEXT" => & ["application" ,] , "APPLICATION_CONTEXT_ELEMENT" => & ["name" , "frame_of_reference" ,] , "APPLICATION_PROTOCOL_DEFINITION" => & ["status" , "application_interpreted_model_schema_name" , "application_protocol_year" , "application" ,] , "APPLIED_ACTION_ASSIGNMENT" => & ["items" ,] , "APPLIED_ACTION_METHOD_ASSIGNMENT" => & ["items" ,] , "APPLIED_ACTION_REQUEST_ASSIGNMENT" => & ["items" ,] , "APPLIED_APPROVAL_ASSIGNMENT" => & ["items" ,] , "APPLIED_ATTRIBUTE_CLASSIFICATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_CERTIFICATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_CLASSIFICATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_CONTRACT_ASSIGNMENT" => & ["items" ,] , "APPLIED_DATE_AND_TIME_ASSIGNMENT" => & ["items" ,] , "APPLIED_DATE_ASSIGNMENT" => & ["items" ,] , "APPLIED_DOCUMENT_REFERENCE" => & ["items" ,] , "APPLIED_DOCUMENT_USAGE_CONSTRAINT_ASSIGNMENT" => & ["items" ,] , "APPLIED_EFFECTIVITY_ASSIGNMENT" => & ["items" ,] , "APPLIED_EVENT_OCCURRENCE_ASSIGNMENT" => & ["items" ,] , "APPLIED_EXTERNAL_IDENTIFICATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_GROUP_ASSIGNMENT" => & ["items" ,] , "APPLIED_IDENTIFICATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_NAME_ASSIGNMENT" => & ["item" ,] , "APPLIED_ORGANIZATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_ORGANIZATIONAL_PROJECT_ASSIGNMENT" => & ["items" ,] , "APPLIED_PERSON_AND_ORGANIZATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_PRESENTED_ITEM" => & ["items" ,] , "APPLIED_SECURITY_CLASSIFICATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_TIME_INTERVAL_ASSIGNMENT" => & ["items" ,] , "APPLIED_USAGE_RIGHT" => & [] , "APPROVAL" => & ["status" , "level" ,] , "APPROVAL_ASSIGNMENT" => & ["assigned_approval" ,] , "APPROVAL_DATE_TIME" => & ["date_time" , "dated_approval" ,] , "APPROVAL_PERSON_ORGANIZATION" => & ["person_organization" , "authorized_approval" , "role" ,] , "APPROVAL_RELATIONSHIP" => & ["name" , "description" , "relating_approval" , "related_approval" ,] , "APPROVAL_ROLE" => & ["role" ,] , "APPROVAL_STATUS" => & ["name" ,] , "AREA_IN_SET" => & ["area" , "in_set" ,] , "AREA_MEASURE_WITH_UNIT" => & [] , "AREA_UNIT" => & [] , "ASSEMBLY_COMPONENT_USAGE" => & ["reference_designator" ,] , "ASSEMBLY_COMPONENT_USAGE_SUBSTITUTE" => & ["name" , "definition" , "base" , "substitute" ,] , "ASSIGNED_REQUIREMENT" => & ["items" ,] , "ATOMIC_FORMULA" => & [] , "ATTRIBUTE_ASSERTION" => & [] , "ATTRIBUTE_CLASSIFICATION_ASSIGNMENT" => & ["assigned_class" , "attribute_name" , "role" ,] , "ATTRIBUTE_LANGUAGE_ASSIGNMENT" => & ["items" ,] , "ATTRIBUTE_VALUE_ASSIGNMENT" => & ["attribute_name" , "attribute_value" , "role" ,] , "ATTRIBUTE_VALUE_ROLE" => & ["name" , "description" ,] , "AUXILIARY_GEOMETRIC_REPRESENTATION_ITEM" => & [] , "AXIS1_PLACEMENT" => & ["axis" ,] , "AXIS2_PLACEMENT_2D" => & ["ref_direction" ,] , "AXIS2_PLACEMENT_3D" => & ["axis" , "ref_direction" ,] , "B_SPLINE_CURVE" => & ["degree" , "control_points_list" , "curve_form" , "closed_curve" , "self_intersect" ,] , "B_SPLINE_CURVE_WITH_KNOTS" => & ["knot_multiplicities" , "knots" , "knot_spec" ,] , "B_SPLINE_SURFACE" => & ["u_degree" , "v_degree" , "control_points_list" , "surface_form" , "u_closed" , "v_closed" , "self_intersect" ,] , "B_SPLINE_SURFACE_WITH_KNOTS" => & ["u_multiplicities" , "v_multiplicities" , "u_knots" , "v_knots" , "knot_spec" ,] , "BACK_CHAINING_RULE" => & [] , "BACK_CHAINING_RULE_BODY" => & [] , "BACKGROUND_COLOUR" => & ["presentation" ,] , "BEVELED_SHEET_REPRESENTATION" => & [] , "BEZIER_CURVE" => & [] , "BEZIER_SURFACE" => & [] , "BINARY_GENERIC_EXPRESSION" => & ["operands" ,] , "BINARY_NUMERIC_EXPRESSION" => & [] , "BINARY_REPRESENTATION_ITEM" => & ["binary_value" ,] , "BLOCK" => & ["position" , "x" , "y" , "z" ,] , "BOOLEAN_EXPRESSION" => & [] , "BOOLEAN_LITERAL" => & ["the_value" ,] , "BOOLEAN_REPRESENTATION_ITEM" => & [] , "BOOLEAN_RESULT" => & ["operator" , "first_operand" , "second_operand" ,] , "BOUNDARY_CURVE" => & [] , "BOUNDED_CURVE" => & [] , "BOUNDED_PCURVE" => & [] , "BOUNDED_SURFACE" => & [] , "BOUNDED_SURFACE_CURVE" => & [] , "BOX_DOMAIN" => & ["corner" , "xlength" , "ylength" , "zlength" ,] , "BOXED_HALF_SPACE" => & ["enclosure" ,] , "BREAKDOWN_CONTEXT" => & [] , "BREAKDOWN_ELEMENT_GROUP_ASSIGNMENT" => & ["items" ,] , "BREAKDOWN_ELEMENT_REALIZATION" => & [] , "BREAKDOWN_ELEMENT_USAGE" => & [] , "BREAKDOWN_OF" => & [] , "BREP_WITH_VOIDS" => & ["voids" ,] , "BYTES_REPRESENTATION_ITEM" => & [] , "CALENDAR_DATE" => & ["day_component" , "month_component" ,] , "CAMERA_IMAGE" => & [] , "CAMERA_IMAGE_3D_WITH_SCALE" => & [] , "CAMERA_MODEL" => & [] , "CAMERA_MODEL_D_3" => & ["view_reference_system" , "perspective_of_volume" ,] , "CAMERA_MODEL_D_3_MULTI_CLIPPING" => & ["shape_clipping" ,] , "CAMERA_MODEL_D_3_MULTI_CLIPPING_INTERSECTION" => & ["shape_clipping" ,] , "CAMERA_MODEL_D_3_MULTI_CLIPPING_UNION" => & ["shape_clipping" ,] , "CAMERA_MODEL_D_3_WITH_HLHSR" => & ["hidden_line_surface_removal" ,] , "CAMERA_MODEL_WITH_LIGHT_SOURCES" => & ["sources" ,] , "CAMERA_USAGE" => & [] , "CAPACITANCE_MEASURE_WITH_UNIT" => & [] , "CAPACITANCE_UNIT" => & [] , "CARTESIAN_POINT" => & ["coordinates" ,] , "CARTESIAN_TRANSFORMATION_OPERATOR" => & ["axis1" , "axis2" , "local_origin" , "scale" ,] , "CARTESIAN_TRANSFORMATION_OPERATOR_2D" => & [] , "CARTESIAN_TRANSFORMATION_OPERATOR_3D" => & ["axis3" ,] , "CC_DESIGN_APPROVAL" => & ["items" ,] , "CC_DESIGN_CERTIFICATION" => & ["items" ,] , "CC_DESIGN_CONTRACT" => & ["items" ,] , "CC_DESIGN_DATE_AND_TIME_ASSIGNMENT" => & ["items" ,] , "CC_DESIGN_PERSON_AND_ORGANIZATION_ASSIGNMENT" => & ["items" ,] , "CC_DESIGN_SECURITY_CLASSIFICATION" => & ["items" ,] , "CC_DESIGN_SPECIFICATION_REFERENCE" => & ["items" ,] , "CELSIUS_TEMPERATURE_MEASURE_WITH_UNIT" => & [] , "CENTRE_OF_SYMMETRY" => & [] , "CERTIFICATION" => & ["name" , "purpose" , "kind" ,] , "CERTIFICATION_ASSIGNMENT" => & ["assigned_certification" ,] , "CERTIFICATION_TYPE" => & ["description" ,] , "CHANGE" => & ["items" ,] , "CHANGE_REQUEST" => & ["items" ,] , "CHARACTER_GLYPH_FONT_USAGE" => & ["character" , "font" ,] , "CHARACTER_GLYPH_STYLE_OUTLINE" => & ["outline_style" ,] , "CHARACTER_GLYPH_STYLE_STROKE" => & ["stroke_style" ,] , "CHARACTER_GLYPH_SYMBOL" => & ["character_box" , "baseline_ratio" ,] , "CHARACTER_GLYPH_SYMBOL_OUTLINE" => & ["outlines" ,] , "CHARACTER_GLYPH_SYMBOL_STROKE" => & ["strokes" ,] , "CHARACTERISTIC_DATA_COLUMN_HEADER" => & [] , "CHARACTERISTIC_DATA_COLUMN_HEADER_LINK" => & [] , "CHARACTERISTIC_DATA_TABLE_HEADER" => & [] , "CHARACTERISTIC_DATA_TABLE_HEADER_DECOMPOSITION" => & [] , "CHARACTERISTIC_TYPE" => & [] , "CHARACTERIZED_CLASS" => & [] , "CHARACTERIZED_OBJECT" => & ["name" , "description" ,] , "CIRCLE" => & ["radius" ,] , "CIRCULAR_RUNOUT_TOLERANCE" => & [] , "CLASS" => & [] , "CLASS_BY_EXTENSION" => & [] , "CLASS_BY_INTENSION" => & [] , "CLASS_SYSTEM" => & [] , "CLASS_USAGE_EFFECTIVITY_CONTEXT_ASSIGNMENT" => & ["items" ,] , "CLASSIFICATION_ASSIGNMENT" => & ["assigned_class" , "role" ,] , "CLASSIFICATION_ROLE" => & ["name" , "description" ,] , "CLOSED_SHELL" => & [] , "COAXIALITY_TOLERANCE" => & [] , "COLOUR" => & [] , "COLOUR_RGB" => & ["red" , "green" , "blue" ,] , "COLOUR_SPECIFICATION" => & ["name" ,] , "COMMON_DATUM" => & [] , "COMPARISON_EXPRESSION" => & [] , "COMPLEX_CLAUSE" => & [] , "COMPLEX_CONJUNCTIVE_CLAUSE" => & [] , "COMPLEX_DISJUNCTIVE_CLAUSE" => & [] , "COMPLEX_SHELLED_SOLID" => & ["thickened_face_list" , "thickness_list" ,] , "COMPOSITE_ASSEMBLY_DEFINITION" => & [] , "COMPOSITE_ASSEMBLY_SEQUENCE_DEFINITION" => & [] , "COMPOSITE_ASSEMBLY_TABLE" => & [] , "COMPOSITE_CURVE" => & ["segments" , "self_intersect" ,] , "COMPOSITE_CURVE_ON_SURFACE" => & [] , "COMPOSITE_CURVE_SEGMENT" => & ["transition" , "same_sense" , "parent_curve" ,] , "COMPOSITE_MATERIAL_DESIGNATION" => & [] , "COMPOSITE_SHAPE_ASPECT" => & [] , "COMPOSITE_SHEET_REPRESENTATION" => & [] , "COMPOSITE_TEXT" => & ["collected_text" ,] , "COMPOSITE_TEXT_WITH_ASSOCIATED_CURVES" => & ["associated_curves" ,] , "COMPOSITE_TEXT_WITH_BLANKING_BOX" => & ["blanking" ,] , "COMPOSITE_TEXT_WITH_DELINEATION" => & ["delineation" ,] , "COMPOSITE_TEXT_WITH_EXTENT" => & ["extent" ,] , "COMPOUND_REPRESENTATION_ITEM" => & ["item_element" ,] , "COMPOUND_SHAPE_REPRESENTATION" => & [] , "CONCENTRICITY_TOLERANCE" => & [] , "CONCEPT_FEATURE_OPERATOR" => & ["name" , "description" ,] , "CONCEPT_FEATURE_RELATIONSHIP" => & ["name" , "description" , "relating_product_concept_feature" , "related_product_concept_feature" ,] , "CONCEPT_FEATURE_RELATIONSHIP_WITH_CONDITION" => & ["conditional_operator" ,] , "CONDITIONAL_CONCEPT_FEATURE" => & ["condition" ,] , "CONDUCTANCE_MEASURE_WITH_UNIT" => & [] , "CONDUCTANCE_UNIT" => & [] , "CONFIGURABLE_ITEM" => & ["item_concept_feature" ,] , "CONFIGURATION_DESIGN" => & ["configuration" , "design" ,] , "CONFIGURATION_EFFECTIVITY" => & ["configuration" ,] , "CONFIGURATION_ITEM" => & ["id" , "name" , "description" , "item_concept" , "purpose" ,] , "CONFIGURATION_ITEM_HIERARCHICAL_RELATIONSHIP" => & [] , "CONFIGURATION_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_configuration_item" , "related_configuration_item" ,] , "CONFIGURATION_ITEM_REVISION_SEQUENCE" => & [] , "CONFIGURED_EFFECTIVITY_ASSIGNMENT" => & ["items" ,] , "CONFIGURED_EFFECTIVITY_CONTEXT_ASSIGNMENT" => & ["items" ,] , "CONIC" => & ["position" ,] , "CONICAL_STEPPED_HOLE_TRANSITION" => & ["transition_number" , "cone_apex_angle" , "cone_base_radius" ,] , "CONICAL_SURFACE" => & ["radius" , "semi_angle" ,] , "CONNECTED_EDGE_SET" => & ["ces_edges" ,] , "CONNECTED_FACE_SET" => & ["cfs_faces" ,] , "CONNECTED_FACE_SUB_SET" => & ["parent_face_set" ,] , "CONSTRUCTIVE_GEOMETRY_REPRESENTATION" => & [] , "CONSTRUCTIVE_GEOMETRY_REPRESENTATION_RELATIONSHIP" => & [] , "CONTACT_RATIO_REPRESENTATION" => & [] , "CONTEXT_DEPENDENT_INVISIBILITY" => & ["presentation_context" ,] , "CONTEXT_DEPENDENT_OVER_RIDING_STYLED_ITEM" => & ["style_context" ,] , "CONTEXT_DEPENDENT_SHAPE_REPRESENTATION" => & ["representation_relation" , "represented_product_relation" ,] , "CONTEXT_DEPENDENT_UNIT" => & ["name" ,] , "CONTRACT" => & ["name" , "purpose" , "kind" ,] , "CONTRACT_ASSIGNMENT" => & ["assigned_contract" ,] , "CONTRACT_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_contract" , "related_contract" ,] , "CONTRACT_TYPE" => & ["description" ,] , "CONVERSION_BASED_UNIT" => & ["name" , "conversion_factor" ,] , "COORDINATED_UNIVERSAL_TIME_OFFSET" => & ["hour_offset" , "minute_offset" , "sense" ,] , "CSG_SHAPE_REPRESENTATION" => & [] , "CSG_SOLID" => & ["tree_root_expression" ,] , "CURRENCY" => & [] , "CURRENCY_MEASURE_WITH_UNIT" => & [] , "CURVE" => & [] , "CURVE_BOUNDED_SURFACE" => & ["basis_surface" , "boundaries" , "implicit_outer" ,] , "CURVE_DIMENSION" => & [] , "CURVE_REPLICA" => & ["parent_curve" , "transformation" ,] , "CURVE_STYLE" => & ["name" , "curve_font" , "curve_width" , "curve_colour" ,] , "CURVE_STYLE_FONT" => & ["name" , "pattern_list" ,] , "CURVE_STYLE_FONT_AND_SCALING" => & ["name" , "curve_font" , "curve_font_scaling" ,] , "CURVE_STYLE_FONT_PATTERN" => & ["visible_segment_length" , "invisible_segment_length" ,] , "CURVE_STYLE_RENDERING" => & ["rendering_method" , "rendering_properties" ,] , "CURVE_SWEPT_SOLID_SHAPE_REPRESENTATION" => & [] , "CYLINDRICAL_SURFACE" => & ["radius" ,] , "CYLINDRICITY_TOLERANCE" => & [] , "DATA_ENVIRONMENT" => & ["name" , "description" , "elements" ,] , "DATE" => & ["year_component" ,] , "DATE_AND_TIME" => & ["date_component" , "time_component" ,] , "DATE_AND_TIME_ASSIGNMENT" => & ["assigned_date_and_time" , "role" ,] , "DATE_ASSIGNMENT" => & ["assigned_date" , "role" ,] , "DATE_REPRESENTATION_ITEM" => & [] , "DATE_ROLE" => & ["name" ,] , "DATE_TIME_REPRESENTATION_ITEM" => & [] , "DATE_TIME_ROLE" => & ["name" ,] , "DATED_EFFECTIVITY" => & ["effectivity_end_date" , "effectivity_start_date" ,] , "DATUM" => & ["identification" ,] , "DATUM_FEATURE" => & [] , "DATUM_FEATURE_CALLOUT" => & [] , "DATUM_REFERENCE" => & ["precedence" , "referenced_datum" ,] , "DATUM_TARGET" => & ["target_id" ,] , "DATUM_TARGET_CALLOUT" => & [] , "DEFAULT_TOLERANCE_TABLE" => & [] , "DEFAULT_TOLERANCE_TABLE_CELL" => & [] , "DEFINED_SYMBOL" => & ["definition" , "target" ,] , "DEFINITIONAL_REPRESENTATION" => & [] , "DEFINITIONAL_REPRESENTATION_RELATIONSHIP" => & [] , "DEFINITIONAL_REPRESENTATION_RELATIONSHIP_WITH_SAME_CONTEXT" => & [] , "DEGENERATE_PCURVE" => & ["basis_surface" , "reference_to_curve" ,] , "DEGENERATE_TOROIDAL_SURFACE" => & ["select_outer" ,] , "DERIVED_SHAPE_ASPECT" => & [] , "DERIVED_UNIT" => & ["elements" ,] , "DERIVED_UNIT_ELEMENT" => & ["unit" , "exponent" ,] , "DESCRIPTION_ATTRIBUTE" => & ["attribute_value" , "described_item" ,] , "DESCRIPTIVE_REPRESENTATION_ITEM" => & ["description" ,] , "DESIGN_CONTEXT" => & [] , "DESIGN_MAKE_FROM_RELATIONSHIP" => & [] , "DIAMETER_DIMENSION" => & [] , "DIELECTRIC_CONSTANT_MEASURE_WITH_UNIT" => & [] , "DIMENSION_CALLOUT" => & [] , "DIMENSION_CALLOUT_COMPONENT_RELATIONSHIP" => & [] , "DIMENSION_CALLOUT_RELATIONSHIP" => & [] , "DIMENSION_CURVE" => & [] , "DIMENSION_CURVE_DIRECTED_CALLOUT" => & [] , "DIMENSION_CURVE_TERMINATOR" => & ["role" ,] , "DIMENSION_CURVE_TERMINATOR_TO_PROJECTION_CURVE_ASSOCIATIVITY" => & [] , "DIMENSION_PAIR" => & [] , "DIMENSION_RELATED_TOLERANCE_ZONE_ELEMENT" => & ["related_dimension" , "related_element" ,] , "DIMENSION_TEXT_ASSOCIATIVITY" => & [] , "DIMENSIONAL_CHARACTERISTIC_REPRESENTATION" => & ["dimension" , "representation" ,] , "DIMENSIONAL_EXPONENTS" => & ["length_exponent" , "mass_exponent" , "time_exponent" , "electric_current_exponent" , "thermodynamic_temperature_exponent" , "amount_of_substance_exponent" , "luminous_intensity_exponent" ,] , "DIMENSIONAL_LOCATION" => & [] , "DIMENSIONAL_LOCATION_WITH_PATH" => & ["path" ,] , "DIMENSIONAL_SIZE" => & ["applies_to" , "name" ,] , "DIMENSIONAL_SIZE_WITH_PATH" => & ["path" ,] , "DIRECTED_ACTION" => & ["directive" ,] , "DIRECTED_DIMENSIONAL_LOCATION" => & [] , "DIRECTION" => & ["direction_ratios" ,] , "DOCUMENT" => & ["id" , "name" , "description" , "kind" ,] , "DOCUMENT_FILE" => & [] , "DOCUMENT_IDENTIFIER" => & [] , "DOCUMENT_IDENTIFIER_ASSIGNMENT" => & ["items" ,] , "DOCUMENT_PRODUCT_ASSOCIATION" => & ["name" , "description" , "relating_document" , "related_product" ,] , "DOCUMENT_PRODUCT_EQUIVALENCE" => & [] , "DOCUMENT_REFERENCE" => & ["assigned_document" , "source" ,] , "DOCUMENT_RELATIONSHIP" => & ["name" , "description" , "relating_document" , "related_document" ,] , "DOCUMENT_REPRESENTATION_TYPE" => & ["name" , "represented_document" ,] , "DOCUMENT_TYPE" => & ["product_data_type" ,] , "DOCUMENT_USAGE_CONSTRAINT" => & ["source" , "subject_element" , "subject_element_value" ,] , "DOCUMENT_USAGE_CONSTRAINT_ASSIGNMENT" => & ["assigned_document_usage" , "role" ,] , "DOCUMENT_USAGE_ROLE" => & ["name" , "description" ,] , "DOSE_EQUIVALENT_MEASURE_WITH_UNIT" => & [] , "DOSE_EQUIVALENT_UNIT" => & [] , "DOUBLE_OFFSET_SHELLED_SOLID" => & ["thickness2" ,] , "DRAPED_DEFINED_TRANSFORMATION" => & [] , "DRAUGHTING_ANNOTATION_OCCURRENCE" => & [] , "DRAUGHTING_CALLOUT" => & ["contents" ,] , "DRAUGHTING_CALLOUT_RELATIONSHIP" => & ["name" , "description" , "relating_draughting_callout" , "related_draughting_callout" ,] , "DRAUGHTING_ELEMENTS" => & [] , "DRAUGHTING_MODEL" => & [] , "DRAUGHTING_MODEL_ITEM_ASSOCIATION" => & [] , "DRAUGHTING_PRE_DEFINED_COLOUR" => & [] , "DRAUGHTING_PRE_DEFINED_CURVE_FONT" => & [] , "DRAUGHTING_PRE_DEFINED_TEXT_FONT" => & [] , "DRAUGHTING_SUBFIGURE_REPRESENTATION" => & [] , "DRAUGHTING_SYMBOL_REPRESENTATION" => & [] , "DRAUGHTING_TEXT_LITERAL_WITH_DELINEATION" => & [] , "DRAUGHTING_TITLE" => & ["items" , "language" , "contents" ,] , "DRAWING_DEFINITION" => & ["drawing_number" , "drawing_type" ,] , "DRAWING_REVISION" => & ["revision_identifier" , "drawing_identifier" , "intended_scale" ,] , "DRAWING_REVISION_SEQUENCE" => & ["predecessor" , "successor" ,] , "DRAWING_SHEET_REVISION" => & ["revision_identifier" ,] , "DRAWING_SHEET_REVISION_SEQUENCE" => & [] , "DRAWING_SHEET_REVISION_USAGE" => & ["sheet_number" ,] , "EDGE" => & ["edge_start" , "edge_end" ,] , "EDGE_BASED_WIREFRAME_MODEL" => & ["ebwm_boundary" ,] , "EDGE_BASED_WIREFRAME_SHAPE_REPRESENTATION" => & [] , "EDGE_BLENDED_SOLID" => & ["blended_edges" ,] , "EDGE_CURVE" => & ["edge_geometry" , "same_sense" ,] , "EDGE_LOOP" => & [] , "EFFECTIVITY" => & ["id" ,] , "EFFECTIVITY_ASSIGNMENT" => & ["assigned_effectivity" ,] , "EFFECTIVITY_CONTEXT_ASSIGNMENT" => & ["assigned_effectivity_assignment" , "role" ,] , "EFFECTIVITY_CONTEXT_ROLE" => & ["name" , "description" ,] , "EFFECTIVITY_RELATIONSHIP" => & ["name" , "description" , "related_effectivity" , "relating_effectivity" ,] , "ELECTRIC_CHARGE_MEASURE_WITH_UNIT" => & [] , "ELECTRIC_CHARGE_UNIT" => & [] , "ELECTRIC_CURRENT_MEASURE_WITH_UNIT" => & [] , "ELECTRIC_CURRENT_UNIT" => & [] , "ELECTRIC_POTENTIAL_MEASURE_WITH_UNIT" => & [] , "ELECTRIC_POTENTIAL_UNIT" => & [] , "ELEMENTARY_BREP_SHAPE_REPRESENTATION" => & [] , "ELEMENTARY_SURFACE" => & ["position" ,] , "ELLIPSE" => & ["semi_axis_1" , "semi_axis_2" ,] , "ENERGY_MEASURE_WITH_UNIT" => & [] , "ENERGY_UNIT" => & [] , "ENTITY_ASSERTION" => & [] , "ENUM_REFERENCE_PREFIX" => & [] , "ENVIRONMENT" => & ["syntactic_representation" , "semantics" ,] , "EVALUATED_CHARACTERISTIC" => & [] , "EVALUATED_DEGENERATE_PCURVE" => & ["equivalent_point" ,] , "EVALUATION_PRODUCT_DEFINITION" => & [] , "EVENT_OCCURRENCE" => & ["id" , "name" , "description" ,] , "EVENT_OCCURRENCE_ASSIGNMENT" => & ["assigned_event_occurrence" , "role" ,] , "EVENT_OCCURRENCE_RELATIONSHIP" => & ["name" , "description" , "relating_event" , "related_event" ,] , "EVENT_OCCURRENCE_ROLE" => & ["name" , "description" ,] , "EXCLUSIVE_PRODUCT_CONCEPT_FEATURE_CATEGORY" => & [] , "EXECUTED_ACTION" => & [] , "EXPANDED_UNCERTAINTY" => & ["coverage_factor" ,] , "EXPLICIT_PROCEDURAL_GEOMETRIC_REPRESENTATION_ITEM_RELATIONSHIP" => & [] , "EXPLICIT_PROCEDURAL_REPRESENTATION_ITEM_RELATIONSHIP" => & [] , "EXPLICIT_PROCEDURAL_REPRESENTATION_RELATIONSHIP" => & [] , "EXPLICIT_PROCEDURAL_SHAPE_REPRESENTATION_RELATIONSHIP" => & [] , "EXPRESSION" => & [] , "EXPRESSION_CONVERSION_BASED_UNIT" => & [] , "EXTENSION" => & [] , "EXTENT" => & [] , "EXTERNAL_CLASS_LIBRARY" => & [] , "EXTERNAL_IDENTIFICATION_ASSIGNMENT" => & ["source" ,] , "EXTERNAL_SOURCE" => & ["source_id" ,] , "EXTERNAL_SOURCE_RELATIONSHIP" => & ["name" , "description" , "relating_source" , "related_source" ,] , "EXTERNALLY_DEFINED_CLASS" => & [] , "EXTERNALLY_DEFINED_COLOUR" => & [] , "EXTERNALLY_DEFINED_CONTEXT_DEPENDENT_UNIT" => & [] , "EXTERNALLY_DEFINED_CONVERSION_BASED_UNIT" => & [] , "EXTERNALLY_DEFINED_CURRENCY" => & [] , "EXTERNALLY_DEFINED_CURVE_FONT" => & [] , "EXTERNALLY_DEFINED_DIMENSION_DEFINITION" => & [] , "EXTERNALLY_DEFINED_GENERAL_PROPERTY" => & [] , "EXTERNALLY_DEFINED_HATCH_STYLE" => & [] , "EXTERNALLY_DEFINED_ITEM" => & ["item_id" , "source" ,] , "EXTERNALLY_DEFINED_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_item" , "related_item" ,] , "EXTERNALLY_DEFINED_MARKER" => & [] , "EXTERNALLY_DEFINED_PICTURE_REPRESENTATION_ITEM" => & [] , "EXTERNALLY_DEFINED_REPRESENTATION_ITEM" => & [] , "EXTERNALLY_DEFINED_STRING" => & [] , "EXTERNALLY_DEFINED_SYMBOL" => & [] , "EXTERNALLY_DEFINED_TERMINATOR_SYMBOL" => & [] , "EXTERNALLY_DEFINED_TEXT_FONT" => & [] , "EXTERNALLY_DEFINED_TILE" => & [] , "EXTERNALLY_DEFINED_TILE_STYLE" => & [] , "EXTRUDED_AREA_SOLID" => & ["extruded_direction" , "depth" ,] , "EXTRUDED_FACE_SOLID" => & ["extruded_direction" , "depth" ,] , "EXTRUDED_FACE_SOLID_WITH_DRAFT_ANGLE" => & ["draft_angle" ,] , "EXTRUDED_FACE_SOLID_WITH_MULTIPLE_DRAFT_ANGLES" => & ["drafted_edges" , "draft_angles" ,] , "EXTRUDED_FACE_SOLID_WITH_TRIM_CONDITIONS" => & ["first_trim_condition" , "second_trim_condition" , "first_trim_intent" , "second_trim_intent" , "first_offset" , "second_offset" ,] , "FACE" => & ["bounds" ,] , "FACE_BASED_SURFACE_MODEL" => & ["fbsm_faces" ,] , "FACE_BOUND" => & ["bound" , "orientation" ,] , "FACE_OUTER_BOUND" => & [] , "FACE_SURFACE" => & ["face_geometry" , "same_sense" ,] , "FACETED_BREP" => & [] , "FACETED_BREP_SHAPE_REPRESENTATION" => & [] , "FACT_TYPE" => & [] , "FILL_AREA_STYLE" => & ["name" , "fill_styles" ,] , "FILL_AREA_STYLE_COLOUR" => & ["name" , "fill_colour" ,] , "FILL_AREA_STYLE_HATCHING" => & ["hatch_line_appearance" , "start_of_next_hatch_line" , "point_of_reference_hatch_line" , "pattern_start" , "hatch_line_angle" ,] , "FILL_AREA_STYLE_TILE_COLOURED_REGION" => & ["closed_curve" , "region_colour" ,] , "FILL_AREA_STYLE_TILE_CURVE_WITH_STYLE" => & ["styled_curve" ,] , "FILL_AREA_STYLE_TILE_SYMBOL_WITH_STYLE" => & ["symbol" ,] , "FILL_AREA_STYLE_TILES" => & ["tiling_pattern" , "tiles" , "tiling_scale" ,] , "FLAT_PATTERN_PLY_REPRESENTATION_RELATIONSHIP" => & [] , "FLATNESS_TOLERANCE" => & [] , "FORCE_MEASURE_WITH_UNIT" => & [] , "FORCE_UNIT" => & [] , "FORWARD_CHAINING_RULE" => & [] , "FORWARD_CHAINING_RULE_PREMISE" => & [] , "FOUNDED_ITEM" => & [] , "FREQUENCY_MEASURE_WITH_UNIT" => & [] , "FREQUENCY_UNIT" => & [] , "FUNC" => & [] , "FUNCTIONAL_BREAKDOWN_CONTEXT" => & [] , "FUNCTIONAL_ELEMENT_USAGE" => & [] , "FUNCTIONALLY_DEFINED_TRANSFORMATION" => & ["name" , "description" ,] , "GENERAL_MATERIAL_PROPERTY" => & [] , "GENERAL_PROPERTY" => & ["id" , "name" , "description" ,] , "GENERAL_PROPERTY_ASSOCIATION" => & ["name" , "description" , "base_definition" , "derived_definition" ,] , "GENERAL_PROPERTY_RELATIONSHIP" => & ["name" , "description" , "relating_property" , "related_property" ,] , "GENERIC_CHARACTER_GLYPH_SYMBOL" => & [] , "GENERIC_EXPRESSION" => & [] , "GENERIC_LITERAL" => & [] , "GENERIC_VARIABLE" => & [] , "GEOMETRIC_ALIGNMENT" => & [] , "GEOMETRIC_CURVE_SET" => & [] , "GEOMETRIC_INTERSECTION" => & [] , "GEOMETRIC_ITEM_SPECIFIC_USAGE" => & [] , "GEOMETRIC_MODEL_ELEMENT_RELATIONSHIP" => & [] , "GEOMETRIC_REPRESENTATION_CONTEXT" => & ["coordinate_space_dimension" ,] , "GEOMETRIC_REPRESENTATION_ITEM" => & [] , "GEOMETRIC_SET" => & ["elements" ,] , "GEOMETRIC_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "GEOMETRIC_TOLERANCE_RELATIONSHIP" => & ["name" , "description" , "relating_geometric_tolerance" , "related_geometric_tolerance" ,] , "GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE" => & ["datum_system" ,] , "GEOMETRIC_TOLERANCE_WITH_DEFINED_UNIT" => & ["unit_size" ,] , "GEOMETRICAL_TOLERANCE_CALLOUT" => & [] , "GEOMETRICALLY_BOUNDED_2D_WIREFRAME_REPRESENTATION" => & [] , "GEOMETRICALLY_BOUNDED_SURFACE_SHAPE_REPRESENTATION" => & [] , "GEOMETRICALLY_BOUNDED_WIREFRAME_SHAPE_REPRESENTATION" => & [] , "GLOBAL_ASSIGNMENT" => & [] , "GLOBAL_UNCERTAINTY_ASSIGNED_CONTEXT" => & ["uncertainty" ,] , "GLOBAL_UNIT_ASSIGNED_CONTEXT" => & ["units" ,] , "GROUND_FACT" => & [] , "GROUP" => & ["name" , "description" ,] , "GROUP_ASSIGNMENT" => & ["assigned_group" ,] , "GROUP_RELATIONSHIP" => & ["name" , "description" , "relating_group" , "related_group" ,] , "HALF_SPACE_SOLID" => & ["base_surface" , "agreement_flag" ,] , "HARDNESS_REPRESENTATION" => & [] , "HIDDEN_ELEMENT_OVER_RIDING_STYLED_ITEM" => & [] , "HYPERBOLA" => & ["semi_axis" , "semi_imag_axis" ,] , "ID_ATTRIBUTE" => & ["attribute_value" , "identified_item" ,] , "IDENTIFICATION_ASSIGNMENT" => & ["assigned_id" , "role" ,] , "IDENTIFICATION_ROLE" => & ["name" , "description" ,] , "ILLUMINANCE_MEASURE_WITH_UNIT" => & [] , "ILLUMINANCE_UNIT" => & [] , "INCLUDED_TEXT_BLOCK" => & [] , "INCLUSION_PRODUCT_CONCEPT_FEATURE" => & [] , "INDIRECTLY_SELECTED_ELEMENTS" => & ["indirectly_picked_items" ,] , "INDIRECTLY_SELECTED_SHAPE_ELEMENTS" => & [] , "INDUCTANCE_MEASURE_WITH_UNIT" => & [] , "INDUCTANCE_UNIT" => & [] , "INFORMATION_RIGHT" => & [] , "INFORMATION_USAGE_RIGHT" => & [] , "INSTANCE_USAGE_CONTEXT_ASSIGNMENT" => & ["items" ,] , "INSTANCED_FEATURE" => & [] , "INT_LITERAL" => & [] , "INTEGER_REPRESENTATION_ITEM" => & [] , "INTERSECTION_CURVE" => & [] , "INTERVAL_EXPRESSION" => & [] , "INVISIBILITY" => & ["invisible_items" ,] , "ISO_4217_CURRENCY" => & [] , "ITEM_DEFINED_TRANSFORMATION" => & ["name" , "description" , "transform_item_1" , "transform_item_2" ,] , "ITEM_IDENTIFIED_REPRESENTATION_USAGE" => & ["name" , "description" , "definition" , "used_representation" , "identified_item" ,] , "KNOWN_SOURCE" => & [] , "LAID_DEFINED_TRANSFORMATION" => & [] , "LAMINATE_TABLE" => & [] , "LANGUAGE" => & [] , "LEADER_CURVE" => & [] , "LEADER_DIRECTED_CALLOUT" => & [] , "LEADER_DIRECTED_DIMENSION" => & [] , "LEADER_TERMINATOR" => & [] , "LENGTH_MEASURE_WITH_UNIT" => & [] , "LENGTH_UNIT" => & [] , "LIGHT_SOURCE" => & ["light_colour" ,] , "LIGHT_SOURCE_AMBIENT" => & [] , "LIGHT_SOURCE_DIRECTIONAL" => & ["orientation" ,] , "LIGHT_SOURCE_POSITIONAL" => & ["position" , "constant_attenuation" , "distance_attenuation" ,] , "LIGHT_SOURCE_SPOT" => & ["position" , "orientation" , "concentration_exponent" , "constant_attenuation" , "distance_attenuation" , "spread_angle" ,] , "LIMITS_AND_FITS" => & ["form_variance" , "zone_variance" , "grade" , "source" ,] , "LINE" => & ["pnt" , "dir" ,] , "LINE_PROFILE_TOLERANCE" => & [] , "LINEAR_DIMENSION" => & [] , "LITERAL_CONJUNCTION" => & [] , "LITERAL_DISJUNCTION" => & [] , "LITERAL_NUMBER" => & ["the_value" ,] , "LOCAL_TIME" => & ["hour_component" , "minute_component" , "second_component" , "zone" ,] , "LOGICAL_LITERAL" => & ["lit_value" ,] , "LOGICAL_REPRESENTATION_ITEM" => & [] , "LOOP" => & [] , "LOSS_TANGENT_MEASURE_WITH_UNIT" => & [] , "LOT_EFFECTIVITY" => & ["effectivity_lot_id" , "effectivity_lot_size" ,] , "LUMINOUS_FLUX_MEASURE_WITH_UNIT" => & [] , "LUMINOUS_FLUX_UNIT" => & [] , "LUMINOUS_INTENSITY_MEASURE_WITH_UNIT" => & [] , "LUMINOUS_INTENSITY_UNIT" => & [] , "MAGNETIC_FLUX_DENSITY_MEASURE_WITH_UNIT" => & [] , "MAGNETIC_FLUX_DENSITY_UNIT" => & [] , "MAGNETIC_FLUX_MEASURE_WITH_UNIT" => & [] , "MAGNETIC_FLUX_UNIT" => & [] , "MAKE_FROM_USAGE_OPTION" => & ["ranking" , "ranking_rationale" , "quantity" ,] , "MANIFOLD_SOLID_BREP" => & ["outer" ,] , "MANIFOLD_SUBSURFACE_SHAPE_REPRESENTATION" => & [] , "MANIFOLD_SURFACE_SHAPE_REPRESENTATION" => & [] , "MAPPED_ITEM" => & ["mapping_source" , "mapping_target" ,] , "MASS_MEASURE_WITH_UNIT" => & [] , "MASS_UNIT" => & [] , "MATERIAL_DESIGNATION" => & ["name" , "definitions" ,] , "MATERIAL_DESIGNATION_CHARACTERIZATION" => & ["name" , "description" , "designation" , "property" ,] , "MATERIAL_PROPERTY" => & [] , "MATERIAL_PROPERTY_REPRESENTATION" => & ["dependent_environment" ,] , "MEASURE_QUALIFICATION" => & ["name" , "description" , "qualified_measure" , "qualifiers" ,] , "MEASURE_REPRESENTATION_ITEM" => & [] , "MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "MECHANICAL_CONTEXT" => & [] , "MECHANICAL_DESIGN_AND_DRAUGHTING_RELATIONSHIP" => & [] , "MECHANICAL_DESIGN_GEOMETRIC_PRESENTATION_AREA" => & [] , "MECHANICAL_DESIGN_GEOMETRIC_PRESENTATION_REPRESENTATION" => & [] , "MECHANICAL_DESIGN_PRESENTATION_REPRESENTATION_WITH_DRAUGHTING" => & [] , "MECHANICAL_DESIGN_SHADED_PRESENTATION_AREA" => & [] , "MECHANICAL_DESIGN_SHADED_PRESENTATION_REPRESENTATION" => & [] , "MIN_AND_MAJOR_PLY_ORIENTATION_BASIS" => & [] , "MODIFIED_GEOMETRIC_TOLERANCE" => & ["modifier" ,] , "MODIFIED_SOLID" => & ["rationale" , "base_solid" ,] , "MODIFIED_SOLID_WITH_PLACED_CONFIGURATION" => & ["placing" ,] , "MOMENTS_OF_INERTIA_REPRESENTATION" => & [] , "MULTI_LANGUAGE_ATTRIBUTE_ASSIGNMENT" => & ["items" ,] , "MULTIPLE_ARITY_BOOLEAN_EXPRESSION" => & [] , "MULTIPLE_ARITY_GENERIC_EXPRESSION" => & ["operands" ,] , "MULTIPLE_ARITY_NUMERIC_EXPRESSION" => & [] , "NAME_ASSIGNMENT" => & ["assigned_name" ,] , "NAME_ATTRIBUTE" => & ["attribute_value" , "named_item" ,] , "NAMED_UNIT" => & ["dimensions" ,] , "NEXT_ASSEMBLY_USAGE_OCCURRENCE" => & [] , "NON_MANIFOLD_SURFACE_SHAPE_REPRESENTATION" => & [] , "NULL_REPRESENTATION_ITEM" => & [] , "NUMERIC_EXPRESSION" => & [] , "OBJECT_ROLE" => & ["name" , "description" ,] , "OFFSET_CURVE_2D" => & ["basis_curve" , "distance" , "self_intersect" ,] , "OFFSET_CURVE_3D" => & ["basis_curve" , "distance" , "self_intersect" , "ref_direction" ,] , "OFFSET_SURFACE" => & ["basis_surface" , "distance" , "self_intersect" ,] , "ONE_DIRECTION_REPEAT_FACTOR" => & ["repeat_factor" ,] , "OPEN_SHELL" => & [] , "ORDINAL_DATE" => & ["day_component" ,] , "ORDINATE_DIMENSION" => & [] , "ORGANIZATION" => & ["id" , "name" , "description" ,] , "ORGANIZATION_ASSIGNMENT" => & ["assigned_organization" , "role" ,] , "ORGANIZATION_RELATIONSHIP" => & ["name" , "description" , "relating_organization" , "related_organization" ,] , "ORGANIZATION_ROLE" => & ["name" ,] , "ORGANIZATIONAL_ADDRESS" => & ["organizations" , "description" ,] , "ORGANIZATIONAL_PROJECT" => & ["name" , "description" , "responsible_organizations" ,] , "ORGANIZATIONAL_PROJECT_ASSIGNMENT" => & ["assigned_organizational_project" , "role" ,] , "ORGANIZATIONAL_PROJECT_RELATIONSHIP" => & ["name" , "description" , "relating_organizational_project" , "related_organizational_project" ,] , "ORGANIZATIONAL_PROJECT_ROLE" => & ["name" , "description" ,] , "ORIENTED_CLOSED_SHELL" => & ["closed_shell_element" , "orientation" ,] , "ORIENTED_EDGE" => & ["edge_element" , "orientation" ,] , "ORIENTED_FACE" => & ["face_element" , "orientation" ,] , "ORIENTED_OPEN_SHELL" => & ["open_shell_element" , "orientation" ,] , "ORIENTED_PATH" => & ["path_element" , "orientation" ,] , "ORIENTED_SURFACE" => & ["orientation" ,] , "OUTER_BOUNDARY_CURVE" => & [] , "OVER_RIDING_STYLED_ITEM" => & ["over_ridden_style" ,] , "PACKAGE_PRODUCT_CONCEPT_FEATURE" => & [] , "PARABOLA" => & ["focal_dist" ,] , "PARALLEL_OFFSET" => & ["offset" ,] , "PARALLELISM_TOLERANCE" => & [] , "PARAMETRIC_REPRESENTATION_CONTEXT" => & [] , "PART_LAMINATE_TABLE" => & [] , "PARTIAL_DOCUMENT_WITH_STRUCTURED_TEXT_REPRESENTATION_ASSIGNMENT" => & [] , "PATH" => & ["edge_list" ,] , "PCURVE" => & ["basis_surface" , "reference_to_curve" ,] , "PERCENTAGE_LAMINATE_DEFINITION" => & [] , "PERCENTAGE_LAMINATE_TABLE" => & [] , "PERCENTAGE_PLY_DEFINITION" => & [] , "PERPENDICULAR_TO" => & [] , "PERPENDICULARITY_TOLERANCE" => & [] , "PERSON" => & ["id" , "last_name" , "first_name" , "middle_names" , "prefix_titles" , "suffix_titles" ,] , "PERSON_AND_ORGANIZATION" => & ["the_person" , "the_organization" ,] , "PERSON_AND_ORGANIZATION_ADDRESS" => & [] , "PERSON_AND_ORGANIZATION_ASSIGNMENT" => & ["assigned_person_and_organization" , "role" ,] , "PERSON_AND_ORGANIZATION_ROLE" => & ["name" ,] , "PERSONAL_ADDRESS" => & ["people" , "description" ,] , "PHYSICAL_BREAKDOWN_CONTEXT" => & [] , "PHYSICAL_ELEMENT_USAGE" => & [] , "PICTURE_REPRESENTATION" => & [] , "PICTURE_REPRESENTATION_ITEM" => & [] , "PLACED_DATUM_TARGET_FEATURE" => & [] , "PLACED_FEATURE" => & [] , "PLACEMENT" => & ["location" ,] , "PLANAR_BOX" => & ["placement" ,] , "PLANAR_EXTENT" => & ["size_in_x" , "size_in_y" ,] , "PLANE" => & [] , "PLANE_ANGLE_MEASURE_WITH_UNIT" => & [] , "PLANE_ANGLE_UNIT" => & [] , "PLUS_MINUS_TOLERANCE" => & ["range" , "toleranced_dimension" ,] , "PLY_LAMINATE_DEFINITION" => & [] , "PLY_LAMINATE_SEQUENCE_DEFINITION" => & [] , "PLY_LAMINATE_TABLE" => & [] , "POINT" => & [] , "POINT_AND_VECTOR" => & [] , "POINT_ON_CURVE" => & ["basis_curve" , "point_parameter" ,] , "POINT_ON_SURFACE" => & ["basis_surface" , "point_parameter_u" , "point_parameter_v" ,] , "POINT_PATH" => & [] , "POINT_REPLICA" => & ["parent_pt" , "transformation" ,] , "POINT_STYLE" => & ["name" , "marker" , "marker_size" , "marker_colour" ,] , "POLAR_COMPLEX_NUMBER_LITERAL" => & ["radius" , "angle" ,] , "POLY_LOOP" => & ["polygon" ,] , "POLYLINE" => & ["points" ,] , "POSITION_TOLERANCE" => & [] , "POSITIONED_SKETCH" => & ["sketch_basis" , "auxiliary_elements" ,] , "POWER_MEASURE_WITH_UNIT" => & [] , "POWER_UNIT" => & [] , "PRE_DEFINED_COLOUR" => & [] , "PRE_DEFINED_CURVE_FONT" => & [] , "PRE_DEFINED_DIMENSION_SYMBOL" => & [] , "PRE_DEFINED_GEOMETRICAL_TOLERANCE_SYMBOL" => & [] , "PRE_DEFINED_ITEM" => & ["name" ,] , "PRE_DEFINED_MARKER" => & [] , "PRE_DEFINED_POINT_MARKER_SYMBOL" => & [] , "PRE_DEFINED_SURFACE_CONDITION_SYMBOL" => & [] , "PRE_DEFINED_SURFACE_SIDE_STYLE" => & [] , "PRE_DEFINED_SYMBOL" => & [] , "PRE_DEFINED_TERMINATOR_SYMBOL" => & [] , "PRE_DEFINED_TEXT_FONT" => & [] , "PRE_DEFINED_TILE" => & [] , "PRECISION_QUALIFIER" => & ["precision_value" ,] , "PREDEFINED_PICTURE_REPRESENTATION_ITEM" => & [] , "PRESENTATION_AREA" => & [] , "PRESENTATION_LAYER_ASSIGNMENT" => & ["name" , "description" , "assigned_items" ,] , "PRESENTATION_REPRESENTATION" => & [] , "PRESENTATION_SET" => & [] , "PRESENTATION_SIZE" => & ["unit" , "size" ,] , "PRESENTATION_STYLE_ASSIGNMENT" => & ["styles" ,] , "PRESENTATION_STYLE_BY_CONTEXT" => & ["style_context" ,] , "PRESENTATION_VIEW" => & [] , "PRESENTED_ITEM" => & [] , "PRESENTED_ITEM_REPRESENTATION" => & ["presentation" , "item" ,] , "PRESSURE_MEASURE_WITH_UNIT" => & [] , "PRESSURE_UNIT" => & [] , "PROCEDURAL_REPRESENTATION" => & [] , "PROCEDURAL_REPRESENTATION_SEQUENCE" => & ["elements" , "suppressed_items" , "rationale" ,] , "PROCEDURAL_SHAPE_REPRESENTATION" => & [] , "PROCEDURAL_SHAPE_REPRESENTATION_SEQUENCE" => & [] , "PRODUCT" => & ["id" , "name" , "description" , "frame_of_reference" ,] , "PRODUCT_CATEGORY" => & ["name" , "description" ,] , "PRODUCT_CLASS" => & [] , "PRODUCT_CONCEPT" => & ["id" , "name" , "description" , "market_context" ,] , "PRODUCT_CONCEPT_CONTEXT" => & ["market_segment_type" ,] , "PRODUCT_CONCEPT_FEATURE" => & ["id" , "name" , "description" ,] , "PRODUCT_CONCEPT_FEATURE_ASSOCIATION" => & ["name" , "description" , "concept" , "feature" ,] , "PRODUCT_CONCEPT_FEATURE_CATEGORY" => & [] , "PRODUCT_CONCEPT_FEATURE_CATEGORY_USAGE" => & ["items" ,] , "PRODUCT_CONCEPT_RELATIONSHIP" => & ["name" , "description" , "relating_product_concept" , "related_product_concept" ,] , "PRODUCT_CONTEXT" => & ["discipline_type" ,] , "PRODUCT_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PRODUCT_DEFINITION_CONTEXT" => & ["life_cycle_stage" ,] , "PRODUCT_DEFINITION_CONTEXT_ASSOCIATION" => & ["definition" , "frame_of_reference" , "role" ,] , "PRODUCT_DEFINITION_CONTEXT_ROLE" => & ["name" , "description" ,] , "PRODUCT_DEFINITION_EFFECTIVITY" => & ["usage" ,] , "PRODUCT_DEFINITION_ELEMENT_RELATIONSHIP" => & [] , "PRODUCT_DEFINITION_FORMATION" => & ["id" , "description" , "of_product" ,] , "PRODUCT_DEFINITION_FORMATION_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition_formation" , "related_product_definition_formation" ,] , "PRODUCT_DEFINITION_FORMATION_WITH_SPECIFIED_SOURCE" => & ["make_or_buy" ,] , "PRODUCT_DEFINITION_GROUP_ASSIGNMENT" => & ["items" ,] , "PRODUCT_DEFINITION_OCCURRENCE_RELATIONSHIP" => & ["name" , "description" , "occurrence" , "occurrence_usage" ,] , "PRODUCT_DEFINITION_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "PRODUCT_DEFINITION_SHAPE" => & [] , "PRODUCT_DEFINITION_SUBSTITUTE" => & ["description" , "context_relationship" , "substitute_definition" ,] , "PRODUCT_DEFINITION_USAGE" => & [] , "PRODUCT_DEFINITION_WITH_ASSOCIATED_DOCUMENTS" => & ["documentation_ids" ,] , "PRODUCT_IDENTIFICATION" => & [] , "PRODUCT_MATERIAL_COMPOSITION_RELATIONSHIP" => & ["class" , "constituent_amount" , "composition_basis" , "determination_method" ,] , "PRODUCT_RELATED_PRODUCT_CATEGORY" => & ["products" ,] , "PRODUCT_SPECIFICATION" => & [] , "PROJECTED_ZONE_DEFINITION" => & ["projection_end" , "projected_length" ,] , "PROJECTION_CURVE" => & [] , "PROJECTION_DIRECTED_CALLOUT" => & [] , "PROMISSORY_USAGE_OCCURRENCE" => & [] , "PROPERTY_DEFINITION" => & ["name" , "description" , "definition" ,] , "PROPERTY_DEFINITION_RELATIONSHIP" => & ["name" , "description" , "relating_property_definition" , "related_property_definition" ,] , "PROPERTY_DEFINITION_REPRESENTATION" => & ["definition" , "used_representation" ,] , "QUALIFIED_REPRESENTATION_ITEM" => & ["qualifiers" ,] , "QUALITATIVE_UNCERTAINTY" => & ["uncertainty_value" ,] , "QUANTIFIED_ASSEMBLY_COMPONENT_USAGE" => & ["quantity" ,] , "QUASI_UNIFORM_CURVE" => & [] , "QUASI_UNIFORM_SURFACE" => & [] , "RADIOACTIVITY_MEASURE_WITH_UNIT" => & [] , "RADIOACTIVITY_UNIT" => & [] , "RADIUS_DIMENSION" => & [] , "RANGE_CHARACTERISTIC" => & [] , "RATIO_MEASURE_WITH_UNIT" => & [] , "RATIO_UNIT" => & [] , "RATIONAL_B_SPLINE_CURVE" => & ["weights_data" ,] , "RATIONAL_B_SPLINE_SURFACE" => & ["weights_data" ,] , "RATIONAL_REPRESENTATION_ITEM" => & [] , "REAL_LITERAL" => & [] , "REAL_REPRESENTATION_ITEM" => & [] , "RECTANGULAR_COMPOSITE_SURFACE" => & ["segments" ,] , "RECTANGULAR_TRIMMED_SURFACE" => & ["basis_surface" , "u1" , "u2" , "v1" , "v2" , "usense" , "vsense" ,] , "REFERENCED_MODIFIED_DATUM" => & ["modifier" ,] , "RELATIVE_EVENT_OCCURRENCE" => & ["base_event" , "offset" ,] , "REP_ITEM_GROUP" => & [] , "REPARAMETRISED_COMPOSITE_CURVE_SEGMENT" => & ["param_length" ,] , "REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "REPRESENTATION_CONTEXT" => & ["context_identifier" , "context_type" ,] , "REPRESENTATION_ITEM" => & ["name" ,] , "REPRESENTATION_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "REPRESENTATION_MAP" => & ["mapping_origin" , "mapped_representation" ,] , "REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "REPRESENTATION_RELATIONSHIP_WITH_TRANSFORMATION" => & ["transformation_operator" ,] , "REQUIREMENT_ASSIGNED_OBJECT" => & ["items" ,] , "REQUIREMENT_ASSIGNMENT" => & [] , "REQUIREMENT_SOURCE" => & [] , "REQUIREMENT_VIEW_DEFINITION_RELATIONSHIP" => & [] , "RESISTANCE_MEASURE_WITH_UNIT" => & [] , "RESISTANCE_UNIT" => & [] , "REVOLVED_AREA_SOLID" => & ["axis" , "angle" ,] , "REVOLVED_FACE_SOLID" => & ["axis" , "angle" ,] , "REVOLVED_FACE_SOLID_WITH_TRIM_CONDITIONS" => & ["first_trim_condition" , "second_trim_condition" ,] , "RIGHT_ANGULAR_WEDGE" => & ["position" , "x" , "y" , "z" , "ltx" ,] , "RIGHT_CIRCULAR_CONE" => & ["position" , "height" , "radius" , "semi_angle" ,] , "RIGHT_CIRCULAR_CYLINDER" => & ["position" , "height" , "radius" ,] , "RIGHT_TO_USAGE_ASSOCIATION" => & [] , "ROLE_ASSOCIATION" => & ["role" , "item_with_role" ,] , "ROUNDNESS_TOLERANCE" => & [] , "ROW_REPRESENTATION_ITEM" => & [] , "ROW_VALUE" => & [] , "ROW_VARIABLE" => & [] , "RULE_ACTION" => & [] , "RULE_CONDITION" => & [] , "RULE_DEFINITION" => & [] , "RULE_SET" => & [] , "RULE_SET_GROUP" => & [] , "RULE_SOFTWARE_DEFINITION" => & [] , "RULE_SUPERSEDED_ASSIGNMENT" => & ["items" ,] , "RULE_SUPERSEDENCE" => & [] , "RULED_SURFACE_SWEPT_AREA_SOLID" => & [] , "RUNOUT_ZONE_DEFINITION" => & ["orientation" ,] , "RUNOUT_ZONE_ORIENTATION" => & ["angle" ,] , "RUNOUT_ZONE_ORIENTATION_REFERENCE_DIRECTION" => & ["orientation_defining_relationship" ,] , "SATISFIED_REQUIREMENT" => & ["items" ,] , "SATISFIES_REQUIREMENT" => & [] , "SATISFYING_ITEM" => & ["items" ,] , "SCALAR_VARIABLE" => & [] , "SCATTERING_PARAMETER" => & [] , "SCULPTURED_SOLID" => & ["sculpturing_element" , "positive_side" ,] , "SEAM_CURVE" => & [] , "SECURITY_CLASSIFICATION" => & ["name" , "purpose" , "security_level" ,] , "SECURITY_CLASSIFICATION_ASSIGNMENT" => & ["assigned_security_classification" ,] , "SECURITY_CLASSIFICATION_LEVEL" => & ["name" ,] , "SERIAL_NUMBERED_EFFECTIVITY" => & ["effectivity_start_id" , "effectivity_end_id" ,] , "SHAPE_ASPECT" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "SHAPE_ASPECT_ASSOCIATIVITY" => & [] , "SHAPE_ASPECT_DERIVING_RELATIONSHIP" => & [] , "SHAPE_ASPECT_RELATIONSHIP" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" ,] , "SHAPE_DEFINITION_REPRESENTATION" => & [] , "SHAPE_DIMENSION_REPRESENTATION" => & [] , "SHAPE_FEATURE_DEFINITION" => & [] , "SHAPE_REPRESENTATION" => & [] , "SHAPE_REPRESENTATION_RELATIONSHIP" => & [] , "SHAPE_REPRESENTATION_WITH_PARAMETERS" => & [] , "SHELL_BASED_SURFACE_MODEL" => & ["sbsm_boundary" ,] , "SHELL_BASED_WIREFRAME_MODEL" => & ["sbwm_boundary" ,] , "SHELL_BASED_WIREFRAME_SHAPE_REPRESENTATION" => & [] , "SHELLED_SOLID" => & ["deleted_face_set" , "thickness" ,] , "SI_ABSORBED_DOSE_UNIT" => & [] , "SI_CAPACITANCE_UNIT" => & [] , "SI_CONDUCTANCE_UNIT" => & [] , "SI_DOSE_EQUIVALENT_UNIT" => & [] , "SI_ELECTRIC_CHARGE_UNIT" => & [] , "SI_ELECTRIC_POTENTIAL_UNIT" => & [] , "SI_ENERGY_UNIT" => & [] , "SI_FORCE_UNIT" => & [] , "SI_FREQUENCY_UNIT" => & [] , "SI_ILLUMINANCE_UNIT" => & [] , "SI_INDUCTANCE_UNIT" => & [] , "SI_MAGNETIC_FLUX_DENSITY_UNIT" => & [] , "SI_MAGNETIC_FLUX_UNIT" => & [] , "SI_POWER_UNIT" => & [] , "SI_PRESSURE_UNIT" => & [] , "SI_RADIOACTIVITY_UNIT" => & [] , "SI_RESISTANCE_UNIT" => & [] , "SI_UNIT" => & ["prefix" , "name" ,] , "SIMPLE_BOOLEAN_EXPRESSION" => & [] , "SIMPLE_CLAUSE" => & [] , "SIMPLE_GENERIC_EXPRESSION" => & [] , "SIMPLE_NUMERIC_EXPRESSION" => & [] , "SLASH_EXPRESSION" => & [] , "SMEARED_MATERIAL_DEFINITION" => & [] , "SOLID_ANGLE_MEASURE_WITH_UNIT" => & [] , "SOLID_ANGLE_UNIT" => & [] , "SOLID_CURVE_FONT" => & [] , "SOLID_MODEL" => & [] , "SOLID_REPLICA" => & ["parent_solid" , "transformation" ,] , "SOLID_WITH_ANGLE_BASED_CHAMFER" => & ["offset_distance" , "left_offset" , "offset_angle" ,] , "SOLID_WITH_CHAMFERED_EDGES" => & [] , "SOLID_WITH_CIRCULAR_PATTERN" => & ["replicate_count" , "angular_spacing" , "radial_alignment" , "reference_point" ,] , "SOLID_WITH_CIRCULAR_POCKET" => & ["pocket_radius" ,] , "SOLID_WITH_CIRCULAR_PROTRUSION" => & ["protrusion_radius" ,] , "SOLID_WITH_CONICAL_BOTTOM_ROUND_HOLE" => & ["semi_apex_angle" , "tip_radius" ,] , "SOLID_WITH_CONSTANT_RADIUS_EDGE_BLEND" => & ["radius" ,] , "SOLID_WITH_CURVED_SLOT" => & ["slot_centreline" ,] , "SOLID_WITH_DEPRESSION" => & ["depth" ,] , "SOLID_WITH_DOUBLE_OFFSET_CHAMFER" => & ["left_offset_distance" , "right_offset_distance" ,] , "SOLID_WITH_FLAT_BOTTOM_ROUND_HOLE" => & ["fillet_radius" ,] , "SOLID_WITH_GENERAL_POCKET" => & ["profile" , "reference_point" ,] , "SOLID_WITH_GENERAL_PROTRUSION" => & ["profile" , "reference_point" ,] , "SOLID_WITH_GROOVE" => & ["groove_radius" , "groove_width" , "draft_angle" , "floor_fillet_radius" , "external_groove" ,] , "SOLID_WITH_HOLE" => & [] , "SOLID_WITH_INCOMPLETE_CIRCULAR_PATTERN" => & ["omitted_instances" ,] , "SOLID_WITH_INCOMPLETE_RECTANGULAR_PATTERN" => & ["omitted_instances" ,] , "SOLID_WITH_POCKET" => & ["floor_blend_radius" , "draft_angle" ,] , "SOLID_WITH_PROTRUSION" => & ["protrusion_height" , "protrusion_draft_angle" ,] , "SOLID_WITH_RECTANGULAR_PATTERN" => & ["row_count" , "column_count" , "row_spacing" , "column_spacing" ,] , "SOLID_WITH_RECTANGULAR_POCKET" => & ["pocket_length" , "pocket_width" , "corner_radius" ,] , "SOLID_WITH_RECTANGULAR_PROTRUSION" => & ["protrusion_length" , "protrusion_width" , "protrusion_corner_radius" ,] , "SOLID_WITH_SHAPE_ELEMENT_PATTERN" => & ["replicated_element" ,] , "SOLID_WITH_SINGLE_OFFSET_CHAMFER" => & ["offset_distance" ,] , "SOLID_WITH_SLOT" => & ["slot_width" , "closed_ends" , "end_exit_faces" ,] , "SOLID_WITH_SPHERICAL_BOTTOM_ROUND_HOLE" => & ["sphere_radius" ,] , "SOLID_WITH_STEPPED_ROUND_HOLE" => & ["segments" , "segment_radii" , "segment_depths" ,] , "SOLID_WITH_STEPPED_ROUND_HOLE_AND_CONICAL_TRANSITIONS" => & ["conical_transitions" ,] , "SOLID_WITH_STRAIGHT_SLOT" => & ["slot_length" ,] , "SOLID_WITH_TEE_SECTION_SLOT" => & ["tee_section_width" , "collar_depth" ,] , "SOLID_WITH_THROUGH_DEPRESSION" => & ["exit_faces" ,] , "SOLID_WITH_TRAPEZOIDAL_SECTION_SLOT" => & ["draft_angle" , "floor_fillet_radius" ,] , "SOLID_WITH_VARIABLE_RADIUS_EDGE_BLEND" => & ["point_list" , "radius_list" , "edge_function_list" ,] , "SOURCE_FOR_REQUIREMENT" => & ["items" ,] , "SOURCED_REQUIREMENT" => & ["items" ,] , "SPECIFICATION_DEFINITION" => & [] , "SPECIFIED_HIGHER_USAGE_OCCURRENCE" => & ["upper_usage" , "next_usage" ,] , "SPHERE" => & ["radius" , "centre" ,] , "SPHERICAL_SURFACE" => & ["radius" ,] , "STANDARD_UNCERTAINTY" => & ["uncertainty_value" ,] , "START_REQUEST" => & ["items" ,] , "START_WORK" => & ["items" ,] , "STRAIGHTNESS_TOLERANCE" => & [] , "STRUCTURED_DIMENSION_CALLOUT" => & [] , "STRUCTURED_TEXT_COMPOSITION" => & [] , "STRUCTURED_TEXT_REPRESENTATION" => & [] , "STYLED_ITEM" => & ["styles" , "item" ,] , "SUBEDGE" => & ["parent_edge" ,] , "SUBFACE" => & ["parent_face" ,] , "SUPPLIED_PART_RELATIONSHIP" => & [] , "SURFACE" => & [] , "SURFACE_CONDITION_CALLOUT" => & [] , "SURFACE_CURVE" => & ["curve_3d" , "associated_geometry" , "master_representation" ,] , "SURFACE_CURVE_SWEPT_AREA_SOLID" => & ["directrix" , "start_param" , "end_param" , "reference_surface" ,] , "SURFACE_OF_LINEAR_EXTRUSION" => & ["extrusion_axis" ,] , "SURFACE_OF_REVOLUTION" => & ["axis_position" ,] , "SURFACE_PATCH" => & ["parent_surface" , "u_transition" , "v_transition" , "u_sense" , "v_sense" ,] , "SURFACE_PROFILE_TOLERANCE" => & [] , "SURFACE_RENDERING_PROPERTIES" => & ["rendered_colour" ,] , "SURFACE_REPLICA" => & ["parent_surface" , "transformation" ,] , "SURFACE_SIDE_STYLE" => & ["name" , "styles" ,] , "SURFACE_STYLE_BOUNDARY" => & ["style_of_boundary" ,] , "SURFACE_STYLE_CONTROL_GRID" => & ["style_of_control_grid" ,] , "SURFACE_STYLE_FILL_AREA" => & ["fill_area" ,] , "SURFACE_STYLE_PARAMETER_LINE" => & ["style_of_parameter_lines" , "direction_counts" ,] , "SURFACE_STYLE_REFLECTANCE_AMBIENT" => & ["ambient_reflectance" ,] , "SURFACE_STYLE_REFLECTANCE_AMBIENT_DIFFUSE" => & ["diffuse_reflectance" ,] , "SURFACE_STYLE_REFLECTANCE_AMBIENT_DIFFUSE_SPECULAR" => & ["specular_reflectance" , "specular_exponent" , "specular_colour" ,] , "SURFACE_STYLE_RENDERING" => & ["rendering_method" , "surface_colour" ,] , "SURFACE_STYLE_RENDERING_WITH_PROPERTIES" => & ["properties" ,] , "SURFACE_STYLE_SEGMENTATION_CURVE" => & ["style_of_segmentation_curve" ,] , "SURFACE_STYLE_SILHOUETTE" => & ["style_of_silhouette" ,] , "SURFACE_STYLE_TRANSPARENT" => & ["transparency" ,] , "SURFACE_STYLE_USAGE" => & ["side" , "style" ,] , "SURFACE_TEXTURE_REPRESENTATION" => & [] , "SURFACED_OPEN_SHELL" => & [] , "SWEPT_AREA_SOLID" => & ["swept_area" ,] , "SWEPT_DISK_SOLID" => & ["directrix" , "radius" , "inner_radius" , "start_param" , "end_param" ,] , "SWEPT_FACE_SOLID" => & ["swept_face" ,] , "SWEPT_SURFACE" => & ["swept_curve" ,] , "SYMBOL" => & [] , "SYMBOL_COLOUR" => & ["colour_of_symbol" ,] , "SYMBOL_REPRESENTATION" => & [] , "SYMBOL_REPRESENTATION_MAP" => & [] , "SYMBOL_STYLE" => & ["name" , "style_of_symbol" ,] , "SYMBOL_TARGET" => & ["placement" , "x_scale" , "y_scale" ,] , "SYMMETRIC_SHAPE_ASPECT" => & [] , "SYMMETRY_TOLERANCE" => & [] , "TABLE_REPRESENTATION_ITEM" => & [] , "TACTILE_APPEARANCE_REPRESENTATION" => & [] , "TAGGED_TEXT_FORMAT" => & [] , "TAGGED_TEXT_ITEM" => & [] , "TANGENT" => & [] , "TERMINATOR_SYMBOL" => & ["annotated_curve" ,] , "TEXT_FONT" => & ["id" , "name" , "description" ,] , "TEXT_FONT_FAMILY" => & ["id" , "name" , "description" ,] , "TEXT_FONT_IN_FAMILY" => & ["font" , "family" ,] , "TEXT_LITERAL" => & ["literal" , "placement" , "alignment" , "path" , "font" ,] , "TEXT_LITERAL_WITH_ASSOCIATED_CURVES" => & ["associated_curves" ,] , "TEXT_LITERAL_WITH_BLANKING_BOX" => & ["blanking" ,] , "TEXT_LITERAL_WITH_DELINEATION" => & ["delineation" ,] , "TEXT_LITERAL_WITH_EXTENT" => & ["extent" ,] , "TEXT_STRING_REPRESENTATION" => & [] , "TEXT_STYLE" => & ["name" , "character_appearance" ,] , "TEXT_STYLE_FOR_DEFINED_FONT" => & ["text_colour" ,] , "TEXT_STYLE_WITH_BOX_CHARACTERISTICS" => & ["characteristics" ,] , "TEXT_STYLE_WITH_MIRROR" => & ["mirror_placement" ,] , "TEXT_STYLE_WITH_SPACING" => & ["character_spacing" ,] , "THERMAL_RESISTANCE_MEASURE_WITH_UNIT" => & [] , "THERMAL_RESISTANCE_UNIT" => & [] , "THERMODYNAMIC_TEMPERATURE_MEASURE_WITH_UNIT" => & [] , "THERMODYNAMIC_TEMPERATURE_UNIT" => & [] , "THICKENED_FACE_SOLID" => & ["base_element" , "offset1" , "offset2" ,] , "THICKNESS_LAMINATE_DEFINITION" => & [] , "THICKNESS_LAMINATE_TABLE" => & [] , "TIME_INTERVAL" => & ["id" , "name" , "description" ,] , "TIME_INTERVAL_ASSIGNMENT" => & ["assigned_time_interval" , "role" ,] , "TIME_INTERVAL_BASED_EFFECTIVITY" => & ["effectivity_period" ,] , "TIME_INTERVAL_RELATIONSHIP" => & ["name" , "description" , "relating_time_interval" , "related_time_interval" ,] , "TIME_INTERVAL_ROLE" => & ["name" , "description" ,] , "TIME_INTERVAL_WITH_BOUNDS" => & ["primary_bound" , "secondary_bound" , "duration" ,] , "TIME_MEASURE_WITH_UNIT" => & [] , "TIME_UNIT" => & [] , "TOLERANCE_VALUE" => & ["lower_bound" , "upper_bound" ,] , "TOLERANCE_ZONE" => & ["defining_tolerance" , "form" ,] , "TOLERANCE_ZONE_DEFINITION" => & ["zone" , "boundaries" ,] , "TOLERANCE_ZONE_FORM" => & ["name" ,] , "TOPOLOGICAL_REPRESENTATION_ITEM" => & [] , "TOROIDAL_SURFACE" => & ["major_radius" , "minor_radius" ,] , "TORUS" => & ["position" , "major_radius" , "minor_radius" ,] , "TOTAL_RUNOUT_TOLERANCE" => & [] , "TRACK_BLENDED_SOLID" => & [] , "TRACK_BLENDED_SOLID_WITH_END_CONDITIONS" => & ["end_conditions" ,] , "TRANSFORMATION_WITH_DERIVED_ANGLE" => & [] , "TRIMMED_CURVE" => & ["basis_curve" , "trim_1" , "trim_2" , "sense_agreement" , "master_representation" ,] , "TWO_DIRECTION_REPEAT_FACTOR" => & ["second_repeat_factor" ,] , "TYPE_QUALIFIER" => & ["name" ,] , "UNARY_GENERIC_EXPRESSION" => & ["operand" ,] , "UNARY_NUMERIC_EXPRESSION" => & [] , "UNCERTAINTY_ASSIGNED_REPRESENTATION" => & ["uncertainty" ,] , "UNCERTAINTY_MEASURE_WITH_UNIT" => & ["name" , "description" ,] , "UNCERTAINTY_QUALIFIER" => & ["measure_name" , "description" ,] , "UNIFORM_CURVE" => & [] , "UNIFORM_RESOURCE_IDENTIFIER" => & [] , "UNIFORM_SURFACE" => & [] , "USAGE_ASSOCIATION" => & [] , "USER_DEFINED_CURVE_FONT" => & [] , "USER_DEFINED_MARKER" => & [] , "USER_DEFINED_TERMINATOR_SYMBOL" => & [] , "USER_SELECTED_ELEMENTS" => & ["picked_items" ,] , "USER_SELECTED_SHAPE_ELEMENTS" => & [] , "VALUE_RANGE" => & [] , "VALUE_REPRESENTATION_ITEM" => & ["value_component" ,] , "VARIABLE_SEMANTICS" => & [] , "VARIATIONAL_REPRESENTATION_ITEM" => & [] , "VECTOR" => & ["orientation" , "magnitude" ,] , "VECTOR_STYLE" => & [] , "VELOCITY_MEASURE_WITH_UNIT" => & [] , "VELOCITY_UNIT" => & [] , "VERSIONED_ACTION_REQUEST" => & ["id" , "version" , "purpose" , "description" ,] , "VERTEX" => & [] , "VERTEX_LOOP" => & ["loop_vertex" ,] , "VERTEX_POINT" => & ["vertex_geometry" ,] , "VERTEX_SHELL" => & ["vertex_shell_extent" ,] , "VIEW_VOLUME" => & ["projection_type" , "projection_point" , "view_plane_distance" , "front_plane_distance" , "front_plane_clipping" , "back_plane_distance" , "back_plane_clipping" , "view_volume_sides_clipping" , "view_window" ,] , "VISUAL_APPEARANCE_REPRESENTATION" => & [] , "VOLUME_MEASURE_WITH_UNIT" => & [] , "VOLUME_UNIT" => & [] , "WEEK_OF_YEAR_AND_DAY_DATE" => & ["week_component" , "day_component" ,] , "WIRE_SHELL" => & ["wire_shell_extent" ,] , "YEAR_MONTH" => & ["month_component" ,] , "ZONE_STRUCTURAL_MAKEUP" => & [] , };
+static COMPLETE: ::phf::Map<&'static str, &'static [&'static str]> = ::phf::phf_map! { "ABSORBED_DOSE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "ABSORBED_DOSE_UNIT" => & ["elements" ,] , "ABSTRACT_VARIABLE" => & ["name" , "description" , "definition" , "used_representation" , "items" , "context_of_items" ,] , "ACCELERATION_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "ACCELERATION_UNIT" => & ["elements" ,] , "ACTION" => & ["name" , "description" , "chosen_method" ,] , "ACTION_ASSIGNMENT" => & ["assigned_action" ,] , "ACTION_DIRECTIVE" => & ["name" , "description" , "analysis" , "comment" , "requests" ,] , "ACTION_METHOD" => & ["name" , "description" , "consequence" , "purpose" ,] , "ACTION_METHOD_ASSIGNMENT" => & ["assigned_action_method" , "role" ,] , "ACTION_METHOD_RELATIONSHIP" => & ["name" , "description" , "relating_method" , "related_method" ,] , "ACTION_METHOD_ROLE" => & ["name" , "description" ,] , "ACTION_PROPERTY" => & ["name" , "description" , "definition" ,] , "ACTION_PROPERTY_REPRESENTATION" => & ["name" , "description" , "property" , "representation" ,] , "ACTION_RELATIONSHIP" => & ["name" , "description" , "relating_action" , "related_action" ,] , "ACTION_REQUEST_ASSIGNMENT" => & ["assigned_action_request" ,] , "ACTION_REQUEST_SOLUTION" => & ["method" , "request" ,] , "ACTION_REQUEST_STATUS" => & ["status" , "assigned_request" ,] , "ACTION_STATUS" => & ["status" , "assigned_action" ,] , "ADDRESS" => & ["internal_location" , "street_number" , "street" , "postal_box" , "town" , "region" , "postal_code" , "country" , "facsimile_number" , "telephone_number" , "electronic_mail_address" , "telex_number" ,] , "ADVANCED_BREP_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "ADVANCED_FACE" => & ["name" , "bounds" , "face_geometry" , "same_sense" ,] , "ALTERNATE_PRODUCT_RELATIONSHIP" => & ["name" , "definition" , "alternate" , "base" , "basis" ,] , "AMOUNT_OF_SUBSTANCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "AMOUNT_OF_SUBSTANCE_UNIT" => & ["dimensions" ,] , "ANGLE_DIRECTION_REFERENCE" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "ANGULARITY_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "ANGULAR_DIMENSION" => & ["name" , "contents" ,] , "ANGULAR_LOCATION" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" , "angle_selection" ,] , "ANGULAR_SIZE" => & ["applies_to" , "name" , "angle_selection" ,] , "ANNOTATION_CURVE_OCCURRENCE" => & ["name" , "styles" , "item" ,] , "ANNOTATION_FILL_AREA" => & ["name" , "boundaries" ,] , "ANNOTATION_FILL_AREA_OCCURRENCE" => & ["name" , "styles" , "item" , "fill_style_target" ,] , "ANNOTATION_OCCURRENCE" => & ["name" , "styles" , "item" ,] , "ANNOTATION_OCCURRENCE_ASSOCIATIVITY" => & ["name" , "description" , "relating_annotation_occurrence" , "related_annotation_occurrence" ,] , "ANNOTATION_OCCURRENCE_RELATIONSHIP" => & ["name" , "description" , "relating_annotation_occurrence" , "related_annotation_occurrence" ,] , "ANNOTATION_PLANE" => & ["name" , "styles" , "item" , "elements" ,] , "ANNOTATION_SUBFIGURE_OCCURRENCE" => & ["name" , "styles" , "item" ,] , "ANNOTATION_SYMBOL" => & ["name" , "mapping_source" , "mapping_target" ,] , "ANNOTATION_SYMBOL_OCCURRENCE" => & ["name" , "styles" , "item" ,] , "ANNOTATION_TEXT" => & ["name" , "mapping_source" , "mapping_target" ,] , "ANNOTATION_TEXT_CHARACTER" => & ["name" , "mapping_source" , "mapping_target" , "alignment" ,] , "ANNOTATION_TEXT_OCCURRENCE" => & ["name" , "styles" , "item" ,] , "APEX" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "APPLICATION_CONTEXT" => & ["application" ,] , "APPLICATION_CONTEXT_ELEMENT" => & ["name" , "frame_of_reference" ,] , "APPLICATION_PROTOCOL_DEFINITION" => & ["status" , "application_interpreted_model_schema_name" , "application_protocol_year" , "application" ,] , "APPLIED_ACTION_ASSIGNMENT" => & ["assigned_action" , "items" ,] , "APPLIED_ACTION_METHOD_ASSIGNMENT" => & ["assigned_action_method" , "role" , "items" ,] , "APPLIED_ACTION_REQUEST_ASSIGNMENT" => & ["assigned_action_request" , "items" ,] , "APPLIED_APPROVAL_ASSIGNMENT" => & ["assigned_approval" , "items" ,] , "APPLIED_ATTRIBUTE_CLASSIFICATION_ASSIGNMENT" => & ["assigned_class" , "attribute_name" , "role" , "items" ,] , "APPLIED_CERTIFICATION_ASSIGNMENT" => & ["assigned_certification" , "items" ,] , "APPLIED_CLASSIFICATION_ASSIGNMENT" => & ["assigned_class" , "role" , "items" ,] , "APPLIED_CONTRACT_ASSIGNMENT" => & ["assigned_contract" , "items" ,] , "APPLIED_DATE_AND_TIME_ASSIGNMENT" => & ["assigned_date_and_time" , "role" , "items" ,] , "APPLIED_DATE_ASSIGNMENT" => & ["assigned_date" , "role" , "items" ,] , "APPLIED_DOCUMENT_REFERENCE" => & ["assigned_document" , "source" , "items" ,] , "APPLIED_DOCUMENT_USAGE_CONSTRAINT_ASSIGNMENT" => & ["assigned_document_usage" , "role" , "items" ,] , "APPLIED_EFFECTIVITY_ASSIGNMENT" => & ["assigned_effectivity" , "items" ,] , "APPLIED_EVENT_OCCURRENCE_ASSIGNMENT" => & ["assigned_event_occurrence" , "role" , "items" ,] , "APPLIED_EXTERNAL_IDENTIFICATION_ASSIGNMENT" => & ["assigned_id" , "role" , "source" , "items" ,] , "APPLIED_GROUP_ASSIGNMENT" => & ["assigned_group" , "items" ,] , "APPLIED_IDENTIFICATION_ASSIGNMENT" => & ["assigned_id" , "role" , "items" ,] , "APPLIED_NAME_ASSIGNMENT" => & ["assigned_name" , "item" ,] , "APPLIED_ORGANIZATIONAL_PROJECT_ASSIGNMENT" => & ["assigned_organizational_project" , "role" , "items" ,] , "APPLIED_ORGANIZATION_ASSIGNMENT" => & ["assigned_organization" , "role" , "items" ,] , "APPLIED_PERSON_AND_ORGANIZATION_ASSIGNMENT" => & ["assigned_person_and_organization" , "role" , "items" ,] , "APPLIED_PRESENTED_ITEM" => & ["items" ,] , "APPLIED_SECURITY_CLASSIFICATION_ASSIGNMENT" => & ["assigned_security_classification" , "items" ,] , "APPLIED_TIME_INTERVAL_ASSIGNMENT" => & ["assigned_time_interval" , "role" , "items" ,] , "APPLIED_USAGE_RIGHT" => & ["assigned_action" , "items" ,] , "APPROVAL" => & ["status" , "level" ,] , "APPROVAL_ASSIGNMENT" => & ["assigned_approval" ,] , "APPROVAL_DATE_TIME" => & ["date_time" , "dated_approval" ,] , "APPROVAL_PERSON_ORGANIZATION" => & ["person_organization" , "authorized_approval" , "role" ,] , "APPROVAL_RELATIONSHIP" => & ["name" , "description" , "relating_approval" , "related_approval" ,] , "APPROVAL_ROLE" => & ["role" ,] , "APPROVAL_STATUS" => & ["name" ,] , "AREA_IN_SET" => & ["area" , "in_set" ,] , "AREA_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "AREA_UNIT" => & ["elements" ,] , "ASSEMBLY_COMPONENT_USAGE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" , "reference_designator" ,] , "ASSEMBLY_COMPONENT_USAGE_SUBSTITUTE" => & ["name" , "definition" , "base" , "substitute" ,] , "ASSIGNED_REQUIREMENT" => & ["assigned_group" , "items" ,] , "ATOMIC_FORMULA" => & ["name" , "item_element" ,] , "ATTRIBUTE_ASSERTION" => & ["name" , "description" , "definition" , "used_representation" , "items" , "context_of_items" ,] , "ATTRIBUTE_CLASSIFICATION_ASSIGNMENT" => & ["assigned_class" , "attribute_name" , "role" ,] , "ATTRIBUTE_LANGUAGE_ASSIGNMENT" => & ["assigned_class" , "attribute_name" , "role" , "items" ,] , "ATTRIBUTE_VALUE_ASSIGNMENT" => & ["attribute_name" , "attribute_value" , "role" ,] , "ATTRIBUTE_VALUE_ROLE" => & ["name" , "description" ,] , "AUXILIARY_GEOMETRIC_REPRESENTATION_ITEM" => & ["name" ,] , "AXIS1_PLACEMENT" => & ["name" , "location" , "axis" ,] , "AXIS2_PLACEMENT_2D" => & ["name" , "location" , "ref_direction" ,] , "AXIS2_PLACEMENT_3D" => & ["name" , "location" , "axis" , "ref_direction" ,] , "BACKGROUND_COLOUR" => & ["presentation" ,] , "BACK_CHAINING_RULE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "BACK_CHAINING_RULE_BODY" => & ["name" , "description" , "definition" , "used_representation" , "items" , "context_of_items" ,] , "BEVELED_SHEET_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "BEZIER_CURVE" => & ["name" , "degree" , "control_points_list" , "curve_form" , "closed_curve" , "self_intersect" ,] , "BEZIER_SURFACE" => & ["name" , "u_degree" , "v_degree" , "control_points_list" , "surface_form" , "u_closed" , "v_closed" , "self_intersect" ,] , "BINARY_GENERIC_EXPRESSION" => & ["operands" ,] , "BINARY_NUMERIC_EXPRESSION" => & ["operands" ,] , "BINARY_REPRESENTATION_ITEM" => & ["name" , "binary_value" ,] , "BLOCK" => & ["name" , "position" , "x" , "y" , "z" ,] , "BOOLEAN_EXPRESSION" => & [] , "BOOLEAN_LITERAL" => & ["the_value" ,] , "BOOLEAN_REPRESENTATION_ITEM" => & ["name" , "the_value" ,] , "BOOLEAN_RESULT" => & ["name" , "operator" , "first_operand" , "second_operand" ,] , "BOUNDARY_CURVE" => & ["name" , "segments" , "self_intersect" ,] , "BOUNDED_CURVE" => & ["name" ,] , "BOUNDED_PCURVE" => & ["name" , "basis_surface" , "reference_to_curve" ,] , "BOUNDED_SURFACE" => & ["name" ,] , "BOUNDED_SURFACE_CURVE" => & ["name" , "curve_3d" , "associated_geometry" , "master_representation" ,] , "BOXED_HALF_SPACE" => & ["name" , "base_surface" , "agreement_flag" , "enclosure" ,] , "BOX_DOMAIN" => & ["corner" , "xlength" , "ylength" , "zlength" ,] , "BREAKDOWN_CONTEXT" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "BREAKDOWN_ELEMENT_GROUP_ASSIGNMENT" => & ["assigned_group" , "items" ,] , "BREAKDOWN_ELEMENT_REALIZATION" => & ["name" , "description" ,] , "BREAKDOWN_ELEMENT_USAGE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "BREAKDOWN_OF" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "BREP_WITH_VOIDS" => & ["name" , "outer" , "voids" ,] , "BYTES_REPRESENTATION_ITEM" => & ["name" , "binary_value" ,] , "B_SPLINE_CURVE" => & ["name" , "degree" , "control_points_list" , "curve_form" , "closed_curve" , "self_intersect" ,] , "B_SPLINE_CURVE_WITH_KNOTS" => & ["name" , "degree" , "control_points_list" , "curve_form" , "closed_curve" , "self_intersect" , "knot_multiplicities" , "knots" , "knot_spec" ,] , "B_SPLINE_SURFACE" => & ["name" , "u_degree" , "v_degree" , "control_points_list" , "surface_form" , "u_closed" , "v_closed" , "self_intersect" ,] , "B_SPLINE_SURFACE_WITH_KNOTS" => & ["name" , "u_degree" , "v_degree" , "control_points_list" , "surface_form" , "u_closed" , "v_closed" , "self_intersect" , "u_multiplicities" , "v_multiplicities" , "u_knots" , "v_knots" , "knot_spec" ,] , "CALENDAR_DATE" => & ["year_component" , "day_component" , "month_component" ,] , "CAMERA_IMAGE" => & ["name" , "mapping_source" , "mapping_target" ,] , "CAMERA_IMAGE_3D_WITH_SCALE" => & ["name" , "mapping_source" , "mapping_target" ,] , "CAMERA_MODEL" => & ["name" ,] , "CAMERA_MODEL_D_3" => & ["name" , "view_reference_system" , "perspective_of_volume" ,] , "CAMERA_MODEL_D_3_MULTI_CLIPPING" => & ["name" , "view_reference_system" , "perspective_of_volume" , "shape_clipping" ,] , "CAMERA_MODEL_D_3_MULTI_CLIPPING_INTERSECTION" => & ["name" , "shape_clipping" ,] , "CAMERA_MODEL_D_3_MULTI_CLIPPING_UNION" => & ["name" , "shape_clipping" ,] , "CAMERA_MODEL_D_3_WITH_HLHSR" => & ["name" , "view_reference_system" , "perspective_of_volume" , "hidden_line_surface_removal" ,] , "CAMERA_MODEL_WITH_LIGHT_SOURCES" => & ["name" , "view_reference_system" , "perspective_of_volume" , "sources" ,] , "CAMERA_USAGE" => & ["mapping_origin" , "mapped_representation" ,] , "CAPACITANCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "CAPACITANCE_UNIT" => & ["elements" ,] , "CARTESIAN_POINT" => & ["name" , "coordinates" ,] , "CARTESIAN_TRANSFORMATION_OPERATOR" => & ["name" , "description" , "axis1" , "axis2" , "local_origin" , "scale" ,] , "CARTESIAN_TRANSFORMATION_OPERATOR_2D" => & ["name" , "description" , "axis1" , "axis2" , "local_origin" , "scale" ,] , "CARTESIAN_TRANSFORMATION_OPERATOR_3D" => & ["name" , "description" , "axis1" , "axis2" , "local_origin" , "scale" , "axis3" ,] , "CC_DESIGN_APPROVAL" => & ["assigned_approval" , "items" ,] , "CC_DESIGN_CERTIFICATION" => & ["assigned_certification" , "items" ,] , "CC_DESIGN_CONTRACT" => & ["assigned_contract" , "items" ,] , "CC_DESIGN_DATE_AND_TIME_ASSIGNMENT" => & ["assigned_date_and_time" , "role" , "items" ,] , "CC_DESIGN_PERSON_AND_ORGANIZATION_ASSIGNMENT" => & ["assigned_person_and_organization" , "role" , "items" ,] , "CC_DESIGN_SECURITY_CLASSIFICATION" => & ["assigned_security_classification" , "items" ,] , "CC_DESIGN_SPECIFICATION_REFERENCE" => & ["assigned_document" , "source" , "items" ,] , "CELSIUS_TEMPERATURE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "CENTRE_OF_SYMMETRY" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "CERTIFICATION" => & ["name" , "purpose" , "kind" ,] , "CERTIFICATION_ASSIGNMENT" => & ["assigned_certification" ,] , "CERTIFICATION_TYPE" => & ["description" ,] , "CHANGE" => & ["assigned_action" , "items" ,] , "CHANGE_REQUEST" => & ["assigned_action_request" , "items" ,] , "CHARACTERISTIC_DATA_COLUMN_HEADER" => & ["id" , "name" , "description" ,] , "CHARACTERISTIC_DATA_COLUMN_HEADER_LINK" => & ["name" , "description" , "relating_property" , "related_property" ,] , "CHARACTERISTIC_DATA_TABLE_HEADER" => & ["id" , "name" , "description" ,] , "CHARACTERISTIC_DATA_TABLE_HEADER_DECOMPOSITION" => & ["name" , "description" , "relating_property" , "related_property" ,] , "CHARACTERISTIC_TYPE" => & ["name" , "description" ,] , "CHARACTERIZED_CLASS" => & ["name" , "description" ,] , "CHARACTERIZED_OBJECT" => & ["name" , "description" ,] , "CHARACTER_GLYPH_FONT_USAGE" => & ["character" , "font" ,] , "CHARACTER_GLYPH_STYLE_OUTLINE" => & ["outline_style" ,] , "CHARACTER_GLYPH_STYLE_STROKE" => & ["stroke_style" ,] , "CHARACTER_GLYPH_SYMBOL" => & ["name" , "items" , "context_of_items" , "character_box" , "baseline_ratio" ,] , "CHARACTER_GLYPH_SYMBOL_OUTLINE" => & ["name" , "items" , "context_of_items" , "character_box" , "baseline_ratio" , "outlines" ,] , "CHARACTER_GLYPH_SYMBOL_STROKE" => & ["name" , "items" , "context_of_items" , "character_box" , "baseline_ratio" , "strokes" ,] , "CIRCLE" => & ["name" , "position" , "radius" ,] , "CIRCULAR_RUNOUT_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "CLASS" => & ["name" , "description" ,] , "CLASSIFICATION_ASSIGNMENT" => & ["assigned_class" , "role" ,] , "CLASSIFICATION_ROLE" => & ["name" , "description" ,] , "CLASS_BY_EXTENSION" => & ["name" , "description" ,] , "CLASS_BY_INTENSION" => & ["name" , "description" ,] , "CLASS_SYSTEM" => & ["name" , "description" ,] , "CLASS_USAGE_EFFECTIVITY_CONTEXT_ASSIGNMENT" => & ["assigned_effectivity_assignment" , "role" , "items" ,] , "CLOSED_SHELL" => & ["name" , "cfs_faces" ,] , "COAXIALITY_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "COLOUR" => & [] , "COLOUR_RGB" => & ["name" , "red" , "green" , "blue" ,] , "COLOUR_SPECIFICATION" => & ["name" ,] , "COMMON_DATUM" => & ["name" , "description" , "of_shape" , "product_definitional" , "identification" ,] , "COMPARISON_EXPRESSION" => & ["operands" ,] , "COMPLEX_CLAUSE" => & ["name" , "item_element" ,] , "COMPLEX_CONJUNCTIVE_CLAUSE" => & ["name" , "item_element" ,] , "COMPLEX_DISJUNCTIVE_CLAUSE" => & ["name" , "item_element" ,] , "COMPLEX_SHELLED_SOLID" => & ["name" , "rationale" , "base_solid" , "deleted_face_set" , "thickness" , "thickened_face_list" , "thickness_list" ,] , "COMPOSITE_ASSEMBLY_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "COMPOSITE_ASSEMBLY_SEQUENCE_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "COMPOSITE_ASSEMBLY_TABLE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "COMPOSITE_CURVE" => & ["name" , "segments" , "self_intersect" ,] , "COMPOSITE_CURVE_ON_SURFACE" => & ["name" , "segments" , "self_intersect" ,] , "COMPOSITE_CURVE_SEGMENT" => & ["transition" , "same_sense" , "parent_curve" ,] , "COMPOSITE_MATERIAL_DESIGNATION" => & ["name" , "definitions" ,] , "COMPOSITE_SHAPE_ASPECT" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "COMPOSITE_SHEET_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "COMPOSITE_TEXT" => & ["name" , "collected_text" ,] , "COMPOSITE_TEXT_WITH_ASSOCIATED_CURVES" => & ["name" , "collected_text" , "associated_curves" ,] , "COMPOSITE_TEXT_WITH_BLANKING_BOX" => & ["name" , "collected_text" , "blanking" ,] , "COMPOSITE_TEXT_WITH_DELINEATION" => & ["name" , "collected_text" , "delineation" ,] , "COMPOSITE_TEXT_WITH_EXTENT" => & ["name" , "collected_text" , "extent" ,] , "COMPOUND_REPRESENTATION_ITEM" => & ["name" , "item_element" ,] , "COMPOUND_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "CONCENTRICITY_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "CONCEPT_FEATURE_OPERATOR" => & ["name" , "description" ,] , "CONCEPT_FEATURE_RELATIONSHIP" => & ["name" , "description" , "relating_product_concept_feature" , "related_product_concept_feature" ,] , "CONCEPT_FEATURE_RELATIONSHIP_WITH_CONDITION" => & ["name" , "description" , "relating_product_concept_feature" , "related_product_concept_feature" , "conditional_operator" ,] , "CONDITIONAL_CONCEPT_FEATURE" => & ["id" , "name" , "description" , "condition" ,] , "CONDUCTANCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "CONDUCTANCE_UNIT" => & ["elements" ,] , "CONFIGURABLE_ITEM" => & ["id" , "name" , "description" , "item_concept" , "purpose" , "item_concept_feature" ,] , "CONFIGURATION_DESIGN" => & ["configuration" , "design" ,] , "CONFIGURATION_EFFECTIVITY" => & ["id" , "usage" , "configuration" ,] , "CONFIGURATION_ITEM" => & ["id" , "name" , "description" , "item_concept" , "purpose" ,] , "CONFIGURATION_ITEM_HIERARCHICAL_RELATIONSHIP" => & ["name" , "description" , "relating_configuration_item" , "related_configuration_item" ,] , "CONFIGURATION_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_configuration_item" , "related_configuration_item" ,] , "CONFIGURATION_ITEM_REVISION_SEQUENCE" => & ["name" , "description" , "relating_configuration_item" , "related_configuration_item" ,] , "CONFIGURED_EFFECTIVITY_ASSIGNMENT" => & ["assigned_effectivity" , "items" ,] , "CONFIGURED_EFFECTIVITY_CONTEXT_ASSIGNMENT" => & ["assigned_effectivity_assignment" , "role" , "items" ,] , "CONIC" => & ["name" , "position" ,] , "CONICAL_STEPPED_HOLE_TRANSITION" => & ["name" , "transition_number" , "cone_apex_angle" , "cone_base_radius" ,] , "CONICAL_SURFACE" => & ["name" , "position" , "radius" , "semi_angle" ,] , "CONNECTED_EDGE_SET" => & ["name" , "ces_edges" ,] , "CONNECTED_FACE_SET" => & ["name" , "cfs_faces" ,] , "CONNECTED_FACE_SUB_SET" => & ["name" , "cfs_faces" , "parent_face_set" ,] , "CONSTRUCTIVE_GEOMETRY_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "CONSTRUCTIVE_GEOMETRY_REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "CONTACT_RATIO_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "CONTEXT_DEPENDENT_INVISIBILITY" => & ["invisible_items" , "presentation_context" ,] , "CONTEXT_DEPENDENT_OVER_RIDING_STYLED_ITEM" => & ["name" , "styles" , "item" , "over_ridden_style" , "style_context" ,] , "CONTEXT_DEPENDENT_SHAPE_REPRESENTATION" => & ["representation_relation" , "represented_product_relation" ,] , "CONTEXT_DEPENDENT_UNIT" => & ["dimensions" , "name" ,] , "CONTRACT" => & ["name" , "purpose" , "kind" ,] , "CONTRACT_ASSIGNMENT" => & ["assigned_contract" ,] , "CONTRACT_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_contract" , "related_contract" ,] , "CONTRACT_TYPE" => & ["description" ,] , "CONVERSION_BASED_UNIT" => & ["dimensions" , "name" , "conversion_factor" ,] , "COORDINATED_UNIVERSAL_TIME_OFFSET" => & ["hour_offset" , "minute_offset" , "sense" ,] , "CSG_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "CSG_SOLID" => & ["name" , "tree_root_expression" ,] , "CURRENCY" => & ["dimensions" , "name" ,] , "CURRENCY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "CURVE" => & ["name" ,] , "CURVE_BOUNDED_SURFACE" => & ["name" , "basis_surface" , "boundaries" , "implicit_outer" ,] , "CURVE_DIMENSION" => & ["name" , "contents" ,] , "CURVE_REPLICA" => & ["name" , "parent_curve" , "transformation" ,] , "CURVE_STYLE" => & ["name" , "curve_font" , "curve_width" , "curve_colour" ,] , "CURVE_STYLE_FONT" => & ["name" , "pattern_list" ,] , "CURVE_STYLE_FONT_AND_SCALING" => & ["name" , "curve_font" , "curve_font_scaling" ,] , "CURVE_STYLE_FONT_PATTERN" => & ["visible_segment_length" , "invisible_segment_length" ,] , "CURVE_STYLE_RENDERING" => & ["rendering_method" , "rendering_properties" ,] , "CURVE_SWEPT_SOLID_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "CYLINDRICAL_SURFACE" => & ["name" , "position" , "radius" ,] , "CYLINDRICITY_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "DATA_ENVIRONMENT" => & ["name" , "description" , "elements" ,] , "DATE" => & ["year_component" ,] , "DATED_EFFECTIVITY" => & ["id" , "effectivity_end_date" , "effectivity_start_date" ,] , "DATE_AND_TIME" => & ["date_component" , "time_component" ,] , "DATE_AND_TIME_ASSIGNMENT" => & ["assigned_date_and_time" , "role" ,] , "DATE_ASSIGNMENT" => & ["assigned_date" , "role" ,] , "DATE_REPRESENTATION_ITEM" => & ["name" , "year_component" ,] , "DATE_ROLE" => & ["name" ,] , "DATE_TIME_REPRESENTATION_ITEM" => & ["name" , "date_component" , "time_component" ,] , "DATE_TIME_ROLE" => & ["name" ,] , "DATUM" => & ["name" , "description" , "of_shape" , "product_definitional" , "identification" ,] , "DATUM_FEATURE" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "DATUM_FEATURE_CALLOUT" => & ["name" , "contents" ,] , "DATUM_REFERENCE" => & ["precedence" , "referenced_datum" ,] , "DATUM_TARGET" => & ["name" , "description" , "of_shape" , "product_definitional" , "target_id" ,] , "DATUM_TARGET_CALLOUT" => & ["name" , "contents" ,] , "DEFAULT_TOLERANCE_TABLE" => & ["name" , "items" , "context_of_items" ,] , "DEFAULT_TOLERANCE_TABLE_CELL" => & ["name" , "item_element" ,] , "DEFINED_SYMBOL" => & ["name" , "definition" , "target" ,] , "DEFINITIONAL_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "DEFINITIONAL_REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "DEFINITIONAL_REPRESENTATION_RELATIONSHIP_WITH_SAME_CONTEXT" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "DEGENERATE_PCURVE" => & ["name" , "basis_surface" , "reference_to_curve" ,] , "DEGENERATE_TOROIDAL_SURFACE" => & ["name" , "position" , "major_radius" , "minor_radius" , "select_outer" ,] , "DERIVED_SHAPE_ASPECT" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "DERIVED_UNIT" => & ["elements" ,] , "DERIVED_UNIT_ELEMENT" => & ["unit" , "exponent" ,] , "DESCRIPTION_ATTRIBUTE" => & ["attribute_value" , "described_item" ,] , "DESCRIPTIVE_REPRESENTATION_ITEM" => & ["name" , "description" ,] , "DESIGN_CONTEXT" => & ["name" , "frame_of_reference" , "life_cycle_stage" ,] , "DESIGN_MAKE_FROM_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "DIAMETER_DIMENSION" => & ["name" , "contents" ,] , "DIELECTRIC_CONSTANT_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "DIMENSIONAL_CHARACTERISTIC_REPRESENTATION" => & ["dimension" , "representation" ,] , "DIMENSIONAL_EXPONENTS" => & ["length_exponent" , "mass_exponent" , "time_exponent" , "electric_current_exponent" , "thermodynamic_temperature_exponent" , "amount_of_substance_exponent" , "luminous_intensity_exponent" ,] , "DIMENSIONAL_LOCATION" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" ,] , "DIMENSIONAL_LOCATION_WITH_PATH" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" , "path" ,] , "DIMENSIONAL_SIZE" => & ["applies_to" , "name" ,] , "DIMENSIONAL_SIZE_WITH_PATH" => & ["applies_to" , "name" , "path" ,] , "DIMENSION_CALLOUT" => & ["name" , "contents" ,] , "DIMENSION_CALLOUT_COMPONENT_RELATIONSHIP" => & ["name" , "description" , "relating_draughting_callout" , "related_draughting_callout" ,] , "DIMENSION_CALLOUT_RELATIONSHIP" => & ["name" , "description" , "relating_draughting_callout" , "related_draughting_callout" ,] , "DIMENSION_CURVE" => & ["name" , "styles" , "item" ,] , "DIMENSION_CURVE_DIRECTED_CALLOUT" => & ["name" , "contents" ,] , "DIMENSION_CURVE_TERMINATOR" => & ["name" , "styles" , "item" , "annotated_curve" , "role" ,] , "DIMENSION_CURVE_TERMINATOR_TO_PROJECTION_CURVE_ASSOCIATIVITY" => & ["name" , "description" , "relating_annotation_occurrence" , "related_annotation_occurrence" ,] , "DIMENSION_PAIR" => & ["name" , "description" , "relating_draughting_callout" , "related_draughting_callout" ,] , "DIMENSION_RELATED_TOLERANCE_ZONE_ELEMENT" => & ["related_dimension" , "related_element" ,] , "DIMENSION_TEXT_ASSOCIATIVITY" => & ["name" , "literal" , "placement" , "alignment" , "path" , "font" , "mapping_source" , "mapping_target" ,] , "DIRECTED_ACTION" => & ["name" , "description" , "chosen_method" , "directive" ,] , "DIRECTED_DIMENSIONAL_LOCATION" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" ,] , "DIRECTION" => & ["name" , "direction_ratios" ,] , "DOCUMENT" => & ["id" , "name" , "description" , "kind" ,] , "DOCUMENT_FILE" => & ["id" , "name" , "description" , "kind" ,] , "DOCUMENT_IDENTIFIER" => & ["name" , "description" ,] , "DOCUMENT_IDENTIFIER_ASSIGNMENT" => & ["assigned_group" , "items" ,] , "DOCUMENT_PRODUCT_ASSOCIATION" => & ["name" , "description" , "relating_document" , "related_product" ,] , "DOCUMENT_PRODUCT_EQUIVALENCE" => & ["name" , "description" , "relating_document" , "related_product" ,] , "DOCUMENT_REFERENCE" => & ["assigned_document" , "source" ,] , "DOCUMENT_RELATIONSHIP" => & ["name" , "description" , "relating_document" , "related_document" ,] , "DOCUMENT_REPRESENTATION_TYPE" => & ["name" , "represented_document" ,] , "DOCUMENT_TYPE" => & ["product_data_type" ,] , "DOCUMENT_USAGE_CONSTRAINT" => & ["source" , "subject_element" , "subject_element_value" ,] , "DOCUMENT_USAGE_CONSTRAINT_ASSIGNMENT" => & ["assigned_document_usage" , "role" ,] , "DOCUMENT_USAGE_ROLE" => & ["name" , "description" ,] , "DOSE_EQUIVALENT_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "DOSE_EQUIVALENT_UNIT" => & ["elements" ,] , "DOUBLE_OFFSET_SHELLED_SOLID" => & ["name" , "rationale" , "base_solid" , "deleted_face_set" , "thickness" , "thickness2" ,] , "DRAPED_DEFINED_TRANSFORMATION" => & ["name" , "description" , "transform_item_1" , "transform_item_2" ,] , "DRAUGHTING_ANNOTATION_OCCURRENCE" => & ["name" , "styles" , "item" ,] , "DRAUGHTING_CALLOUT" => & ["name" , "contents" ,] , "DRAUGHTING_CALLOUT_RELATIONSHIP" => & ["name" , "description" , "relating_draughting_callout" , "related_draughting_callout" ,] , "DRAUGHTING_ELEMENTS" => & ["name" , "contents" ,] , "DRAUGHTING_MODEL" => & ["name" , "items" , "context_of_items" ,] , "DRAUGHTING_MODEL_ITEM_ASSOCIATION" => & ["name" , "description" , "definition" , "used_representation" , "identified_item" ,] , "DRAUGHTING_PRE_DEFINED_COLOUR" => & ["name" ,] , "DRAUGHTING_PRE_DEFINED_CURVE_FONT" => & ["name" ,] , "DRAUGHTING_PRE_DEFINED_TEXT_FONT" => & ["name" ,] , "DRAUGHTING_SUBFIGURE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "DRAUGHTING_SYMBOL_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "DRAUGHTING_TEXT_LITERAL_WITH_DELINEATION" => & ["name" , "literal" , "placement" , "alignment" , "path" , "font" , "delineation" ,] , "DRAUGHTING_TITLE" => & ["items" , "language" , "contents" ,] , "DRAWING_DEFINITION" => & ["drawing_number" , "drawing_type" ,] , "DRAWING_REVISION" => & ["revision_identifier" , "drawing_identifier" , "intended_scale" ,] , "DRAWING_REVISION_SEQUENCE" => & ["predecessor" , "successor" ,] , "DRAWING_SHEET_REVISION" => & ["name" , "items" , "context_of_items" , "revision_identifier" ,] , "DRAWING_SHEET_REVISION_SEQUENCE" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "DRAWING_SHEET_REVISION_USAGE" => & ["area" , "in_set" , "sheet_number" ,] , "EDGE" => & ["name" , "edge_start" , "edge_end" ,] , "EDGE_BASED_WIREFRAME_MODEL" => & ["name" , "ebwm_boundary" ,] , "EDGE_BASED_WIREFRAME_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "EDGE_BLENDED_SOLID" => & ["name" , "rationale" , "base_solid" , "blended_edges" ,] , "EDGE_CURVE" => & ["name" , "edge_start" , "edge_end" , "edge_geometry" , "same_sense" ,] , "EDGE_LOOP" => & ["name" , "edge_list" ,] , "EFFECTIVITY" => & ["id" ,] , "EFFECTIVITY_ASSIGNMENT" => & ["assigned_effectivity" ,] , "EFFECTIVITY_CONTEXT_ASSIGNMENT" => & ["assigned_effectivity_assignment" , "role" ,] , "EFFECTIVITY_CONTEXT_ROLE" => & ["name" , "description" ,] , "EFFECTIVITY_RELATIONSHIP" => & ["name" , "description" , "related_effectivity" , "relating_effectivity" ,] , "ELECTRIC_CHARGE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "ELECTRIC_CHARGE_UNIT" => & ["elements" ,] , "ELECTRIC_CURRENT_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "ELECTRIC_CURRENT_UNIT" => & ["dimensions" ,] , "ELECTRIC_POTENTIAL_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "ELECTRIC_POTENTIAL_UNIT" => & ["elements" ,] , "ELEMENTARY_BREP_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "ELEMENTARY_SURFACE" => & ["name" , "position" ,] , "ELLIPSE" => & ["name" , "position" , "semi_axis_1" , "semi_axis_2" ,] , "ENERGY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "ENERGY_UNIT" => & ["elements" ,] , "ENTITY_ASSERTION" => & ["name" , "description" , "definition" ,] , "ENUM_REFERENCE_PREFIX" => & ["name" , "description" ,] , "ENVIRONMENT" => & ["syntactic_representation" , "semantics" ,] , "EVALUATED_CHARACTERISTIC" => & ["name" , "items" , "context_of_items" , "description" , "rep_1" , "rep_2" ,] , "EVALUATED_DEGENERATE_PCURVE" => & ["name" , "basis_surface" , "reference_to_curve" , "equivalent_point" ,] , "EVALUATION_PRODUCT_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "EVENT_OCCURRENCE" => & ["id" , "name" , "description" ,] , "EVENT_OCCURRENCE_ASSIGNMENT" => & ["assigned_event_occurrence" , "role" ,] , "EVENT_OCCURRENCE_RELATIONSHIP" => & ["name" , "description" , "relating_event" , "related_event" ,] , "EVENT_OCCURRENCE_ROLE" => & ["name" , "description" ,] , "EXCLUSIVE_PRODUCT_CONCEPT_FEATURE_CATEGORY" => & ["name" , "description" ,] , "EXECUTED_ACTION" => & ["name" , "description" , "chosen_method" ,] , "EXPANDED_UNCERTAINTY" => & ["measure_name" , "description" , "uncertainty_value" , "coverage_factor" ,] , "EXPLICIT_PROCEDURAL_GEOMETRIC_REPRESENTATION_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "EXPLICIT_PROCEDURAL_REPRESENTATION_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "EXPLICIT_PROCEDURAL_REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "EXPLICIT_PROCEDURAL_SHAPE_REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "EXPRESSION" => & [] , "EXPRESSION_CONVERSION_BASED_UNIT" => & ["dimensions" , "name" ,] , "EXTENSION" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "EXTENT" => & ["name" , "description" ,] , "EXTERNALLY_DEFINED_CLASS" => & ["name" , "description" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_COLOUR" => & ["name" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_CONTEXT_DEPENDENT_UNIT" => & ["dimensions" , "name" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_CONVERSION_BASED_UNIT" => & ["dimensions" , "name" , "conversion_factor" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_CURRENCY" => & ["dimensions" , "name" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_CURVE_FONT" => & ["item_id" , "source" ,] , "EXTERNALLY_DEFINED_DIMENSION_DEFINITION" => & ["applies_to" , "name" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_GENERAL_PROPERTY" => & ["id" , "name" , "description" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_HATCH_STYLE" => & ["item_id" , "source" , "name" ,] , "EXTERNALLY_DEFINED_ITEM" => & ["item_id" , "source" ,] , "EXTERNALLY_DEFINED_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_item" , "related_item" ,] , "EXTERNALLY_DEFINED_MARKER" => & ["item_id" , "source" , "name" ,] , "EXTERNALLY_DEFINED_PICTURE_REPRESENTATION_ITEM" => & ["name" , "binary_value" ,] , "EXTERNALLY_DEFINED_REPRESENTATION_ITEM" => & ["name" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_STRING" => & ["name" , "item_id" , "source" ,] , "EXTERNALLY_DEFINED_SYMBOL" => & ["item_id" , "source" ,] , "EXTERNALLY_DEFINED_TERMINATOR_SYMBOL" => & ["item_id" , "source" ,] , "EXTERNALLY_DEFINED_TEXT_FONT" => & ["item_id" , "source" ,] , "EXTERNALLY_DEFINED_TILE" => & ["item_id" , "source" ,] , "EXTERNALLY_DEFINED_TILE_STYLE" => & ["item_id" , "source" , "name" ,] , "EXTERNAL_CLASS_LIBRARY" => & ["source_id" ,] , "EXTERNAL_IDENTIFICATION_ASSIGNMENT" => & ["assigned_id" , "role" , "source" ,] , "EXTERNAL_SOURCE" => & ["source_id" ,] , "EXTERNAL_SOURCE_RELATIONSHIP" => & ["name" , "description" , "relating_source" , "related_source" ,] , "EXTRUDED_AREA_SOLID" => & ["name" , "swept_area" , "extruded_direction" , "depth" ,] , "EXTRUDED_FACE_SOLID" => & ["name" , "swept_face" , "extruded_direction" , "depth" ,] , "EXTRUDED_FACE_SOLID_WITH_DRAFT_ANGLE" => & ["name" , "swept_face" , "extruded_direction" , "depth" , "first_trim_condition" , "second_trim_condition" , "first_trim_intent" , "second_trim_intent" , "first_offset" , "second_offset" , "draft_angle" ,] , "EXTRUDED_FACE_SOLID_WITH_MULTIPLE_DRAFT_ANGLES" => & ["name" , "swept_face" , "extruded_direction" , "depth" , "first_trim_condition" , "second_trim_condition" , "first_trim_intent" , "second_trim_intent" , "first_offset" , "second_offset" , "drafted_edges" , "draft_angles" ,] , "EXTRUDED_FACE_SOLID_WITH_TRIM_CONDITIONS" => & ["name" , "swept_face" , "extruded_direction" , "depth" , "first_trim_condition" , "second_trim_condition" , "first_trim_intent" , "second_trim_intent" , "first_offset" , "second_offset" ,] , "FACE" => & ["name" , "bounds" ,] , "FACETED_BREP" => & ["name" , "outer" ,] , "FACETED_BREP_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "FACE_BASED_SURFACE_MODEL" => & ["name" , "fbsm_faces" ,] , "FACE_BOUND" => & ["name" , "bound" , "orientation" ,] , "FACE_OUTER_BOUND" => & ["name" , "bound" , "orientation" ,] , "FACE_SURFACE" => & ["name" , "bounds" , "face_geometry" , "same_sense" ,] , "FACT_TYPE" => & ["name" , "description" , "definition" ,] , "FILL_AREA_STYLE" => & ["name" , "fill_styles" ,] , "FILL_AREA_STYLE_COLOUR" => & ["name" , "fill_colour" ,] , "FILL_AREA_STYLE_HATCHING" => & ["name" , "hatch_line_appearance" , "start_of_next_hatch_line" , "point_of_reference_hatch_line" , "pattern_start" , "hatch_line_angle" ,] , "FILL_AREA_STYLE_TILES" => & ["name" , "tiling_pattern" , "tiles" , "tiling_scale" ,] , "FILL_AREA_STYLE_TILE_COLOURED_REGION" => & ["name" , "closed_curve" , "region_colour" ,] , "FILL_AREA_STYLE_TILE_CURVE_WITH_STYLE" => & ["name" , "styled_curve" ,] , "FILL_AREA_STYLE_TILE_SYMBOL_WITH_STYLE" => & ["name" , "symbol" ,] , "FLATNESS_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "FLAT_PATTERN_PLY_REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "FORCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "FORCE_UNIT" => & ["elements" ,] , "FORWARD_CHAINING_RULE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "FORWARD_CHAINING_RULE_PREMISE" => & ["name" , "description" , "definition" , "used_representation" , "items" , "context_of_items" ,] , "FOUNDED_ITEM" => & [] , "FREQUENCY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "FREQUENCY_UNIT" => & ["elements" ,] , "FUNC" => & ["name" , "item_element" ,] , "FUNCTIONALLY_DEFINED_TRANSFORMATION" => & ["name" , "description" ,] , "FUNCTIONAL_BREAKDOWN_CONTEXT" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "FUNCTIONAL_ELEMENT_USAGE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "GENERAL_MATERIAL_PROPERTY" => & ["id" , "name" , "description" ,] , "GENERAL_PROPERTY" => & ["id" , "name" , "description" ,] , "GENERAL_PROPERTY_ASSOCIATION" => & ["name" , "description" , "base_definition" , "derived_definition" ,] , "GENERAL_PROPERTY_RELATIONSHIP" => & ["name" , "description" , "relating_property" , "related_property" ,] , "GENERIC_CHARACTER_GLYPH_SYMBOL" => & ["name" , "items" , "context_of_items" ,] , "GENERIC_EXPRESSION" => & [] , "GENERIC_LITERAL" => & [] , "GENERIC_VARIABLE" => & [] , "GEOMETRICALLY_BOUNDED_2D_WIREFRAME_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "GEOMETRICALLY_BOUNDED_SURFACE_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "GEOMETRICALLY_BOUNDED_WIREFRAME_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "GEOMETRICAL_TOLERANCE_CALLOUT" => & ["name" , "contents" ,] , "GEOMETRIC_ALIGNMENT" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "GEOMETRIC_CURVE_SET" => & ["name" , "elements" ,] , "GEOMETRIC_INTERSECTION" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "GEOMETRIC_ITEM_SPECIFIC_USAGE" => & ["name" , "description" , "definition" , "used_representation" , "identified_item" ,] , "GEOMETRIC_MODEL_ELEMENT_RELATIONSHIP" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "GEOMETRIC_REPRESENTATION_CONTEXT" => & ["context_identifier" , "context_type" , "coordinate_space_dimension" ,] , "GEOMETRIC_REPRESENTATION_ITEM" => & ["name" ,] , "GEOMETRIC_SET" => & ["name" , "elements" ,] , "GEOMETRIC_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "GEOMETRIC_TOLERANCE_RELATIONSHIP" => & ["name" , "description" , "relating_geometric_tolerance" , "related_geometric_tolerance" ,] , "GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "GEOMETRIC_TOLERANCE_WITH_DEFINED_UNIT" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "unit_size" ,] , "GLOBAL_ASSIGNMENT" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "GLOBAL_UNCERTAINTY_ASSIGNED_CONTEXT" => & ["context_identifier" , "context_type" , "uncertainty" ,] , "GLOBAL_UNIT_ASSIGNED_CONTEXT" => & ["context_identifier" , "context_type" , "units" ,] , "GROUND_FACT" => & ["name" , "item_element" ,] , "GROUP" => & ["name" , "description" ,] , "GROUP_ASSIGNMENT" => & ["assigned_group" ,] , "GROUP_RELATIONSHIP" => & ["name" , "description" , "relating_group" , "related_group" ,] , "HALF_SPACE_SOLID" => & ["name" , "base_surface" , "agreement_flag" ,] , "HARDNESS_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "HIDDEN_ELEMENT_OVER_RIDING_STYLED_ITEM" => & ["name" , "styles" , "item" , "over_ridden_style" , "style_context" ,] , "HYPERBOLA" => & ["name" , "position" , "semi_axis" , "semi_imag_axis" ,] , "IDENTIFICATION_ASSIGNMENT" => & ["assigned_id" , "role" ,] , "IDENTIFICATION_ROLE" => & ["name" , "description" ,] , "ID_ATTRIBUTE" => & ["attribute_value" , "identified_item" ,] , "ILLUMINANCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "ILLUMINANCE_UNIT" => & ["elements" ,] , "INCLUDED_TEXT_BLOCK" => & ["name" , "mapping_source" , "mapping_target" ,] , "INCLUSION_PRODUCT_CONCEPT_FEATURE" => & ["id" , "name" , "description" , "condition" ,] , "INDIRECTLY_SELECTED_ELEMENTS" => & ["name" , "picked_items" , "indirectly_picked_items" ,] , "INDIRECTLY_SELECTED_SHAPE_ELEMENTS" => & ["name" , "picked_items" , "indirectly_picked_items" ,] , "INDUCTANCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "INDUCTANCE_UNIT" => & ["elements" ,] , "INFORMATION_RIGHT" => & ["name" , "description" , "consequence" , "purpose" ,] , "INFORMATION_USAGE_RIGHT" => & ["name" , "description" , "consequence" , "purpose" ,] , "INSTANCED_FEATURE" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "INSTANCE_USAGE_CONTEXT_ASSIGNMENT" => & ["name" , "frame_of_reference" , "life_cycle_stage" , "items" ,] , "INTEGER_REPRESENTATION_ITEM" => & ["name" , "the_value" ,] , "INTERSECTION_CURVE" => & ["name" , "curve_3d" , "associated_geometry" , "master_representation" ,] , "INTERVAL_EXPRESSION" => & ["operands" ,] , "INT_LITERAL" => & ["the_value" ,] , "INVISIBILITY" => & ["invisible_items" ,] , "ISO_4217_CURRENCY" => & ["dimensions" , "name" ,] , "ITEM_DEFINED_TRANSFORMATION" => & ["name" , "description" , "transform_item_1" , "transform_item_2" ,] , "ITEM_IDENTIFIED_REPRESENTATION_USAGE" => & ["name" , "description" , "definition" , "used_representation" , "identified_item" ,] , "KNOWN_SOURCE" => & ["source_id" , "name" ,] , "LAID_DEFINED_TRANSFORMATION" => & ["name" , "description" , "transform_item_1" , "transform_item_2" ,] , "LAMINATE_TABLE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "LANGUAGE" => & ["name" , "description" ,] , "LEADER_CURVE" => & ["name" , "styles" , "item" ,] , "LEADER_DIRECTED_CALLOUT" => & ["name" , "contents" ,] , "LEADER_DIRECTED_DIMENSION" => & ["name" , "contents" ,] , "LEADER_TERMINATOR" => & ["name" , "styles" , "item" , "annotated_curve" ,] , "LENGTH_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "LENGTH_UNIT" => & ["dimensions" ,] , "LIGHT_SOURCE" => & ["name" , "light_colour" ,] , "LIGHT_SOURCE_AMBIENT" => & ["name" , "light_colour" ,] , "LIGHT_SOURCE_DIRECTIONAL" => & ["name" , "light_colour" , "orientation" ,] , "LIGHT_SOURCE_POSITIONAL" => & ["name" , "light_colour" , "position" , "constant_attenuation" , "distance_attenuation" ,] , "LIGHT_SOURCE_SPOT" => & ["name" , "light_colour" , "position" , "orientation" , "concentration_exponent" , "constant_attenuation" , "distance_attenuation" , "spread_angle" ,] , "LIMITS_AND_FITS" => & ["form_variance" , "zone_variance" , "grade" , "source" ,] , "LINE" => & ["name" , "pnt" , "dir" ,] , "LINEAR_DIMENSION" => & ["name" , "contents" ,] , "LINE_PROFILE_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "LITERAL_CONJUNCTION" => & ["name" , "item_element" ,] , "LITERAL_DISJUNCTION" => & ["name" , "item_element" ,] , "LITERAL_NUMBER" => & ["the_value" ,] , "LOCAL_TIME" => & ["hour_component" , "minute_component" , "second_component" , "zone" ,] , "LOGICAL_LITERAL" => & ["lit_value" ,] , "LOGICAL_REPRESENTATION_ITEM" => & ["name" , "lit_value" ,] , "LOOP" => & ["name" ,] , "LOSS_TANGENT_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "LOT_EFFECTIVITY" => & ["id" , "effectivity_lot_id" , "effectivity_lot_size" ,] , "LUMINOUS_FLUX_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "LUMINOUS_FLUX_UNIT" => & ["dimensions" ,] , "LUMINOUS_INTENSITY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "LUMINOUS_INTENSITY_UNIT" => & ["dimensions" ,] , "MAGNETIC_FLUX_DENSITY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "MAGNETIC_FLUX_DENSITY_UNIT" => & ["elements" ,] , "MAGNETIC_FLUX_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "MAGNETIC_FLUX_UNIT" => & ["elements" ,] , "MAKE_FROM_USAGE_OPTION" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" , "ranking" , "ranking_rationale" , "quantity" ,] , "MANIFOLD_SOLID_BREP" => & ["name" , "outer" ,] , "MANIFOLD_SUBSURFACE_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "MANIFOLD_SURFACE_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "MAPPED_ITEM" => & ["name" , "mapping_source" , "mapping_target" ,] , "MASS_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "MASS_UNIT" => & ["dimensions" ,] , "MATERIAL_DESIGNATION" => & ["name" , "definitions" ,] , "MATERIAL_DESIGNATION_CHARACTERIZATION" => & ["name" , "description" , "designation" , "property" ,] , "MATERIAL_PROPERTY" => & ["name" , "description" , "definition" ,] , "MATERIAL_PROPERTY_REPRESENTATION" => & ["definition" , "used_representation" , "dependent_environment" ,] , "MEASURE_QUALIFICATION" => & ["name" , "description" , "qualified_measure" , "qualifiers" ,] , "MEASURE_REPRESENTATION_ITEM" => & ["name" , "value_component" , "unit_component" ,] , "MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "MECHANICAL_CONTEXT" => & ["name" , "frame_of_reference" , "discipline_type" ,] , "MECHANICAL_DESIGN_AND_DRAUGHTING_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "MECHANICAL_DESIGN_GEOMETRIC_PRESENTATION_AREA" => & ["name" , "items" , "context_of_items" ,] , "MECHANICAL_DESIGN_GEOMETRIC_PRESENTATION_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "MECHANICAL_DESIGN_PRESENTATION_REPRESENTATION_WITH_DRAUGHTING" => & ["name" , "items" , "context_of_items" ,] , "MECHANICAL_DESIGN_SHADED_PRESENTATION_AREA" => & ["name" , "items" , "context_of_items" ,] , "MECHANICAL_DESIGN_SHADED_PRESENTATION_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "MIN_AND_MAJOR_PLY_ORIENTATION_BASIS" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "MODIFIED_GEOMETRIC_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "modifier" ,] , "MODIFIED_SOLID" => & ["name" , "rationale" , "base_solid" ,] , "MODIFIED_SOLID_WITH_PLACED_CONFIGURATION" => & ["name" , "rationale" , "base_solid" , "placing" ,] , "MOMENTS_OF_INERTIA_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "MULTIPLE_ARITY_BOOLEAN_EXPRESSION" => & ["operands" ,] , "MULTIPLE_ARITY_GENERIC_EXPRESSION" => & ["operands" ,] , "MULTIPLE_ARITY_NUMERIC_EXPRESSION" => & ["operands" ,] , "MULTI_LANGUAGE_ATTRIBUTE_ASSIGNMENT" => & ["attribute_name" , "attribute_value" , "role" , "items" ,] , "NAMED_UNIT" => & ["dimensions" ,] , "NAME_ASSIGNMENT" => & ["assigned_name" ,] , "NAME_ATTRIBUTE" => & ["attribute_value" , "named_item" ,] , "NEXT_ASSEMBLY_USAGE_OCCURRENCE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" , "reference_designator" ,] , "NON_MANIFOLD_SURFACE_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "NULL_REPRESENTATION_ITEM" => & ["name" ,] , "NUMERIC_EXPRESSION" => & [] , "OBJECT_ROLE" => & ["name" , "description" ,] , "OFFSET_CURVE_2D" => & ["name" , "basis_curve" , "distance" , "self_intersect" ,] , "OFFSET_CURVE_3D" => & ["name" , "basis_curve" , "distance" , "self_intersect" , "ref_direction" ,] , "OFFSET_SURFACE" => & ["name" , "basis_surface" , "distance" , "self_intersect" ,] , "ONE_DIRECTION_REPEAT_FACTOR" => & ["name" , "repeat_factor" ,] , "OPEN_SHELL" => & ["name" , "cfs_faces" ,] , "ORDINAL_DATE" => & ["year_component" , "day_component" ,] , "ORDINATE_DIMENSION" => & ["name" , "contents" ,] , "ORGANIZATION" => & ["id" , "name" , "description" ,] , "ORGANIZATIONAL_ADDRESS" => & ["internal_location" , "street_number" , "street" , "postal_box" , "town" , "region" , "postal_code" , "country" , "facsimile_number" , "telephone_number" , "electronic_mail_address" , "telex_number" , "organizations" , "description" ,] , "ORGANIZATIONAL_PROJECT" => & ["name" , "description" , "responsible_organizations" ,] , "ORGANIZATIONAL_PROJECT_ASSIGNMENT" => & ["assigned_organizational_project" , "role" ,] , "ORGANIZATIONAL_PROJECT_RELATIONSHIP" => & ["name" , "description" , "relating_organizational_project" , "related_organizational_project" ,] , "ORGANIZATIONAL_PROJECT_ROLE" => & ["name" , "description" ,] , "ORGANIZATION_ASSIGNMENT" => & ["assigned_organization" , "role" ,] , "ORGANIZATION_RELATIONSHIP" => & ["name" , "description" , "relating_organization" , "related_organization" ,] , "ORGANIZATION_ROLE" => & ["name" ,] , "ORIENTED_CLOSED_SHELL" => & ["name" , "cfs_faces" , "closed_shell_element" , "orientation" ,] , "ORIENTED_EDGE" => & ["name" , "edge_start" , "edge_end" , "edge_element" , "orientation" ,] , "ORIENTED_FACE" => & ["name" , "bounds" , "face_element" , "orientation" ,] , "ORIENTED_OPEN_SHELL" => & ["name" , "cfs_faces" , "open_shell_element" , "orientation" ,] , "ORIENTED_PATH" => & ["name" , "edge_list" , "path_element" , "orientation" ,] , "ORIENTED_SURFACE" => & ["name" , "orientation" ,] , "OUTER_BOUNDARY_CURVE" => & ["name" , "segments" , "self_intersect" ,] , "OVER_RIDING_STYLED_ITEM" => & ["name" , "styles" , "item" , "over_ridden_style" ,] , "PACKAGE_PRODUCT_CONCEPT_FEATURE" => & ["id" , "name" , "description" ,] , "PARABOLA" => & ["name" , "position" , "focal_dist" ,] , "PARALLELISM_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "PARALLEL_OFFSET" => & ["name" , "description" , "of_shape" , "product_definitional" , "offset" ,] , "PARAMETRIC_REPRESENTATION_CONTEXT" => & ["context_identifier" , "context_type" ,] , "PARTIAL_DOCUMENT_WITH_STRUCTURED_TEXT_REPRESENTATION_ASSIGNMENT" => & ["assigned_document_usage" , "role" , "items" , "name" , "description" ,] , "PART_LAMINATE_TABLE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PATH" => & ["name" , "edge_list" ,] , "PCURVE" => & ["name" , "basis_surface" , "reference_to_curve" ,] , "PERCENTAGE_LAMINATE_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PERCENTAGE_LAMINATE_TABLE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PERCENTAGE_PLY_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PERPENDICULARITY_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "PERPENDICULAR_TO" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "PERSON" => & ["id" , "last_name" , "first_name" , "middle_names" , "prefix_titles" , "suffix_titles" ,] , "PERSONAL_ADDRESS" => & ["internal_location" , "street_number" , "street" , "postal_box" , "town" , "region" , "postal_code" , "country" , "facsimile_number" , "telephone_number" , "electronic_mail_address" , "telex_number" , "people" , "description" ,] , "PERSON_AND_ORGANIZATION" => & ["the_person" , "the_organization" ,] , "PERSON_AND_ORGANIZATION_ADDRESS" => & ["internal_location" , "street_number" , "street" , "postal_box" , "town" , "region" , "postal_code" , "country" , "facsimile_number" , "telephone_number" , "electronic_mail_address" , "telex_number" , "organizations" , "description" , "people" ,] , "PERSON_AND_ORGANIZATION_ASSIGNMENT" => & ["assigned_person_and_organization" , "role" ,] , "PERSON_AND_ORGANIZATION_ROLE" => & ["name" ,] , "PHYSICAL_BREAKDOWN_CONTEXT" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "PHYSICAL_ELEMENT_USAGE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "PICTURE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "PICTURE_REPRESENTATION_ITEM" => & ["name" , "binary_value" ,] , "PLACED_DATUM_TARGET_FEATURE" => & ["name" , "description" , "of_shape" , "product_definitional" , "target_id" ,] , "PLACED_FEATURE" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "PLACEMENT" => & ["name" , "location" ,] , "PLANAR_BOX" => & ["name" , "size_in_x" , "size_in_y" , "placement" ,] , "PLANAR_EXTENT" => & ["name" , "size_in_x" , "size_in_y" ,] , "PLANE" => & ["name" , "position" ,] , "PLANE_ANGLE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "PLANE_ANGLE_UNIT" => & ["dimensions" ,] , "PLUS_MINUS_TOLERANCE" => & ["range" , "toleranced_dimension" ,] , "PLY_LAMINATE_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PLY_LAMINATE_SEQUENCE_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PLY_LAMINATE_TABLE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "POINT" => & ["name" ,] , "POINT_AND_VECTOR" => & ["name" , "item_element" ,] , "POINT_ON_CURVE" => & ["name" , "basis_curve" , "point_parameter" ,] , "POINT_ON_SURFACE" => & ["name" , "basis_surface" , "point_parameter_u" , "point_parameter_v" ,] , "POINT_PATH" => & ["name" , "item_element" ,] , "POINT_REPLICA" => & ["name" , "parent_pt" , "transformation" ,] , "POINT_STYLE" => & ["name" , "marker" , "marker_size" , "marker_colour" ,] , "POLAR_COMPLEX_NUMBER_LITERAL" => & ["radius" , "angle" ,] , "POLYLINE" => & ["name" , "points" ,] , "POLY_LOOP" => & ["name" , "polygon" ,] , "POSITIONED_SKETCH" => & ["name" , "sketch_basis" , "auxiliary_elements" ,] , "POSITION_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "POWER_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "POWER_UNIT" => & ["elements" ,] , "PRECISION_QUALIFIER" => & ["precision_value" ,] , "PREDEFINED_PICTURE_REPRESENTATION_ITEM" => & ["name" , "binary_value" ,] , "PRESENTATION_AREA" => & ["name" , "items" , "context_of_items" ,] , "PRESENTATION_LAYER_ASSIGNMENT" => & ["name" , "description" , "assigned_items" ,] , "PRESENTATION_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "PRESENTATION_SET" => & [] , "PRESENTATION_SIZE" => & ["unit" , "size" ,] , "PRESENTATION_STYLE_ASSIGNMENT" => & ["styles" ,] , "PRESENTATION_STYLE_BY_CONTEXT" => & ["styles" , "style_context" ,] , "PRESENTATION_VIEW" => & ["name" , "items" , "context_of_items" ,] , "PRESENTED_ITEM" => & [] , "PRESENTED_ITEM_REPRESENTATION" => & ["presentation" , "item" ,] , "PRESSURE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "PRESSURE_UNIT" => & ["elements" ,] , "PRE_DEFINED_COLOUR" => & ["name" ,] , "PRE_DEFINED_CURVE_FONT" => & ["name" ,] , "PRE_DEFINED_DIMENSION_SYMBOL" => & ["name" ,] , "PRE_DEFINED_GEOMETRICAL_TOLERANCE_SYMBOL" => & ["name" ,] , "PRE_DEFINED_ITEM" => & ["name" ,] , "PRE_DEFINED_MARKER" => & ["name" ,] , "PRE_DEFINED_POINT_MARKER_SYMBOL" => & ["name" ,] , "PRE_DEFINED_SURFACE_CONDITION_SYMBOL" => & ["name" ,] , "PRE_DEFINED_SURFACE_SIDE_STYLE" => & ["name" ,] , "PRE_DEFINED_SYMBOL" => & ["name" ,] , "PRE_DEFINED_TERMINATOR_SYMBOL" => & ["name" ,] , "PRE_DEFINED_TEXT_FONT" => & ["name" ,] , "PRE_DEFINED_TILE" => & ["name" ,] , "PROCEDURAL_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "PROCEDURAL_REPRESENTATION_SEQUENCE" => & ["name" , "elements" , "suppressed_items" , "rationale" ,] , "PROCEDURAL_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "PROCEDURAL_SHAPE_REPRESENTATION_SEQUENCE" => & ["name" , "elements" , "suppressed_items" , "rationale" ,] , "PRODUCT" => & ["id" , "name" , "description" , "frame_of_reference" ,] , "PRODUCT_CATEGORY" => & ["name" , "description" ,] , "PRODUCT_CLASS" => & ["id" , "name" , "description" , "market_context" ,] , "PRODUCT_CONCEPT" => & ["id" , "name" , "description" , "market_context" ,] , "PRODUCT_CONCEPT_CONTEXT" => & ["name" , "frame_of_reference" , "market_segment_type" ,] , "PRODUCT_CONCEPT_FEATURE" => & ["id" , "name" , "description" ,] , "PRODUCT_CONCEPT_FEATURE_ASSOCIATION" => & ["name" , "description" , "concept" , "feature" ,] , "PRODUCT_CONCEPT_FEATURE_CATEGORY" => & ["name" , "description" ,] , "PRODUCT_CONCEPT_FEATURE_CATEGORY_USAGE" => & ["assigned_group" , "items" ,] , "PRODUCT_CONCEPT_RELATIONSHIP" => & ["name" , "description" , "relating_product_concept" , "related_product_concept" ,] , "PRODUCT_CONTEXT" => & ["name" , "frame_of_reference" , "discipline_type" ,] , "PRODUCT_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PRODUCT_DEFINITION_CONTEXT" => & ["name" , "frame_of_reference" , "life_cycle_stage" ,] , "PRODUCT_DEFINITION_CONTEXT_ASSOCIATION" => & ["definition" , "frame_of_reference" , "role" ,] , "PRODUCT_DEFINITION_CONTEXT_ROLE" => & ["name" , "description" ,] , "PRODUCT_DEFINITION_EFFECTIVITY" => & ["id" , "usage" ,] , "PRODUCT_DEFINITION_ELEMENT_RELATIONSHIP" => & ["name" , "description" ,] , "PRODUCT_DEFINITION_FORMATION" => & ["id" , "description" , "of_product" ,] , "PRODUCT_DEFINITION_FORMATION_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition_formation" , "related_product_definition_formation" ,] , "PRODUCT_DEFINITION_FORMATION_WITH_SPECIFIED_SOURCE" => & ["id" , "description" , "of_product" , "make_or_buy" ,] , "PRODUCT_DEFINITION_GROUP_ASSIGNMENT" => & ["assigned_group" , "items" ,] , "PRODUCT_DEFINITION_OCCURRENCE_RELATIONSHIP" => & ["name" , "description" , "occurrence" , "occurrence_usage" ,] , "PRODUCT_DEFINITION_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "PRODUCT_DEFINITION_SHAPE" => & ["name" , "description" , "definition" ,] , "PRODUCT_DEFINITION_SUBSTITUTE" => & ["description" , "context_relationship" , "substitute_definition" ,] , "PRODUCT_DEFINITION_USAGE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "PRODUCT_DEFINITION_WITH_ASSOCIATED_DOCUMENTS" => & ["id" , "description" , "formation" , "frame_of_reference" , "documentation_ids" ,] , "PRODUCT_IDENTIFICATION" => & ["id" , "name" , "description" , "item_concept" , "purpose" ,] , "PRODUCT_MATERIAL_COMPOSITION_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" , "class" , "constituent_amount" , "composition_basis" , "determination_method" ,] , "PRODUCT_RELATED_PRODUCT_CATEGORY" => & ["name" , "description" , "products" ,] , "PRODUCT_SPECIFICATION" => & ["id" , "name" , "description" , "item_concept" , "purpose" , "item_concept_feature" ,] , "PROJECTED_ZONE_DEFINITION" => & ["zone" , "boundaries" , "projection_end" , "projected_length" ,] , "PROJECTION_CURVE" => & ["name" , "styles" , "item" ,] , "PROJECTION_DIRECTED_CALLOUT" => & ["name" , "contents" ,] , "PROMISSORY_USAGE_OCCURRENCE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" , "reference_designator" ,] , "PROPERTY_DEFINITION" => & ["name" , "description" , "definition" ,] , "PROPERTY_DEFINITION_RELATIONSHIP" => & ["name" , "description" , "relating_property_definition" , "related_property_definition" ,] , "PROPERTY_DEFINITION_REPRESENTATION" => & ["definition" , "used_representation" ,] , "QUALIFIED_REPRESENTATION_ITEM" => & ["name" , "qualifiers" ,] , "QUALITATIVE_UNCERTAINTY" => & ["measure_name" , "description" , "uncertainty_value" ,] , "QUANTIFIED_ASSEMBLY_COMPONENT_USAGE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" , "reference_designator" , "quantity" ,] , "QUASI_UNIFORM_CURVE" => & ["name" , "degree" , "control_points_list" , "curve_form" , "closed_curve" , "self_intersect" ,] , "QUASI_UNIFORM_SURFACE" => & ["name" , "u_degree" , "v_degree" , "control_points_list" , "surface_form" , "u_closed" , "v_closed" , "self_intersect" ,] , "RADIOACTIVITY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "RADIOACTIVITY_UNIT" => & ["elements" ,] , "RADIUS_DIMENSION" => & ["name" , "contents" ,] , "RANGE_CHARACTERISTIC" => & ["name" , "items" , "context_of_items" , "description" ,] , "RATIONAL_B_SPLINE_CURVE" => & ["name" , "degree" , "control_points_list" , "curve_form" , "closed_curve" , "self_intersect" , "weights_data" ,] , "RATIONAL_B_SPLINE_SURFACE" => & ["name" , "u_degree" , "v_degree" , "control_points_list" , "surface_form" , "u_closed" , "v_closed" , "self_intersect" , "weights_data" ,] , "RATIONAL_REPRESENTATION_ITEM" => & ["name" , "operands" ,] , "RATIO_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "RATIO_UNIT" => & ["dimensions" ,] , "REAL_LITERAL" => & ["the_value" ,] , "REAL_REPRESENTATION_ITEM" => & ["name" , "the_value" ,] , "RECTANGULAR_COMPOSITE_SURFACE" => & ["name" , "segments" ,] , "RECTANGULAR_TRIMMED_SURFACE" => & ["name" , "basis_surface" , "u1" , "u2" , "v1" , "v2" , "usense" , "vsense" ,] , "REFERENCED_MODIFIED_DATUM" => & ["precedence" , "referenced_datum" , "modifier" ,] , "RELATIVE_EVENT_OCCURRENCE" => & ["id" , "name" , "description" , "base_event" , "offset" ,] , "REPARAMETRISED_COMPOSITE_CURVE_SEGMENT" => & ["transition" , "same_sense" , "parent_curve" , "param_length" ,] , "REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "REPRESENTATION_CONTEXT" => & ["context_identifier" , "context_type" ,] , "REPRESENTATION_ITEM" => & ["name" ,] , "REPRESENTATION_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "REPRESENTATION_MAP" => & ["mapping_origin" , "mapped_representation" ,] , "REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "REPRESENTATION_RELATIONSHIP_WITH_TRANSFORMATION" => & ["name" , "description" , "rep_1" , "rep_2" , "transformation_operator" ,] , "REP_ITEM_GROUP" => & ["name" , "description" ,] , "REQUIREMENT_ASSIGNED_OBJECT" => & ["assigned_group" , "items" ,] , "REQUIREMENT_ASSIGNMENT" => & ["name" , "description" ,] , "REQUIREMENT_SOURCE" => & ["name" , "description" ,] , "REQUIREMENT_VIEW_DEFINITION_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "RESISTANCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "RESISTANCE_UNIT" => & ["elements" ,] , "REVOLVED_AREA_SOLID" => & ["name" , "swept_area" , "axis" , "angle" ,] , "REVOLVED_FACE_SOLID" => & ["name" , "swept_face" , "axis" , "angle" ,] , "REVOLVED_FACE_SOLID_WITH_TRIM_CONDITIONS" => & ["name" , "swept_face" , "axis" , "angle" , "first_trim_condition" , "second_trim_condition" ,] , "RIGHT_ANGULAR_WEDGE" => & ["name" , "position" , "x" , "y" , "z" , "ltx" ,] , "RIGHT_CIRCULAR_CONE" => & ["name" , "position" , "height" , "radius" , "semi_angle" ,] , "RIGHT_CIRCULAR_CYLINDER" => & ["name" , "position" , "height" , "radius" ,] , "RIGHT_TO_USAGE_ASSOCIATION" => & ["name" , "description" , "relating_method" , "related_method" ,] , "ROLE_ASSOCIATION" => & ["role" , "item_with_role" ,] , "ROUNDNESS_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "ROW_REPRESENTATION_ITEM" => & ["name" , "item_element" ,] , "ROW_VALUE" => & ["name" , "item_element" ,] , "ROW_VARIABLE" => & ["name" , "description" , "definition" , "used_representation" , "items" , "context_of_items" ,] , "RULED_SURFACE_SWEPT_AREA_SOLID" => & ["name" , "swept_area" , "directrix" , "start_param" , "end_param" , "reference_surface" ,] , "RULE_ACTION" => & ["name" , "description" , "chosen_method" ,] , "RULE_CONDITION" => & ["name" , "item_element" ,] , "RULE_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "RULE_SET" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "RULE_SET_GROUP" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "RULE_SOFTWARE_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "RULE_SUPERSEDED_ASSIGNMENT" => & ["assigned_action" , "items" ,] , "RULE_SUPERSEDENCE" => & ["name" , "description" , "chosen_method" ,] , "RUNOUT_ZONE_DEFINITION" => & ["zone" , "boundaries" , "orientation" ,] , "RUNOUT_ZONE_ORIENTATION" => & ["angle" ,] , "RUNOUT_ZONE_ORIENTATION_REFERENCE_DIRECTION" => & ["angle" , "orientation_defining_relationship" ,] , "SATISFIED_REQUIREMENT" => & ["assigned_group" , "items" ,] , "SATISFIES_REQUIREMENT" => & ["name" , "description" ,] , "SATISFYING_ITEM" => & ["assigned_group" , "items" ,] , "SCALAR_VARIABLE" => & ["name" , "description" , "definition" , "used_representation" , "items" , "context_of_items" ,] , "SCATTERING_PARAMETER" => & ["radius" , "angle" ,] , "SCULPTURED_SOLID" => & ["name" , "rationale" , "base_solid" , "sculpturing_element" , "positive_side" ,] , "SEAM_CURVE" => & ["name" , "curve_3d" , "associated_geometry" , "master_representation" ,] , "SECURITY_CLASSIFICATION" => & ["name" , "purpose" , "security_level" ,] , "SECURITY_CLASSIFICATION_ASSIGNMENT" => & ["assigned_security_classification" ,] , "SECURITY_CLASSIFICATION_LEVEL" => & ["name" ,] , "SERIAL_NUMBERED_EFFECTIVITY" => & ["id" , "effectivity_start_id" , "effectivity_end_id" ,] , "SHAPE_ASPECT" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "SHAPE_ASPECT_ASSOCIATIVITY" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" ,] , "SHAPE_ASPECT_DERIVING_RELATIONSHIP" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" ,] , "SHAPE_ASPECT_RELATIONSHIP" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" ,] , "SHAPE_DEFINITION_REPRESENTATION" => & ["definition" , "used_representation" ,] , "SHAPE_DIMENSION_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "SHAPE_FEATURE_DEFINITION" => & ["name" , "description" ,] , "SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "SHAPE_REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "SHAPE_REPRESENTATION_WITH_PARAMETERS" => & ["name" , "items" , "context_of_items" ,] , "SHELLED_SOLID" => & ["name" , "rationale" , "base_solid" , "deleted_face_set" , "thickness" ,] , "SHELL_BASED_SURFACE_MODEL" => & ["name" , "sbsm_boundary" ,] , "SHELL_BASED_WIREFRAME_MODEL" => & ["name" , "sbwm_boundary" ,] , "SHELL_BASED_WIREFRAME_SHAPE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "SIMPLE_BOOLEAN_EXPRESSION" => & [] , "SIMPLE_CLAUSE" => & ["name" , "item_element" ,] , "SIMPLE_GENERIC_EXPRESSION" => & [] , "SIMPLE_NUMERIC_EXPRESSION" => & [] , "SI_ABSORBED_DOSE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_CAPACITANCE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_CONDUCTANCE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_DOSE_EQUIVALENT_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_ELECTRIC_CHARGE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_ELECTRIC_POTENTIAL_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_ENERGY_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_FORCE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_FREQUENCY_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_ILLUMINANCE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_INDUCTANCE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_MAGNETIC_FLUX_DENSITY_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_MAGNETIC_FLUX_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_POWER_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_PRESSURE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_RADIOACTIVITY_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_RESISTANCE_UNIT" => & ["elements" , "dimensions" , "prefix" , "name" ,] , "SI_UNIT" => & ["dimensions" , "prefix" , "name" ,] , "SLASH_EXPRESSION" => & ["operands" ,] , "SMEARED_MATERIAL_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "SOLID_ANGLE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "SOLID_ANGLE_UNIT" => & ["dimensions" ,] , "SOLID_CURVE_FONT" => & ["name" ,] , "SOLID_MODEL" => & ["name" ,] , "SOLID_REPLICA" => & ["name" , "parent_solid" , "transformation" ,] , "SOLID_WITH_ANGLE_BASED_CHAMFER" => & ["name" , "rationale" , "base_solid" , "blended_edges" , "offset_distance" , "left_offset" , "offset_angle" ,] , "SOLID_WITH_CHAMFERED_EDGES" => & ["name" , "rationale" , "base_solid" , "blended_edges" ,] , "SOLID_WITH_CIRCULAR_PATTERN" => & ["name" , "rationale" , "base_solid" , "placing" , "replicated_element" , "replicate_count" , "angular_spacing" , "radial_alignment" , "reference_point" ,] , "SOLID_WITH_CIRCULAR_POCKET" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "floor_blend_radius" , "draft_angle" , "pocket_radius" ,] , "SOLID_WITH_CIRCULAR_PROTRUSION" => & ["name" , "rationale" , "base_solid" , "placing" , "protrusion_height" , "protrusion_draft_angle" , "protrusion_radius" ,] , "SOLID_WITH_CONICAL_BOTTOM_ROUND_HOLE" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "segments" , "segment_radii" , "segment_depths" , "semi_apex_angle" , "tip_radius" ,] , "SOLID_WITH_CONSTANT_RADIUS_EDGE_BLEND" => & ["name" , "rationale" , "base_solid" , "blended_edges" , "radius" ,] , "SOLID_WITH_CURVED_SLOT" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "slot_width" , "closed_ends" , "end_exit_faces" , "slot_centreline" ,] , "SOLID_WITH_DEPRESSION" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" ,] , "SOLID_WITH_DOUBLE_OFFSET_CHAMFER" => & ["name" , "rationale" , "base_solid" , "blended_edges" , "left_offset_distance" , "right_offset_distance" ,] , "SOLID_WITH_FLAT_BOTTOM_ROUND_HOLE" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "segments" , "segment_radii" , "segment_depths" , "fillet_radius" ,] , "SOLID_WITH_GENERAL_POCKET" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "floor_blend_radius" , "draft_angle" , "profile" , "reference_point" ,] , "SOLID_WITH_GENERAL_PROTRUSION" => & ["name" , "rationale" , "base_solid" , "placing" , "protrusion_height" , "protrusion_draft_angle" , "profile" , "reference_point" ,] , "SOLID_WITH_GROOVE" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "groove_radius" , "groove_width" , "draft_angle" , "floor_fillet_radius" , "external_groove" ,] , "SOLID_WITH_HOLE" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" ,] , "SOLID_WITH_INCOMPLETE_CIRCULAR_PATTERN" => & ["name" , "rationale" , "base_solid" , "placing" , "replicated_element" , "replicate_count" , "angular_spacing" , "radial_alignment" , "reference_point" , "omitted_instances" ,] , "SOLID_WITH_INCOMPLETE_RECTANGULAR_PATTERN" => & ["name" , "rationale" , "base_solid" , "placing" , "replicated_element" , "row_count" , "column_count" , "row_spacing" , "column_spacing" , "omitted_instances" ,] , "SOLID_WITH_POCKET" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "floor_blend_radius" , "draft_angle" ,] , "SOLID_WITH_PROTRUSION" => & ["name" , "rationale" , "base_solid" , "placing" , "protrusion_height" , "protrusion_draft_angle" ,] , "SOLID_WITH_RECTANGULAR_PATTERN" => & ["name" , "rationale" , "base_solid" , "placing" , "replicated_element" , "row_count" , "column_count" , "row_spacing" , "column_spacing" ,] , "SOLID_WITH_RECTANGULAR_POCKET" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "floor_blend_radius" , "draft_angle" , "pocket_length" , "pocket_width" , "corner_radius" ,] , "SOLID_WITH_RECTANGULAR_PROTRUSION" => & ["name" , "rationale" , "base_solid" , "placing" , "protrusion_height" , "protrusion_draft_angle" , "protrusion_length" , "protrusion_width" , "protrusion_corner_radius" ,] , "SOLID_WITH_SHAPE_ELEMENT_PATTERN" => & ["name" , "rationale" , "base_solid" , "placing" , "replicated_element" ,] , "SOLID_WITH_SINGLE_OFFSET_CHAMFER" => & ["name" , "rationale" , "base_solid" , "blended_edges" , "offset_distance" ,] , "SOLID_WITH_SLOT" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "slot_width" , "closed_ends" , "end_exit_faces" ,] , "SOLID_WITH_SPHERICAL_BOTTOM_ROUND_HOLE" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "segments" , "segment_radii" , "segment_depths" , "sphere_radius" ,] , "SOLID_WITH_STEPPED_ROUND_HOLE" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "segments" , "segment_radii" , "segment_depths" ,] , "SOLID_WITH_STEPPED_ROUND_HOLE_AND_CONICAL_TRANSITIONS" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "segments" , "segment_radii" , "segment_depths" , "conical_transitions" ,] , "SOLID_WITH_STRAIGHT_SLOT" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "slot_width" , "closed_ends" , "end_exit_faces" , "slot_length" ,] , "SOLID_WITH_TEE_SECTION_SLOT" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "slot_width" , "closed_ends" , "end_exit_faces" , "tee_section_width" , "collar_depth" ,] , "SOLID_WITH_THROUGH_DEPRESSION" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "exit_faces" ,] , "SOLID_WITH_TRAPEZOIDAL_SECTION_SLOT" => & ["name" , "rationale" , "base_solid" , "placing" , "depth" , "slot_width" , "closed_ends" , "end_exit_faces" , "draft_angle" , "floor_fillet_radius" ,] , "SOLID_WITH_VARIABLE_RADIUS_EDGE_BLEND" => & ["name" , "rationale" , "base_solid" , "blended_edges" , "point_list" , "radius_list" , "edge_function_list" ,] , "SOURCED_REQUIREMENT" => & ["assigned_group" , "items" ,] , "SOURCE_FOR_REQUIREMENT" => & ["assigned_group" , "items" ,] , "SPECIFICATION_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "SPECIFIED_HIGHER_USAGE_OCCURRENCE" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" , "reference_designator" , "upper_usage" , "next_usage" ,] , "SPHERE" => & ["name" , "radius" , "centre" ,] , "SPHERICAL_SURFACE" => & ["name" , "position" , "radius" ,] , "STANDARD_UNCERTAINTY" => & ["measure_name" , "description" , "uncertainty_value" ,] , "START_REQUEST" => & ["assigned_action_request" , "items" ,] , "START_WORK" => & ["assigned_action" , "items" ,] , "STRAIGHTNESS_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "STRUCTURED_DIMENSION_CALLOUT" => & ["name" , "contents" ,] , "STRUCTURED_TEXT_COMPOSITION" => & ["name" , "item_element" ,] , "STRUCTURED_TEXT_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "STYLED_ITEM" => & ["name" , "styles" , "item" ,] , "SUBEDGE" => & ["name" , "edge_start" , "edge_end" , "parent_edge" ,] , "SUBFACE" => & ["name" , "bounds" , "parent_face" ,] , "SUPPLIED_PART_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "SURFACE" => & ["name" ,] , "SURFACED_OPEN_SHELL" => & ["name" , "cfs_faces" ,] , "SURFACE_CONDITION_CALLOUT" => & ["name" , "contents" ,] , "SURFACE_CURVE" => & ["name" , "curve_3d" , "associated_geometry" , "master_representation" ,] , "SURFACE_CURVE_SWEPT_AREA_SOLID" => & ["name" , "swept_area" , "directrix" , "start_param" , "end_param" , "reference_surface" ,] , "SURFACE_OF_LINEAR_EXTRUSION" => & ["name" , "swept_curve" , "extrusion_axis" ,] , "SURFACE_OF_REVOLUTION" => & ["name" , "swept_curve" , "axis_position" ,] , "SURFACE_PATCH" => & ["parent_surface" , "u_transition" , "v_transition" , "u_sense" , "v_sense" ,] , "SURFACE_PROFILE_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "SURFACE_RENDERING_PROPERTIES" => & ["rendered_colour" ,] , "SURFACE_REPLICA" => & ["name" , "parent_surface" , "transformation" ,] , "SURFACE_SIDE_STYLE" => & ["name" , "styles" ,] , "SURFACE_STYLE_BOUNDARY" => & ["style_of_boundary" ,] , "SURFACE_STYLE_CONTROL_GRID" => & ["style_of_control_grid" ,] , "SURFACE_STYLE_FILL_AREA" => & ["fill_area" ,] , "SURFACE_STYLE_PARAMETER_LINE" => & ["style_of_parameter_lines" , "direction_counts" ,] , "SURFACE_STYLE_REFLECTANCE_AMBIENT" => & ["ambient_reflectance" ,] , "SURFACE_STYLE_REFLECTANCE_AMBIENT_DIFFUSE" => & ["ambient_reflectance" , "diffuse_reflectance" ,] , "SURFACE_STYLE_REFLECTANCE_AMBIENT_DIFFUSE_SPECULAR" => & ["ambient_reflectance" , "diffuse_reflectance" , "specular_reflectance" , "specular_exponent" , "specular_colour" ,] , "SURFACE_STYLE_RENDERING" => & ["rendering_method" , "surface_colour" ,] , "SURFACE_STYLE_RENDERING_WITH_PROPERTIES" => & ["rendering_method" , "surface_colour" , "properties" ,] , "SURFACE_STYLE_SEGMENTATION_CURVE" => & ["style_of_segmentation_curve" ,] , "SURFACE_STYLE_SILHOUETTE" => & ["style_of_silhouette" ,] , "SURFACE_STYLE_TRANSPARENT" => & ["transparency" ,] , "SURFACE_STYLE_USAGE" => & ["side" , "style" ,] , "SURFACE_TEXTURE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "SWEPT_AREA_SOLID" => & ["name" , "swept_area" ,] , "SWEPT_DISK_SOLID" => & ["name" , "directrix" , "radius" , "inner_radius" , "start_param" , "end_param" ,] , "SWEPT_FACE_SOLID" => & ["name" , "swept_face" ,] , "SWEPT_SURFACE" => & ["name" , "swept_curve" ,] , "SYMBOL" => & ["name" ,] , "SYMBOL_COLOUR" => & ["colour_of_symbol" ,] , "SYMBOL_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "SYMBOL_REPRESENTATION_MAP" => & ["mapping_origin" , "mapped_representation" ,] , "SYMBOL_STYLE" => & ["name" , "style_of_symbol" ,] , "SYMBOL_TARGET" => & ["name" , "placement" , "x_scale" , "y_scale" ,] , "SYMMETRIC_SHAPE_ASPECT" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "SYMMETRY_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "TABLE_REPRESENTATION_ITEM" => & ["name" , "item_element" ,] , "TACTILE_APPEARANCE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "TAGGED_TEXT_FORMAT" => & ["context_identifier" , "context_type" ,] , "TAGGED_TEXT_ITEM" => & ["name" , "description" ,] , "TANGENT" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "TERMINATOR_SYMBOL" => & ["name" , "styles" , "item" , "annotated_curve" ,] , "TEXT_FONT" => & ["id" , "name" , "description" ,] , "TEXT_FONT_FAMILY" => & ["id" , "name" , "description" ,] , "TEXT_FONT_IN_FAMILY" => & ["font" , "family" ,] , "TEXT_LITERAL" => & ["name" , "literal" , "placement" , "alignment" , "path" , "font" ,] , "TEXT_LITERAL_WITH_ASSOCIATED_CURVES" => & ["name" , "literal" , "placement" , "alignment" , "path" , "font" , "associated_curves" ,] , "TEXT_LITERAL_WITH_BLANKING_BOX" => & ["name" , "literal" , "placement" , "alignment" , "path" , "font" , "blanking" ,] , "TEXT_LITERAL_WITH_DELINEATION" => & ["name" , "literal" , "placement" , "alignment" , "path" , "font" , "delineation" ,] , "TEXT_LITERAL_WITH_EXTENT" => & ["name" , "literal" , "placement" , "alignment" , "path" , "font" , "extent" ,] , "TEXT_STRING_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "TEXT_STYLE" => & ["name" , "character_appearance" ,] , "TEXT_STYLE_FOR_DEFINED_FONT" => & ["text_colour" ,] , "TEXT_STYLE_WITH_BOX_CHARACTERISTICS" => & ["name" , "character_appearance" , "characteristics" ,] , "TEXT_STYLE_WITH_MIRROR" => & ["name" , "character_appearance" , "mirror_placement" ,] , "TEXT_STYLE_WITH_SPACING" => & ["name" , "character_appearance" , "character_spacing" ,] , "THERMAL_RESISTANCE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "THERMAL_RESISTANCE_UNIT" => & ["elements" ,] , "THERMODYNAMIC_TEMPERATURE_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "THERMODYNAMIC_TEMPERATURE_UNIT" => & ["dimensions" ,] , "THICKENED_FACE_SOLID" => & ["name" , "base_element" , "offset1" , "offset2" ,] , "THICKNESS_LAMINATE_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "THICKNESS_LAMINATE_TABLE" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "TIME_INTERVAL" => & ["id" , "name" , "description" ,] , "TIME_INTERVAL_ASSIGNMENT" => & ["assigned_time_interval" , "role" ,] , "TIME_INTERVAL_BASED_EFFECTIVITY" => & ["id" , "effectivity_period" ,] , "TIME_INTERVAL_RELATIONSHIP" => & ["name" , "description" , "relating_time_interval" , "related_time_interval" ,] , "TIME_INTERVAL_ROLE" => & ["name" , "description" ,] , "TIME_INTERVAL_WITH_BOUNDS" => & ["id" , "name" , "description" , "primary_bound" , "secondary_bound" , "duration" ,] , "TIME_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "TIME_UNIT" => & ["dimensions" ,] , "TOLERANCE_VALUE" => & ["lower_bound" , "upper_bound" ,] , "TOLERANCE_ZONE" => & ["name" , "description" , "of_shape" , "product_definitional" , "defining_tolerance" , "form" ,] , "TOLERANCE_ZONE_DEFINITION" => & ["zone" , "boundaries" ,] , "TOLERANCE_ZONE_FORM" => & ["name" ,] , "TOPOLOGICAL_REPRESENTATION_ITEM" => & ["name" ,] , "TOROIDAL_SURFACE" => & ["name" , "position" , "major_radius" , "minor_radius" ,] , "TORUS" => & ["name" , "position" , "major_radius" , "minor_radius" ,] , "TOTAL_RUNOUT_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" , "datum_system" ,] , "TRACK_BLENDED_SOLID" => & ["name" , "rationale" , "base_solid" , "blended_edges" ,] , "TRACK_BLENDED_SOLID_WITH_END_CONDITIONS" => & ["name" , "rationale" , "base_solid" , "blended_edges" , "end_conditions" ,] , "TRANSFORMATION_WITH_DERIVED_ANGLE" => & ["name" , "description" , "transform_item_1" , "transform_item_2" ,] , "TRIMMED_CURVE" => & ["name" , "basis_curve" , "trim_1" , "trim_2" , "sense_agreement" , "master_representation" ,] , "TWO_DIRECTION_REPEAT_FACTOR" => & ["name" , "repeat_factor" , "second_repeat_factor" ,] , "TYPE_QUALIFIER" => & ["name" ,] , "UNARY_GENERIC_EXPRESSION" => & ["operand" ,] , "UNARY_NUMERIC_EXPRESSION" => & ["operand" ,] , "UNCERTAINTY_ASSIGNED_REPRESENTATION" => & ["name" , "items" , "context_of_items" , "uncertainty" ,] , "UNCERTAINTY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" , "name" , "description" ,] , "UNCERTAINTY_QUALIFIER" => & ["measure_name" , "description" ,] , "UNIFORM_CURVE" => & ["name" , "degree" , "control_points_list" , "curve_form" , "closed_curve" , "self_intersect" ,] , "UNIFORM_RESOURCE_IDENTIFIER" => & ["name" , "description" ,] , "UNIFORM_SURFACE" => & ["name" , "u_degree" , "v_degree" , "control_points_list" , "surface_form" , "u_closed" , "v_closed" , "self_intersect" ,] , "USAGE_ASSOCIATION" => & ["name" , "description" , "relating_method" , "related_method" ,] , "USER_DEFINED_CURVE_FONT" => & ["name" , "pattern_list" , "mapping_source" , "mapping_target" ,] , "USER_DEFINED_MARKER" => & ["name" , "mapping_source" , "mapping_target" ,] , "USER_DEFINED_TERMINATOR_SYMBOL" => & ["name" , "mapping_source" , "mapping_target" ,] , "USER_SELECTED_ELEMENTS" => & ["name" , "picked_items" ,] , "USER_SELECTED_SHAPE_ELEMENTS" => & ["name" , "picked_items" ,] , "VALUE_RANGE" => & ["name" , "item_element" ,] , "VALUE_REPRESENTATION_ITEM" => & ["name" , "value_component" ,] , "VARIABLE_SEMANTICS" => & [] , "VARIATIONAL_REPRESENTATION_ITEM" => & ["name" ,] , "VECTOR" => & ["name" , "orientation" , "magnitude" ,] , "VECTOR_STYLE" => & ["name" , "curve_font" , "curve_width" , "curve_colour" ,] , "VELOCITY_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "VELOCITY_UNIT" => & ["elements" ,] , "VERSIONED_ACTION_REQUEST" => & ["id" , "version" , "purpose" , "description" ,] , "VERTEX" => & ["name" ,] , "VERTEX_LOOP" => & ["name" , "loop_vertex" ,] , "VERTEX_POINT" => & ["name" , "vertex_geometry" ,] , "VERTEX_SHELL" => & ["name" , "vertex_shell_extent" ,] , "VIEW_VOLUME" => & ["projection_type" , "projection_point" , "view_plane_distance" , "front_plane_distance" , "front_plane_clipping" , "back_plane_distance" , "back_plane_clipping" , "view_volume_sides_clipping" , "view_window" ,] , "VISUAL_APPEARANCE_REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "VOLUME_MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "VOLUME_UNIT" => & ["elements" ,] , "WEEK_OF_YEAR_AND_DAY_DATE" => & ["year_component" , "week_component" , "day_component" ,] , "WIRE_SHELL" => & ["name" , "wire_shell_extent" ,] , "YEAR_MONTH" => & ["year_component" , "month_component" ,] , "ZONE_STRUCTURAL_MAKEUP" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , };
+static PARTIALS: ::phf::Map<&'static str, &'static [&'static str]> = ::phf::phf_map! { "ABSORBED_DOSE_MEASURE_WITH_UNIT" => & [] , "ABSORBED_DOSE_UNIT" => & [] , "ABSTRACT_VARIABLE" => & [] , "ACCELERATION_MEASURE_WITH_UNIT" => & [] , "ACCELERATION_UNIT" => & [] , "ACTION" => & ["name" , "description" , "chosen_method" ,] , "ACTION_ASSIGNMENT" => & ["assigned_action" ,] , "ACTION_DIRECTIVE" => & ["name" , "description" , "analysis" , "comment" , "requests" ,] , "ACTION_METHOD" => & ["name" , "description" , "consequence" , "purpose" ,] , "ACTION_METHOD_ASSIGNMENT" => & ["assigned_action_method" , "role" ,] , "ACTION_METHOD_RELATIONSHIP" => & ["name" , "description" , "relating_method" , "related_method" ,] , "ACTION_METHOD_ROLE" => & ["name" , "description" ,] , "ACTION_PROPERTY" => & ["name" , "description" , "definition" ,] , "ACTION_PROPERTY_REPRESENTATION" => & ["name" , "description" , "property" , "representation" ,] , "ACTION_RELATIONSHIP" => & ["name" , "description" , "relating_action" , "related_action" ,] , "ACTION_REQUEST_ASSIGNMENT" => & ["assigned_action_request" ,] , "ACTION_REQUEST_SOLUTION" => & ["method" , "request" ,] , "ACTION_REQUEST_STATUS" => & ["status" , "assigned_request" ,] , "ACTION_STATUS" => & ["status" , "assigned_action" ,] , "ADDRESS" => & ["internal_location" , "street_number" , "street" , "postal_box" , "town" , "region" , "postal_code" , "country" , "facsimile_number" , "telephone_number" , "electronic_mail_address" , "telex_number" ,] , "ADVANCED_BREP_SHAPE_REPRESENTATION" => & [] , "ADVANCED_FACE" => & [] , "ALTERNATE_PRODUCT_RELATIONSHIP" => & ["name" , "definition" , "alternate" , "base" , "basis" ,] , "AMOUNT_OF_SUBSTANCE_MEASURE_WITH_UNIT" => & [] , "AMOUNT_OF_SUBSTANCE_UNIT" => & [] , "ANGLE_DIRECTION_REFERENCE" => & [] , "ANGULARITY_TOLERANCE" => & [] , "ANGULAR_DIMENSION" => & [] , "ANGULAR_LOCATION" => & ["angle_selection" ,] , "ANGULAR_SIZE" => & ["angle_selection" ,] , "ANNOTATION_CURVE_OCCURRENCE" => & [] , "ANNOTATION_FILL_AREA" => & ["boundaries" ,] , "ANNOTATION_FILL_AREA_OCCURRENCE" => & ["fill_style_target" ,] , "ANNOTATION_OCCURRENCE" => & [] , "ANNOTATION_OCCURRENCE_ASSOCIATIVITY" => & [] , "ANNOTATION_OCCURRENCE_RELATIONSHIP" => & ["name" , "description" , "relating_annotation_occurrence" , "related_annotation_occurrence" ,] , "ANNOTATION_PLANE" => & ["elements" ,] , "ANNOTATION_SUBFIGURE_OCCURRENCE" => & [] , "ANNOTATION_SYMBOL" => & [] , "ANNOTATION_SYMBOL_OCCURRENCE" => & [] , "ANNOTATION_TEXT" => & [] , "ANNOTATION_TEXT_CHARACTER" => & ["alignment" ,] , "ANNOTATION_TEXT_OCCURRENCE" => & [] , "APEX" => & [] , "APPLICATION_CONTEXT" => & ["application" ,] , "APPLICATION_CONTEXT_ELEMENT" => & ["name" , "frame_of_reference" ,] , "APPLICATION_PROTOCOL_DEFINITION" => & ["status" , "application_interpreted_model_schema_name" , "application_protocol_year" , "application" ,] , "APPLIED_ACTION_ASSIGNMENT" => & ["items" ,] , "APPLIED_ACTION_METHOD_ASSIGNMENT" => & ["items" ,] , "APPLIED_ACTION_REQUEST_ASSIGNMENT" => & ["items" ,] , "APPLIED_APPROVAL_ASSIGNMENT" => & ["items" ,] , "APPLIED_ATTRIBUTE_CLASSIFICATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_CERTIFICATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_CLASSIFICATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_CONTRACT_ASSIGNMENT" => & ["items" ,] , "APPLIED_DATE_AND_TIME_ASSIGNMENT" => & ["items" ,] , "APPLIED_DATE_ASSIGNMENT" => & ["items" ,] , "APPLIED_DOCUMENT_REFERENCE" => & ["items" ,] , "APPLIED_DOCUMENT_USAGE_CONSTRAINT_ASSIGNMENT" => & ["items" ,] , "APPLIED_EFFECTIVITY_ASSIGNMENT" => & ["items" ,] , "APPLIED_EVENT_OCCURRENCE_ASSIGNMENT" => & ["items" ,] , "APPLIED_EXTERNAL_IDENTIFICATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_GROUP_ASSIGNMENT" => & ["items" ,] , "APPLIED_IDENTIFICATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_NAME_ASSIGNMENT" => & ["item" ,] , "APPLIED_ORGANIZATIONAL_PROJECT_ASSIGNMENT" => & ["items" ,] , "APPLIED_ORGANIZATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_PERSON_AND_ORGANIZATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_PRESENTED_ITEM" => & ["items" ,] , "APPLIED_SECURITY_CLASSIFICATION_ASSIGNMENT" => & ["items" ,] , "APPLIED_TIME_INTERVAL_ASSIGNMENT" => & ["items" ,] , "APPLIED_USAGE_RIGHT" => & [] , "APPROVAL" => & ["status" , "level" ,] , "APPROVAL_ASSIGNMENT" => & ["assigned_approval" ,] , "APPROVAL_DATE_TIME" => & ["date_time" , "dated_approval" ,] , "APPROVAL_PERSON_ORGANIZATION" => & ["person_organization" , "authorized_approval" , "role" ,] , "APPROVAL_RELATIONSHIP" => & ["name" , "description" , "relating_approval" , "related_approval" ,] , "APPROVAL_ROLE" => & ["role" ,] , "APPROVAL_STATUS" => & ["name" ,] , "AREA_IN_SET" => & ["area" , "in_set" ,] , "AREA_MEASURE_WITH_UNIT" => & [] , "AREA_UNIT" => & [] , "ASSEMBLY_COMPONENT_USAGE" => & ["reference_designator" ,] , "ASSEMBLY_COMPONENT_USAGE_SUBSTITUTE" => & ["name" , "definition" , "base" , "substitute" ,] , "ASSIGNED_REQUIREMENT" => & ["items" ,] , "ATOMIC_FORMULA" => & [] , "ATTRIBUTE_ASSERTION" => & [] , "ATTRIBUTE_CLASSIFICATION_ASSIGNMENT" => & ["assigned_class" , "attribute_name" , "role" ,] , "ATTRIBUTE_LANGUAGE_ASSIGNMENT" => & ["items" ,] , "ATTRIBUTE_VALUE_ASSIGNMENT" => & ["attribute_name" , "attribute_value" , "role" ,] , "ATTRIBUTE_VALUE_ROLE" => & ["name" , "description" ,] , "AUXILIARY_GEOMETRIC_REPRESENTATION_ITEM" => & [] , "AXIS1_PLACEMENT" => & ["axis" ,] , "AXIS2_PLACEMENT_2D" => & ["ref_direction" ,] , "AXIS2_PLACEMENT_3D" => & ["axis" , "ref_direction" ,] , "BACKGROUND_COLOUR" => & ["presentation" ,] , "BACK_CHAINING_RULE" => & [] , "BACK_CHAINING_RULE_BODY" => & [] , "BEVELED_SHEET_REPRESENTATION" => & [] , "BEZIER_CURVE" => & [] , "BEZIER_SURFACE" => & [] , "BINARY_GENERIC_EXPRESSION" => & ["operands" ,] , "BINARY_NUMERIC_EXPRESSION" => & [] , "BINARY_REPRESENTATION_ITEM" => & ["binary_value" ,] , "BLOCK" => & ["position" , "x" , "y" , "z" ,] , "BOOLEAN_EXPRESSION" => & [] , "BOOLEAN_LITERAL" => & ["the_value" ,] , "BOOLEAN_REPRESENTATION_ITEM" => & [] , "BOOLEAN_RESULT" => & ["operator" , "first_operand" , "second_operand" ,] , "BOUNDARY_CURVE" => & [] , "BOUNDED_CURVE" => & [] , "BOUNDED_PCURVE" => & [] , "BOUNDED_SURFACE" => & [] , "BOUNDED_SURFACE_CURVE" => & [] , "BOXED_HALF_SPACE" => & ["enclosure" ,] , "BOX_DOMAIN" => & ["corner" , "xlength" , "ylength" , "zlength" ,] , "BREAKDOWN_CONTEXT" => & [] , "BREAKDOWN_ELEMENT_GROUP_ASSIGNMENT" => & ["items" ,] , "BREAKDOWN_ELEMENT_REALIZATION" => & [] , "BREAKDOWN_ELEMENT_USAGE" => & [] , "BREAKDOWN_OF" => & [] , "BREP_WITH_VOIDS" => & ["voids" ,] , "BYTES_REPRESENTATION_ITEM" => & [] , "B_SPLINE_CURVE" => & ["degree" , "control_points_list" , "curve_form" , "closed_curve" , "self_intersect" ,] , "B_SPLINE_CURVE_WITH_KNOTS" => & ["knot_multiplicities" , "knots" , "knot_spec" ,] , "B_SPLINE_SURFACE" => & ["u_degree" , "v_degree" , "control_points_list" , "surface_form" , "u_closed" , "v_closed" , "self_intersect" ,] , "B_SPLINE_SURFACE_WITH_KNOTS" => & ["u_multiplicities" , "v_multiplicities" , "u_knots" , "v_knots" , "knot_spec" ,] , "CALENDAR_DATE" => & ["day_component" , "month_component" ,] , "CAMERA_IMAGE" => & [] , "CAMERA_IMAGE_3D_WITH_SCALE" => & [] , "CAMERA_MODEL" => & [] , "CAMERA_MODEL_D_3" => & ["view_reference_system" , "perspective_of_volume" ,] , "CAMERA_MODEL_D_3_MULTI_CLIPPING" => & ["shape_clipping" ,] , "CAMERA_MODEL_D_3_MULTI_CLIPPING_INTERSECTION" => & ["shape_clipping" ,] , "CAMERA_MODEL_D_3_MULTI_CLIPPING_UNION" => & ["shape_clipping" ,] , "CAMERA_MODEL_D_3_WITH_HLHSR" => & ["hidden_line_surface_removal" ,] , "CAMERA_MODEL_WITH_LIGHT_SOURCES" => & ["sources" ,] , "CAMERA_USAGE" => & [] , "CAPACITANCE_MEASURE_WITH_UNIT" => & [] , "CAPACITANCE_UNIT" => & [] , "CARTESIAN_POINT" => & ["coordinates" ,] , "CARTESIAN_TRANSFORMATION_OPERATOR" => & ["axis1" , "axis2" , "local_origin" , "scale" ,] , "CARTESIAN_TRANSFORMATION_OPERATOR_2D" => & [] , "CARTESIAN_TRANSFORMATION_OPERATOR_3D" => & ["axis3" ,] , "CC_DESIGN_APPROVAL" => & ["items" ,] , "CC_DESIGN_CERTIFICATION" => & ["items" ,] , "CC_DESIGN_CONTRACT" => & ["items" ,] , "CC_DESIGN_DATE_AND_TIME_ASSIGNMENT" => & ["items" ,] , "CC_DESIGN_PERSON_AND_ORGANIZATION_ASSIGNMENT" => & ["items" ,] , "CC_DESIGN_SECURITY_CLASSIFICATION" => & ["items" ,] , "CC_DESIGN_SPECIFICATION_REFERENCE" => & ["items" ,] , "CELSIUS_TEMPERATURE_MEASURE_WITH_UNIT" => & [] , "CENTRE_OF_SYMMETRY" => & [] , "CERTIFICATION" => & ["name" , "purpose" , "kind" ,] , "CERTIFICATION_ASSIGNMENT" => & ["assigned_certification" ,] , "CERTIFICATION_TYPE" => & ["description" ,] , "CHANGE" => & ["items" ,] , "CHANGE_REQUEST" => & ["items" ,] , "CHARACTERISTIC_DATA_COLUMN_HEADER" => & [] , "CHARACTERISTIC_DATA_COLUMN_HEADER_LINK" => & [] , "CHARACTERISTIC_DATA_TABLE_HEADER" => & [] , "CHARACTERISTIC_DATA_TABLE_HEADER_DECOMPOSITION" => & [] , "CHARACTERISTIC_TYPE" => & [] , "CHARACTERIZED_CLASS" => & [] , "CHARACTERIZED_OBJECT" => & ["name" , "description" ,] , "CHARACTER_GLYPH_FONT_USAGE" => & ["character" , "font" ,] , "CHARACTER_GLYPH_STYLE_OUTLINE" => & ["outline_style" ,] , "CHARACTER_GLYPH_STYLE_STROKE" => & ["stroke_style" ,] , "CHARACTER_GLYPH_SYMBOL" => & ["character_box" , "baseline_ratio" ,] , "CHARACTER_GLYPH_SYMBOL_OUTLINE" => & ["outlines" ,] , "CHARACTER_GLYPH_SYMBOL_STROKE" => & ["strokes" ,] , "CIRCLE" => & ["radius" ,] , "CIRCULAR_RUNOUT_TOLERANCE" => & [] , "CLASS" => & [] , "CLASSIFICATION_ASSIGNMENT" => & ["assigned_class" , "role" ,] , "CLASSIFICATION_ROLE" => & ["name" , "description" ,] , "CLASS_BY_EXTENSION" => & [] , "CLASS_BY_INTENSION" => & [] , "CLASS_SYSTEM" => & [] , "CLASS_USAGE_EFFECTIVITY_CONTEXT_ASSIGNMENT" => & ["items" ,] , "CLOSED_SHELL" => & [] , "COAXIALITY_TOLERANCE" => & [] , "COLOUR" => & [] , "COLOUR_RGB" => & ["red" , "green" , "blue" ,] , "COLOUR_SPECIFICATION" => & ["name" ,] , "COMMON_DATUM" => & [] , "COMPARISON_EXPRESSION" => & [] , "COMPLEX_CLAUSE" => & [] , "COMPLEX_CONJUNCTIVE_CLAUSE" => & [] , "COMPLEX_DISJUNCTIVE_CLAUSE" => & [] , "COMPLEX_SHELLED_SOLID" => & ["thickened_face_list" , "thickness_list" ,] , "COMPOSITE_ASSEMBLY_DEFINITION" => & [] , "COMPOSITE_ASSEMBLY_SEQUENCE_DEFINITION" => & [] , "COMPOSITE_ASSEMBLY_TABLE" => & [] , "COMPOSITE_CURVE" => & ["segments" , "self_intersect" ,] , "COMPOSITE_CURVE_ON_SURFACE" => & [] , "COMPOSITE_CURVE_SEGMENT" => & ["transition" , "same_sense" , "parent_curve" ,] , "COMPOSITE_MATERIAL_DESIGNATION" => & [] , "COMPOSITE_SHAPE_ASPECT" => & [] , "COMPOSITE_SHEET_REPRESENTATION" => & [] , "COMPOSITE_TEXT" => & ["collected_text" ,] , "COMPOSITE_TEXT_WITH_ASSOCIATED_CURVES" => & ["associated_curves" ,] , "COMPOSITE_TEXT_WITH_BLANKING_BOX" => & ["blanking" ,] , "COMPOSITE_TEXT_WITH_DELINEATION" => & ["delineation" ,] , "COMPOSITE_TEXT_WITH_EXTENT" => & ["extent" ,] , "COMPOUND_REPRESENTATION_ITEM" => & ["item_element" ,] , "COMPOUND_SHAPE_REPRESENTATION" => & [] , "CONCENTRICITY_TOLERANCE" => & [] , "CONCEPT_FEATURE_OPERATOR" => & ["name" , "description" ,] , "CONCEPT_FEATURE_RELATIONSHIP" => & ["name" , "description" , "relating_product_concept_feature" , "related_product_concept_feature" ,] , "CONCEPT_FEATURE_RELATIONSHIP_WITH_CONDITION" => & ["conditional_operator" ,] , "CONDITIONAL_CONCEPT_FEATURE" => & ["condition" ,] , "CONDUCTANCE_MEASURE_WITH_UNIT" => & [] , "CONDUCTANCE_UNIT" => & [] , "CONFIGURABLE_ITEM" => & ["item_concept_feature" ,] , "CONFIGURATION_DESIGN" => & ["configuration" , "design" ,] , "CONFIGURATION_EFFECTIVITY" => & ["configuration" ,] , "CONFIGURATION_ITEM" => & ["id" , "name" , "description" , "item_concept" , "purpose" ,] , "CONFIGURATION_ITEM_HIERARCHICAL_RELATIONSHIP" => & [] , "CONFIGURATION_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_configuration_item" , "related_configuration_item" ,] , "CONFIGURATION_ITEM_REVISION_SEQUENCE" => & [] , "CONFIGURED_EFFECTIVITY_ASSIGNMENT" => & ["items" ,] , "CONFIGURED_EFFECTIVITY_CONTEXT_ASSIGNMENT" => & ["items" ,] , "CONIC" => & ["position" ,] , "CONICAL_STEPPED_HOLE_TRANSITION" => & ["transition_number" , "cone_apex_angle" , "cone_base_radius" ,] , "CONICAL_SURFACE" => & ["radius" , "semi_angle" ,] , "CONNECTED_EDGE_SET" => & ["ces_edges" ,] , "CONNECTED_FACE_SET" => & ["cfs_faces" ,] , "CONNECTED_FACE_SUB_SET" => & ["parent_face_set" ,] , "CONSTRUCTIVE_GEOMETRY_REPRESENTATION" => & [] , "CONSTRUCTIVE_GEOMETRY_REPRESENTATION_RELATIONSHIP" => & [] , "CONTACT_RATIO_REPRESENTATION" => & [] , "CONTEXT_DEPENDENT_INVISIBILITY" => & ["presentation_context" ,] , "CONTEXT_DEPENDENT_OVER_RIDING_STYLED_ITEM" => & ["style_context" ,] , "CONTEXT_DEPENDENT_SHAPE_REPRESENTATION" => & ["representation_relation" , "represented_product_relation" ,] , "CONTEXT_DEPENDENT_UNIT" => & ["name" ,] , "CONTRACT" => & ["name" , "purpose" , "kind" ,] , "CONTRACT_ASSIGNMENT" => & ["assigned_contract" ,] , "CONTRACT_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_contract" , "related_contract" ,] , "CONTRACT_TYPE" => & ["description" ,] , "CONVERSION_BASED_UNIT" => & ["name" , "conversion_factor" ,] , "COORDINATED_UNIVERSAL_TIME_OFFSET" => & ["hour_offset" , "minute_offset" , "sense" ,] , "CSG_SHAPE_REPRESENTATION" => & [] , "CSG_SOLID" => & ["tree_root_expression" ,] , "CURRENCY" => & [] , "CURRENCY_MEASURE_WITH_UNIT" => & [] , "CURVE" => & [] , "CURVE_BOUNDED_SURFACE" => & ["basis_surface" , "boundaries" , "implicit_outer" ,] , "CURVE_DIMENSION" => & [] , "CURVE_REPLICA" => & ["parent_curve" , "transformation" ,] , "CURVE_STYLE" => & ["name" , "curve_font" , "curve_width" , "curve_colour" ,] , "CURVE_STYLE_FONT" => & ["name" , "pattern_list" ,] , "CURVE_STYLE_FONT_AND_SCALING" => & ["name" , "curve_font" , "curve_font_scaling" ,] , "CURVE_STYLE_FONT_PATTERN" => & ["visible_segment_length" , "invisible_segment_length" ,] , "CURVE_STYLE_RENDERING" => & ["rendering_method" , "rendering_properties" ,] , "CURVE_SWEPT_SOLID_SHAPE_REPRESENTATION" => & [] , "CYLINDRICAL_SURFACE" => & ["radius" ,] , "CYLINDRICITY_TOLERANCE" => & [] , "DATA_ENVIRONMENT" => & ["name" , "description" , "elements" ,] , "DATE" => & ["year_component" ,] , "DATED_EFFECTIVITY" => & ["effectivity_end_date" , "effectivity_start_date" ,] , "DATE_AND_TIME" => & ["date_component" , "time_component" ,] , "DATE_AND_TIME_ASSIGNMENT" => & ["assigned_date_and_time" , "role" ,] , "DATE_ASSIGNMENT" => & ["assigned_date" , "role" ,] , "DATE_REPRESENTATION_ITEM" => & [] , "DATE_ROLE" => & ["name" ,] , "DATE_TIME_REPRESENTATION_ITEM" => & [] , "DATE_TIME_ROLE" => & ["name" ,] , "DATUM" => & ["identification" ,] , "DATUM_FEATURE" => & [] , "DATUM_FEATURE_CALLOUT" => & [] , "DATUM_REFERENCE" => & ["precedence" , "referenced_datum" ,] , "DATUM_TARGET" => & ["target_id" ,] , "DATUM_TARGET_CALLOUT" => & [] , "DEFAULT_TOLERANCE_TABLE" => & [] , "DEFAULT_TOLERANCE_TABLE_CELL" => & [] , "DEFINED_SYMBOL" => & ["definition" , "target" ,] , "DEFINITIONAL_REPRESENTATION" => & [] , "DEFINITIONAL_REPRESENTATION_RELATIONSHIP" => & [] , "DEFINITIONAL_REPRESENTATION_RELATIONSHIP_WITH_SAME_CONTEXT" => & [] , "DEGENERATE_PCURVE" => & ["basis_surface" , "reference_to_curve" ,] , "DEGENERATE_TOROIDAL_SURFACE" => & ["select_outer" ,] , "DERIVED_SHAPE_ASPECT" => & [] , "DERIVED_UNIT" => & ["elements" ,] , "DERIVED_UNIT_ELEMENT" => & ["unit" , "exponent" ,] , "DESCRIPTION_ATTRIBUTE" => & ["attribute_value" , "described_item" ,] , "DESCRIPTIVE_REPRESENTATION_ITEM" => & ["description" ,] , "DESIGN_CONTEXT" => & [] , "DESIGN_MAKE_FROM_RELATIONSHIP" => & [] , "DIAMETER_DIMENSION" => & [] , "DIELECTRIC_CONSTANT_MEASURE_WITH_UNIT" => & [] , "DIMENSIONAL_CHARACTERISTIC_REPRESENTATION" => & ["dimension" , "representation" ,] , "DIMENSIONAL_EXPONENTS" => & ["length_exponent" , "mass_exponent" , "time_exponent" , "electric_current_exponent" , "thermodynamic_temperature_exponent" , "amount_of_substance_exponent" , "luminous_intensity_exponent" ,] , "DIMENSIONAL_LOCATION" => & [] , "DIMENSIONAL_LOCATION_WITH_PATH" => & ["path" ,] , "DIMENSIONAL_SIZE" => & ["applies_to" , "name" ,] , "DIMENSIONAL_SIZE_WITH_PATH" => & ["path" ,] , "DIMENSION_CALLOUT" => & [] , "DIMENSION_CALLOUT_COMPONENT_RELATIONSHIP" => & [] , "DIMENSION_CALLOUT_RELATIONSHIP" => & [] , "DIMENSION_CURVE" => & [] , "DIMENSION_CURVE_DIRECTED_CALLOUT" => & [] , "DIMENSION_CURVE_TERMINATOR" => & ["role" ,] , "DIMENSION_CURVE_TERMINATOR_TO_PROJECTION_CURVE_ASSOCIATIVITY" => & [] , "DIMENSION_PAIR" => & [] , "DIMENSION_RELATED_TOLERANCE_ZONE_ELEMENT" => & ["related_dimension" , "related_element" ,] , "DIMENSION_TEXT_ASSOCIATIVITY" => & [] , "DIRECTED_ACTION" => & ["directive" ,] , "DIRECTED_DIMENSIONAL_LOCATION" => & [] , "DIRECTION" => & ["direction_ratios" ,] , "DOCUMENT" => & ["id" , "name" , "description" , "kind" ,] , "DOCUMENT_FILE" => & [] , "DOCUMENT_IDENTIFIER" => & [] , "DOCUMENT_IDENTIFIER_ASSIGNMENT" => & ["items" ,] , "DOCUMENT_PRODUCT_ASSOCIATION" => & ["name" , "description" , "relating_document" , "related_product" ,] , "DOCUMENT_PRODUCT_EQUIVALENCE" => & [] , "DOCUMENT_REFERENCE" => & ["assigned_document" , "source" ,] , "DOCUMENT_RELATIONSHIP" => & ["name" , "description" , "relating_document" , "related_document" ,] , "DOCUMENT_REPRESENTATION_TYPE" => & ["name" , "represented_document" ,] , "DOCUMENT_TYPE" => & ["product_data_type" ,] , "DOCUMENT_USAGE_CONSTRAINT" => & ["source" , "subject_element" , "subject_element_value" ,] , "DOCUMENT_USAGE_CONSTRAINT_ASSIGNMENT" => & ["assigned_document_usage" , "role" ,] , "DOCUMENT_USAGE_ROLE" => & ["name" , "description" ,] , "DOSE_EQUIVALENT_MEASURE_WITH_UNIT" => & [] , "DOSE_EQUIVALENT_UNIT" => & [] , "DOUBLE_OFFSET_SHELLED_SOLID" => & ["thickness2" ,] , "DRAPED_DEFINED_TRANSFORMATION" => & [] , "DRAUGHTING_ANNOTATION_OCCURRENCE" => & [] , "DRAUGHTING_CALLOUT" => & ["contents" ,] , "DRAUGHTING_CALLOUT_RELATIONSHIP" => & ["name" , "description" , "relating_draughting_callout" , "related_draughting_callout" ,] , "DRAUGHTING_ELEMENTS" => & [] , "DRAUGHTING_MODEL" => & [] , "DRAUGHTING_MODEL_ITEM_ASSOCIATION" => & [] , "DRAUGHTING_PRE_DEFINED_COLOUR" => & [] , "DRAUGHTING_PRE_DEFINED_CURVE_FONT" => & [] , "DRAUGHTING_PRE_DEFINED_TEXT_FONT" => & [] , "DRAUGHTING_SUBFIGURE_REPRESENTATION" => & [] , "DRAUGHTING_SYMBOL_REPRESENTATION" => & [] , "DRAUGHTING_TEXT_LITERAL_WITH_DELINEATION" => & [] , "DRAUGHTING_TITLE" => & ["items" , "language" , "contents" ,] , "DRAWING_DEFINITION" => & ["drawing_number" , "drawing_type" ,] , "DRAWING_REVISION" => & ["revision_identifier" , "drawing_identifier" , "intended_scale" ,] , "DRAWING_REVISION_SEQUENCE" => & ["predecessor" , "successor" ,] , "DRAWING_SHEET_REVISION" => & ["revision_identifier" ,] , "DRAWING_SHEET_REVISION_SEQUENCE" => & [] , "DRAWING_SHEET_REVISION_USAGE" => & ["sheet_number" ,] , "EDGE" => & ["edge_start" , "edge_end" ,] , "EDGE_BASED_WIREFRAME_MODEL" => & ["ebwm_boundary" ,] , "EDGE_BASED_WIREFRAME_SHAPE_REPRESENTATION" => & [] , "EDGE_BLENDED_SOLID" => & ["blended_edges" ,] , "EDGE_CURVE" => & ["edge_geometry" , "same_sense" ,] , "EDGE_LOOP" => & [] , "EFFECTIVITY" => & ["id" ,] , "EFFECTIVITY_ASSIGNMENT" => & ["assigned_effectivity" ,] , "EFFECTIVITY_CONTEXT_ASSIGNMENT" => & ["assigned_effectivity_assignment" , "role" ,] , "EFFECTIVITY_CONTEXT_ROLE" => & ["name" , "description" ,] , "EFFECTIVITY_RELATIONSHIP" => & ["name" , "description" , "related_effectivity" , "relating_effectivity" ,] , "ELECTRIC_CHARGE_MEASURE_WITH_UNIT" => & [] , "ELECTRIC_CHARGE_UNIT" => & [] , "ELECTRIC_CURRENT_MEASURE_WITH_UNIT" => & [] , "ELECTRIC_CURRENT_UNIT" => & [] , "ELECTRIC_POTENTIAL_MEASURE_WITH_UNIT" => & [] , "ELECTRIC_POTENTIAL_UNIT" => & [] , "ELEMENTARY_BREP_SHAPE_REPRESENTATION" => & [] , "ELEMENTARY_SURFACE" => & ["position" ,] , "ELLIPSE" => & ["semi_axis_1" , "semi_axis_2" ,] , "ENERGY_MEASURE_WITH_UNIT" => & [] , "ENERGY_UNIT" => & [] , "ENTITY_ASSERTION" => & [] , "ENUM_REFERENCE_PREFIX" => & [] , "ENVIRONMENT" => & ["syntactic_representation" , "semantics" ,] , "EVALUATED_CHARACTERISTIC" => & [] , "EVALUATED_DEGENERATE_PCURVE" => & ["equivalent_point" ,] , "EVALUATION_PRODUCT_DEFINITION" => & [] , "EVENT_OCCURRENCE" => & ["id" , "name" , "description" ,] , "EVENT_OCCURRENCE_ASSIGNMENT" => & ["assigned_event_occurrence" , "role" ,] , "EVENT_OCCURRENCE_RELATIONSHIP" => & ["name" , "description" , "relating_event" , "related_event" ,] , "EVENT_OCCURRENCE_ROLE" => & ["name" , "description" ,] , "EXCLUSIVE_PRODUCT_CONCEPT_FEATURE_CATEGORY" => & [] , "EXECUTED_ACTION" => & [] , "EXPANDED_UNCERTAINTY" => & ["coverage_factor" ,] , "EXPLICIT_PROCEDURAL_GEOMETRIC_REPRESENTATION_ITEM_RELATIONSHIP" => & [] , "EXPLICIT_PROCEDURAL_REPRESENTATION_ITEM_RELATIONSHIP" => & [] , "EXPLICIT_PROCEDURAL_REPRESENTATION_RELATIONSHIP" => & [] , "EXPLICIT_PROCEDURAL_SHAPE_REPRESENTATION_RELATIONSHIP" => & [] , "EXPRESSION" => & [] , "EXPRESSION_CONVERSION_BASED_UNIT" => & [] , "EXTENSION" => & [] , "EXTENT" => & [] , "EXTERNALLY_DEFINED_CLASS" => & [] , "EXTERNALLY_DEFINED_COLOUR" => & [] , "EXTERNALLY_DEFINED_CONTEXT_DEPENDENT_UNIT" => & [] , "EXTERNALLY_DEFINED_CONVERSION_BASED_UNIT" => & [] , "EXTERNALLY_DEFINED_CURRENCY" => & [] , "EXTERNALLY_DEFINED_CURVE_FONT" => & [] , "EXTERNALLY_DEFINED_DIMENSION_DEFINITION" => & [] , "EXTERNALLY_DEFINED_GENERAL_PROPERTY" => & [] , "EXTERNALLY_DEFINED_HATCH_STYLE" => & [] , "EXTERNALLY_DEFINED_ITEM" => & ["item_id" , "source" ,] , "EXTERNALLY_DEFINED_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_item" , "related_item" ,] , "EXTERNALLY_DEFINED_MARKER" => & [] , "EXTERNALLY_DEFINED_PICTURE_REPRESENTATION_ITEM" => & [] , "EXTERNALLY_DEFINED_REPRESENTATION_ITEM" => & [] , "EXTERNALLY_DEFINED_STRING" => & [] , "EXTERNALLY_DEFINED_SYMBOL" => & [] , "EXTERNALLY_DEFINED_TERMINATOR_SYMBOL" => & [] , "EXTERNALLY_DEFINED_TEXT_FONT" => & [] , "EXTERNALLY_DEFINED_TILE" => & [] , "EXTERNALLY_DEFINED_TILE_STYLE" => & [] , "EXTERNAL_CLASS_LIBRARY" => & [] , "EXTERNAL_IDENTIFICATION_ASSIGNMENT" => & ["source" ,] , "EXTERNAL_SOURCE" => & ["source_id" ,] , "EXTERNAL_SOURCE_RELATIONSHIP" => & ["name" , "description" , "relating_source" , "related_source" ,] , "EXTRUDED_AREA_SOLID" => & ["extruded_direction" , "depth" ,] , "EXTRUDED_FACE_SOLID" => & ["extruded_direction" , "depth" ,] , "EXTRUDED_FACE_SOLID_WITH_DRAFT_ANGLE" => & ["draft_angle" ,] , "EXTRUDED_FACE_SOLID_WITH_MULTIPLE_DRAFT_ANGLES" => & ["drafted_edges" , "draft_angles" ,] , "EXTRUDED_FACE_SOLID_WITH_TRIM_CONDITIONS" => & ["first_trim_condition" , "second_trim_condition" , "first_trim_intent" , "second_trim_intent" , "first_offset" , "second_offset" ,] , "FACE" => & ["bounds" ,] , "FACETED_BREP" => & [] , "FACETED_BREP_SHAPE_REPRESENTATION" => & [] , "FACE_BASED_SURFACE_MODEL" => & ["fbsm_faces" ,] , "FACE_BOUND" => & ["bound" , "orientation" ,] , "FACE_OUTER_BOUND" => & [] , "FACE_SURFACE" => & ["face_geometry" , "same_sense" ,] , "FACT_TYPE" => & [] , "FILL_AREA_STYLE" => & ["name" , "fill_styles" ,] , "FILL_AREA_STYLE_COLOUR" => & ["name" , "fill_colour" ,] , "FILL_AREA_STYLE_HATCHING" => & ["hatch_line_appearance" , "start_of_next_hatch_line" , "point_of_reference_hatch_line" , "pattern_start" , "hatch_line_angle" ,] , "FILL_AREA_STYLE_TILES" => & ["tiling_pattern" , "tiles" , "tiling_scale" ,] , "FILL_AREA_STYLE_TILE_COLOURED_REGION" => & ["closed_curve" , "region_colour" ,] , "FILL_AREA_STYLE_TILE_CURVE_WITH_STYLE" => & ["styled_curve" ,] , "FILL_AREA_STYLE_TILE_SYMBOL_WITH_STYLE" => & ["symbol" ,] , "FLATNESS_TOLERANCE" => & [] , "FLAT_PATTERN_PLY_REPRESENTATION_RELATIONSHIP" => & [] , "FORCE_MEASURE_WITH_UNIT" => & [] , "FORCE_UNIT" => & [] , "FORWARD_CHAINING_RULE" => & [] , "FORWARD_CHAINING_RULE_PREMISE" => & [] , "FOUNDED_ITEM" => & [] , "FREQUENCY_MEASURE_WITH_UNIT" => & [] , "FREQUENCY_UNIT" => & [] , "FUNC" => & [] , "FUNCTIONALLY_DEFINED_TRANSFORMATION" => & ["name" , "description" ,] , "FUNCTIONAL_BREAKDOWN_CONTEXT" => & [] , "FUNCTIONAL_ELEMENT_USAGE" => & [] , "GENERAL_MATERIAL_PROPERTY" => & [] , "GENERAL_PROPERTY" => & ["id" , "name" , "description" ,] , "GENERAL_PROPERTY_ASSOCIATION" => & ["name" , "description" , "base_definition" , "derived_definition" ,] , "GENERAL_PROPERTY_RELATIONSHIP" => & ["name" , "description" , "relating_property" , "related_property" ,] , "GENERIC_CHARACTER_GLYPH_SYMBOL" => & [] , "GENERIC_EXPRESSION" => & [] , "GENERIC_LITERAL" => & [] , "GENERIC_VARIABLE" => & [] , "GEOMETRICALLY_BOUNDED_2D_WIREFRAME_REPRESENTATION" => & [] , "GEOMETRICALLY_BOUNDED_SURFACE_SHAPE_REPRESENTATION" => & [] , "GEOMETRICALLY_BOUNDED_WIREFRAME_SHAPE_REPRESENTATION" => & [] , "GEOMETRICAL_TOLERANCE_CALLOUT" => & [] , "GEOMETRIC_ALIGNMENT" => & [] , "GEOMETRIC_CURVE_SET" => & [] , "GEOMETRIC_INTERSECTION" => & [] , "GEOMETRIC_ITEM_SPECIFIC_USAGE" => & [] , "GEOMETRIC_MODEL_ELEMENT_RELATIONSHIP" => & [] , "GEOMETRIC_REPRESENTATION_CONTEXT" => & ["coordinate_space_dimension" ,] , "GEOMETRIC_REPRESENTATION_ITEM" => & [] , "GEOMETRIC_SET" => & ["elements" ,] , "GEOMETRIC_TOLERANCE" => & ["name" , "description" , "magnitude" , "toleranced_shape_aspect" ,] , "GEOMETRIC_TOLERANCE_RELATIONSHIP" => & ["name" , "description" , "relating_geometric_tolerance" , "related_geometric_tolerance" ,] , "GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE" => & ["datum_system" ,] , "GEOMETRIC_TOLERANCE_WITH_DEFINED_UNIT" => & ["unit_size" ,] , "GLOBAL_ASSIGNMENT" => & [] , "GLOBAL_UNCERTAINTY_ASSIGNED_CONTEXT" => & ["uncertainty" ,] , "GLOBAL_UNIT_ASSIGNED_CONTEXT" => & ["units" ,] , "GROUND_FACT" => & [] , "GROUP" => & ["name" , "description" ,] , "GROUP_ASSIGNMENT" => & ["assigned_group" ,] , "GROUP_RELATIONSHIP" => & ["name" , "description" , "relating_group" , "related_group" ,] , "HALF_SPACE_SOLID" => & ["base_surface" , "agreement_flag" ,] , "HARDNESS_REPRESENTATION" => & [] , "HIDDEN_ELEMENT_OVER_RIDING_STYLED_ITEM" => & [] , "HYPERBOLA" => & ["semi_axis" , "semi_imag_axis" ,] , "IDENTIFICATION_ASSIGNMENT" => & ["assigned_id" , "role" ,] , "IDENTIFICATION_ROLE" => & ["name" , "description" ,] , "ID_ATTRIBUTE" => & ["attribute_value" , "identified_item" ,] , "ILLUMINANCE_MEASURE_WITH_UNIT" => & [] , "ILLUMINANCE_UNIT" => & [] , "INCLUDED_TEXT_BLOCK" => & [] , "INCLUSION_PRODUCT_CONCEPT_FEATURE" => & [] , "INDIRECTLY_SELECTED_ELEMENTS" => & ["indirectly_picked_items" ,] , "INDIRECTLY_SELECTED_SHAPE_ELEMENTS" => & [] , "INDUCTANCE_MEASURE_WITH_UNIT" => & [] , "INDUCTANCE_UNIT" => & [] , "INFORMATION_RIGHT" => & [] , "INFORMATION_USAGE_RIGHT" => & [] , "INSTANCED_FEATURE" => & [] , "INSTANCE_USAGE_CONTEXT_ASSIGNMENT" => & ["items" ,] , "INTEGER_REPRESENTATION_ITEM" => & [] , "INTERSECTION_CURVE" => & [] , "INTERVAL_EXPRESSION" => & [] , "INT_LITERAL" => & [] , "INVISIBILITY" => & ["invisible_items" ,] , "ISO_4217_CURRENCY" => & [] , "ITEM_DEFINED_TRANSFORMATION" => & ["name" , "description" , "transform_item_1" , "transform_item_2" ,] , "ITEM_IDENTIFIED_REPRESENTATION_USAGE" => & ["name" , "description" , "definition" , "used_representation" , "identified_item" ,] , "KNOWN_SOURCE" => & [] , "LAID_DEFINED_TRANSFORMATION" => & [] , "LAMINATE_TABLE" => & [] , "LANGUAGE" => & [] , "LEADER_CURVE" => & [] , "LEADER_DIRECTED_CALLOUT" => & [] , "LEADER_DIRECTED_DIMENSION" => & [] , "LEADER_TERMINATOR" => & [] , "LENGTH_MEASURE_WITH_UNIT" => & [] , "LENGTH_UNIT" => & [] , "LIGHT_SOURCE" => & ["light_colour" ,] , "LIGHT_SOURCE_AMBIENT" => & [] , "LIGHT_SOURCE_DIRECTIONAL" => & ["orientation" ,] , "LIGHT_SOURCE_POSITIONAL" => & ["position" , "constant_attenuation" , "distance_attenuation" ,] , "LIGHT_SOURCE_SPOT" => & ["position" , "orientation" , "concentration_exponent" , "constant_attenuation" , "distance_attenuation" , "spread_angle" ,] , "LIMITS_AND_FITS" => & ["form_variance" , "zone_variance" , "grade" , "source" ,] , "LINE" => & ["pnt" , "dir" ,] , "LINEAR_DIMENSION" => & [] , "LINE_PROFILE_TOLERANCE" => & [] , "LITERAL_CONJUNCTION" => & [] , "LITERAL_DISJUNCTION" => & [] , "LITERAL_NUMBER" => & ["the_value" ,] , "LOCAL_TIME" => & ["hour_component" , "minute_component" , "second_component" , "zone" ,] , "LOGICAL_LITERAL" => & ["lit_value" ,] , "LOGICAL_REPRESENTATION_ITEM" => & [] , "LOOP" => & [] , "LOSS_TANGENT_MEASURE_WITH_UNIT" => & [] , "LOT_EFFECTIVITY" => & ["effectivity_lot_id" , "effectivity_lot_size" ,] , "LUMINOUS_FLUX_MEASURE_WITH_UNIT" => & [] , "LUMINOUS_FLUX_UNIT" => & [] , "LUMINOUS_INTENSITY_MEASURE_WITH_UNIT" => & [] , "LUMINOUS_INTENSITY_UNIT" => & [] , "MAGNETIC_FLUX_DENSITY_MEASURE_WITH_UNIT" => & [] , "MAGNETIC_FLUX_DENSITY_UNIT" => & [] , "MAGNETIC_FLUX_MEASURE_WITH_UNIT" => & [] , "MAGNETIC_FLUX_UNIT" => & [] , "MAKE_FROM_USAGE_OPTION" => & ["ranking" , "ranking_rationale" , "quantity" ,] , "MANIFOLD_SOLID_BREP" => & ["outer" ,] , "MANIFOLD_SUBSURFACE_SHAPE_REPRESENTATION" => & [] , "MANIFOLD_SURFACE_SHAPE_REPRESENTATION" => & [] , "MAPPED_ITEM" => & ["mapping_source" , "mapping_target" ,] , "MASS_MEASURE_WITH_UNIT" => & [] , "MASS_UNIT" => & [] , "MATERIAL_DESIGNATION" => & ["name" , "definitions" ,] , "MATERIAL_DESIGNATION_CHARACTERIZATION" => & ["name" , "description" , "designation" , "property" ,] , "MATERIAL_PROPERTY" => & [] , "MATERIAL_PROPERTY_REPRESENTATION" => & ["dependent_environment" ,] , "MEASURE_QUALIFICATION" => & ["name" , "description" , "qualified_measure" , "qualifiers" ,] , "MEASURE_REPRESENTATION_ITEM" => & [] , "MEASURE_WITH_UNIT" => & ["value_component" , "unit_component" ,] , "MECHANICAL_CONTEXT" => & [] , "MECHANICAL_DESIGN_AND_DRAUGHTING_RELATIONSHIP" => & [] , "MECHANICAL_DESIGN_GEOMETRIC_PRESENTATION_AREA" => & [] , "MECHANICAL_DESIGN_GEOMETRIC_PRESENTATION_REPRESENTATION" => & [] , "MECHANICAL_DESIGN_PRESENTATION_REPRESENTATION_WITH_DRAUGHTING" => & [] , "MECHANICAL_DESIGN_SHADED_PRESENTATION_AREA" => & [] , "MECHANICAL_DESIGN_SHADED_PRESENTATION_REPRESENTATION" => & [] , "MIN_AND_MAJOR_PLY_ORIENTATION_BASIS" => & [] , "MODIFIED_GEOMETRIC_TOLERANCE" => & ["modifier" ,] , "MODIFIED_SOLID" => & ["rationale" , "base_solid" ,] , "MODIFIED_SOLID_WITH_PLACED_CONFIGURATION" => & ["placing" ,] , "MOMENTS_OF_INERTIA_REPRESENTATION" => & [] , "MULTIPLE_ARITY_BOOLEAN_EXPRESSION" => & [] , "MULTIPLE_ARITY_GENERIC_EXPRESSION" => & ["operands" ,] , "MULTIPLE_ARITY_NUMERIC_EXPRESSION" => & [] , "MULTI_LANGUAGE_ATTRIBUTE_ASSIGNMENT" => & ["items" ,] , "NAMED_UNIT" => & ["dimensions" ,] , "NAME_ASSIGNMENT" => & ["assigned_name" ,] , "NAME_ATTRIBUTE" => & ["attribute_value" , "named_item" ,] , "NEXT_ASSEMBLY_USAGE_OCCURRENCE" => & [] , "NON_MANIFOLD_SURFACE_SHAPE_REPRESENTATION" => & [] , "NULL_REPRESENTATION_ITEM" => & [] , "NUMERIC_EXPRESSION" => & [] , "OBJECT_ROLE" => & ["name" , "description" ,] , "OFFSET_CURVE_2D" => & ["basis_curve" , "distance" , "self_intersect" ,] , "OFFSET_CURVE_3D" => & ["basis_curve" , "distance" , "self_intersect" , "ref_direction" ,] , "OFFSET_SURFACE" => & ["basis_surface" , "distance" , "self_intersect" ,] , "ONE_DIRECTION_REPEAT_FACTOR" => & ["repeat_factor" ,] , "OPEN_SHELL" => & [] , "ORDINAL_DATE" => & ["day_component" ,] , "ORDINATE_DIMENSION" => & [] , "ORGANIZATION" => & ["id" , "name" , "description" ,] , "ORGANIZATIONAL_ADDRESS" => & ["organizations" , "description" ,] , "ORGANIZATIONAL_PROJECT" => & ["name" , "description" , "responsible_organizations" ,] , "ORGANIZATIONAL_PROJECT_ASSIGNMENT" => & ["assigned_organizational_project" , "role" ,] , "ORGANIZATIONAL_PROJECT_RELATIONSHIP" => & ["name" , "description" , "relating_organizational_project" , "related_organizational_project" ,] , "ORGANIZATIONAL_PROJECT_ROLE" => & ["name" , "description" ,] , "ORGANIZATION_ASSIGNMENT" => & ["assigned_organization" , "role" ,] , "ORGANIZATION_RELATIONSHIP" => & ["name" , "description" , "relating_organization" , "related_organization" ,] , "ORGANIZATION_ROLE" => & ["name" ,] , "ORIENTED_CLOSED_SHELL" => & ["closed_shell_element" , "orientation" ,] , "ORIENTED_EDGE" => & ["edge_element" , "orientation" ,] , "ORIENTED_FACE" => & ["face_element" , "orientation" ,] , "ORIENTED_OPEN_SHELL" => & ["open_shell_element" , "orientation" ,] , "ORIENTED_PATH" => & ["path_element" , "orientation" ,] , "ORIENTED_SURFACE" => & ["orientation" ,] , "OUTER_BOUNDARY_CURVE" => & [] , "OVER_RIDING_STYLED_ITEM" => & ["over_ridden_style" ,] , "PACKAGE_PRODUCT_CONCEPT_FEATURE" => & [] , "PARABOLA" => & ["focal_dist" ,] , "PARALLELISM_TOLERANCE" => & [] , "PARALLEL_OFFSET" => & ["offset" ,] , "PARAMETRIC_REPRESENTATION_CONTEXT" => & [] , "PARTIAL_DOCUMENT_WITH_STRUCTURED_TEXT_REPRESENTATION_ASSIGNMENT" => & [] , "PART_LAMINATE_TABLE" => & [] , "PATH" => & ["edge_list" ,] , "PCURVE" => & ["basis_surface" , "reference_to_curve" ,] , "PERCENTAGE_LAMINATE_DEFINITION" => & [] , "PERCENTAGE_LAMINATE_TABLE" => & [] , "PERCENTAGE_PLY_DEFINITION" => & [] , "PERPENDICULARITY_TOLERANCE" => & [] , "PERPENDICULAR_TO" => & [] , "PERSON" => & ["id" , "last_name" , "first_name" , "middle_names" , "prefix_titles" , "suffix_titles" ,] , "PERSONAL_ADDRESS" => & ["people" , "description" ,] , "PERSON_AND_ORGANIZATION" => & ["the_person" , "the_organization" ,] , "PERSON_AND_ORGANIZATION_ADDRESS" => & [] , "PERSON_AND_ORGANIZATION_ASSIGNMENT" => & ["assigned_person_and_organization" , "role" ,] , "PERSON_AND_ORGANIZATION_ROLE" => & ["name" ,] , "PHYSICAL_BREAKDOWN_CONTEXT" => & [] , "PHYSICAL_ELEMENT_USAGE" => & [] , "PICTURE_REPRESENTATION" => & [] , "PICTURE_REPRESENTATION_ITEM" => & [] , "PLACED_DATUM_TARGET_FEATURE" => & [] , "PLACED_FEATURE" => & [] , "PLACEMENT" => & ["location" ,] , "PLANAR_BOX" => & ["placement" ,] , "PLANAR_EXTENT" => & ["size_in_x" , "size_in_y" ,] , "PLANE" => & [] , "PLANE_ANGLE_MEASURE_WITH_UNIT" => & [] , "PLANE_ANGLE_UNIT" => & [] , "PLUS_MINUS_TOLERANCE" => & ["range" , "toleranced_dimension" ,] , "PLY_LAMINATE_DEFINITION" => & [] , "PLY_LAMINATE_SEQUENCE_DEFINITION" => & [] , "PLY_LAMINATE_TABLE" => & [] , "POINT" => & [] , "POINT_AND_VECTOR" => & [] , "POINT_ON_CURVE" => & ["basis_curve" , "point_parameter" ,] , "POINT_ON_SURFACE" => & ["basis_surface" , "point_parameter_u" , "point_parameter_v" ,] , "POINT_PATH" => & [] , "POINT_REPLICA" => & ["parent_pt" , "transformation" ,] , "POINT_STYLE" => & ["name" , "marker" , "marker_size" , "marker_colour" ,] , "POLAR_COMPLEX_NUMBER_LITERAL" => & ["radius" , "angle" ,] , "POLYLINE" => & ["points" ,] , "POLY_LOOP" => & ["polygon" ,] , "POSITIONED_SKETCH" => & ["sketch_basis" , "auxiliary_elements" ,] , "POSITION_TOLERANCE" => & [] , "POWER_MEASURE_WITH_UNIT" => & [] , "POWER_UNIT" => & [] , "PRECISION_QUALIFIER" => & ["precision_value" ,] , "PREDEFINED_PICTURE_REPRESENTATION_ITEM" => & [] , "PRESENTATION_AREA" => & [] , "PRESENTATION_LAYER_ASSIGNMENT" => & ["name" , "description" , "assigned_items" ,] , "PRESENTATION_REPRESENTATION" => & [] , "PRESENTATION_SET" => & [] , "PRESENTATION_SIZE" => & ["unit" , "size" ,] , "PRESENTATION_STYLE_ASSIGNMENT" => & ["styles" ,] , "PRESENTATION_STYLE_BY_CONTEXT" => & ["style_context" ,] , "PRESENTATION_VIEW" => & [] , "PRESENTED_ITEM" => & [] , "PRESENTED_ITEM_REPRESENTATION" => & ["presentation" , "item" ,] , "PRESSURE_MEASURE_WITH_UNIT" => & [] , "PRESSURE_UNIT" => & [] , "PRE_DEFINED_COLOUR" => & [] , "PRE_DEFINED_CURVE_FONT" => & [] , "PRE_DEFINED_DIMENSION_SYMBOL" => & [] , "PRE_DEFINED_GEOMETRICAL_TOLERANCE_SYMBOL" => & [] , "PRE_DEFINED_ITEM" => & ["name" ,] , "PRE_DEFINED_MARKER" => & [] , "PRE_DEFINED_POINT_MARKER_SYMBOL" => & [] , "PRE_DEFINED_SURFACE_CONDITION_SYMBOL" => & [] , "PRE_DEFINED_SURFACE_SIDE_STYLE" => & [] , "PRE_DEFINED_SYMBOL" => & [] , "PRE_DEFINED_TERMINATOR_SYMBOL" => & [] , "PRE_DEFINED_TEXT_FONT" => & [] , "PRE_DEFINED_TILE" => & [] , "PROCEDURAL_REPRESENTATION" => & [] , "PROCEDURAL_REPRESENTATION_SEQUENCE" => & ["elements" , "suppressed_items" , "rationale" ,] , "PROCEDURAL_SHAPE_REPRESENTATION" => & [] , "PROCEDURAL_SHAPE_REPRESENTATION_SEQUENCE" => & [] , "PRODUCT" => & ["id" , "name" , "description" , "frame_of_reference" ,] , "PRODUCT_CATEGORY" => & ["name" , "description" ,] , "PRODUCT_CLASS" => & [] , "PRODUCT_CONCEPT" => & ["id" , "name" , "description" , "market_context" ,] , "PRODUCT_CONCEPT_CONTEXT" => & ["market_segment_type" ,] , "PRODUCT_CONCEPT_FEATURE" => & ["id" , "name" , "description" ,] , "PRODUCT_CONCEPT_FEATURE_ASSOCIATION" => & ["name" , "description" , "concept" , "feature" ,] , "PRODUCT_CONCEPT_FEATURE_CATEGORY" => & [] , "PRODUCT_CONCEPT_FEATURE_CATEGORY_USAGE" => & ["items" ,] , "PRODUCT_CONCEPT_RELATIONSHIP" => & ["name" , "description" , "relating_product_concept" , "related_product_concept" ,] , "PRODUCT_CONTEXT" => & ["discipline_type" ,] , "PRODUCT_DEFINITION" => & ["id" , "description" , "formation" , "frame_of_reference" ,] , "PRODUCT_DEFINITION_CONTEXT" => & ["life_cycle_stage" ,] , "PRODUCT_DEFINITION_CONTEXT_ASSOCIATION" => & ["definition" , "frame_of_reference" , "role" ,] , "PRODUCT_DEFINITION_CONTEXT_ROLE" => & ["name" , "description" ,] , "PRODUCT_DEFINITION_EFFECTIVITY" => & ["usage" ,] , "PRODUCT_DEFINITION_ELEMENT_RELATIONSHIP" => & [] , "PRODUCT_DEFINITION_FORMATION" => & ["id" , "description" , "of_product" ,] , "PRODUCT_DEFINITION_FORMATION_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition_formation" , "related_product_definition_formation" ,] , "PRODUCT_DEFINITION_FORMATION_WITH_SPECIFIED_SOURCE" => & ["make_or_buy" ,] , "PRODUCT_DEFINITION_GROUP_ASSIGNMENT" => & ["items" ,] , "PRODUCT_DEFINITION_OCCURRENCE_RELATIONSHIP" => & ["name" , "description" , "occurrence" , "occurrence_usage" ,] , "PRODUCT_DEFINITION_RELATIONSHIP" => & ["id" , "name" , "description" , "relating_product_definition" , "related_product_definition" ,] , "PRODUCT_DEFINITION_SHAPE" => & [] , "PRODUCT_DEFINITION_SUBSTITUTE" => & ["description" , "context_relationship" , "substitute_definition" ,] , "PRODUCT_DEFINITION_USAGE" => & [] , "PRODUCT_DEFINITION_WITH_ASSOCIATED_DOCUMENTS" => & ["documentation_ids" ,] , "PRODUCT_IDENTIFICATION" => & [] , "PRODUCT_MATERIAL_COMPOSITION_RELATIONSHIP" => & ["class" , "constituent_amount" , "composition_basis" , "determination_method" ,] , "PRODUCT_RELATED_PRODUCT_CATEGORY" => & ["products" ,] , "PRODUCT_SPECIFICATION" => & [] , "PROJECTED_ZONE_DEFINITION" => & ["projection_end" , "projected_length" ,] , "PROJECTION_CURVE" => & [] , "PROJECTION_DIRECTED_CALLOUT" => & [] , "PROMISSORY_USAGE_OCCURRENCE" => & [] , "PROPERTY_DEFINITION" => & ["name" , "description" , "definition" ,] , "PROPERTY_DEFINITION_RELATIONSHIP" => & ["name" , "description" , "relating_property_definition" , "related_property_definition" ,] , "PROPERTY_DEFINITION_REPRESENTATION" => & ["definition" , "used_representation" ,] , "QUALIFIED_REPRESENTATION_ITEM" => & ["qualifiers" ,] , "QUALITATIVE_UNCERTAINTY" => & ["uncertainty_value" ,] , "QUANTIFIED_ASSEMBLY_COMPONENT_USAGE" => & ["quantity" ,] , "QUASI_UNIFORM_CURVE" => & [] , "QUASI_UNIFORM_SURFACE" => & [] , "RADIOACTIVITY_MEASURE_WITH_UNIT" => & [] , "RADIOACTIVITY_UNIT" => & [] , "RADIUS_DIMENSION" => & [] , "RANGE_CHARACTERISTIC" => & [] , "RATIONAL_B_SPLINE_CURVE" => & ["weights_data" ,] , "RATIONAL_B_SPLINE_SURFACE" => & ["weights_data" ,] , "RATIONAL_REPRESENTATION_ITEM" => & [] , "RATIO_MEASURE_WITH_UNIT" => & [] , "RATIO_UNIT" => & [] , "REAL_LITERAL" => & [] , "REAL_REPRESENTATION_ITEM" => & [] , "RECTANGULAR_COMPOSITE_SURFACE" => & ["segments" ,] , "RECTANGULAR_TRIMMED_SURFACE" => & ["basis_surface" , "u1" , "u2" , "v1" , "v2" , "usense" , "vsense" ,] , "REFERENCED_MODIFIED_DATUM" => & ["modifier" ,] , "RELATIVE_EVENT_OCCURRENCE" => & ["base_event" , "offset" ,] , "REPARAMETRISED_COMPOSITE_CURVE_SEGMENT" => & ["param_length" ,] , "REPRESENTATION" => & ["name" , "items" , "context_of_items" ,] , "REPRESENTATION_CONTEXT" => & ["context_identifier" , "context_type" ,] , "REPRESENTATION_ITEM" => & ["name" ,] , "REPRESENTATION_ITEM_RELATIONSHIP" => & ["name" , "description" , "relating_representation_item" , "related_representation_item" ,] , "REPRESENTATION_MAP" => & ["mapping_origin" , "mapped_representation" ,] , "REPRESENTATION_RELATIONSHIP" => & ["name" , "description" , "rep_1" , "rep_2" ,] , "REPRESENTATION_RELATIONSHIP_WITH_TRANSFORMATION" => & ["transformation_operator" ,] , "REP_ITEM_GROUP" => & [] , "REQUIREMENT_ASSIGNED_OBJECT" => & ["items" ,] , "REQUIREMENT_ASSIGNMENT" => & [] , "REQUIREMENT_SOURCE" => & [] , "REQUIREMENT_VIEW_DEFINITION_RELATIONSHIP" => & [] , "RESISTANCE_MEASURE_WITH_UNIT" => & [] , "RESISTANCE_UNIT" => & [] , "REVOLVED_AREA_SOLID" => & ["axis" , "angle" ,] , "REVOLVED_FACE_SOLID" => & ["axis" , "angle" ,] , "REVOLVED_FACE_SOLID_WITH_TRIM_CONDITIONS" => & ["first_trim_condition" , "second_trim_condition" ,] , "RIGHT_ANGULAR_WEDGE" => & ["position" , "x" , "y" , "z" , "ltx" ,] , "RIGHT_CIRCULAR_CONE" => & ["position" , "height" , "radius" , "semi_angle" ,] , "RIGHT_CIRCULAR_CYLINDER" => & ["position" , "height" , "radius" ,] , "RIGHT_TO_USAGE_ASSOCIATION" => & [] , "ROLE_ASSOCIATION" => & ["role" , "item_with_role" ,] , "ROUNDNESS_TOLERANCE" => & [] , "ROW_REPRESENTATION_ITEM" => & [] , "ROW_VALUE" => & [] , "ROW_VARIABLE" => & [] , "RULED_SURFACE_SWEPT_AREA_SOLID" => & [] , "RULE_ACTION" => & [] , "RULE_CONDITION" => & [] , "RULE_DEFINITION" => & [] , "RULE_SET" => & [] , "RULE_SET_GROUP" => & [] , "RULE_SOFTWARE_DEFINITION" => & [] , "RULE_SUPERSEDED_ASSIGNMENT" => & ["items" ,] , "RULE_SUPERSEDENCE" => & [] , "RUNOUT_ZONE_DEFINITION" => & ["orientation" ,] , "RUNOUT_ZONE_ORIENTATION" => & ["angle" ,] , "RUNOUT_ZONE_ORIENTATION_REFERENCE_DIRECTION" => & ["orientation_defining_relationship" ,] , "SATISFIED_REQUIREMENT" => & ["items" ,] , "SATISFIES_REQUIREMENT" => & [] , "SATISFYING_ITEM" => & ["items" ,] , "SCALAR_VARIABLE" => & [] , "SCATTERING_PARAMETER" => & [] , "SCULPTURED_SOLID" => & ["sculpturing_element" , "positive_side" ,] , "SEAM_CURVE" => & [] , "SECURITY_CLASSIFICATION" => & ["name" , "purpose" , "security_level" ,] , "SECURITY_CLASSIFICATION_ASSIGNMENT" => & ["assigned_security_classification" ,] , "SECURITY_CLASSIFICATION_LEVEL" => & ["name" ,] , "SERIAL_NUMBERED_EFFECTIVITY" => & ["effectivity_start_id" , "effectivity_end_id" ,] , "SHAPE_ASPECT" => & ["name" , "description" , "of_shape" , "product_definitional" ,] , "SHAPE_ASPECT_ASSOCIATIVITY" => & [] , "SHAPE_ASPECT_DERIVING_RELATIONSHIP" => & [] , "SHAPE_ASPECT_RELATIONSHIP" => & ["name" , "description" , "relating_shape_aspect" , "related_shape_aspect" ,] , "SHAPE_DEFINITION_REPRESENTATION" => & [] , "SHAPE_DIMENSION_REPRESENTATION" => & [] , "SHAPE_FEATURE_DEFINITION" => & [] , "SHAPE_REPRESENTATION" => & [] , "SHAPE_REPRESENTATION_RELATIONSHIP" => & [] , "SHAPE_REPRESENTATION_WITH_PARAMETERS" => & [] , "SHELLED_SOLID" => & ["deleted_face_set" , "thickness" ,] , "SHELL_BASED_SURFACE_MODEL" => & ["sbsm_boundary" ,] , "SHELL_BASED_WIREFRAME_MODEL" => & ["sbwm_boundary" ,] , "SHELL_BASED_WIREFRAME_SHAPE_REPRESENTATION" => & [] , "SIMPLE_BOOLEAN_EXPRESSION" => & [] , "SIMPLE_CLAUSE" => & [] , "SIMPLE_GENERIC_EXPRESSION" => & [] , "SIMPLE_NUMERIC_EXPRESSION" => & [] , "SI_ABSORBED_DOSE_UNIT" => & [] , "SI_CAPACITANCE_UNIT" => & [] , "SI_CONDUCTANCE_UNIT" => & [] , "SI_DOSE_EQUIVALENT_UNIT" => & [] , "SI_ELECTRIC_CHARGE_UNIT" => & [] , "SI_ELECTRIC_POTENTIAL_UNIT" => & [] , "SI_ENERGY_UNIT" => & [] , "SI_FORCE_UNIT" => & [] , "SI_FREQUENCY_UNIT" => & [] , "SI_ILLUMINANCE_UNIT" => & [] , "SI_INDUCTANCE_UNIT" => & [] , "SI_MAGNETIC_FLUX_DENSITY_UNIT" => & [] , "SI_MAGNETIC_FLUX_UNIT" => & [] , "SI_POWER_UNIT" => & [] , "SI_PRESSURE_UNIT" => & [] , "SI_RADIOACTIVITY_UNIT" => & [] , "SI_RESISTANCE_UNIT" => & [] , "SI_UNIT" => & ["prefix" , "name" ,] , "SLASH_EXPRESSION" => & [] , "SMEARED_MATERIAL_DEFINITION" => & [] , "SOLID_ANGLE_MEASURE_WITH_UNIT" => & [] , "SOLID_ANGLE_UNIT" => & [] , "SOLID_CURVE_FONT" => & [] , "SOLID_MODEL" => & [] , "SOLID_REPLICA" => & ["parent_solid" , "transformation" ,] , "SOLID_WITH_ANGLE_BASED_CHAMFER" => & ["offset_distance" , "left_offset" , "offset_angle" ,] , "SOLID_WITH_CHAMFERED_EDGES" => & [] , "SOLID_WITH_CIRCULAR_PATTERN" => & ["replicate_count" , "angular_spacing" , "radial_alignment" , "reference_point" ,] , "SOLID_WITH_CIRCULAR_POCKET" => & ["pocket_radius" ,] , "SOLID_WITH_CIRCULAR_PROTRUSION" => & ["protrusion_radius" ,] , "SOLID_WITH_CONICAL_BOTTOM_ROUND_HOLE" => & ["semi_apex_angle" , "tip_radius" ,] , "SOLID_WITH_CONSTANT_RADIUS_EDGE_BLEND" => & ["radius" ,] , "SOLID_WITH_CURVED_SLOT" => & ["slot_centreline" ,] , "SOLID_WITH_DEPRESSION" => & ["depth" ,] , "SOLID_WITH_DOUBLE_OFFSET_CHAMFER" => & ["left_offset_distance" , "right_offset_distance" ,] , "SOLID_WITH_FLAT_BOTTOM_ROUND_HOLE" => & ["fillet_radius" ,] , "SOLID_WITH_GENERAL_POCKET" => & ["profile" , "reference_point" ,] , "SOLID_WITH_GENERAL_PROTRUSION" => & ["profile" , "reference_point" ,] , "SOLID_WITH_GROOVE" => & ["groove_radius" , "groove_width" , "draft_angle" , "floor_fillet_radius" , "external_groove" ,] , "SOLID_WITH_HOLE" => & [] , "SOLID_WITH_INCOMPLETE_CIRCULAR_PATTERN" => & ["omitted_instances" ,] , "SOLID_WITH_INCOMPLETE_RECTANGULAR_PATTERN" => & ["omitted_instances" ,] , "SOLID_WITH_POCKET" => & ["floor_blend_radius" , "draft_angle" ,] , "SOLID_WITH_PROTRUSION" => & ["protrusion_height" , "protrusion_draft_angle" ,] , "SOLID_WITH_RECTANGULAR_PATTERN" => & ["row_count" , "column_count" , "row_spacing" , "column_spacing" ,] , "SOLID_WITH_RECTANGULAR_POCKET" => & ["pocket_length" , "pocket_width" , "corner_radius" ,] , "SOLID_WITH_RECTANGULAR_PROTRUSION" => & ["protrusion_length" , "protrusion_width" , "protrusion_corner_radius" ,] , "SOLID_WITH_SHAPE_ELEMENT_PATTERN" => & ["replicated_element" ,] , "SOLID_WITH_SINGLE_OFFSET_CHAMFER" => & ["offset_distance" ,] , "SOLID_WITH_SLOT" => & ["slot_width" , "closed_ends" , "end_exit_faces" ,] , "SOLID_WITH_SPHERICAL_BOTTOM_ROUND_HOLE" => & ["sphere_radius" ,] , "SOLID_WITH_STEPPED_ROUND_HOLE" => & ["segments" , "segment_radii" , "segment_depths" ,] , "SOLID_WITH_STEPPED_ROUND_HOLE_AND_CONICAL_TRANSITIONS" => & ["conical_transitions" ,] , "SOLID_WITH_STRAIGHT_SLOT" => & ["slot_length" ,] , "SOLID_WITH_TEE_SECTION_SLOT" => & ["tee_section_width" , "collar_depth" ,] , "SOLID_WITH_THROUGH_DEPRESSION" => & ["exit_faces" ,] , "SOLID_WITH_TRAPEZOIDAL_SECTION_SLOT" => & ["draft_angle" , "floor_fillet_radius" ,] , "SOLID_WITH_VARIABLE_RADIUS_EDGE_BLEND" => & ["point_list" , "radius_list" , "edge_function_list" ,] , "SOURCED_REQUIREMENT" => & ["items" ,] , "SOURCE_FOR_REQUIREMENT" => & ["items" ,] , "SPECIFICATION_DEFINITION" => & [] , "SPECIFIED_HIGHER_USAGE_OCCURRENCE" => & ["upper_usage" , "next_usage" ,] , "SPHERE" => & ["radius" , "centre" ,] , "SPHERICAL_SURFACE" => & ["radius" ,] , "STANDARD_UNCERTAINTY" => & ["uncertainty_value" ,] , "START_REQUEST" => & ["items" ,] , "START_WORK" => & ["items" ,] , "STRAIGHTNESS_TOLERANCE" => & [] , "STRUCTURED_DIMENSION_CALLOUT" => & [] , "STRUCTURED_TEXT_COMPOSITION" => & [] , "STRUCTURED_TEXT_REPRESENTATION" => & [] , "STYLED_ITEM" => & ["styles" , "item" ,] , "SUBEDGE" => & ["parent_edge" ,] , "SUBFACE" => & ["parent_face" ,] , "SUPPLIED_PART_RELATIONSHIP" => & [] , "SURFACE" => & [] , "SURFACED_OPEN_SHELL" => & [] , "SURFACE_CONDITION_CALLOUT" => & [] , "SURFACE_CURVE" => & ["curve_3d" , "associated_geometry" , "master_representation" ,] , "SURFACE_CURVE_SWEPT_AREA_SOLID" => & ["directrix" , "start_param" , "end_param" , "reference_surface" ,] , "SURFACE_OF_LINEAR_EXTRUSION" => & ["extrusion_axis" ,] , "SURFACE_OF_REVOLUTION" => & ["axis_position" ,] , "SURFACE_PATCH" => & ["parent_surface" , "u_transition" , "v_transition" , "u_sense" , "v_sense" ,] , "SURFACE_PROFILE_TOLERANCE" => & [] , "SURFACE_RENDERING_PROPERTIES" => & ["rendered_colour" ,] , "SURFACE_REPLICA" => & ["parent_surface" , "transformation" ,] , "SURFACE_SIDE_STYLE" => & ["name" , "styles" ,] , "SURFACE_STYLE_BOUNDARY" => & ["style_of_boundary" ,] , "SURFACE_STYLE_CONTROL_GRID" => & ["style_of_control_grid" ,] , "SURFACE_STYLE_FILL_AREA" => & ["fill_area" ,] , "SURFACE_STYLE_PARAMETER_LINE" => & ["style_of_parameter_lines" , "direction_counts" ,] , "SURFACE_STYLE_REFLECTANCE_AMBIENT" => & ["ambient_reflectance" ,] , "SURFACE_STYLE_REFLECTANCE_AMBIENT_DIFFUSE" => & ["diffuse_reflectance" ,] , "SURFACE_STYLE_REFLECTANCE_AMBIENT_DIFFUSE_SPECULAR" => & ["specular_reflectance" , "specular_exponent" , "specular_colour" ,] , "SURFACE_STYLE_RENDERING" => & ["rendering_method" , "surface_colour" ,] , "SURFACE_STYLE_RENDERING_WITH_PROPERTIES" => & ["properties" ,] , "SURFACE_STYLE_SEGMENTATION_CURVE" => & ["style_of_segmentation_curve" ,] , "SURFACE_STYLE_SILHOUETTE" => & ["style_of_silhouette" ,] , "SURFACE_STYLE_TRANSPARENT" => & ["transparency" ,] , "SURFACE_STYLE_USAGE" => & ["side" , "style" ,] , "SURFACE_TEXTURE_REPRESENTATION" => & [] , "SWEPT_AREA_SOLID" => & ["swept_area" ,] , "SWEPT_DISK_SOLID" => & ["directrix" , "radius" , "inner_radius" , "start_param" , "end_param" ,] , "SWEPT_FACE_SOLID" => & ["swept_face" ,] , "SWEPT_SURFACE" => & ["swept_curve" ,] , "SYMBOL" => & [] , "SYMBOL_COLOUR" => & ["colour_of_symbol" ,] , "SYMBOL_REPRESENTATION" => & [] , "SYMBOL_REPRESENTATION_MAP" => & [] , "SYMBOL_STYLE" => & ["name" , "style_of_symbol" ,] , "SYMBOL_TARGET" => & ["placement" , "x_scale" , "y_scale" ,] , "SYMMETRIC_SHAPE_ASPECT" => & [] , "SYMMETRY_TOLERANCE" => & [] , "TABLE_REPRESENTATION_ITEM" => & [] , "TACTILE_APPEARANCE_REPRESENTATION" => & [] , "TAGGED_TEXT_FORMAT" => & [] , "TAGGED_TEXT_ITEM" => & [] , "TANGENT" => & [] , "TERMINATOR_SYMBOL" => & ["annotated_curve" ,] , "TEXT_FONT" => & ["id" , "name" , "description" ,] , "TEXT_FONT_FAMILY" => & ["id" , "name" , "description" ,] , "TEXT_FONT_IN_FAMILY" => & ["font" , "family" ,] , "TEXT_LITERAL" => & ["literal" , "placement" , "alignment" , "path" , "font" ,] , "TEXT_LITERAL_WITH_ASSOCIATED_CURVES" => & ["associated_curves" ,] , "TEXT_LITERAL_WITH_BLANKING_BOX" => & ["blanking" ,] , "TEXT_LITERAL_WITH_DELINEATION" => & ["delineation" ,] , "TEXT_LITERAL_WITH_EXTENT" => & ["extent" ,] , "TEXT_STRING_REPRESENTATION" => & [] , "TEXT_STYLE" => & ["name" , "character_appearance" ,] , "TEXT_STYLE_FOR_DEFINED_FONT" => & ["text_colour" ,] , "TEXT_STYLE_WITH_BOX_CHARACTERISTICS" => & ["characteristics" ,] , "TEXT_STYLE_WITH_MIRROR" => & ["mirror_placement" ,] , "TEXT_STYLE_WITH_SPACING" => & ["character_spacing" ,] , "THERMAL_RESISTANCE_MEASURE_WITH_UNIT" => & [] , "THERMAL_RESISTANCE_UNIT" => & [] , "THERMODYNAMIC_TEMPERATURE_MEASURE_WITH_UNIT" => & [] , "THERMODYNAMIC_TEMPERATURE_UNIT" => & [] , "THICKENED_FACE_SOLID" => & ["base_element" , "offset1" , "offset2" ,] , "THICKNESS_LAMINATE_DEFINITION" => & [] , "THICKNESS_LAMINATE_TABLE" => & [] , "TIME_INTERVAL" => & ["id" , "name" , "description" ,] , "TIME_INTERVAL_ASSIGNMENT" => & ["assigned_time_interval" , "role" ,] , "TIME_INTERVAL_BASED_EFFECTIVITY" => & ["effectivity_period" ,] , "TIME_INTERVAL_RELATIONSHIP" => & ["name" , "description" , "relating_time_interval" , "related_time_interval" ,] , "TIME_INTERVAL_ROLE" => & ["name" , "description" ,] , "TIME_INTERVAL_WITH_BOUNDS" => & ["primary_bound" , "secondary_bound" , "duration" ,] , "TIME_MEASURE_WITH_UNIT" => & [] , "TIME_UNIT" => & [] , "TOLERANCE_VALUE" => & ["lower_bound" , "upper_bound" ,] , "TOLERANCE_ZONE" => & ["defining_tolerance" , "form" ,] , "TOLERANCE_ZONE_DEFINITION" => & ["zone" , "boundaries" ,] , "TOLERANCE_ZONE_FORM" => & ["name" ,] , "TOPOLOGICAL_REPRESENTATION_ITEM" => & [] , "TOROIDAL_SURFACE" => & ["major_radius" , "minor_radius" ,] , "TORUS" => & ["position" , "major_radius" , "minor_radius" ,] , "TOTAL_RUNOUT_TOLERANCE" => & [] , "TRACK_BLENDED_SOLID" => & [] , "TRACK_BLENDED_SOLID_WITH_END_CONDITIONS" => & ["end_conditions" ,] , "TRANSFORMATION_WITH_DERIVED_ANGLE" => & [] , "TRIMMED_CURVE" => & ["basis_curve" , "trim_1" , "trim_2" , "sense_agreement" , "master_representation" ,] , "TWO_DIRECTION_REPEAT_FACTOR" => & ["second_repeat_factor" ,] , "TYPE_QUALIFIER" => & ["name" ,] , "UNARY_GENERIC_EXPRESSION" => & ["operand" ,] , "UNARY_NUMERIC_EXPRESSION" => & [] , "UNCERTAINTY_ASSIGNED_REPRESENTATION" => & ["uncertainty" ,] , "UNCERTAINTY_MEASURE_WITH_UNIT" => & ["name" , "description" ,] , "UNCERTAINTY_QUALIFIER" => & ["measure_name" , "description" ,] , "UNIFORM_CURVE" => & [] , "UNIFORM_RESOURCE_IDENTIFIER" => & [] , "UNIFORM_SURFACE" => & [] , "USAGE_ASSOCIATION" => & [] , "USER_DEFINED_CURVE_FONT" => & [] , "USER_DEFINED_MARKER" => & [] , "USER_DEFINED_TERMINATOR_SYMBOL" => & [] , "USER_SELECTED_ELEMENTS" => & ["picked_items" ,] , "USER_SELECTED_SHAPE_ELEMENTS" => & [] , "VALUE_RANGE" => & [] , "VALUE_REPRESENTATION_ITEM" => & ["value_component" ,] , "VARIABLE_SEMANTICS" => & [] , "VARIATIONAL_REPRESENTATION_ITEM" => & [] , "VECTOR" => & ["orientation" , "magnitude" ,] , "VECTOR_STYLE" => & [] , "VELOCITY_MEASURE_WITH_UNIT" => & [] , "VELOCITY_UNIT" => & [] , "VERSIONED_ACTION_REQUEST" => & ["id" , "version" , "purpose" , "description" ,] , "VERTEX" => & [] , "VERTEX_LOOP" => & ["loop_vertex" ,] , "VERTEX_POINT" => & ["vertex_geometry" ,] , "VERTEX_SHELL" => & ["vertex_shell_extent" ,] , "VIEW_VOLUME" => & ["projection_type" , "projection_point" , "view_plane_distance" , "front_plane_distance" , "front_plane_clipping" , "back_plane_distance" , "back_plane_clipping" , "view_volume_sides_clipping" , "view_window" ,] , "VISUAL_APPEARANCE_REPRESENTATION" => & [] , "VOLUME_MEASURE_WITH_UNIT" => & [] , "VOLUME_UNIT" => & [] , "WEEK_OF_YEAR_AND_DAY_DATE" => & ["week_component" , "day_component" ,] , "WIRE_SHELL" => & ["wire_shell_extent" ,] , "YEAR_MONTH" => & ["month_component" ,] , "ZONE_STRUCTURAL_MAKEUP" => & [] , };
 #[derive(Debug, Clone, PartialEq, Default, TableInit)]
 pub struct Tables {
     absorbed_dose_measure_with_unit: HashMap<u64, as_holder!(AbsorbedDoseMeasureWithUnit)>,
@@ -32,10 +32,10 @@ pub struct Tables {
         HashMap<u64, as_holder!(AmountOfSubstanceMeasureWithUnit)>,
     amount_of_substance_unit: HashMap<u64, as_holder!(AmountOfSubstanceUnit)>,
     angle_direction_reference: HashMap<u64, as_holder!(AngleDirectionReference)>,
+    angularity_tolerance: HashMap<u64, as_holder!(AngularityTolerance)>,
     angular_dimension: HashMap<u64, as_holder!(AngularDimension)>,
     angular_location: HashMap<u64, as_holder!(AngularLocation)>,
     angular_size: HashMap<u64, as_holder!(AngularSize)>,
-    angularity_tolerance: HashMap<u64, as_holder!(AngularityTolerance)>,
     annotation_curve_occurrence: HashMap<u64, as_holder!(AnnotationCurveOccurrence)>,
     annotation_fill_area: HashMap<u64, as_holder!(AnnotationFillArea)>,
     annotation_fill_area_occurrence: HashMap<u64, as_holder!(AnnotationFillAreaOccurrence)>,
@@ -75,9 +75,9 @@ pub struct Tables {
     applied_group_assignment: HashMap<u64, as_holder!(AppliedGroupAssignment)>,
     applied_identification_assignment: HashMap<u64, as_holder!(AppliedIdentificationAssignment)>,
     applied_name_assignment: HashMap<u64, as_holder!(AppliedNameAssignment)>,
-    applied_organization_assignment: HashMap<u64, as_holder!(AppliedOrganizationAssignment)>,
     applied_organizational_project_assignment:
         HashMap<u64, as_holder!(AppliedOrganizationalProjectAssignment)>,
+    applied_organization_assignment: HashMap<u64, as_holder!(AppliedOrganizationAssignment)>,
     applied_person_and_organization_assignment:
         HashMap<u64, as_holder!(AppliedPersonAndOrganizationAssignment)>,
     applied_presented_item: HashMap<u64, as_holder!(AppliedPresentedItem)>,
@@ -110,13 +110,9 @@ pub struct Tables {
     axis1_placement: HashMap<u64, as_holder!(Axis1Placement)>,
     axis2_placement_2d: HashMap<u64, as_holder!(Axis2Placement2D)>,
     axis2_placement_3d: HashMap<u64, as_holder!(Axis2Placement3D)>,
-    b_spline_curve: HashMap<u64, as_holder!(BSplineCurve)>,
-    b_spline_curve_with_knots: HashMap<u64, as_holder!(BSplineCurveWithKnots)>,
-    b_spline_surface: HashMap<u64, as_holder!(BSplineSurface)>,
-    b_spline_surface_with_knots: HashMap<u64, as_holder!(BSplineSurfaceWithKnots)>,
+    background_colour: HashMap<u64, as_holder!(BackgroundColour)>,
     back_chaining_rule: HashMap<u64, as_holder!(BackChainingRule)>,
     back_chaining_rule_body: HashMap<u64, as_holder!(BackChainingRuleBody)>,
-    background_colour: HashMap<u64, as_holder!(BackgroundColour)>,
     beveled_sheet_representation: HashMap<u64, as_holder!(BeveledSheetRepresentation)>,
     bezier_curve: HashMap<u64, as_holder!(BezierCurve)>,
     bezier_surface: HashMap<u64, as_holder!(BezierSurface)>,
@@ -133,8 +129,8 @@ pub struct Tables {
     bounded_pcurve: HashMap<u64, as_holder!(BoundedPcurve)>,
     bounded_surface: HashMap<u64, as_holder!(BoundedSurface)>,
     bounded_surface_curve: HashMap<u64, as_holder!(BoundedSurfaceCurve)>,
-    box_domain: HashMap<u64, as_holder!(BoxDomain)>,
     boxed_half_space: HashMap<u64, as_holder!(BoxedHalfSpace)>,
+    box_domain: HashMap<u64, as_holder!(BoxDomain)>,
     breakdown_context: HashMap<u64, as_holder!(BreakdownContext)>,
     breakdown_element_group_assignment: HashMap<u64, as_holder!(BreakdownElementGroupAssignment)>,
     breakdown_element_realization: HashMap<u64, as_holder!(BreakdownElementRealization)>,
@@ -142,6 +138,10 @@ pub struct Tables {
     breakdown_of: HashMap<u64, as_holder!(BreakdownOf)>,
     brep_with_voids: HashMap<u64, as_holder!(BrepWithVoids)>,
     bytes_representation_item: HashMap<u64, as_holder!(BytesRepresentationItem)>,
+    b_spline_curve: HashMap<u64, as_holder!(BSplineCurve)>,
+    b_spline_curve_with_knots: HashMap<u64, as_holder!(BSplineCurveWithKnots)>,
+    b_spline_surface: HashMap<u64, as_holder!(BSplineSurface)>,
+    b_spline_surface_with_knots: HashMap<u64, as_holder!(BSplineSurfaceWithKnots)>,
     calendar_date: HashMap<u64, as_holder!(CalendarDate)>,
     camera_image: HashMap<u64, as_holder!(CameraImage)>,
     camera_image_3d_with_scale: HashMap<u64, as_holder!(CameraImage3DWithScale)>,
@@ -178,12 +178,6 @@ pub struct Tables {
     certification_type: HashMap<u64, as_holder!(CertificationType)>,
     change: HashMap<u64, as_holder!(Change)>,
     change_request: HashMap<u64, as_holder!(ChangeRequest)>,
-    character_glyph_font_usage: HashMap<u64, as_holder!(CharacterGlyphFontUsage)>,
-    character_glyph_style_outline: HashMap<u64, as_holder!(CharacterGlyphStyleOutline)>,
-    character_glyph_style_stroke: HashMap<u64, as_holder!(CharacterGlyphStyleStroke)>,
-    character_glyph_symbol: HashMap<u64, as_holder!(CharacterGlyphSymbol)>,
-    character_glyph_symbol_outline: HashMap<u64, as_holder!(CharacterGlyphSymbolOutline)>,
-    character_glyph_symbol_stroke: HashMap<u64, as_holder!(CharacterGlyphSymbolStroke)>,
     characteristic_data_column_header: HashMap<u64, as_holder!(CharacteristicDataColumnHeader)>,
     characteristic_data_column_header_link:
         HashMap<u64, as_holder!(CharacteristicDataColumnHeaderLink)>,
@@ -193,16 +187,22 @@ pub struct Tables {
     characteristic_type: HashMap<u64, as_holder!(CharacteristicType)>,
     characterized_class: HashMap<u64, as_holder!(CharacterizedClass)>,
     characterized_object: HashMap<u64, as_holder!(CharacterizedObject)>,
+    character_glyph_font_usage: HashMap<u64, as_holder!(CharacterGlyphFontUsage)>,
+    character_glyph_style_outline: HashMap<u64, as_holder!(CharacterGlyphStyleOutline)>,
+    character_glyph_style_stroke: HashMap<u64, as_holder!(CharacterGlyphStyleStroke)>,
+    character_glyph_symbol: HashMap<u64, as_holder!(CharacterGlyphSymbol)>,
+    character_glyph_symbol_outline: HashMap<u64, as_holder!(CharacterGlyphSymbolOutline)>,
+    character_glyph_symbol_stroke: HashMap<u64, as_holder!(CharacterGlyphSymbolStroke)>,
     circle: HashMap<u64, as_holder!(Circle)>,
     circular_runout_tolerance: HashMap<u64, as_holder!(CircularRunoutTolerance)>,
     class: HashMap<u64, as_holder!(Class)>,
+    classification_assignment: HashMap<u64, as_holder!(ClassificationAssignment)>,
+    classification_role: HashMap<u64, as_holder!(ClassificationRole)>,
     class_by_extension: HashMap<u64, as_holder!(ClassByExtension)>,
     class_by_intension: HashMap<u64, as_holder!(ClassByIntension)>,
     class_system: HashMap<u64, as_holder!(ClassSystem)>,
     class_usage_effectivity_context_assignment:
         HashMap<u64, as_holder!(ClassUsageEffectivityContextAssignment)>,
-    classification_assignment: HashMap<u64, as_holder!(ClassificationAssignment)>,
-    classification_role: HashMap<u64, as_holder!(ClassificationRole)>,
     closed_shell: HashMap<u64, as_holder!(ClosedShell)>,
     coaxiality_tolerance: HashMap<u64, as_holder!(CoaxialityTolerance)>,
     colour: HashMap<u64, as_holder!(Colour)>,
@@ -294,6 +294,7 @@ pub struct Tables {
     cylindricity_tolerance: HashMap<u64, as_holder!(CylindricityTolerance)>,
     data_environment: HashMap<u64, as_holder!(DataEnvironment)>,
     date: HashMap<u64, as_holder!(Date)>,
+    dated_effectivity: HashMap<u64, as_holder!(DatedEffectivity)>,
     date_and_time: HashMap<u64, as_holder!(DateAndTime)>,
     date_and_time_assignment: HashMap<u64, as_holder!(DateAndTimeAssignment)>,
     date_assignment: HashMap<u64, as_holder!(DateAssignment)>,
@@ -301,7 +302,6 @@ pub struct Tables {
     date_role: HashMap<u64, as_holder!(DateRole)>,
     date_time_representation_item: HashMap<u64, as_holder!(DateTimeRepresentationItem)>,
     date_time_role: HashMap<u64, as_holder!(DateTimeRole)>,
-    dated_effectivity: HashMap<u64, as_holder!(DatedEffectivity)>,
     datum: HashMap<u64, as_holder!(Datum)>,
     datum_feature: HashMap<u64, as_holder!(DatumFeature)>,
     datum_feature_callout: HashMap<u64, as_holder!(DatumFeatureCallout)>,
@@ -328,6 +328,13 @@ pub struct Tables {
     diameter_dimension: HashMap<u64, as_holder!(DiameterDimension)>,
     dielectric_constant_measure_with_unit:
         HashMap<u64, as_holder!(DielectricConstantMeasureWithUnit)>,
+    dimensional_characteristic_representation:
+        HashMap<u64, as_holder!(DimensionalCharacteristicRepresentation)>,
+    dimensional_exponents: HashMap<u64, as_holder!(DimensionalExponents)>,
+    dimensional_location: HashMap<u64, as_holder!(DimensionalLocation)>,
+    dimensional_location_with_path: HashMap<u64, as_holder!(DimensionalLocationWithPath)>,
+    dimensional_size: HashMap<u64, as_holder!(DimensionalSize)>,
+    dimensional_size_with_path: HashMap<u64, as_holder!(DimensionalSizeWithPath)>,
     dimension_callout: HashMap<u64, as_holder!(DimensionCallout)>,
     dimension_callout_component_relationship:
         HashMap<u64, as_holder!(DimensionCalloutComponentRelationship)>,
@@ -341,13 +348,6 @@ pub struct Tables {
     dimension_related_tolerance_zone_element:
         HashMap<u64, as_holder!(DimensionRelatedToleranceZoneElement)>,
     dimension_text_associativity: HashMap<u64, as_holder!(DimensionTextAssociativity)>,
-    dimensional_characteristic_representation:
-        HashMap<u64, as_holder!(DimensionalCharacteristicRepresentation)>,
-    dimensional_exponents: HashMap<u64, as_holder!(DimensionalExponents)>,
-    dimensional_location: HashMap<u64, as_holder!(DimensionalLocation)>,
-    dimensional_location_with_path: HashMap<u64, as_holder!(DimensionalLocationWithPath)>,
-    dimensional_size: HashMap<u64, as_holder!(DimensionalSize)>,
-    dimensional_size_with_path: HashMap<u64, as_holder!(DimensionalSizeWithPath)>,
     directed_action: HashMap<u64, as_holder!(DirectedAction)>,
     directed_dimensional_location: HashMap<u64, as_holder!(DirectedDimensionalLocation)>,
     direction: HashMap<u64, as_holder!(Direction)>,
@@ -441,10 +441,6 @@ pub struct Tables {
     expression_conversion_based_unit: HashMap<u64, as_holder!(ExpressionConversionBasedUnit)>,
     extension: HashMap<u64, as_holder!(Extension)>,
     extent: HashMap<u64, as_holder!(Extent)>,
-    external_class_library: HashMap<u64, as_holder!(ExternalClassLibrary)>,
-    external_identification_assignment: HashMap<u64, as_holder!(ExternalIdentificationAssignment)>,
-    external_source: HashMap<u64, as_holder!(ExternalSource)>,
-    external_source_relationship: HashMap<u64, as_holder!(ExternalSourceRelationship)>,
     externally_defined_class: HashMap<u64, as_holder!(ExternallyDefinedClass)>,
     externally_defined_colour: HashMap<u64, as_holder!(ExternallyDefinedColour)>,
     externally_defined_context_dependent_unit:
@@ -472,6 +468,10 @@ pub struct Tables {
     externally_defined_text_font: HashMap<u64, as_holder!(ExternallyDefinedTextFont)>,
     externally_defined_tile: HashMap<u64, as_holder!(ExternallyDefinedTile)>,
     externally_defined_tile_style: HashMap<u64, as_holder!(ExternallyDefinedTileStyle)>,
+    external_class_library: HashMap<u64, as_holder!(ExternalClassLibrary)>,
+    external_identification_assignment: HashMap<u64, as_holder!(ExternalIdentificationAssignment)>,
+    external_source: HashMap<u64, as_holder!(ExternalSource)>,
+    external_source_relationship: HashMap<u64, as_holder!(ExternalSourceRelationship)>,
     extruded_area_solid: HashMap<u64, as_holder!(ExtrudedAreaSolid)>,
     extruded_face_solid: HashMap<u64, as_holder!(ExtrudedFaceSolid)>,
     extruded_face_solid_with_draft_angle: HashMap<u64, as_holder!(ExtrudedFaceSolidWithDraftAngle)>,
@@ -480,25 +480,25 @@ pub struct Tables {
     extruded_face_solid_with_trim_conditions:
         HashMap<u64, as_holder!(ExtrudedFaceSolidWithTrimConditions)>,
     face: HashMap<u64, as_holder!(Face)>,
+    faceted_brep: HashMap<u64, as_holder!(FacetedBrep)>,
+    faceted_brep_shape_representation: HashMap<u64, as_holder!(FacetedBrepShapeRepresentation)>,
     face_based_surface_model: HashMap<u64, as_holder!(FaceBasedSurfaceModel)>,
     face_bound: HashMap<u64, as_holder!(FaceBound)>,
     face_outer_bound: HashMap<u64, as_holder!(FaceOuterBound)>,
     face_surface: HashMap<u64, as_holder!(FaceSurface)>,
-    faceted_brep: HashMap<u64, as_holder!(FacetedBrep)>,
-    faceted_brep_shape_representation: HashMap<u64, as_holder!(FacetedBrepShapeRepresentation)>,
     fact_type: HashMap<u64, as_holder!(FactType)>,
     fill_area_style: HashMap<u64, as_holder!(FillAreaStyle)>,
     fill_area_style_colour: HashMap<u64, as_holder!(FillAreaStyleColour)>,
     fill_area_style_hatching: HashMap<u64, as_holder!(FillAreaStyleHatching)>,
+    fill_area_style_tiles: HashMap<u64, as_holder!(FillAreaStyleTiles)>,
     fill_area_style_tile_coloured_region: HashMap<u64, as_holder!(FillAreaStyleTileColouredRegion)>,
     fill_area_style_tile_curve_with_style:
         HashMap<u64, as_holder!(FillAreaStyleTileCurveWithStyle)>,
     fill_area_style_tile_symbol_with_style:
         HashMap<u64, as_holder!(FillAreaStyleTileSymbolWithStyle)>,
-    fill_area_style_tiles: HashMap<u64, as_holder!(FillAreaStyleTiles)>,
+    flatness_tolerance: HashMap<u64, as_holder!(FlatnessTolerance)>,
     flat_pattern_ply_representation_relationship:
         HashMap<u64, as_holder!(FlatPatternPlyRepresentationRelationship)>,
-    flatness_tolerance: HashMap<u64, as_holder!(FlatnessTolerance)>,
     force_measure_with_unit: HashMap<u64, as_holder!(ForceMeasureWithUnit)>,
     force_unit: HashMap<u64, as_holder!(ForceUnit)>,
     forward_chaining_rule: HashMap<u64, as_holder!(ForwardChainingRule)>,
@@ -507,10 +507,10 @@ pub struct Tables {
     frequency_measure_with_unit: HashMap<u64, as_holder!(FrequencyMeasureWithUnit)>,
     frequency_unit: HashMap<u64, as_holder!(FrequencyUnit)>,
     func: HashMap<u64, as_holder!(Func)>,
-    functional_breakdown_context: HashMap<u64, as_holder!(FunctionalBreakdownContext)>,
-    functional_element_usage: HashMap<u64, as_holder!(FunctionalElementUsage)>,
     functionally_defined_transformation:
         HashMap<u64, as_holder!(FunctionallyDefinedTransformation)>,
+    functional_breakdown_context: HashMap<u64, as_holder!(FunctionalBreakdownContext)>,
+    functional_element_usage: HashMap<u64, as_holder!(FunctionalElementUsage)>,
     general_material_property: HashMap<u64, as_holder!(GeneralMaterialProperty)>,
     general_property: HashMap<u64, as_holder!(GeneralProperty)>,
     general_property_association: HashMap<u64, as_holder!(GeneralPropertyAssociation)>,
@@ -519,6 +519,13 @@ pub struct Tables {
     generic_expression: HashMap<u64, as_holder!(GenericExpression)>,
     generic_literal: HashMap<u64, as_holder!(GenericLiteral)>,
     generic_variable: HashMap<u64, as_holder!(GenericVariable)>,
+    geometrically_bounded_2d_wireframe_representation:
+        HashMap<u64, as_holder!(GeometricallyBounded2DWireframeRepresentation)>,
+    geometrically_bounded_surface_shape_representation:
+        HashMap<u64, as_holder!(GeometricallyBoundedSurfaceShapeRepresentation)>,
+    geometrically_bounded_wireframe_shape_representation:
+        HashMap<u64, as_holder!(GeometricallyBoundedWireframeShapeRepresentation)>,
+    geometrical_tolerance_callout: HashMap<u64, as_holder!(GeometricalToleranceCallout)>,
     geometric_alignment: HashMap<u64, as_holder!(GeometricAlignment)>,
     geometric_curve_set: HashMap<u64, as_holder!(GeometricCurveSet)>,
     geometric_intersection: HashMap<u64, as_holder!(GeometricIntersection)>,
@@ -534,13 +541,6 @@ pub struct Tables {
         HashMap<u64, as_holder!(GeometricToleranceWithDatumReference)>,
     geometric_tolerance_with_defined_unit:
         HashMap<u64, as_holder!(GeometricToleranceWithDefinedUnit)>,
-    geometrical_tolerance_callout: HashMap<u64, as_holder!(GeometricalToleranceCallout)>,
-    geometrically_bounded_2d_wireframe_representation:
-        HashMap<u64, as_holder!(GeometricallyBounded2DWireframeRepresentation)>,
-    geometrically_bounded_surface_shape_representation:
-        HashMap<u64, as_holder!(GeometricallyBoundedSurfaceShapeRepresentation)>,
-    geometrically_bounded_wireframe_shape_representation:
-        HashMap<u64, as_holder!(GeometricallyBoundedWireframeShapeRepresentation)>,
     global_assignment: HashMap<u64, as_holder!(GlobalAssignment)>,
     global_uncertainty_assigned_context: HashMap<u64, as_holder!(GlobalUncertaintyAssignedContext)>,
     global_unit_assigned_context: HashMap<u64, as_holder!(GlobalUnitAssignedContext)>,
@@ -553,9 +553,9 @@ pub struct Tables {
     hidden_element_over_riding_styled_item:
         HashMap<u64, as_holder!(HiddenElementOverRidingStyledItem)>,
     hyperbola: HashMap<u64, as_holder!(Hyperbola)>,
-    id_attribute: HashMap<u64, as_holder!(IdAttribute)>,
     identification_assignment: HashMap<u64, as_holder!(IdentificationAssignment)>,
     identification_role: HashMap<u64, as_holder!(IdentificationRole)>,
+    id_attribute: HashMap<u64, as_holder!(IdAttribute)>,
     illuminance_measure_with_unit: HashMap<u64, as_holder!(IlluminanceMeasureWithUnit)>,
     illuminance_unit: HashMap<u64, as_holder!(IlluminanceUnit)>,
     included_text_block: HashMap<u64, as_holder!(IncludedTextBlock)>,
@@ -566,12 +566,12 @@ pub struct Tables {
     inductance_unit: HashMap<u64, as_holder!(InductanceUnit)>,
     information_right: HashMap<u64, as_holder!(InformationRight)>,
     information_usage_right: HashMap<u64, as_holder!(InformationUsageRight)>,
-    instance_usage_context_assignment: HashMap<u64, as_holder!(InstanceUsageContextAssignment)>,
     instanced_feature: HashMap<u64, as_holder!(InstancedFeature)>,
-    int_literal: HashMap<u64, as_holder!(IntLiteral)>,
+    instance_usage_context_assignment: HashMap<u64, as_holder!(InstanceUsageContextAssignment)>,
     integer_representation_item: HashMap<u64, as_holder!(IntegerRepresentationItem)>,
     intersection_curve: HashMap<u64, as_holder!(IntersectionCurve)>,
     interval_expression: HashMap<u64, as_holder!(IntervalExpression)>,
+    int_literal: HashMap<u64, as_holder!(IntLiteral)>,
     invisibility: HashMap<u64, as_holder!(Invisibility)>,
     iso4217_currency: HashMap<u64, as_holder!(Iso4217Currency)>,
     item_defined_transformation: HashMap<u64, as_holder!(ItemDefinedTransformation)>,
@@ -594,8 +594,8 @@ pub struct Tables {
     light_source_spot: HashMap<u64, as_holder!(LightSourceSpot)>,
     limits_and_fits: HashMap<u64, as_holder!(LimitsAndFits)>,
     line: HashMap<u64, as_holder!(Line)>,
-    line_profile_tolerance: HashMap<u64, as_holder!(LineProfileTolerance)>,
     linear_dimension: HashMap<u64, as_holder!(LinearDimension)>,
+    line_profile_tolerance: HashMap<u64, as_holder!(LineProfileTolerance)>,
     literal_conjunction: HashMap<u64, as_holder!(LiteralConjunction)>,
     literal_disjunction: HashMap<u64, as_holder!(LiteralDisjunction)>,
     literal_number: HashMap<u64, as_holder!(LiteralNumber)>,
@@ -651,13 +651,13 @@ pub struct Tables {
     modified_solid_with_placed_configuration:
         HashMap<u64, as_holder!(ModifiedSolidWithPlacedConfiguration)>,
     moments_of_inertia_representation: HashMap<u64, as_holder!(MomentsOfInertiaRepresentation)>,
-    multi_language_attribute_assignment: HashMap<u64, as_holder!(MultiLanguageAttributeAssignment)>,
     multiple_arity_boolean_expression: HashMap<u64, as_holder!(MultipleArityBooleanExpression)>,
     multiple_arity_generic_expression: HashMap<u64, as_holder!(MultipleArityGenericExpression)>,
     multiple_arity_numeric_expression: HashMap<u64, as_holder!(MultipleArityNumericExpression)>,
+    multi_language_attribute_assignment: HashMap<u64, as_holder!(MultiLanguageAttributeAssignment)>,
+    named_unit: HashMap<u64, as_holder!(NamedUnit)>,
     name_assignment: HashMap<u64, as_holder!(NameAssignment)>,
     name_attribute: HashMap<u64, as_holder!(NameAttribute)>,
-    named_unit: HashMap<u64, as_holder!(NamedUnit)>,
     next_assembly_usage_occurrence: HashMap<u64, as_holder!(NextAssemblyUsageOccurrence)>,
     non_manifold_surface_shape_representation:
         HashMap<u64, as_holder!(NonManifoldSurfaceShapeRepresentation)>,
@@ -672,15 +672,15 @@ pub struct Tables {
     ordinal_date: HashMap<u64, as_holder!(OrdinalDate)>,
     ordinate_dimension: HashMap<u64, as_holder!(OrdinateDimension)>,
     organization: HashMap<u64, as_holder!(Organization)>,
-    organization_assignment: HashMap<u64, as_holder!(OrganizationAssignment)>,
-    organization_relationship: HashMap<u64, as_holder!(OrganizationRelationship)>,
-    organization_role: HashMap<u64, as_holder!(OrganizationRole)>,
     organizational_address: HashMap<u64, as_holder!(OrganizationalAddress)>,
     organizational_project: HashMap<u64, as_holder!(OrganizationalProject)>,
     organizational_project_assignment: HashMap<u64, as_holder!(OrganizationalProjectAssignment)>,
     organizational_project_relationship:
         HashMap<u64, as_holder!(OrganizationalProjectRelationship)>,
     organizational_project_role: HashMap<u64, as_holder!(OrganizationalProjectRole)>,
+    organization_assignment: HashMap<u64, as_holder!(OrganizationAssignment)>,
+    organization_relationship: HashMap<u64, as_holder!(OrganizationRelationship)>,
+    organization_role: HashMap<u64, as_holder!(OrganizationRole)>,
     oriented_closed_shell: HashMap<u64, as_holder!(OrientedClosedShell)>,
     oriented_edge: HashMap<u64, as_holder!(OrientedEdge)>,
     oriented_face: HashMap<u64, as_holder!(OrientedFace)>,
@@ -691,25 +691,25 @@ pub struct Tables {
     over_riding_styled_item: HashMap<u64, as_holder!(OverRidingStyledItem)>,
     package_product_concept_feature: HashMap<u64, as_holder!(PackageProductConceptFeature)>,
     parabola: HashMap<u64, as_holder!(Parabola)>,
-    parallel_offset: HashMap<u64, as_holder!(ParallelOffset)>,
     parallelism_tolerance: HashMap<u64, as_holder!(ParallelismTolerance)>,
+    parallel_offset: HashMap<u64, as_holder!(ParallelOffset)>,
     parametric_representation_context: HashMap<u64, as_holder!(ParametricRepresentationContext)>,
-    part_laminate_table: HashMap<u64, as_holder!(PartLaminateTable)>,
     partial_document_with_structured_text_representation_assignment:
         HashMap<u64, as_holder!(PartialDocumentWithStructuredTextRepresentationAssignment)>,
+    part_laminate_table: HashMap<u64, as_holder!(PartLaminateTable)>,
     path: HashMap<u64, as_holder!(Path)>,
     pcurve: HashMap<u64, as_holder!(Pcurve)>,
     percentage_laminate_definition: HashMap<u64, as_holder!(PercentageLaminateDefinition)>,
     percentage_laminate_table: HashMap<u64, as_holder!(PercentageLaminateTable)>,
     percentage_ply_definition: HashMap<u64, as_holder!(PercentagePlyDefinition)>,
-    perpendicular_to: HashMap<u64, as_holder!(PerpendicularTo)>,
     perpendicularity_tolerance: HashMap<u64, as_holder!(PerpendicularityTolerance)>,
+    perpendicular_to: HashMap<u64, as_holder!(PerpendicularTo)>,
     person: HashMap<u64, as_holder!(Person)>,
+    personal_address: HashMap<u64, as_holder!(PersonalAddress)>,
     person_and_organization: HashMap<u64, as_holder!(PersonAndOrganization)>,
     person_and_organization_address: HashMap<u64, as_holder!(PersonAndOrganizationAddress)>,
     person_and_organization_assignment: HashMap<u64, as_holder!(PersonAndOrganizationAssignment)>,
     person_and_organization_role: HashMap<u64, as_holder!(PersonAndOrganizationRole)>,
-    personal_address: HashMap<u64, as_holder!(PersonalAddress)>,
     physical_breakdown_context: HashMap<u64, as_holder!(PhysicalBreakdownContext)>,
     physical_element_usage: HashMap<u64, as_holder!(PhysicalElementUsage)>,
     picture_representation: HashMap<u64, as_holder!(PictureRepresentation)>,
@@ -734,27 +734,12 @@ pub struct Tables {
     point_replica: HashMap<u64, as_holder!(PointReplica)>,
     point_style: HashMap<u64, as_holder!(PointStyle)>,
     polar_complex_number_literal: HashMap<u64, as_holder!(PolarComplexNumberLiteral)>,
-    poly_loop: HashMap<u64, as_holder!(PolyLoop)>,
     polyline: HashMap<u64, as_holder!(Polyline)>,
-    position_tolerance: HashMap<u64, as_holder!(PositionTolerance)>,
+    poly_loop: HashMap<u64, as_holder!(PolyLoop)>,
     positioned_sketch: HashMap<u64, as_holder!(PositionedSketch)>,
+    position_tolerance: HashMap<u64, as_holder!(PositionTolerance)>,
     power_measure_with_unit: HashMap<u64, as_holder!(PowerMeasureWithUnit)>,
     power_unit: HashMap<u64, as_holder!(PowerUnit)>,
-    pre_defined_colour: HashMap<u64, as_holder!(PreDefinedColour)>,
-    pre_defined_curve_font: HashMap<u64, as_holder!(PreDefinedCurveFont)>,
-    pre_defined_dimension_symbol: HashMap<u64, as_holder!(PreDefinedDimensionSymbol)>,
-    pre_defined_geometrical_tolerance_symbol:
-        HashMap<u64, as_holder!(PreDefinedGeometricalToleranceSymbol)>,
-    pre_defined_item: HashMap<u64, as_holder!(PreDefinedItem)>,
-    pre_defined_marker: HashMap<u64, as_holder!(PreDefinedMarker)>,
-    pre_defined_point_marker_symbol: HashMap<u64, as_holder!(PreDefinedPointMarkerSymbol)>,
-    pre_defined_surface_condition_symbol:
-        HashMap<u64, as_holder!(PreDefinedSurfaceConditionSymbol)>,
-    pre_defined_surface_side_style: HashMap<u64, as_holder!(PreDefinedSurfaceSideStyle)>,
-    pre_defined_symbol: HashMap<u64, as_holder!(PreDefinedSymbol)>,
-    pre_defined_terminator_symbol: HashMap<u64, as_holder!(PreDefinedTerminatorSymbol)>,
-    pre_defined_text_font: HashMap<u64, as_holder!(PreDefinedTextFont)>,
-    pre_defined_tile: HashMap<u64, as_holder!(PreDefinedTile)>,
     precision_qualifier: HashMap<u64, as_holder!(PrecisionQualifier)>,
     predefined_picture_representation_item:
         HashMap<u64, as_holder!(PredefinedPictureRepresentationItem)>,
@@ -770,6 +755,21 @@ pub struct Tables {
     presented_item_representation: HashMap<u64, as_holder!(PresentedItemRepresentation)>,
     pressure_measure_with_unit: HashMap<u64, as_holder!(PressureMeasureWithUnit)>,
     pressure_unit: HashMap<u64, as_holder!(PressureUnit)>,
+    pre_defined_colour: HashMap<u64, as_holder!(PreDefinedColour)>,
+    pre_defined_curve_font: HashMap<u64, as_holder!(PreDefinedCurveFont)>,
+    pre_defined_dimension_symbol: HashMap<u64, as_holder!(PreDefinedDimensionSymbol)>,
+    pre_defined_geometrical_tolerance_symbol:
+        HashMap<u64, as_holder!(PreDefinedGeometricalToleranceSymbol)>,
+    pre_defined_item: HashMap<u64, as_holder!(PreDefinedItem)>,
+    pre_defined_marker: HashMap<u64, as_holder!(PreDefinedMarker)>,
+    pre_defined_point_marker_symbol: HashMap<u64, as_holder!(PreDefinedPointMarkerSymbol)>,
+    pre_defined_surface_condition_symbol:
+        HashMap<u64, as_holder!(PreDefinedSurfaceConditionSymbol)>,
+    pre_defined_surface_side_style: HashMap<u64, as_holder!(PreDefinedSurfaceSideStyle)>,
+    pre_defined_symbol: HashMap<u64, as_holder!(PreDefinedSymbol)>,
+    pre_defined_terminator_symbol: HashMap<u64, as_holder!(PreDefinedTerminatorSymbol)>,
+    pre_defined_text_font: HashMap<u64, as_holder!(PreDefinedTextFont)>,
+    pre_defined_tile: HashMap<u64, as_holder!(PreDefinedTile)>,
     procedural_representation: HashMap<u64, as_holder!(ProceduralRepresentation)>,
     procedural_representation_sequence: HashMap<u64, as_holder!(ProceduralRepresentationSequence)>,
     procedural_shape_representation: HashMap<u64, as_holder!(ProceduralShapeRepresentation)>,
@@ -830,18 +830,17 @@ pub struct Tables {
     radioactivity_unit: HashMap<u64, as_holder!(RadioactivityUnit)>,
     radius_dimension: HashMap<u64, as_holder!(RadiusDimension)>,
     range_characteristic: HashMap<u64, as_holder!(RangeCharacteristic)>,
-    ratio_measure_with_unit: HashMap<u64, as_holder!(RatioMeasureWithUnit)>,
-    ratio_unit: HashMap<u64, as_holder!(RatioUnit)>,
     rational_b_spline_curve: HashMap<u64, as_holder!(RationalBSplineCurve)>,
     rational_b_spline_surface: HashMap<u64, as_holder!(RationalBSplineSurface)>,
     rational_representation_item: HashMap<u64, as_holder!(RationalRepresentationItem)>,
+    ratio_measure_with_unit: HashMap<u64, as_holder!(RatioMeasureWithUnit)>,
+    ratio_unit: HashMap<u64, as_holder!(RatioUnit)>,
     real_literal: HashMap<u64, as_holder!(RealLiteral)>,
     real_representation_item: HashMap<u64, as_holder!(RealRepresentationItem)>,
     rectangular_composite_surface: HashMap<u64, as_holder!(RectangularCompositeSurface)>,
     rectangular_trimmed_surface: HashMap<u64, as_holder!(RectangularTrimmedSurface)>,
     referenced_modified_datum: HashMap<u64, as_holder!(ReferencedModifiedDatum)>,
     relative_event_occurrence: HashMap<u64, as_holder!(RelativeEventOccurrence)>,
-    rep_item_group: HashMap<u64, as_holder!(RepItemGroup)>,
     reparametrised_composite_curve_segment:
         HashMap<u64, as_holder!(ReparametrisedCompositeCurveSegment)>,
     representation: HashMap<u64, as_holder!(Representation)>,
@@ -852,6 +851,7 @@ pub struct Tables {
     representation_relationship: HashMap<u64, as_holder!(RepresentationRelationship)>,
     representation_relationship_with_transformation:
         HashMap<u64, as_holder!(RepresentationRelationshipWithTransformation)>,
+    rep_item_group: HashMap<u64, as_holder!(RepItemGroup)>,
     requirement_assigned_object: HashMap<u64, as_holder!(RequirementAssignedObject)>,
     requirement_assignment: HashMap<u64, as_holder!(RequirementAssignment)>,
     requirement_source: HashMap<u64, as_holder!(RequirementSource)>,
@@ -872,6 +872,7 @@ pub struct Tables {
     row_representation_item: HashMap<u64, as_holder!(RowRepresentationItem)>,
     row_value: HashMap<u64, as_holder!(RowValue)>,
     row_variable: HashMap<u64, as_holder!(RowVariable)>,
+    ruled_surface_swept_area_solid: HashMap<u64, as_holder!(RuledSurfaceSweptAreaSolid)>,
     rule_action: HashMap<u64, as_holder!(RuleAction)>,
     rule_condition: HashMap<u64, as_holder!(RuleCondition)>,
     rule_definition: HashMap<u64, as_holder!(RuleDefinition)>,
@@ -880,7 +881,6 @@ pub struct Tables {
     rule_software_definition: HashMap<u64, as_holder!(RuleSoftwareDefinition)>,
     rule_superseded_assignment: HashMap<u64, as_holder!(RuleSupersededAssignment)>,
     rule_supersedence: HashMap<u64, as_holder!(RuleSupersedence)>,
-    ruled_surface_swept_area_solid: HashMap<u64, as_holder!(RuledSurfaceSweptAreaSolid)>,
     runout_zone_definition: HashMap<u64, as_holder!(RunoutZoneDefinition)>,
     runout_zone_orientation: HashMap<u64, as_holder!(RunoutZoneOrientation)>,
     runout_zone_orientation_reference_direction:
@@ -907,11 +907,15 @@ pub struct Tables {
     shape_representation_relationship: HashMap<u64, as_holder!(ShapeRepresentationRelationship)>,
     shape_representation_with_parameters:
         HashMap<u64, as_holder!(ShapeRepresentationWithParameters)>,
+    shelled_solid: HashMap<u64, as_holder!(ShelledSolid)>,
     shell_based_surface_model: HashMap<u64, as_holder!(ShellBasedSurfaceModel)>,
     shell_based_wireframe_model: HashMap<u64, as_holder!(ShellBasedWireframeModel)>,
     shell_based_wireframe_shape_representation:
         HashMap<u64, as_holder!(ShellBasedWireframeShapeRepresentation)>,
-    shelled_solid: HashMap<u64, as_holder!(ShelledSolid)>,
+    simple_boolean_expression: HashMap<u64, as_holder!(SimpleBooleanExpression)>,
+    simple_clause: HashMap<u64, as_holder!(SimpleClause)>,
+    simple_generic_expression: HashMap<u64, as_holder!(SimpleGenericExpression)>,
+    simple_numeric_expression: HashMap<u64, as_holder!(SimpleNumericExpression)>,
     si_absorbed_dose_unit: HashMap<u64, as_holder!(SiAbsorbedDoseUnit)>,
     si_capacitance_unit: HashMap<u64, as_holder!(SiCapacitanceUnit)>,
     si_conductance_unit: HashMap<u64, as_holder!(SiConductanceUnit)>,
@@ -930,10 +934,6 @@ pub struct Tables {
     si_radioactivity_unit: HashMap<u64, as_holder!(SiRadioactivityUnit)>,
     si_resistance_unit: HashMap<u64, as_holder!(SiResistanceUnit)>,
     si_unit: HashMap<u64, as_holder!(SiUnit)>,
-    simple_boolean_expression: HashMap<u64, as_holder!(SimpleBooleanExpression)>,
-    simple_clause: HashMap<u64, as_holder!(SimpleClause)>,
-    simple_generic_expression: HashMap<u64, as_holder!(SimpleGenericExpression)>,
-    simple_numeric_expression: HashMap<u64, as_holder!(SimpleNumericExpression)>,
     slash_expression: HashMap<u64, as_holder!(SlashExpression)>,
     smeared_material_definition: HashMap<u64, as_holder!(SmearedMaterialDefinition)>,
     solid_angle_measure_with_unit: HashMap<u64, as_holder!(SolidAngleMeasureWithUnit)>,
@@ -980,8 +980,8 @@ pub struct Tables {
     solid_with_trapezoidal_section_slot: HashMap<u64, as_holder!(SolidWithTrapezoidalSectionSlot)>,
     solid_with_variable_radius_edge_blend:
         HashMap<u64, as_holder!(SolidWithVariableRadiusEdgeBlend)>,
-    source_for_requirement: HashMap<u64, as_holder!(SourceForRequirement)>,
     sourced_requirement: HashMap<u64, as_holder!(SourcedRequirement)>,
+    source_for_requirement: HashMap<u64, as_holder!(SourceForRequirement)>,
     specification_definition: HashMap<u64, as_holder!(SpecificationDefinition)>,
     specified_higher_usage_occurrence: HashMap<u64, as_holder!(SpecifiedHigherUsageOccurrence)>,
     sphere: HashMap<u64, as_holder!(Sphere)>,
@@ -998,6 +998,7 @@ pub struct Tables {
     subface: HashMap<u64, as_holder!(Subface)>,
     supplied_part_relationship: HashMap<u64, as_holder!(SuppliedPartRelationship)>,
     surface: HashMap<u64, as_holder!(Surface)>,
+    surfaced_open_shell: HashMap<u64, as_holder!(SurfacedOpenShell)>,
     surface_condition_callout: HashMap<u64, as_holder!(SurfaceConditionCallout)>,
     surface_curve: HashMap<u64, as_holder!(SurfaceCurve)>,
     surface_curve_swept_area_solid: HashMap<u64, as_holder!(SurfaceCurveSweptAreaSolid)>,
@@ -1025,7 +1026,6 @@ pub struct Tables {
     surface_style_transparent: HashMap<u64, as_holder!(SurfaceStyleTransparent)>,
     surface_style_usage: HashMap<u64, as_holder!(SurfaceStyleUsage)>,
     surface_texture_representation: HashMap<u64, as_holder!(SurfaceTextureRepresentation)>,
-    surfaced_open_shell: HashMap<u64, as_holder!(SurfacedOpenShell)>,
     swept_area_solid: HashMap<u64, as_holder!(SweptAreaSolid)>,
     swept_disk_solid: HashMap<u64, as_holder!(SweptDiskSolid)>,
     swept_face_solid: HashMap<u64, as_holder!(SweptFaceSolid)>,
@@ -1463,6 +1463,9 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(AngleDirectionReference)> {
         &self.angle_direction_reference
     }
+    pub fn angularity_tolerance_holders(&self) -> &HashMap<u64, as_holder!(AngularityTolerance)> {
+        &self.angularity_tolerance
+    }
     pub fn angular_dimension_holders(&self) -> &HashMap<u64, as_holder!(AngularDimension)> {
         &self.angular_dimension
     }
@@ -1471,9 +1474,6 @@ impl Tables {
     }
     pub fn angular_size_holders(&self) -> &HashMap<u64, as_holder!(AngularSize)> {
         &self.angular_size
-    }
-    pub fn angularity_tolerance_holders(&self) -> &HashMap<u64, as_holder!(AngularityTolerance)> {
-        &self.angularity_tolerance
     }
     pub fn annotation_curve_occurrence_holders(
         &self,
@@ -1636,15 +1636,15 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(AppliedNameAssignment)> {
         &self.applied_name_assignment
     }
-    pub fn applied_organization_assignment_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(AppliedOrganizationAssignment)> {
-        &self.applied_organization_assignment
-    }
     pub fn applied_organizational_project_assignment_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(AppliedOrganizationalProjectAssignment)> {
         &self.applied_organizational_project_assignment
+    }
+    pub fn applied_organization_assignment_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(AppliedOrganizationAssignment)> {
+        &self.applied_organization_assignment
     }
     pub fn applied_person_and_organization_assignment_holders(
         &self,
@@ -1752,21 +1752,8 @@ impl Tables {
     pub fn axis2_placement_3d_holders(&self) -> &HashMap<u64, as_holder!(Axis2Placement3D)> {
         &self.axis2_placement_3d
     }
-    pub fn b_spline_curve_holders(&self) -> &HashMap<u64, as_holder!(BSplineCurve)> {
-        &self.b_spline_curve
-    }
-    pub fn b_spline_curve_with_knots_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(BSplineCurveWithKnots)> {
-        &self.b_spline_curve_with_knots
-    }
-    pub fn b_spline_surface_holders(&self) -> &HashMap<u64, as_holder!(BSplineSurface)> {
-        &self.b_spline_surface
-    }
-    pub fn b_spline_surface_with_knots_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(BSplineSurfaceWithKnots)> {
-        &self.b_spline_surface_with_knots
+    pub fn background_colour_holders(&self) -> &HashMap<u64, as_holder!(BackgroundColour)> {
+        &self.background_colour
     }
     pub fn back_chaining_rule_holders(&self) -> &HashMap<u64, as_holder!(BackChainingRule)> {
         &self.back_chaining_rule
@@ -1775,9 +1762,6 @@ impl Tables {
         &self,
     ) -> &HashMap<u64, as_holder!(BackChainingRuleBody)> {
         &self.back_chaining_rule_body
-    }
-    pub fn background_colour_holders(&self) -> &HashMap<u64, as_holder!(BackgroundColour)> {
-        &self.background_colour
     }
     pub fn beveled_sheet_representation_holders(
         &self,
@@ -1837,11 +1821,11 @@ impl Tables {
     pub fn bounded_surface_curve_holders(&self) -> &HashMap<u64, as_holder!(BoundedSurfaceCurve)> {
         &self.bounded_surface_curve
     }
-    pub fn box_domain_holders(&self) -> &HashMap<u64, as_holder!(BoxDomain)> {
-        &self.box_domain
-    }
     pub fn boxed_half_space_holders(&self) -> &HashMap<u64, as_holder!(BoxedHalfSpace)> {
         &self.boxed_half_space
+    }
+    pub fn box_domain_holders(&self) -> &HashMap<u64, as_holder!(BoxDomain)> {
+        &self.box_domain
     }
     pub fn breakdown_context_holders(&self) -> &HashMap<u64, as_holder!(BreakdownContext)> {
         &self.breakdown_context
@@ -1871,6 +1855,22 @@ impl Tables {
         &self,
     ) -> &HashMap<u64, as_holder!(BytesRepresentationItem)> {
         &self.bytes_representation_item
+    }
+    pub fn b_spline_curve_holders(&self) -> &HashMap<u64, as_holder!(BSplineCurve)> {
+        &self.b_spline_curve
+    }
+    pub fn b_spline_curve_with_knots_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(BSplineCurveWithKnots)> {
+        &self.b_spline_curve_with_knots
+    }
+    pub fn b_spline_surface_holders(&self) -> &HashMap<u64, as_holder!(BSplineSurface)> {
+        &self.b_spline_surface
+    }
+    pub fn b_spline_surface_with_knots_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(BSplineSurfaceWithKnots)> {
+        &self.b_spline_surface_with_knots
     }
     pub fn calendar_date_holders(&self) -> &HashMap<u64, as_holder!(CalendarDate)> {
         &self.calendar_date
@@ -1999,6 +1999,35 @@ impl Tables {
     pub fn change_request_holders(&self) -> &HashMap<u64, as_holder!(ChangeRequest)> {
         &self.change_request
     }
+    pub fn characteristic_data_column_header_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(CharacteristicDataColumnHeader)> {
+        &self.characteristic_data_column_header
+    }
+    pub fn characteristic_data_column_header_link_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(CharacteristicDataColumnHeaderLink)> {
+        &self.characteristic_data_column_header_link
+    }
+    pub fn characteristic_data_table_header_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(CharacteristicDataTableHeader)> {
+        &self.characteristic_data_table_header
+    }
+    pub fn characteristic_data_table_header_decomposition_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(CharacteristicDataTableHeaderDecomposition)> {
+        &self.characteristic_data_table_header_decomposition
+    }
+    pub fn characteristic_type_holders(&self) -> &HashMap<u64, as_holder!(CharacteristicType)> {
+        &self.characteristic_type
+    }
+    pub fn characterized_class_holders(&self) -> &HashMap<u64, as_holder!(CharacterizedClass)> {
+        &self.characterized_class
+    }
+    pub fn characterized_object_holders(&self) -> &HashMap<u64, as_holder!(CharacterizedObject)> {
+        &self.characterized_object
+    }
     pub fn character_glyph_font_usage_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(CharacterGlyphFontUsage)> {
@@ -2029,35 +2058,6 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(CharacterGlyphSymbolStroke)> {
         &self.character_glyph_symbol_stroke
     }
-    pub fn characteristic_data_column_header_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(CharacteristicDataColumnHeader)> {
-        &self.characteristic_data_column_header
-    }
-    pub fn characteristic_data_column_header_link_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(CharacteristicDataColumnHeaderLink)> {
-        &self.characteristic_data_column_header_link
-    }
-    pub fn characteristic_data_table_header_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(CharacteristicDataTableHeader)> {
-        &self.characteristic_data_table_header
-    }
-    pub fn characteristic_data_table_header_decomposition_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(CharacteristicDataTableHeaderDecomposition)> {
-        &self.characteristic_data_table_header_decomposition
-    }
-    pub fn characteristic_type_holders(&self) -> &HashMap<u64, as_holder!(CharacteristicType)> {
-        &self.characteristic_type
-    }
-    pub fn characterized_class_holders(&self) -> &HashMap<u64, as_holder!(CharacterizedClass)> {
-        &self.characterized_class
-    }
-    pub fn characterized_object_holders(&self) -> &HashMap<u64, as_holder!(CharacterizedObject)> {
-        &self.characterized_object
-    }
     pub fn circle_holders(&self) -> &HashMap<u64, as_holder!(Circle)> {
         &self.circle
     }
@@ -2068,6 +2068,14 @@ impl Tables {
     }
     pub fn class_holders(&self) -> &HashMap<u64, as_holder!(Class)> {
         &self.class
+    }
+    pub fn classification_assignment_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(ClassificationAssignment)> {
+        &self.classification_assignment
+    }
+    pub fn classification_role_holders(&self) -> &HashMap<u64, as_holder!(ClassificationRole)> {
+        &self.classification_role
     }
     pub fn class_by_extension_holders(&self) -> &HashMap<u64, as_holder!(ClassByExtension)> {
         &self.class_by_extension
@@ -2082,14 +2090,6 @@ impl Tables {
         &self,
     ) -> &HashMap<u64, as_holder!(ClassUsageEffectivityContextAssignment)> {
         &self.class_usage_effectivity_context_assignment
-    }
-    pub fn classification_assignment_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(ClassificationAssignment)> {
-        &self.classification_assignment
-    }
-    pub fn classification_role_holders(&self) -> &HashMap<u64, as_holder!(ClassificationRole)> {
-        &self.classification_role
     }
     pub fn closed_shell_holders(&self) -> &HashMap<u64, as_holder!(ClosedShell)> {
         &self.closed_shell
@@ -2417,6 +2417,9 @@ impl Tables {
     pub fn date_holders(&self) -> &HashMap<u64, as_holder!(Date)> {
         &self.date
     }
+    pub fn dated_effectivity_holders(&self) -> &HashMap<u64, as_holder!(DatedEffectivity)> {
+        &self.dated_effectivity
+    }
     pub fn date_and_time_holders(&self) -> &HashMap<u64, as_holder!(DateAndTime)> {
         &self.date_and_time
     }
@@ -2443,9 +2446,6 @@ impl Tables {
     }
     pub fn date_time_role_holders(&self) -> &HashMap<u64, as_holder!(DateTimeRole)> {
         &self.date_time_role
-    }
-    pub fn dated_effectivity_holders(&self) -> &HashMap<u64, as_holder!(DatedEffectivity)> {
-        &self.dated_effectivity
     }
     pub fn datum_holders(&self) -> &HashMap<u64, as_holder!(Datum)> {
         &self.datum
@@ -2534,6 +2534,30 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(DielectricConstantMeasureWithUnit)> {
         &self.dielectric_constant_measure_with_unit
     }
+    pub fn dimensional_characteristic_representation_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(DimensionalCharacteristicRepresentation)> {
+        &self.dimensional_characteristic_representation
+    }
+    pub fn dimensional_exponents_holders(&self) -> &HashMap<u64, as_holder!(DimensionalExponents)> {
+        &self.dimensional_exponents
+    }
+    pub fn dimensional_location_holders(&self) -> &HashMap<u64, as_holder!(DimensionalLocation)> {
+        &self.dimensional_location
+    }
+    pub fn dimensional_location_with_path_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(DimensionalLocationWithPath)> {
+        &self.dimensional_location_with_path
+    }
+    pub fn dimensional_size_holders(&self) -> &HashMap<u64, as_holder!(DimensionalSize)> {
+        &self.dimensional_size
+    }
+    pub fn dimensional_size_with_path_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(DimensionalSizeWithPath)> {
+        &self.dimensional_size_with_path
+    }
     pub fn dimension_callout_holders(&self) -> &HashMap<u64, as_holder!(DimensionCallout)> {
         &self.dimension_callout
     }
@@ -2577,30 +2601,6 @@ impl Tables {
         &self,
     ) -> &HashMap<u64, as_holder!(DimensionTextAssociativity)> {
         &self.dimension_text_associativity
-    }
-    pub fn dimensional_characteristic_representation_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(DimensionalCharacteristicRepresentation)> {
-        &self.dimensional_characteristic_representation
-    }
-    pub fn dimensional_exponents_holders(&self) -> &HashMap<u64, as_holder!(DimensionalExponents)> {
-        &self.dimensional_exponents
-    }
-    pub fn dimensional_location_holders(&self) -> &HashMap<u64, as_holder!(DimensionalLocation)> {
-        &self.dimensional_location
-    }
-    pub fn dimensional_location_with_path_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(DimensionalLocationWithPath)> {
-        &self.dimensional_location_with_path
-    }
-    pub fn dimensional_size_holders(&self) -> &HashMap<u64, as_holder!(DimensionalSize)> {
-        &self.dimensional_size
-    }
-    pub fn dimensional_size_with_path_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(DimensionalSizeWithPath)> {
-        &self.dimensional_size_with_path
     }
     pub fn directed_action_holders(&self) -> &HashMap<u64, as_holder!(DirectedAction)> {
         &self.directed_action
@@ -2940,24 +2940,6 @@ impl Tables {
     pub fn extent_holders(&self) -> &HashMap<u64, as_holder!(Extent)> {
         &self.extent
     }
-    pub fn external_class_library_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(ExternalClassLibrary)> {
-        &self.external_class_library
-    }
-    pub fn external_identification_assignment_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(ExternalIdentificationAssignment)> {
-        &self.external_identification_assignment
-    }
-    pub fn external_source_holders(&self) -> &HashMap<u64, as_holder!(ExternalSource)> {
-        &self.external_source
-    }
-    pub fn external_source_relationship_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(ExternalSourceRelationship)> {
-        &self.external_source_relationship
-    }
     pub fn externally_defined_class_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(ExternallyDefinedClass)> {
@@ -3058,6 +3040,24 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(ExternallyDefinedTileStyle)> {
         &self.externally_defined_tile_style
     }
+    pub fn external_class_library_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(ExternalClassLibrary)> {
+        &self.external_class_library
+    }
+    pub fn external_identification_assignment_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(ExternalIdentificationAssignment)> {
+        &self.external_identification_assignment
+    }
+    pub fn external_source_holders(&self) -> &HashMap<u64, as_holder!(ExternalSource)> {
+        &self.external_source
+    }
+    pub fn external_source_relationship_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(ExternalSourceRelationship)> {
+        &self.external_source_relationship
+    }
     pub fn extruded_area_solid_holders(&self) -> &HashMap<u64, as_holder!(ExtrudedAreaSolid)> {
         &self.extruded_area_solid
     }
@@ -3082,6 +3082,14 @@ impl Tables {
     pub fn face_holders(&self) -> &HashMap<u64, as_holder!(Face)> {
         &self.face
     }
+    pub fn faceted_brep_holders(&self) -> &HashMap<u64, as_holder!(FacetedBrep)> {
+        &self.faceted_brep
+    }
+    pub fn faceted_brep_shape_representation_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(FacetedBrepShapeRepresentation)> {
+        &self.faceted_brep_shape_representation
+    }
     pub fn face_based_surface_model_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(FaceBasedSurfaceModel)> {
@@ -3096,14 +3104,6 @@ impl Tables {
     pub fn face_surface_holders(&self) -> &HashMap<u64, as_holder!(FaceSurface)> {
         &self.face_surface
     }
-    pub fn faceted_brep_holders(&self) -> &HashMap<u64, as_holder!(FacetedBrep)> {
-        &self.faceted_brep
-    }
-    pub fn faceted_brep_shape_representation_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(FacetedBrepShapeRepresentation)> {
-        &self.faceted_brep_shape_representation
-    }
     pub fn fact_type_holders(&self) -> &HashMap<u64, as_holder!(FactType)> {
         &self.fact_type
     }
@@ -3117,6 +3117,9 @@ impl Tables {
         &self,
     ) -> &HashMap<u64, as_holder!(FillAreaStyleHatching)> {
         &self.fill_area_style_hatching
+    }
+    pub fn fill_area_style_tiles_holders(&self) -> &HashMap<u64, as_holder!(FillAreaStyleTiles)> {
+        &self.fill_area_style_tiles
     }
     pub fn fill_area_style_tile_coloured_region_holders(
         &self,
@@ -3133,16 +3136,13 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(FillAreaStyleTileSymbolWithStyle)> {
         &self.fill_area_style_tile_symbol_with_style
     }
-    pub fn fill_area_style_tiles_holders(&self) -> &HashMap<u64, as_holder!(FillAreaStyleTiles)> {
-        &self.fill_area_style_tiles
+    pub fn flatness_tolerance_holders(&self) -> &HashMap<u64, as_holder!(FlatnessTolerance)> {
+        &self.flatness_tolerance
     }
     pub fn flat_pattern_ply_representation_relationship_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(FlatPatternPlyRepresentationRelationship)> {
         &self.flat_pattern_ply_representation_relationship
-    }
-    pub fn flatness_tolerance_holders(&self) -> &HashMap<u64, as_holder!(FlatnessTolerance)> {
-        &self.flatness_tolerance
     }
     pub fn force_measure_with_unit_holders(
         &self,
@@ -3174,6 +3174,11 @@ impl Tables {
     pub fn func_holders(&self) -> &HashMap<u64, as_holder!(Func)> {
         &self.func
     }
+    pub fn functionally_defined_transformation_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(FunctionallyDefinedTransformation)> {
+        &self.functionally_defined_transformation
+    }
     pub fn functional_breakdown_context_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(FunctionalBreakdownContext)> {
@@ -3183,11 +3188,6 @@ impl Tables {
         &self,
     ) -> &HashMap<u64, as_holder!(FunctionalElementUsage)> {
         &self.functional_element_usage
-    }
-    pub fn functionally_defined_transformation_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(FunctionallyDefinedTransformation)> {
-        &self.functionally_defined_transformation
     }
     pub fn general_material_property_holders(
         &self,
@@ -3220,6 +3220,26 @@ impl Tables {
     }
     pub fn generic_variable_holders(&self) -> &HashMap<u64, as_holder!(GenericVariable)> {
         &self.generic_variable
+    }
+    pub fn geometrically_bounded_2d_wireframe_representation_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(GeometricallyBounded2DWireframeRepresentation)> {
+        &self.geometrically_bounded_2d_wireframe_representation
+    }
+    pub fn geometrically_bounded_surface_shape_representation_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(GeometricallyBoundedSurfaceShapeRepresentation)> {
+        &self.geometrically_bounded_surface_shape_representation
+    }
+    pub fn geometrically_bounded_wireframe_shape_representation_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(GeometricallyBoundedWireframeShapeRepresentation)> {
+        &self.geometrically_bounded_wireframe_shape_representation
+    }
+    pub fn geometrical_tolerance_callout_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(GeometricalToleranceCallout)> {
+        &self.geometrical_tolerance_callout
     }
     pub fn geometric_alignment_holders(&self) -> &HashMap<u64, as_holder!(GeometricAlignment)> {
         &self.geometric_alignment
@@ -3273,26 +3293,6 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(GeometricToleranceWithDefinedUnit)> {
         &self.geometric_tolerance_with_defined_unit
     }
-    pub fn geometrical_tolerance_callout_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(GeometricalToleranceCallout)> {
-        &self.geometrical_tolerance_callout
-    }
-    pub fn geometrically_bounded_2d_wireframe_representation_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(GeometricallyBounded2DWireframeRepresentation)> {
-        &self.geometrically_bounded_2d_wireframe_representation
-    }
-    pub fn geometrically_bounded_surface_shape_representation_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(GeometricallyBoundedSurfaceShapeRepresentation)> {
-        &self.geometrically_bounded_surface_shape_representation
-    }
-    pub fn geometrically_bounded_wireframe_shape_representation_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(GeometricallyBoundedWireframeShapeRepresentation)> {
-        &self.geometrically_bounded_wireframe_shape_representation
-    }
     pub fn global_assignment_holders(&self) -> &HashMap<u64, as_holder!(GlobalAssignment)> {
         &self.global_assignment
     }
@@ -3334,9 +3334,6 @@ impl Tables {
     pub fn hyperbola_holders(&self) -> &HashMap<u64, as_holder!(Hyperbola)> {
         &self.hyperbola
     }
-    pub fn id_attribute_holders(&self) -> &HashMap<u64, as_holder!(IdAttribute)> {
-        &self.id_attribute
-    }
     pub fn identification_assignment_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(IdentificationAssignment)> {
@@ -3344,6 +3341,9 @@ impl Tables {
     }
     pub fn identification_role_holders(&self) -> &HashMap<u64, as_holder!(IdentificationRole)> {
         &self.identification_role
+    }
+    pub fn id_attribute_holders(&self) -> &HashMap<u64, as_holder!(IdAttribute)> {
+        &self.id_attribute
     }
     pub fn illuminance_measure_with_unit_holders(
         &self,
@@ -3387,16 +3387,13 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(InformationUsageRight)> {
         &self.information_usage_right
     }
+    pub fn instanced_feature_holders(&self) -> &HashMap<u64, as_holder!(InstancedFeature)> {
+        &self.instanced_feature
+    }
     pub fn instance_usage_context_assignment_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(InstanceUsageContextAssignment)> {
         &self.instance_usage_context_assignment
-    }
-    pub fn instanced_feature_holders(&self) -> &HashMap<u64, as_holder!(InstancedFeature)> {
-        &self.instanced_feature
-    }
-    pub fn int_literal_holders(&self) -> &HashMap<u64, as_holder!(IntLiteral)> {
-        &self.int_literal
     }
     pub fn integer_representation_item_holders(
         &self,
@@ -3408,6 +3405,9 @@ impl Tables {
     }
     pub fn interval_expression_holders(&self) -> &HashMap<u64, as_holder!(IntervalExpression)> {
         &self.interval_expression
+    }
+    pub fn int_literal_holders(&self) -> &HashMap<u64, as_holder!(IntLiteral)> {
+        &self.int_literal
     }
     pub fn invisibility_holders(&self) -> &HashMap<u64, as_holder!(Invisibility)> {
         &self.invisibility
@@ -3488,13 +3488,13 @@ impl Tables {
     pub fn line_holders(&self) -> &HashMap<u64, as_holder!(Line)> {
         &self.line
     }
+    pub fn linear_dimension_holders(&self) -> &HashMap<u64, as_holder!(LinearDimension)> {
+        &self.linear_dimension
+    }
     pub fn line_profile_tolerance_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(LineProfileTolerance)> {
         &self.line_profile_tolerance
-    }
-    pub fn linear_dimension_holders(&self) -> &HashMap<u64, as_holder!(LinearDimension)> {
-        &self.linear_dimension
     }
     pub fn literal_conjunction_holders(&self) -> &HashMap<u64, as_holder!(LiteralConjunction)> {
         &self.literal_conjunction
@@ -3671,11 +3671,6 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(MomentsOfInertiaRepresentation)> {
         &self.moments_of_inertia_representation
     }
-    pub fn multi_language_attribute_assignment_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(MultiLanguageAttributeAssignment)> {
-        &self.multi_language_attribute_assignment
-    }
     pub fn multiple_arity_boolean_expression_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(MultipleArityBooleanExpression)> {
@@ -3691,14 +3686,19 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(MultipleArityNumericExpression)> {
         &self.multiple_arity_numeric_expression
     }
+    pub fn multi_language_attribute_assignment_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(MultiLanguageAttributeAssignment)> {
+        &self.multi_language_attribute_assignment
+    }
+    pub fn named_unit_holders(&self) -> &HashMap<u64, as_holder!(NamedUnit)> {
+        &self.named_unit
+    }
     pub fn name_assignment_holders(&self) -> &HashMap<u64, as_holder!(NameAssignment)> {
         &self.name_assignment
     }
     pub fn name_attribute_holders(&self) -> &HashMap<u64, as_holder!(NameAttribute)> {
         &self.name_attribute
-    }
-    pub fn named_unit_holders(&self) -> &HashMap<u64, as_holder!(NamedUnit)> {
-        &self.named_unit
     }
     pub fn next_assembly_usage_occurrence_holders(
         &self,
@@ -3747,19 +3747,6 @@ impl Tables {
     pub fn organization_holders(&self) -> &HashMap<u64, as_holder!(Organization)> {
         &self.organization
     }
-    pub fn organization_assignment_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(OrganizationAssignment)> {
-        &self.organization_assignment
-    }
-    pub fn organization_relationship_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(OrganizationRelationship)> {
-        &self.organization_relationship
-    }
-    pub fn organization_role_holders(&self) -> &HashMap<u64, as_holder!(OrganizationRole)> {
-        &self.organization_role
-    }
     pub fn organizational_address_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(OrganizationalAddress)> {
@@ -3784,6 +3771,19 @@ impl Tables {
         &self,
     ) -> &HashMap<u64, as_holder!(OrganizationalProjectRole)> {
         &self.organizational_project_role
+    }
+    pub fn organization_assignment_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(OrganizationAssignment)> {
+        &self.organization_assignment
+    }
+    pub fn organization_relationship_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(OrganizationRelationship)> {
+        &self.organization_relationship
+    }
+    pub fn organization_role_holders(&self) -> &HashMap<u64, as_holder!(OrganizationRole)> {
+        &self.organization_role
     }
     pub fn oriented_closed_shell_holders(&self) -> &HashMap<u64, as_holder!(OrientedClosedShell)> {
         &self.oriented_closed_shell
@@ -3819,24 +3819,24 @@ impl Tables {
     pub fn parabola_holders(&self) -> &HashMap<u64, as_holder!(Parabola)> {
         &self.parabola
     }
-    pub fn parallel_offset_holders(&self) -> &HashMap<u64, as_holder!(ParallelOffset)> {
-        &self.parallel_offset
-    }
     pub fn parallelism_tolerance_holders(&self) -> &HashMap<u64, as_holder!(ParallelismTolerance)> {
         &self.parallelism_tolerance
+    }
+    pub fn parallel_offset_holders(&self) -> &HashMap<u64, as_holder!(ParallelOffset)> {
+        &self.parallel_offset
     }
     pub fn parametric_representation_context_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(ParametricRepresentationContext)> {
         &self.parametric_representation_context
     }
-    pub fn part_laminate_table_holders(&self) -> &HashMap<u64, as_holder!(PartLaminateTable)> {
-        &self.part_laminate_table
-    }
     pub fn partial_document_with_structured_text_representation_assignment_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(PartialDocumentWithStructuredTextRepresentationAssignment)> {
         &self.partial_document_with_structured_text_representation_assignment
+    }
+    pub fn part_laminate_table_holders(&self) -> &HashMap<u64, as_holder!(PartLaminateTable)> {
+        &self.part_laminate_table
     }
     pub fn path_holders(&self) -> &HashMap<u64, as_holder!(Path)> {
         &self.path
@@ -3859,16 +3859,19 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(PercentagePlyDefinition)> {
         &self.percentage_ply_definition
     }
-    pub fn perpendicular_to_holders(&self) -> &HashMap<u64, as_holder!(PerpendicularTo)> {
-        &self.perpendicular_to
-    }
     pub fn perpendicularity_tolerance_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(PerpendicularityTolerance)> {
         &self.perpendicularity_tolerance
     }
+    pub fn perpendicular_to_holders(&self) -> &HashMap<u64, as_holder!(PerpendicularTo)> {
+        &self.perpendicular_to
+    }
     pub fn person_holders(&self) -> &HashMap<u64, as_holder!(Person)> {
         &self.person
+    }
+    pub fn personal_address_holders(&self) -> &HashMap<u64, as_holder!(PersonalAddress)> {
+        &self.personal_address
     }
     pub fn person_and_organization_holders(
         &self,
@@ -3889,9 +3892,6 @@ impl Tables {
         &self,
     ) -> &HashMap<u64, as_holder!(PersonAndOrganizationRole)> {
         &self.person_and_organization_role
-    }
-    pub fn personal_address_holders(&self) -> &HashMap<u64, as_holder!(PersonalAddress)> {
-        &self.personal_address
     }
     pub fn physical_breakdown_context_holders(
         &self,
@@ -3983,17 +3983,17 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(PolarComplexNumberLiteral)> {
         &self.polar_complex_number_literal
     }
-    pub fn poly_loop_holders(&self) -> &HashMap<u64, as_holder!(PolyLoop)> {
-        &self.poly_loop
-    }
     pub fn polyline_holders(&self) -> &HashMap<u64, as_holder!(Polyline)> {
         &self.polyline
     }
-    pub fn position_tolerance_holders(&self) -> &HashMap<u64, as_holder!(PositionTolerance)> {
-        &self.position_tolerance
+    pub fn poly_loop_holders(&self) -> &HashMap<u64, as_holder!(PolyLoop)> {
+        &self.poly_loop
     }
     pub fn positioned_sketch_holders(&self) -> &HashMap<u64, as_holder!(PositionedSketch)> {
         &self.positioned_sketch
+    }
+    pub fn position_tolerance_holders(&self) -> &HashMap<u64, as_holder!(PositionTolerance)> {
+        &self.position_tolerance
     }
     pub fn power_measure_with_unit_holders(
         &self,
@@ -4002,57 +4002,6 @@ impl Tables {
     }
     pub fn power_unit_holders(&self) -> &HashMap<u64, as_holder!(PowerUnit)> {
         &self.power_unit
-    }
-    pub fn pre_defined_colour_holders(&self) -> &HashMap<u64, as_holder!(PreDefinedColour)> {
-        &self.pre_defined_colour
-    }
-    pub fn pre_defined_curve_font_holders(&self) -> &HashMap<u64, as_holder!(PreDefinedCurveFont)> {
-        &self.pre_defined_curve_font
-    }
-    pub fn pre_defined_dimension_symbol_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(PreDefinedDimensionSymbol)> {
-        &self.pre_defined_dimension_symbol
-    }
-    pub fn pre_defined_geometrical_tolerance_symbol_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(PreDefinedGeometricalToleranceSymbol)> {
-        &self.pre_defined_geometrical_tolerance_symbol
-    }
-    pub fn pre_defined_item_holders(&self) -> &HashMap<u64, as_holder!(PreDefinedItem)> {
-        &self.pre_defined_item
-    }
-    pub fn pre_defined_marker_holders(&self) -> &HashMap<u64, as_holder!(PreDefinedMarker)> {
-        &self.pre_defined_marker
-    }
-    pub fn pre_defined_point_marker_symbol_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(PreDefinedPointMarkerSymbol)> {
-        &self.pre_defined_point_marker_symbol
-    }
-    pub fn pre_defined_surface_condition_symbol_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(PreDefinedSurfaceConditionSymbol)> {
-        &self.pre_defined_surface_condition_symbol
-    }
-    pub fn pre_defined_surface_side_style_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(PreDefinedSurfaceSideStyle)> {
-        &self.pre_defined_surface_side_style
-    }
-    pub fn pre_defined_symbol_holders(&self) -> &HashMap<u64, as_holder!(PreDefinedSymbol)> {
-        &self.pre_defined_symbol
-    }
-    pub fn pre_defined_terminator_symbol_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(PreDefinedTerminatorSymbol)> {
-        &self.pre_defined_terminator_symbol
-    }
-    pub fn pre_defined_text_font_holders(&self) -> &HashMap<u64, as_holder!(PreDefinedTextFont)> {
-        &self.pre_defined_text_font
-    }
-    pub fn pre_defined_tile_holders(&self) -> &HashMap<u64, as_holder!(PreDefinedTile)> {
-        &self.pre_defined_tile
     }
     pub fn precision_qualifier_holders(&self) -> &HashMap<u64, as_holder!(PrecisionQualifier)> {
         &self.precision_qualifier
@@ -4109,6 +4058,57 @@ impl Tables {
     }
     pub fn pressure_unit_holders(&self) -> &HashMap<u64, as_holder!(PressureUnit)> {
         &self.pressure_unit
+    }
+    pub fn pre_defined_colour_holders(&self) -> &HashMap<u64, as_holder!(PreDefinedColour)> {
+        &self.pre_defined_colour
+    }
+    pub fn pre_defined_curve_font_holders(&self) -> &HashMap<u64, as_holder!(PreDefinedCurveFont)> {
+        &self.pre_defined_curve_font
+    }
+    pub fn pre_defined_dimension_symbol_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(PreDefinedDimensionSymbol)> {
+        &self.pre_defined_dimension_symbol
+    }
+    pub fn pre_defined_geometrical_tolerance_symbol_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(PreDefinedGeometricalToleranceSymbol)> {
+        &self.pre_defined_geometrical_tolerance_symbol
+    }
+    pub fn pre_defined_item_holders(&self) -> &HashMap<u64, as_holder!(PreDefinedItem)> {
+        &self.pre_defined_item
+    }
+    pub fn pre_defined_marker_holders(&self) -> &HashMap<u64, as_holder!(PreDefinedMarker)> {
+        &self.pre_defined_marker
+    }
+    pub fn pre_defined_point_marker_symbol_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(PreDefinedPointMarkerSymbol)> {
+        &self.pre_defined_point_marker_symbol
+    }
+    pub fn pre_defined_surface_condition_symbol_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(PreDefinedSurfaceConditionSymbol)> {
+        &self.pre_defined_surface_condition_symbol
+    }
+    pub fn pre_defined_surface_side_style_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(PreDefinedSurfaceSideStyle)> {
+        &self.pre_defined_surface_side_style
+    }
+    pub fn pre_defined_symbol_holders(&self) -> &HashMap<u64, as_holder!(PreDefinedSymbol)> {
+        &self.pre_defined_symbol
+    }
+    pub fn pre_defined_terminator_symbol_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(PreDefinedTerminatorSymbol)> {
+        &self.pre_defined_terminator_symbol
+    }
+    pub fn pre_defined_text_font_holders(&self) -> &HashMap<u64, as_holder!(PreDefinedTextFont)> {
+        &self.pre_defined_text_font
+    }
+    pub fn pre_defined_tile_holders(&self) -> &HashMap<u64, as_holder!(PreDefinedTile)> {
+        &self.pre_defined_tile
     }
     pub fn procedural_representation_holders(
         &self,
@@ -4337,14 +4337,6 @@ impl Tables {
     pub fn range_characteristic_holders(&self) -> &HashMap<u64, as_holder!(RangeCharacteristic)> {
         &self.range_characteristic
     }
-    pub fn ratio_measure_with_unit_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(RatioMeasureWithUnit)> {
-        &self.ratio_measure_with_unit
-    }
-    pub fn ratio_unit_holders(&self) -> &HashMap<u64, as_holder!(RatioUnit)> {
-        &self.ratio_unit
-    }
     pub fn rational_b_spline_curve_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(RationalBSplineCurve)> {
@@ -4359,6 +4351,14 @@ impl Tables {
         &self,
     ) -> &HashMap<u64, as_holder!(RationalRepresentationItem)> {
         &self.rational_representation_item
+    }
+    pub fn ratio_measure_with_unit_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(RatioMeasureWithUnit)> {
+        &self.ratio_measure_with_unit
+    }
+    pub fn ratio_unit_holders(&self) -> &HashMap<u64, as_holder!(RatioUnit)> {
+        &self.ratio_unit
     }
     pub fn real_literal_holders(&self) -> &HashMap<u64, as_holder!(RealLiteral)> {
         &self.real_literal
@@ -4387,9 +4387,6 @@ impl Tables {
         &self,
     ) -> &HashMap<u64, as_holder!(RelativeEventOccurrence)> {
         &self.relative_event_occurrence
-    }
-    pub fn rep_item_group_holders(&self) -> &HashMap<u64, as_holder!(RepItemGroup)> {
-        &self.rep_item_group
     }
     pub fn reparametrised_composite_curve_segment_holders(
         &self,
@@ -4424,6 +4421,9 @@ impl Tables {
         &self,
     ) -> &HashMap<u64, as_holder!(RepresentationRelationshipWithTransformation)> {
         &self.representation_relationship_with_transformation
+    }
+    pub fn rep_item_group_holders(&self) -> &HashMap<u64, as_holder!(RepItemGroup)> {
+        &self.rep_item_group
     }
     pub fn requirement_assigned_object_holders(
         &self,
@@ -4495,6 +4495,11 @@ impl Tables {
     pub fn row_variable_holders(&self) -> &HashMap<u64, as_holder!(RowVariable)> {
         &self.row_variable
     }
+    pub fn ruled_surface_swept_area_solid_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(RuledSurfaceSweptAreaSolid)> {
+        &self.ruled_surface_swept_area_solid
+    }
     pub fn rule_action_holders(&self) -> &HashMap<u64, as_holder!(RuleAction)> {
         &self.rule_action
     }
@@ -4522,11 +4527,6 @@ impl Tables {
     }
     pub fn rule_supersedence_holders(&self) -> &HashMap<u64, as_holder!(RuleSupersedence)> {
         &self.rule_supersedence
-    }
-    pub fn ruled_surface_swept_area_solid_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(RuledSurfaceSweptAreaSolid)> {
-        &self.ruled_surface_swept_area_solid
     }
     pub fn runout_zone_definition_holders(
         &self,
@@ -4630,6 +4630,9 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(ShapeRepresentationWithParameters)> {
         &self.shape_representation_with_parameters
     }
+    pub fn shelled_solid_holders(&self) -> &HashMap<u64, as_holder!(ShelledSolid)> {
+        &self.shelled_solid
+    }
     pub fn shell_based_surface_model_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(ShellBasedSurfaceModel)> {
@@ -4645,8 +4648,23 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(ShellBasedWireframeShapeRepresentation)> {
         &self.shell_based_wireframe_shape_representation
     }
-    pub fn shelled_solid_holders(&self) -> &HashMap<u64, as_holder!(ShelledSolid)> {
-        &self.shelled_solid
+    pub fn simple_boolean_expression_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(SimpleBooleanExpression)> {
+        &self.simple_boolean_expression
+    }
+    pub fn simple_clause_holders(&self) -> &HashMap<u64, as_holder!(SimpleClause)> {
+        &self.simple_clause
+    }
+    pub fn simple_generic_expression_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(SimpleGenericExpression)> {
+        &self.simple_generic_expression
+    }
+    pub fn simple_numeric_expression_holders(
+        &self,
+    ) -> &HashMap<u64, as_holder!(SimpleNumericExpression)> {
+        &self.simple_numeric_expression
     }
     pub fn si_absorbed_dose_unit_holders(&self) -> &HashMap<u64, as_holder!(SiAbsorbedDoseUnit)> {
         &self.si_absorbed_dose_unit
@@ -4709,24 +4727,6 @@ impl Tables {
     }
     pub fn si_unit_holders(&self) -> &HashMap<u64, as_holder!(SiUnit)> {
         &self.si_unit
-    }
-    pub fn simple_boolean_expression_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(SimpleBooleanExpression)> {
-        &self.simple_boolean_expression
-    }
-    pub fn simple_clause_holders(&self) -> &HashMap<u64, as_holder!(SimpleClause)> {
-        &self.simple_clause
-    }
-    pub fn simple_generic_expression_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(SimpleGenericExpression)> {
-        &self.simple_generic_expression
-    }
-    pub fn simple_numeric_expression_holders(
-        &self,
-    ) -> &HashMap<u64, as_holder!(SimpleNumericExpression)> {
-        &self.simple_numeric_expression
     }
     pub fn slash_expression_holders(&self) -> &HashMap<u64, as_holder!(SlashExpression)> {
         &self.slash_expression
@@ -4904,13 +4904,13 @@ impl Tables {
     ) -> &HashMap<u64, as_holder!(SolidWithVariableRadiusEdgeBlend)> {
         &self.solid_with_variable_radius_edge_blend
     }
+    pub fn sourced_requirement_holders(&self) -> &HashMap<u64, as_holder!(SourcedRequirement)> {
+        &self.sourced_requirement
+    }
     pub fn source_for_requirement_holders(
         &self,
     ) -> &HashMap<u64, as_holder!(SourceForRequirement)> {
         &self.source_for_requirement
-    }
-    pub fn sourced_requirement_holders(&self) -> &HashMap<u64, as_holder!(SourcedRequirement)> {
-        &self.sourced_requirement
     }
     pub fn specification_definition_holders(
         &self,
@@ -4973,6 +4973,9 @@ impl Tables {
     }
     pub fn surface_holders(&self) -> &HashMap<u64, as_holder!(Surface)> {
         &self.surface
+    }
+    pub fn surfaced_open_shell_holders(&self) -> &HashMap<u64, as_holder!(SurfacedOpenShell)> {
+        &self.surfaced_open_shell
     }
     pub fn surface_condition_callout_holders(
         &self,
@@ -5081,9 +5084,6 @@ impl Tables {
         &self,
     ) -> &HashMap<u64, as_holder!(SurfaceTextureRepresentation)> {
         &self.surface_texture_representation
-    }
-    pub fn surfaced_open_shell_holders(&self) -> &HashMap<u64, as_holder!(SurfacedOpenShell)> {
-        &self.surfaced_open_shell
     }
     pub fn swept_area_solid_holders(&self) -> &HashMap<u64, as_holder!(SweptAreaSolid)> {
         &self.swept_area_solid
@@ -10264,6 +10264,27 @@ pub struct AngleDirectionReference {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = angularity_tolerance)]
+#[holder(generate_deserialize)]
+pub struct AngularityTolerance {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
+    pub description: Text,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
+    pub magnitude: MeasureWithUnitAny,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance")]
+    pub toleranced_shape_aspect: ShapeAspectAny,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "geometric_tolerance_with_datum_reference")]
+    pub datum_system: Vec<DatumReferenceAny>,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = angular_dimension)]
 #[holder(generate_deserialize)]
 pub struct AngularDimension {
@@ -10305,27 +10326,6 @@ pub struct AngularSize {
     #[holder(supertype = "dimensional_size")]
     pub name: Label,
     pub angle_selection: AngleRelator,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = angularity_tolerance)]
-#[holder(generate_deserialize)]
-pub struct AngularityTolerance {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "geometric_tolerance")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "geometric_tolerance")]
-    pub description: Text,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "geometric_tolerance")]
-    pub magnitude: MeasureWithUnitAny,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "geometric_tolerance")]
-    pub toleranced_shape_aspect: ShapeAspectAny,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "geometric_tolerance_with_datum_reference")]
-    pub datum_system: Vec<DatumReferenceAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -10907,20 +10907,6 @@ pub struct AppliedNameAssignment {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = applied_organization_assignment)]
-#[holder(generate_deserialize)]
-pub struct AppliedOrganizationAssignment {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "organization_assignment")]
-    pub assigned_organization: Organization,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "organization_assignment")]
-    pub role: OrganizationRole,
-    #[holder(use_place_holder)]
-    pub items: Vec<OrganizationItem>,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
 # [holder (field = applied_organizational_project_assignment)]
 #[holder(generate_deserialize)]
 pub struct AppliedOrganizationalProjectAssignment {
@@ -10932,6 +10918,20 @@ pub struct AppliedOrganizationalProjectAssignment {
     pub role: OrganizationalProjectRole,
     #[holder(use_place_holder)]
     pub items: Vec<ProjectItem>,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = applied_organization_assignment)]
+#[holder(generate_deserialize)]
+pub struct AppliedOrganizationAssignment {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "organization_assignment")]
+    pub assigned_organization: Organization,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "organization_assignment")]
+    pub role: OrganizationRole,
+    #[holder(use_place_holder)]
+    pub items: Vec<OrganizationItem>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -11349,124 +11349,11 @@ pub struct Axis2Placement3D {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = b_spline_curve)]
+# [holder (field = background_colour)]
 #[holder(generate_deserialize)]
-pub struct BSplineCurve {
+pub struct BackgroundColour {
     #[holder(use_place_holder)]
-    #[holder(supertype = "representation_item")]
-    pub name: Label,
-    pub degree: i64,
-    #[holder(use_place_holder)]
-    pub control_points_list: Vec<CartesianPoint>,
-    pub curve_form: BSplineCurveForm,
-    pub closed_curve: Logical,
-    pub self_intersect: Logical,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum BSplineCurveAny {
-    #[holder(use_place_holder)]
-    BSplineCurve(Box<BSplineCurve>),
-    #[holder(use_place_holder)]
-    BSplineCurveWithKnots(Box<BSplineCurveWithKnots>),
-    #[holder(use_place_holder)]
-    BezierCurve(Box<BezierCurve>),
-    #[holder(use_place_holder)]
-    QuasiUniformCurve(Box<QuasiUniformCurve>),
-    #[holder(use_place_holder)]
-    RationalBSplineCurve(Box<RationalBSplineCurve>),
-    #[holder(use_place_holder)]
-    UniformCurve(Box<UniformCurve>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = b_spline_curve_with_knots)]
-#[holder(generate_deserialize)]
-pub struct BSplineCurveWithKnots {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation_item")]
-    pub name: Label,
-    #[holder(supertype = "b_spline_curve")]
-    pub degree: i64,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "b_spline_curve")]
-    pub control_points_list: Vec<CartesianPoint>,
-    #[holder(supertype = "b_spline_curve")]
-    pub curve_form: BSplineCurveForm,
-    #[holder(supertype = "b_spline_curve")]
-    pub closed_curve: Logical,
-    #[holder(supertype = "b_spline_curve")]
-    pub self_intersect: Logical,
-    pub knot_multiplicities: Vec<i64>,
-    #[holder(use_place_holder)]
-    pub knots: Vec<ParameterValue>,
-    pub knot_spec: KnotType,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = b_spline_surface)]
-#[holder(generate_deserialize)]
-pub struct BSplineSurface {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation_item")]
-    pub name: Label,
-    pub u_degree: i64,
-    pub v_degree: i64,
-    #[holder(use_place_holder)]
-    pub control_points_list: Vec<Vec<CartesianPoint>>,
-    pub surface_form: BSplineSurfaceForm,
-    pub u_closed: Logical,
-    pub v_closed: Logical,
-    pub self_intersect: Logical,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum BSplineSurfaceAny {
-    #[holder(use_place_holder)]
-    BSplineSurface(Box<BSplineSurface>),
-    #[holder(use_place_holder)]
-    BSplineSurfaceWithKnots(Box<BSplineSurfaceWithKnots>),
-    #[holder(use_place_holder)]
-    BezierSurface(Box<BezierSurface>),
-    #[holder(use_place_holder)]
-    QuasiUniformSurface(Box<QuasiUniformSurface>),
-    #[holder(use_place_holder)]
-    RationalBSplineSurface(Box<RationalBSplineSurface>),
-    #[holder(use_place_holder)]
-    UniformSurface(Box<UniformSurface>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = b_spline_surface_with_knots)]
-#[holder(generate_deserialize)]
-pub struct BSplineSurfaceWithKnots {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation_item")]
-    pub name: Label,
-    #[holder(supertype = "b_spline_surface")]
-    pub u_degree: i64,
-    #[holder(supertype = "b_spline_surface")]
-    pub v_degree: i64,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "b_spline_surface")]
-    pub control_points_list: Vec<Vec<CartesianPoint>>,
-    #[holder(supertype = "b_spline_surface")]
-    pub surface_form: BSplineSurfaceForm,
-    #[holder(supertype = "b_spline_surface")]
-    pub u_closed: Logical,
-    #[holder(supertype = "b_spline_surface")]
-    pub v_closed: Logical,
-    #[holder(supertype = "b_spline_surface")]
-    pub self_intersect: Logical,
-    pub u_multiplicities: Vec<i64>,
-    pub v_multiplicities: Vec<i64>,
-    #[holder(use_place_holder)]
-    pub u_knots: Vec<ParameterValue>,
-    #[holder(use_place_holder)]
-    pub v_knots: Vec<ParameterValue>,
-    pub knot_spec: KnotType,
+    pub presentation: AreaOrView,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -11509,14 +11396,6 @@ pub struct BackChainingRuleBody {
     #[holder(use_place_holder)]
     #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = background_colour)]
-#[holder(generate_deserialize)]
-pub struct BackgroundColour {
-    #[holder(use_place_holder)]
-    pub presentation: AreaOrView,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -11820,20 +11699,6 @@ pub struct BoundedSurfaceCurve {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = box_domain)]
-#[holder(generate_deserialize)]
-pub struct BoxDomain {
-    #[holder(use_place_holder)]
-    pub corner: CartesianPoint,
-    #[holder(use_place_holder)]
-    pub xlength: PositiveLengthMeasure,
-    #[holder(use_place_holder)]
-    pub ylength: PositiveLengthMeasure,
-    #[holder(use_place_holder)]
-    pub zlength: PositiveLengthMeasure,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
 # [holder (field = boxed_half_space)]
 #[holder(generate_deserialize)]
 pub struct BoxedHalfSpace {
@@ -11847,6 +11712,20 @@ pub struct BoxedHalfSpace {
     pub agreement_flag: bool,
     #[holder(use_place_holder)]
     pub enclosure: BoxDomain,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = box_domain)]
+#[holder(generate_deserialize)]
+pub struct BoxDomain {
+    #[holder(use_place_holder)]
+    pub corner: CartesianPoint,
+    #[holder(use_place_holder)]
+    pub xlength: PositiveLengthMeasure,
+    #[holder(use_place_holder)]
+    pub ylength: PositiveLengthMeasure,
+    #[holder(use_place_holder)]
+    pub zlength: PositiveLengthMeasure,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -11989,6 +11868,127 @@ pub enum BytesRepresentationItemAny {
     BytesRepresentationItem(Box<BytesRepresentationItem>),
     #[holder(use_place_holder)]
     PictureRepresentationItem(Box<PictureRepresentationItemAny>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = b_spline_curve)]
+#[holder(generate_deserialize)]
+pub struct BSplineCurve {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
+    pub name: Label,
+    pub degree: i64,
+    #[holder(use_place_holder)]
+    pub control_points_list: Vec<CartesianPoint>,
+    pub curve_form: BSplineCurveForm,
+    pub closed_curve: Logical,
+    pub self_intersect: Logical,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum BSplineCurveAny {
+    #[holder(use_place_holder)]
+    BSplineCurve(Box<BSplineCurve>),
+    #[holder(use_place_holder)]
+    BSplineCurveWithKnots(Box<BSplineCurveWithKnots>),
+    #[holder(use_place_holder)]
+    BezierCurve(Box<BezierCurve>),
+    #[holder(use_place_holder)]
+    QuasiUniformCurve(Box<QuasiUniformCurve>),
+    #[holder(use_place_holder)]
+    RationalBSplineCurve(Box<RationalBSplineCurve>),
+    #[holder(use_place_holder)]
+    UniformCurve(Box<UniformCurve>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = b_spline_curve_with_knots)]
+#[holder(generate_deserialize)]
+pub struct BSplineCurveWithKnots {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
+    pub name: Label,
+    #[holder(supertype = "b_spline_curve")]
+    pub degree: i64,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "b_spline_curve")]
+    pub control_points_list: Vec<CartesianPoint>,
+    #[holder(supertype = "b_spline_curve")]
+    pub curve_form: BSplineCurveForm,
+    #[holder(supertype = "b_spline_curve")]
+    pub closed_curve: Logical,
+    #[holder(supertype = "b_spline_curve")]
+    pub self_intersect: Logical,
+    pub knot_multiplicities: Vec<i64>,
+    #[holder(use_place_holder)]
+    pub knots: Vec<ParameterValue>,
+    pub knot_spec: KnotType,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = b_spline_surface)]
+#[holder(generate_deserialize)]
+pub struct BSplineSurface {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
+    pub name: Label,
+    pub u_degree: i64,
+    pub v_degree: i64,
+    #[holder(use_place_holder)]
+    pub control_points_list: Vec<Vec<CartesianPoint>>,
+    pub surface_form: BSplineSurfaceForm,
+    pub u_closed: Logical,
+    pub v_closed: Logical,
+    pub self_intersect: Logical,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum BSplineSurfaceAny {
+    #[holder(use_place_holder)]
+    BSplineSurface(Box<BSplineSurface>),
+    #[holder(use_place_holder)]
+    BSplineSurfaceWithKnots(Box<BSplineSurfaceWithKnots>),
+    #[holder(use_place_holder)]
+    BezierSurface(Box<BezierSurface>),
+    #[holder(use_place_holder)]
+    QuasiUniformSurface(Box<QuasiUniformSurface>),
+    #[holder(use_place_holder)]
+    RationalBSplineSurface(Box<RationalBSplineSurface>),
+    #[holder(use_place_holder)]
+    UniformSurface(Box<UniformSurface>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = b_spline_surface_with_knots)]
+#[holder(generate_deserialize)]
+pub struct BSplineSurfaceWithKnots {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
+    pub name: Label,
+    #[holder(supertype = "b_spline_surface")]
+    pub u_degree: i64,
+    #[holder(supertype = "b_spline_surface")]
+    pub v_degree: i64,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "b_spline_surface")]
+    pub control_points_list: Vec<Vec<CartesianPoint>>,
+    #[holder(supertype = "b_spline_surface")]
+    pub surface_form: BSplineSurfaceForm,
+    #[holder(supertype = "b_spline_surface")]
+    pub u_closed: Logical,
+    #[holder(supertype = "b_spline_surface")]
+    pub v_closed: Logical,
+    #[holder(supertype = "b_spline_surface")]
+    pub self_intersect: Logical,
+    pub u_multiplicities: Vec<i64>,
+    pub v_multiplicities: Vec<i64>,
+    #[holder(use_place_holder)]
+    pub u_knots: Vec<ParameterValue>,
+    #[holder(use_place_holder)]
+    pub v_knots: Vec<ParameterValue>,
+    pub knot_spec: KnotType,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -12467,108 +12467,6 @@ pub struct ChangeRequest {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = character_glyph_font_usage)]
-#[holder(generate_deserialize)]
-pub struct CharacterGlyphFontUsage {
-    #[holder(use_place_holder)]
-    pub character: GenericCharacterGlyphSymbolAny,
-    #[holder(use_place_holder)]
-    pub font: TextFont,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = character_glyph_style_outline)]
-#[holder(generate_deserialize)]
-pub struct CharacterGlyphStyleOutline {
-    #[holder(use_place_holder)]
-    pub outline_style: CurveStyleAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = character_glyph_style_stroke)]
-#[holder(generate_deserialize)]
-pub struct CharacterGlyphStyleStroke {
-    #[holder(use_place_holder)]
-    pub stroke_style: CurveStyleAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = character_glyph_symbol)]
-#[holder(generate_deserialize)]
-pub struct CharacterGlyphSymbol {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub items: Vec<RepresentationItemAny>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub context_of_items: RepresentationContextAny,
-    #[holder(use_place_holder)]
-    pub character_box: PlanarExtentAny,
-    #[holder(use_place_holder)]
-    pub baseline_ratio: RatioMeasure,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum CharacterGlyphSymbolAny {
-    #[holder(use_place_holder)]
-    CharacterGlyphSymbol(Box<CharacterGlyphSymbol>),
-    #[holder(use_place_holder)]
-    CharacterGlyphSymbolOutline(Box<CharacterGlyphSymbolOutline>),
-    #[holder(use_place_holder)]
-    CharacterGlyphSymbolStroke(Box<CharacterGlyphSymbolStroke>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = character_glyph_symbol_outline)]
-#[holder(generate_deserialize)]
-pub struct CharacterGlyphSymbolOutline {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub items: Vec<RepresentationItemAny>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub context_of_items: RepresentationContextAny,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "character_glyph_symbol")]
-    pub character_box: PlanarExtentAny,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "character_glyph_symbol")]
-    pub baseline_ratio: RatioMeasure,
-    #[holder(use_place_holder)]
-    pub outlines: Vec<AnnotationFillArea>,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = character_glyph_symbol_stroke)]
-#[holder(generate_deserialize)]
-pub struct CharacterGlyphSymbolStroke {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub items: Vec<RepresentationItemAny>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub context_of_items: RepresentationContextAny,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "character_glyph_symbol")]
-    pub character_box: PlanarExtentAny,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "character_glyph_symbol")]
-    pub baseline_ratio: RatioMeasure,
-    #[holder(use_place_holder)]
-    pub strokes: Vec<CurveAny>,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
 # [holder (field = characteristic_data_column_header)]
 #[holder(generate_deserialize)]
 pub struct CharacteristicDataColumnHeader {
@@ -12696,6 +12594,108 @@ pub enum CharacterizedObjectAny {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = character_glyph_font_usage)]
+#[holder(generate_deserialize)]
+pub struct CharacterGlyphFontUsage {
+    #[holder(use_place_holder)]
+    pub character: GenericCharacterGlyphSymbolAny,
+    #[holder(use_place_holder)]
+    pub font: TextFont,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = character_glyph_style_outline)]
+#[holder(generate_deserialize)]
+pub struct CharacterGlyphStyleOutline {
+    #[holder(use_place_holder)]
+    pub outline_style: CurveStyleAny,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = character_glyph_style_stroke)]
+#[holder(generate_deserialize)]
+pub struct CharacterGlyphStyleStroke {
+    #[holder(use_place_holder)]
+    pub stroke_style: CurveStyleAny,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = character_glyph_symbol)]
+#[holder(generate_deserialize)]
+pub struct CharacterGlyphSymbol {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub items: Vec<RepresentationItemAny>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub context_of_items: RepresentationContextAny,
+    #[holder(use_place_holder)]
+    pub character_box: PlanarExtentAny,
+    #[holder(use_place_holder)]
+    pub baseline_ratio: RatioMeasure,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum CharacterGlyphSymbolAny {
+    #[holder(use_place_holder)]
+    CharacterGlyphSymbol(Box<CharacterGlyphSymbol>),
+    #[holder(use_place_holder)]
+    CharacterGlyphSymbolOutline(Box<CharacterGlyphSymbolOutline>),
+    #[holder(use_place_holder)]
+    CharacterGlyphSymbolStroke(Box<CharacterGlyphSymbolStroke>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = character_glyph_symbol_outline)]
+#[holder(generate_deserialize)]
+pub struct CharacterGlyphSymbolOutline {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub items: Vec<RepresentationItemAny>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub context_of_items: RepresentationContextAny,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "character_glyph_symbol")]
+    pub character_box: PlanarExtentAny,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "character_glyph_symbol")]
+    pub baseline_ratio: RatioMeasure,
+    #[holder(use_place_holder)]
+    pub outlines: Vec<AnnotationFillArea>,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = character_glyph_symbol_stroke)]
+#[holder(generate_deserialize)]
+pub struct CharacterGlyphSymbolStroke {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub items: Vec<RepresentationItemAny>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub context_of_items: RepresentationContextAny,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "character_glyph_symbol")]
+    pub character_box: PlanarExtentAny,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "character_glyph_symbol")]
+    pub baseline_ratio: RatioMeasure,
+    #[holder(use_place_holder)]
+    pub strokes: Vec<CurveAny>,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = circle)]
 #[holder(generate_deserialize)]
 pub struct Circle {
@@ -12758,6 +12758,35 @@ pub enum ClassAny {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = classification_assignment)]
+#[holder(generate_deserialize)]
+pub struct ClassificationAssignment {
+    #[holder(use_place_holder)]
+    pub assigned_class: GroupAny,
+    #[holder(use_place_holder)]
+    pub role: ClassificationRole,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum ClassificationAssignmentAny {
+    #[holder(use_place_holder)]
+    ClassificationAssignment(Box<ClassificationAssignment>),
+    #[holder(use_place_holder)]
+    AppliedClassificationAssignment(Box<AppliedClassificationAssignment>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = classification_role)]
+#[holder(generate_deserialize)]
+pub struct ClassificationRole {
+    #[holder(use_place_holder)]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    pub description: Option<Text>,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = class_by_extension)]
 #[holder(generate_deserialize)]
 pub struct ClassByExtension {
@@ -12805,35 +12834,6 @@ pub struct ClassUsageEffectivityContextAssignment {
     pub role: EffectivityContextRole,
     #[holder(use_place_holder)]
     pub items: Vec<ClassUsageEffectivityContextItem>,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = classification_assignment)]
-#[holder(generate_deserialize)]
-pub struct ClassificationAssignment {
-    #[holder(use_place_holder)]
-    pub assigned_class: GroupAny,
-    #[holder(use_place_holder)]
-    pub role: ClassificationRole,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum ClassificationAssignmentAny {
-    #[holder(use_place_holder)]
-    ClassificationAssignment(Box<ClassificationAssignment>),
-    #[holder(use_place_holder)]
-    AppliedClassificationAssignment(Box<AppliedClassificationAssignment>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = classification_role)]
-#[holder(generate_deserialize)]
-pub struct ClassificationRole {
-    #[holder(use_place_holder)]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -14239,6 +14239,19 @@ pub enum DateAny {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = dated_effectivity)]
+#[holder(generate_deserialize)]
+pub struct DatedEffectivity {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "effectivity")]
+    pub id: Identifier,
+    #[holder(use_place_holder)]
+    pub effectivity_end_date: Option<DateTimeOrEventOccurrence>,
+    #[holder(use_place_holder)]
+    pub effectivity_start_date: DateTimeOrEventOccurrence,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = date_and_time)]
 #[holder(generate_deserialize)]
 pub struct DateAndTime {
@@ -14338,19 +14351,6 @@ pub struct DateTimeRepresentationItem {
 pub struct DateTimeRole {
     #[holder(use_place_holder)]
     pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = dated_effectivity)]
-#[holder(generate_deserialize)]
-pub struct DatedEffectivity {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "effectivity")]
-    pub id: Identifier,
-    #[holder(use_place_holder)]
-    pub effectivity_end_date: Option<DateTimeOrEventOccurrence>,
-    #[holder(use_place_holder)]
-    pub effectivity_start_date: DateTimeOrEventOccurrence,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -14827,6 +14827,117 @@ pub struct DielectricConstantMeasureWithUnit {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = dimensional_characteristic_representation)]
+#[holder(generate_deserialize)]
+pub struct DimensionalCharacteristicRepresentation {
+    #[holder(use_place_holder)]
+    pub dimension: DimensionalCharacteristic,
+    #[holder(use_place_holder)]
+    pub representation: ShapeDimensionRepresentation,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = dimensional_exponents)]
+#[holder(generate_deserialize)]
+pub struct DimensionalExponents {
+    pub length_exponent: f64,
+    pub mass_exponent: f64,
+    pub time_exponent: f64,
+    pub electric_current_exponent: f64,
+    pub thermodynamic_temperature_exponent: f64,
+    pub amount_of_substance_exponent: f64,
+    pub luminous_intensity_exponent: f64,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = dimensional_location)]
+#[holder(generate_deserialize)]
+pub struct DimensionalLocation {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
+    pub description: Option<Text>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
+    pub relating_shape_aspect: ShapeAspectAny,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
+    pub related_shape_aspect: ShapeAspectAny,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum DimensionalLocationAny {
+    #[holder(use_place_holder)]
+    DimensionalLocation(Box<DimensionalLocation>),
+    #[holder(use_place_holder)]
+    AngularLocation(Box<AngularLocation>),
+    #[holder(use_place_holder)]
+    DimensionalLocationWithPath(Box<DimensionalLocationWithPath>),
+    #[holder(use_place_holder)]
+    DirectedDimensionalLocation(Box<DirectedDimensionalLocation>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = dimensional_location_with_path)]
+#[holder(generate_deserialize)]
+pub struct DimensionalLocationWithPath {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
+    pub description: Option<Text>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
+    pub relating_shape_aspect: ShapeAspectAny,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect_relationship")]
+    pub related_shape_aspect: ShapeAspectAny,
+    #[holder(use_place_holder)]
+    pub path: ShapeAspectAny,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = dimensional_size)]
+#[holder(generate_deserialize)]
+pub struct DimensionalSize {
+    #[holder(use_place_holder)]
+    pub applies_to: ShapeAspectAny,
+    #[holder(use_place_holder)]
+    pub name: Label,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum DimensionalSizeAny {
+    #[holder(use_place_holder)]
+    DimensionalSize(Box<DimensionalSize>),
+    #[holder(use_place_holder)]
+    AngularSize(Box<AngularSize>),
+    #[holder(use_place_holder)]
+    DimensionalSizeWithPath(Box<DimensionalSizeWithPath>),
+    #[holder(use_place_holder)]
+    ExternallyDefinedDimensionDefinition(Box<ExternallyDefinedDimensionDefinition>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = dimensional_size_with_path)]
+#[holder(generate_deserialize)]
+pub struct DimensionalSizeWithPath {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "dimensional_size")]
+    pub applies_to: ShapeAspectAny,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "dimensional_size")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    pub path: ShapeAspectAny,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = dimension_callout)]
 #[holder(generate_deserialize)]
 pub struct DimensionCallout {
@@ -15010,117 +15121,6 @@ pub struct DimensionTextAssociativity {
     #[holder(use_place_holder)]
     #[holder(supertype = "mapped_item")]
     pub mapping_target: RepresentationItemAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = dimensional_characteristic_representation)]
-#[holder(generate_deserialize)]
-pub struct DimensionalCharacteristicRepresentation {
-    #[holder(use_place_holder)]
-    pub dimension: DimensionalCharacteristic,
-    #[holder(use_place_holder)]
-    pub representation: ShapeDimensionRepresentation,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = dimensional_exponents)]
-#[holder(generate_deserialize)]
-pub struct DimensionalExponents {
-    pub length_exponent: f64,
-    pub mass_exponent: f64,
-    pub time_exponent: f64,
-    pub electric_current_exponent: f64,
-    pub thermodynamic_temperature_exponent: f64,
-    pub amount_of_substance_exponent: f64,
-    pub luminous_intensity_exponent: f64,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = dimensional_location)]
-#[holder(generate_deserialize)]
-pub struct DimensionalLocation {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "shape_aspect_relationship")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "shape_aspect_relationship")]
-    pub description: Option<Text>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "shape_aspect_relationship")]
-    pub relating_shape_aspect: ShapeAspectAny,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "shape_aspect_relationship")]
-    pub related_shape_aspect: ShapeAspectAny,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum DimensionalLocationAny {
-    #[holder(use_place_holder)]
-    DimensionalLocation(Box<DimensionalLocation>),
-    #[holder(use_place_holder)]
-    AngularLocation(Box<AngularLocation>),
-    #[holder(use_place_holder)]
-    DimensionalLocationWithPath(Box<DimensionalLocationWithPath>),
-    #[holder(use_place_holder)]
-    DirectedDimensionalLocation(Box<DirectedDimensionalLocation>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = dimensional_location_with_path)]
-#[holder(generate_deserialize)]
-pub struct DimensionalLocationWithPath {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "shape_aspect_relationship")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "shape_aspect_relationship")]
-    pub description: Option<Text>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "shape_aspect_relationship")]
-    pub relating_shape_aspect: ShapeAspectAny,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "shape_aspect_relationship")]
-    pub related_shape_aspect: ShapeAspectAny,
-    #[holder(use_place_holder)]
-    pub path: ShapeAspectAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = dimensional_size)]
-#[holder(generate_deserialize)]
-pub struct DimensionalSize {
-    #[holder(use_place_holder)]
-    pub applies_to: ShapeAspectAny,
-    #[holder(use_place_holder)]
-    pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum DimensionalSizeAny {
-    #[holder(use_place_holder)]
-    DimensionalSize(Box<DimensionalSize>),
-    #[holder(use_place_holder)]
-    AngularSize(Box<AngularSize>),
-    #[holder(use_place_holder)]
-    DimensionalSizeWithPath(Box<DimensionalSizeWithPath>),
-    #[holder(use_place_holder)]
-    ExternallyDefinedDimensionDefinition(Box<ExternallyDefinedDimensionDefinition>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = dimensional_size_with_path)]
-#[holder(generate_deserialize)]
-pub struct DimensionalSizeWithPath {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "dimensional_size")]
-    pub applies_to: ShapeAspectAny,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "dimensional_size")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    pub path: ShapeAspectAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -16480,71 +16480,6 @@ pub struct Extent {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = external_class_library)]
-#[holder(generate_deserialize)]
-pub struct ExternalClassLibrary {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "external_source")]
-    pub source_id: SourceItem,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = external_identification_assignment)]
-#[holder(generate_deserialize)]
-pub struct ExternalIdentificationAssignment {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "identification_assignment")]
-    pub assigned_id: Identifier,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "identification_assignment")]
-    pub role: IdentificationRole,
-    #[holder(use_place_holder)]
-    pub source: ExternalSourceAny,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum ExternalIdentificationAssignmentAny {
-    #[holder(use_place_holder)]
-    ExternalIdentificationAssignment(Box<ExternalIdentificationAssignment>),
-    #[holder(use_place_holder)]
-    AppliedExternalIdentificationAssignment(Box<AppliedExternalIdentificationAssignment>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = external_source)]
-#[holder(generate_deserialize)]
-pub struct ExternalSource {
-    #[holder(use_place_holder)]
-    pub source_id: SourceItem,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum ExternalSourceAny {
-    #[holder(use_place_holder)]
-    ExternalSource(Box<ExternalSource>),
-    #[holder(use_place_holder)]
-    ExternalClassLibrary(Box<ExternalClassLibrary>),
-    #[holder(use_place_holder)]
-    KnownSource(Box<KnownSource>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = external_source_relationship)]
-#[holder(generate_deserialize)]
-pub struct ExternalSourceRelationship {
-    #[holder(use_place_holder)]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    pub description: Option<Text>,
-    #[holder(use_place_holder)]
-    pub relating_source: ExternalSourceAny,
-    #[holder(use_place_holder)]
-    pub related_source: ExternalSourceAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
 # [holder (field = externally_defined_class)]
 #[holder(generate_deserialize)]
 pub struct ExternallyDefinedClass {
@@ -16906,6 +16841,71 @@ pub struct ExternallyDefinedTileStyle {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = external_class_library)]
+#[holder(generate_deserialize)]
+pub struct ExternalClassLibrary {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "external_source")]
+    pub source_id: SourceItem,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = external_identification_assignment)]
+#[holder(generate_deserialize)]
+pub struct ExternalIdentificationAssignment {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "identification_assignment")]
+    pub assigned_id: Identifier,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "identification_assignment")]
+    pub role: IdentificationRole,
+    #[holder(use_place_holder)]
+    pub source: ExternalSourceAny,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum ExternalIdentificationAssignmentAny {
+    #[holder(use_place_holder)]
+    ExternalIdentificationAssignment(Box<ExternalIdentificationAssignment>),
+    #[holder(use_place_holder)]
+    AppliedExternalIdentificationAssignment(Box<AppliedExternalIdentificationAssignment>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = external_source)]
+#[holder(generate_deserialize)]
+pub struct ExternalSource {
+    #[holder(use_place_holder)]
+    pub source_id: SourceItem,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum ExternalSourceAny {
+    #[holder(use_place_holder)]
+    ExternalSource(Box<ExternalSource>),
+    #[holder(use_place_holder)]
+    ExternalClassLibrary(Box<ExternalClassLibrary>),
+    #[holder(use_place_holder)]
+    KnownSource(Box<KnownSource>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = external_source_relationship)]
+#[holder(generate_deserialize)]
+pub struct ExternalSourceRelationship {
+    #[holder(use_place_holder)]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    pub description: Option<Text>,
+    #[holder(use_place_holder)]
+    pub relating_source: ExternalSourceAny,
+    #[holder(use_place_holder)]
+    pub related_source: ExternalSourceAny,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = extruded_area_solid)]
 #[holder(generate_deserialize)]
 pub struct ExtrudedAreaSolid {
@@ -17084,6 +17084,33 @@ pub enum FaceAny {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = faceted_brep)]
+#[holder(generate_deserialize)]
+pub struct FacetedBrep {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "manifold_solid_brep")]
+    pub outer: ClosedShellAny,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = faceted_brep_shape_representation)]
+#[holder(generate_deserialize)]
+pub struct FacetedBrepShapeRepresentation {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub items: Vec<RepresentationItemAny>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub context_of_items: RepresentationContextAny,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = face_based_surface_model)]
 #[holder(generate_deserialize)]
 pub struct FaceBasedSurfaceModel {
@@ -17154,33 +17181,6 @@ pub enum FaceSurfaceAny {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = faceted_brep)]
-#[holder(generate_deserialize)]
-pub struct FacetedBrep {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation_item")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "manifold_solid_brep")]
-    pub outer: ClosedShellAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = faceted_brep_shape_representation)]
-#[holder(generate_deserialize)]
-pub struct FacetedBrepShapeRepresentation {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub items: Vec<RepresentationItemAny>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub context_of_items: RepresentationContextAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
 # [holder (field = fact_type)]
 #[holder(generate_deserialize)]
 pub struct FactType {
@@ -17246,6 +17246,21 @@ pub struct FillAreaStyleHatching {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = fill_area_style_tiles)]
+#[holder(generate_deserialize)]
+pub struct FillAreaStyleTiles {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    pub tiling_pattern: TwoDirectionRepeatFactor,
+    #[holder(use_place_holder)]
+    pub tiles: Vec<FillAreaStyleTileShapeSelect>,
+    #[holder(use_place_holder)]
+    pub tiling_scale: PositiveRatioMeasure,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = fill_area_style_tile_coloured_region)]
 #[holder(generate_deserialize)]
 pub struct FillAreaStyleTileColouredRegion {
@@ -17281,18 +17296,21 @@ pub struct FillAreaStyleTileSymbolWithStyle {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = fill_area_style_tiles)]
+# [holder (field = flatness_tolerance)]
 #[holder(generate_deserialize)]
-pub struct FillAreaStyleTiles {
+pub struct FlatnessTolerance {
     #[holder(use_place_holder)]
-    #[holder(supertype = "representation_item")]
+    #[holder(supertype = "geometric_tolerance")]
     pub name: Label,
     #[holder(use_place_holder)]
-    pub tiling_pattern: TwoDirectionRepeatFactor,
+    #[holder(supertype = "geometric_tolerance")]
+    pub description: Text,
     #[holder(use_place_holder)]
-    pub tiles: Vec<FillAreaStyleTileShapeSelect>,
+    #[holder(supertype = "geometric_tolerance")]
+    pub magnitude: MeasureWithUnitAny,
     #[holder(use_place_holder)]
-    pub tiling_scale: PositiveRatioMeasure,
+    #[holder(supertype = "geometric_tolerance")]
+    pub toleranced_shape_aspect: ShapeAspectAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -17311,24 +17329,6 @@ pub struct FlatPatternPlyRepresentationRelationship {
     #[holder(use_place_holder)]
     #[holder(supertype = "representation_relationship")]
     pub rep_2: RepresentationAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = flatness_tolerance)]
-#[holder(generate_deserialize)]
-pub struct FlatnessTolerance {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "geometric_tolerance")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "geometric_tolerance")]
-    pub description: Text,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "geometric_tolerance")]
-    pub magnitude: MeasureWithUnitAny,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "geometric_tolerance")]
-    pub toleranced_shape_aspect: ShapeAspectAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -17504,6 +17504,25 @@ pub struct Func {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = functionally_defined_transformation)]
+#[holder(generate_deserialize)]
+pub struct FunctionallyDefinedTransformation {
+    #[holder(use_place_holder)]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    pub description: Option<Text>,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum FunctionallyDefinedTransformationAny {
+    #[holder(use_place_holder)]
+    FunctionallyDefinedTransformation(Box<FunctionallyDefinedTransformation>),
+    #[holder(use_place_holder)]
+    CartesianTransformationOperator(Box<CartesianTransformationOperatorAny>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = functional_breakdown_context)]
 #[holder(generate_deserialize)]
 pub struct FunctionalBreakdownContext {
@@ -17543,25 +17562,6 @@ pub struct FunctionalElementUsage {
     #[holder(use_place_holder)]
     #[holder(supertype = "product_definition_relationship")]
     pub related_product_definition: ProductDefinitionAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = functionally_defined_transformation)]
-#[holder(generate_deserialize)]
-pub struct FunctionallyDefinedTransformation {
-    #[holder(use_place_holder)]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    pub description: Option<Text>,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum FunctionallyDefinedTransformationAny {
-    #[holder(use_place_holder)]
-    FunctionallyDefinedTransformation(Box<FunctionallyDefinedTransformation>),
-    #[holder(use_place_holder)]
-    CartesianTransformationOperator(Box<CartesianTransformationOperatorAny>),
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -17715,6 +17715,63 @@ pub enum GenericLiteralAny {
 # [holder (field = generic_variable)]
 #[holder(generate_deserialize)]
 pub struct GenericVariable {}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = geometrically_bounded_2d_wireframe_representation)]
+#[holder(generate_deserialize)]
+pub struct GeometricallyBounded2DWireframeRepresentation {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub items: Vec<RepresentationItemAny>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub context_of_items: RepresentationContextAny,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = geometrically_bounded_surface_shape_representation)]
+#[holder(generate_deserialize)]
+pub struct GeometricallyBoundedSurfaceShapeRepresentation {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub items: Vec<RepresentationItemAny>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub context_of_items: RepresentationContextAny,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = geometrically_bounded_wireframe_shape_representation)]
+#[holder(generate_deserialize)]
+pub struct GeometricallyBoundedWireframeShapeRepresentation {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub items: Vec<RepresentationItemAny>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation")]
+    pub context_of_items: RepresentationContextAny,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = geometrical_tolerance_callout)]
+#[holder(generate_deserialize)]
+pub struct GeometricalToleranceCallout {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
+    pub contents: Vec<DraughtingCalloutElement>,
+}
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
 # [holder (field = geometric_alignment)]
@@ -18078,63 +18135,6 @@ pub struct GeometricToleranceWithDefinedUnit {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = geometrical_tolerance_callout)]
-#[holder(generate_deserialize)]
-pub struct GeometricalToleranceCallout {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation_item")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "draughting_callout")]
-    pub contents: Vec<DraughtingCalloutElement>,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = geometrically_bounded_2d_wireframe_representation)]
-#[holder(generate_deserialize)]
-pub struct GeometricallyBounded2DWireframeRepresentation {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub items: Vec<RepresentationItemAny>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub context_of_items: RepresentationContextAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = geometrically_bounded_surface_shape_representation)]
-#[holder(generate_deserialize)]
-pub struct GeometricallyBoundedSurfaceShapeRepresentation {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub items: Vec<RepresentationItemAny>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub context_of_items: RepresentationContextAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = geometrically_bounded_wireframe_shape_representation)]
-#[holder(generate_deserialize)]
-pub struct GeometricallyBoundedWireframeShapeRepresentation {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub items: Vec<RepresentationItemAny>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation")]
-    pub context_of_items: RepresentationContextAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
 # [holder (field = global_assignment)]
 #[holder(generate_deserialize)]
 pub struct GlobalAssignment {
@@ -18356,16 +18356,6 @@ pub struct Hyperbola {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = id_attribute)]
-#[holder(generate_deserialize)]
-pub struct IdAttribute {
-    #[holder(use_place_holder)]
-    pub attribute_value: Identifier,
-    #[holder(use_place_holder)]
-    pub identified_item: IdAttributeSelect,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
 # [holder (field = identification_assignment)]
 #[holder(generate_deserialize)]
 pub struct IdentificationAssignment {
@@ -18394,6 +18384,16 @@ pub struct IdentificationRole {
     pub name: Label,
     #[holder(use_place_holder)]
     pub description: Option<Text>,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = id_attribute)]
+#[holder(generate_deserialize)]
+pub struct IdAttribute {
+    #[holder(use_place_holder)]
+    pub attribute_value: Identifier,
+    #[holder(use_place_holder)]
+    pub identified_item: IdAttributeSelect,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -18564,23 +18564,6 @@ pub struct InformationUsageRight {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = instance_usage_context_assignment)]
-#[holder(generate_deserialize)]
-pub struct InstanceUsageContextAssignment {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "application_context_element")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "application_context_element")]
-    pub frame_of_reference: ApplicationContext,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "product_definition_context")]
-    pub life_cycle_stage: Label,
-    #[holder(use_place_holder)]
-    pub items: Vec<InstanceUsageContextSelect>,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
 # [holder (field = instanced_feature)]
 #[holder(generate_deserialize)]
 pub struct InstancedFeature {
@@ -18598,20 +18581,20 @@ pub struct InstancedFeature {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = int_literal)]
+# [holder (field = instance_usage_context_assignment)]
 #[holder(generate_deserialize)]
-pub struct IntLiteral {
-    #[holder(supertype = "literal_number")]
-    pub the_value: f64,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum IntLiteralAny {
+pub struct InstanceUsageContextAssignment {
     #[holder(use_place_holder)]
-    IntLiteral(Box<IntLiteral>),
+    #[holder(supertype = "application_context_element")]
+    pub name: Label,
     #[holder(use_place_holder)]
-    IntegerRepresentationItem(Box<IntegerRepresentationItem>),
+    #[holder(supertype = "application_context_element")]
+    pub frame_of_reference: ApplicationContext,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "product_definition_context")]
+    pub life_cycle_stage: Label,
+    #[holder(use_place_holder)]
+    pub items: Vec<InstanceUsageContextSelect>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -18649,6 +18632,23 @@ pub struct IntervalExpression {
     #[holder(use_place_holder)]
     #[holder(supertype = "multiple_arity_generic_expression")]
     pub operands: Vec<GenericExpressionAny>,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = int_literal)]
+#[holder(generate_deserialize)]
+pub struct IntLiteral {
+    #[holder(supertype = "literal_number")]
+    pub the_value: f64,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum IntLiteralAny {
+    #[holder(use_place_holder)]
+    IntLiteral(Box<IntLiteral>),
+    #[holder(use_place_holder)]
+    IntegerRepresentationItem(Box<IntegerRepresentationItem>),
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -19005,6 +19005,18 @@ pub struct Line {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = linear_dimension)]
+#[holder(generate_deserialize)]
+pub struct LinearDimension {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "draughting_callout")]
+    pub contents: Vec<DraughtingCalloutElement>,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = line_profile_tolerance)]
 #[holder(generate_deserialize)]
 pub struct LineProfileTolerance {
@@ -19020,18 +19032,6 @@ pub struct LineProfileTolerance {
     #[holder(use_place_holder)]
     #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = linear_dimension)]
-#[holder(generate_deserialize)]
-pub struct LinearDimension {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation_item")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "draughting_callout")]
-    pub contents: Vec<DraughtingCalloutElement>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -19804,23 +19804,6 @@ pub struct MomentsOfInertiaRepresentation {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = multi_language_attribute_assignment)]
-#[holder(generate_deserialize)]
-pub struct MultiLanguageAttributeAssignment {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "attribute_value_assignment")]
-    pub attribute_name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "attribute_value_assignment")]
-    pub attribute_value: AttributeType,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "attribute_value_assignment")]
-    pub role: AttributeValueRole,
-    #[holder(use_place_holder)]
-    pub items: Vec<MultiLanguageAttributeItem>,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
 # [holder (field = multiple_arity_boolean_expression)]
 #[holder(generate_deserialize)]
 pub struct MultipleArityBooleanExpression {
@@ -19860,30 +19843,20 @@ pub struct MultipleArityNumericExpression {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = name_assignment)]
+# [holder (field = multi_language_attribute_assignment)]
 #[holder(generate_deserialize)]
-pub struct NameAssignment {
+pub struct MultiLanguageAttributeAssignment {
     #[holder(use_place_holder)]
-    pub assigned_name: Label,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum NameAssignmentAny {
+    #[holder(supertype = "attribute_value_assignment")]
+    pub attribute_name: Label,
     #[holder(use_place_holder)]
-    NameAssignment(Box<NameAssignment>),
+    #[holder(supertype = "attribute_value_assignment")]
+    pub attribute_value: AttributeType,
     #[holder(use_place_holder)]
-    AppliedNameAssignment(Box<AppliedNameAssignment>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = name_attribute)]
-#[holder(generate_deserialize)]
-pub struct NameAttribute {
+    #[holder(supertype = "attribute_value_assignment")]
+    pub role: AttributeValueRole,
     #[holder(use_place_holder)]
-    pub attribute_value: Label,
-    #[holder(use_place_holder)]
-    pub named_item: NameAttributeSelect,
+    pub items: Vec<MultiLanguageAttributeItem>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -19927,6 +19900,33 @@ pub enum NamedUnitAny {
     ThermodynamicTemperatureUnit(Box<ThermodynamicTemperatureUnit>),
     #[holder(use_place_holder)]
     TimeUnit(Box<TimeUnit>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = name_assignment)]
+#[holder(generate_deserialize)]
+pub struct NameAssignment {
+    #[holder(use_place_holder)]
+    pub assigned_name: Label,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum NameAssignmentAny {
+    #[holder(use_place_holder)]
+    NameAssignment(Box<NameAssignment>),
+    #[holder(use_place_holder)]
+    AppliedNameAssignment(Box<AppliedNameAssignment>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = name_attribute)]
+#[holder(generate_deserialize)]
+pub struct NameAttribute {
+    #[holder(use_place_holder)]
+    pub attribute_value: Label,
+    #[holder(use_place_holder)]
+    pub named_item: NameAttributeSelect,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -20130,47 +20130,6 @@ pub struct Organization {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = organization_assignment)]
-#[holder(generate_deserialize)]
-pub struct OrganizationAssignment {
-    #[holder(use_place_holder)]
-    pub assigned_organization: Organization,
-    #[holder(use_place_holder)]
-    pub role: OrganizationRole,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum OrganizationAssignmentAny {
-    #[holder(use_place_holder)]
-    OrganizationAssignment(Box<OrganizationAssignment>),
-    #[holder(use_place_holder)]
-    AppliedOrganizationAssignment(Box<AppliedOrganizationAssignment>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = organization_relationship)]
-#[holder(generate_deserialize)]
-pub struct OrganizationRelationship {
-    #[holder(use_place_holder)]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    pub description: Option<Text>,
-    #[holder(use_place_holder)]
-    pub relating_organization: Organization,
-    #[holder(use_place_holder)]
-    pub related_organization: Organization,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = organization_role)]
-#[holder(generate_deserialize)]
-pub struct OrganizationRole {
-    #[holder(use_place_holder)]
-    pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
 # [holder (field = organizational_address)]
 #[holder(generate_deserialize)]
 pub struct OrganizationalAddress {
@@ -20278,6 +20237,47 @@ pub struct OrganizationalProjectRole {
     pub name: Label,
     #[holder(use_place_holder)]
     pub description: Option<Text>,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = organization_assignment)]
+#[holder(generate_deserialize)]
+pub struct OrganizationAssignment {
+    #[holder(use_place_holder)]
+    pub assigned_organization: Organization,
+    #[holder(use_place_holder)]
+    pub role: OrganizationRole,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum OrganizationAssignmentAny {
+    #[holder(use_place_holder)]
+    OrganizationAssignment(Box<OrganizationAssignment>),
+    #[holder(use_place_holder)]
+    AppliedOrganizationAssignment(Box<AppliedOrganizationAssignment>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = organization_relationship)]
+#[holder(generate_deserialize)]
+pub struct OrganizationRelationship {
+    #[holder(use_place_holder)]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    pub description: Option<Text>,
+    #[holder(use_place_holder)]
+    pub relating_organization: Organization,
+    #[holder(use_place_holder)]
+    pub related_organization: Organization,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = organization_role)]
+#[holder(generate_deserialize)]
+pub struct OrganizationRole {
+    #[holder(use_place_holder)]
+    pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -20438,25 +20438,6 @@ pub struct Parabola {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = parallel_offset)]
-#[holder(generate_deserialize)]
-pub struct ParallelOffset {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "shape_aspect")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "shape_aspect")]
-    pub description: Option<Text>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "shape_aspect")]
-    pub of_shape: ProductDefinitionShape,
-    #[holder(supertype = "shape_aspect")]
-    pub product_definitional: Logical,
-    #[holder(use_place_holder)]
-    pub offset: MeasureWithUnitAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
 # [holder (field = parallelism_tolerance)]
 #[holder(generate_deserialize)]
 pub struct ParallelismTolerance {
@@ -20478,6 +20459,25 @@ pub struct ParallelismTolerance {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = parallel_offset)]
+#[holder(generate_deserialize)]
+pub struct ParallelOffset {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
+    pub description: Option<Text>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
+    pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
+    pub product_definitional: Logical,
+    #[holder(use_place_holder)]
+    pub offset: MeasureWithUnitAny,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = parametric_representation_context)]
 #[holder(generate_deserialize)]
 pub struct ParametricRepresentationContext {
@@ -20487,6 +20487,27 @@ pub struct ParametricRepresentationContext {
     #[holder(use_place_holder)]
     #[holder(supertype = "representation_context")]
     pub context_type: Text,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = partial_document_with_structured_text_representation_assignment)]
+#[holder(generate_deserialize)]
+pub struct PartialDocumentWithStructuredTextRepresentationAssignment {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "document_usage_constraint_assignment")]
+    pub assigned_document_usage: DocumentUsageConstraint,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "document_usage_constraint_assignment")]
+    pub role: DocumentUsageRole,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "applied_document_usage_constraint_assignment")]
+    pub items: Vec<DocumentReferenceItem>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "characterized_object")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "characterized_object")]
+    pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -20516,27 +20537,6 @@ pub enum PartLaminateTableAny {
     CompositeAssemblyTable(Box<CompositeAssemblyTable>),
     #[holder(use_place_holder)]
     PlyLaminateTable(Box<PlyLaminateTable>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = partial_document_with_structured_text_representation_assignment)]
-#[holder(generate_deserialize)]
-pub struct PartialDocumentWithStructuredTextRepresentationAssignment {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "document_usage_constraint_assignment")]
-    pub assigned_document_usage: DocumentUsageConstraint,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "document_usage_constraint_assignment")]
-    pub role: DocumentUsageRole,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "applied_document_usage_constraint_assignment")]
-    pub items: Vec<DocumentReferenceItem>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "characterized_object")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "characterized_object")]
-    pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -20638,23 +20638,6 @@ pub struct PercentagePlyDefinition {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = perpendicular_to)]
-#[holder(generate_deserialize)]
-pub struct PerpendicularTo {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "shape_aspect")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "shape_aspect")]
-    pub description: Option<Text>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "shape_aspect")]
-    pub of_shape: ProductDefinitionShape,
-    #[holder(supertype = "shape_aspect")]
-    pub product_definitional: Logical,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
 # [holder (field = perpendicularity_tolerance)]
 #[holder(generate_deserialize)]
 pub struct PerpendicularityTolerance {
@@ -20676,6 +20659,23 @@ pub struct PerpendicularityTolerance {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = perpendicular_to)]
+#[holder(generate_deserialize)]
+pub struct PerpendicularTo {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
+    pub description: Option<Text>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "shape_aspect")]
+    pub of_shape: ProductDefinitionShape,
+    #[holder(supertype = "shape_aspect")]
+    pub product_definitional: Logical,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = person)]
 #[holder(generate_deserialize)]
 pub struct Person {
@@ -20691,6 +20691,61 @@ pub struct Person {
     pub prefix_titles: Option<Vec<Label>>,
     #[holder(use_place_holder)]
     pub suffix_titles: Option<Vec<Label>>,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = personal_address)]
+#[holder(generate_deserialize)]
+pub struct PersonalAddress {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
+    pub internal_location: Option<Label>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
+    pub street_number: Option<Label>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
+    pub street: Option<Label>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
+    pub postal_box: Option<Label>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
+    pub town: Option<Label>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
+    pub region: Option<Label>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
+    pub postal_code: Option<Label>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
+    pub country: Option<Label>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
+    pub facsimile_number: Option<Label>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
+    pub telephone_number: Option<Label>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
+    pub electronic_mail_address: Option<Label>,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "address")]
+    pub telex_number: Option<Label>,
+    #[holder(use_place_holder)]
+    pub people: Vec<Person>,
+    #[holder(use_place_holder)]
+    pub description: Option<Text>,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum PersonalAddressAny {
+    #[holder(use_place_holder)]
+    PersonalAddress(Box<PersonalAddress>),
+    #[holder(use_place_holder)]
+    PersonAndOrganizationAddress(Box<PersonAndOrganizationAddress>),
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -20781,61 +20836,6 @@ pub enum PersonAndOrganizationAssignmentAny {
 pub struct PersonAndOrganizationRole {
     #[holder(use_place_holder)]
     pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = personal_address)]
-#[holder(generate_deserialize)]
-pub struct PersonalAddress {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "address")]
-    pub internal_location: Option<Label>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "address")]
-    pub street_number: Option<Label>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "address")]
-    pub street: Option<Label>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "address")]
-    pub postal_box: Option<Label>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "address")]
-    pub town: Option<Label>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "address")]
-    pub region: Option<Label>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "address")]
-    pub postal_code: Option<Label>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "address")]
-    pub country: Option<Label>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "address")]
-    pub facsimile_number: Option<Label>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "address")]
-    pub telephone_number: Option<Label>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "address")]
-    pub electronic_mail_address: Option<Label>,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "address")]
-    pub telex_number: Option<Label>,
-    #[holder(use_place_holder)]
-    pub people: Vec<Person>,
-    #[holder(use_place_holder)]
-    pub description: Option<Text>,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum PersonalAddressAny {
-    #[holder(use_place_holder)]
-    PersonalAddress(Box<PersonalAddress>),
-    #[holder(use_place_holder)]
-    PersonAndOrganizationAddress(Box<PersonAndOrganizationAddress>),
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -21237,6 +21237,17 @@ pub enum PolarComplexNumberLiteralAny {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = polyline)]
+#[holder(generate_deserialize)]
+pub struct Polyline {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    pub points: Vec<CartesianPoint>,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = poly_loop)]
 #[holder(generate_deserialize)]
 pub struct PolyLoop {
@@ -21248,14 +21259,16 @@ pub struct PolyLoop {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = polyline)]
+# [holder (field = positioned_sketch)]
 #[holder(generate_deserialize)]
-pub struct Polyline {
+pub struct PositionedSketch {
     #[holder(use_place_holder)]
     #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
-    pub points: Vec<CartesianPoint>,
+    pub sketch_basis: SketchBasisSelect,
+    #[holder(use_place_holder)]
+    pub auxiliary_elements: Vec<AuxiliaryGeometricRepresentationItem>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -21274,19 +21287,6 @@ pub struct PositionTolerance {
     #[holder(use_place_holder)]
     #[holder(supertype = "geometric_tolerance")]
     pub toleranced_shape_aspect: ShapeAspectAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = positioned_sketch)]
-#[holder(generate_deserialize)]
-pub struct PositionedSketch {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation_item")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    pub sketch_basis: SketchBasisSelect,
-    #[holder(use_place_holder)]
-    pub auxiliary_elements: Vec<AuxiliaryGeometricRepresentationItem>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -21317,215 +21317,6 @@ pub enum PowerUnitAny {
     PowerUnit(Box<PowerUnit>),
     #[holder(use_place_holder)]
     SiPowerUnit(Box<SiPowerUnit>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = pre_defined_colour)]
-#[holder(generate_deserialize)]
-pub struct PreDefinedColour {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "pre_defined_item")]
-    pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum PreDefinedColourAny {
-    #[holder(use_place_holder)]
-    PreDefinedColour(Box<PreDefinedColour>),
-    #[holder(use_place_holder)]
-    DraughtingPreDefinedColour(Box<DraughtingPreDefinedColour>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = pre_defined_curve_font)]
-#[holder(generate_deserialize)]
-pub struct PreDefinedCurveFont {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "pre_defined_item")]
-    pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum PreDefinedCurveFontAny {
-    #[holder(use_place_holder)]
-    PreDefinedCurveFont(Box<PreDefinedCurveFont>),
-    #[holder(use_place_holder)]
-    DraughtingPreDefinedCurveFont(Box<DraughtingPreDefinedCurveFont>),
-    #[holder(use_place_holder)]
-    SolidCurveFont(Box<SolidCurveFont>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = pre_defined_dimension_symbol)]
-#[holder(generate_deserialize)]
-pub struct PreDefinedDimensionSymbol {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "pre_defined_item")]
-    pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = pre_defined_geometrical_tolerance_symbol)]
-#[holder(generate_deserialize)]
-pub struct PreDefinedGeometricalToleranceSymbol {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "pre_defined_item")]
-    pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = pre_defined_item)]
-#[holder(generate_deserialize)]
-pub struct PreDefinedItem {
-    #[holder(use_place_holder)]
-    pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum PreDefinedItemAny {
-    #[holder(use_place_holder)]
-    PreDefinedItem(Box<PreDefinedItem>),
-    #[holder(use_place_holder)]
-    KnownSource(Box<KnownSource>),
-    #[holder(use_place_holder)]
-    PreDefinedColour(Box<PreDefinedColourAny>),
-    #[holder(use_place_holder)]
-    PreDefinedCurveFont(Box<PreDefinedCurveFontAny>),
-    #[holder(use_place_holder)]
-    PreDefinedMarker(Box<PreDefinedMarkerAny>),
-    #[holder(use_place_holder)]
-    PreDefinedSurfaceSideStyle(Box<PreDefinedSurfaceSideStyle>),
-    #[holder(use_place_holder)]
-    PreDefinedSymbol(Box<PreDefinedSymbolAny>),
-    #[holder(use_place_holder)]
-    PreDefinedTextFont(Box<PreDefinedTextFontAny>),
-    #[holder(use_place_holder)]
-    PreDefinedTile(Box<PreDefinedTile>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = pre_defined_marker)]
-#[holder(generate_deserialize)]
-pub struct PreDefinedMarker {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "pre_defined_item")]
-    pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum PreDefinedMarkerAny {
-    #[holder(use_place_holder)]
-    PreDefinedMarker(Box<PreDefinedMarker>),
-    #[holder(use_place_holder)]
-    ExternallyDefinedMarker(Box<ExternallyDefinedMarker>),
-    #[holder(use_place_holder)]
-    PreDefinedPointMarkerSymbol(Box<PreDefinedPointMarkerSymbol>),
-    #[holder(use_place_holder)]
-    UserDefinedMarker(Box<UserDefinedMarker>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = pre_defined_point_marker_symbol)]
-#[holder(generate_deserialize)]
-pub struct PreDefinedPointMarkerSymbol {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "pre_defined_item")]
-    pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = pre_defined_surface_condition_symbol)]
-#[holder(generate_deserialize)]
-pub struct PreDefinedSurfaceConditionSymbol {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "pre_defined_item")]
-    pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = pre_defined_surface_side_style)]
-#[holder(generate_deserialize)]
-pub struct PreDefinedSurfaceSideStyle {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "pre_defined_item")]
-    pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = pre_defined_symbol)]
-#[holder(generate_deserialize)]
-pub struct PreDefinedSymbol {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "pre_defined_item")]
-    pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum PreDefinedSymbolAny {
-    #[holder(use_place_holder)]
-    PreDefinedSymbol(Box<PreDefinedSymbol>),
-    #[holder(use_place_holder)]
-    PreDefinedDimensionSymbol(Box<PreDefinedDimensionSymbol>),
-    #[holder(use_place_holder)]
-    PreDefinedGeometricalToleranceSymbol(Box<PreDefinedGeometricalToleranceSymbol>),
-    #[holder(use_place_holder)]
-    PreDefinedPointMarkerSymbol(Box<PreDefinedPointMarkerSymbol>),
-    #[holder(use_place_holder)]
-    PreDefinedSurfaceConditionSymbol(Box<PreDefinedSurfaceConditionSymbol>),
-    #[holder(use_place_holder)]
-    PreDefinedTerminatorSymbol(Box<PreDefinedTerminatorSymbolAny>),
-    #[holder(use_place_holder)]
-    UserDefinedTerminatorSymbol(Box<UserDefinedTerminatorSymbol>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = pre_defined_terminator_symbol)]
-#[holder(generate_deserialize)]
-pub struct PreDefinedTerminatorSymbol {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "pre_defined_item")]
-    pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum PreDefinedTerminatorSymbolAny {
-    #[holder(use_place_holder)]
-    PreDefinedTerminatorSymbol(Box<PreDefinedTerminatorSymbol>),
-    #[holder(use_place_holder)]
-    VectorStyle(Box<VectorStyle>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = pre_defined_text_font)]
-#[holder(generate_deserialize)]
-pub struct PreDefinedTextFont {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "pre_defined_item")]
-    pub name: Label,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum PreDefinedTextFontAny {
-    #[holder(use_place_holder)]
-    PreDefinedTextFont(Box<PreDefinedTextFont>),
-    #[holder(use_place_holder)]
-    DraughtingPreDefinedTextFont(Box<DraughtingPreDefinedTextFont>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = pre_defined_tile)]
-#[holder(generate_deserialize)]
-pub struct PreDefinedTile {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "pre_defined_item")]
-    pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -21740,6 +21531,215 @@ pub enum PressureUnitAny {
     PressureUnit(Box<PressureUnit>),
     #[holder(use_place_holder)]
     SiPressureUnit(Box<SiPressureUnit>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = pre_defined_colour)]
+#[holder(generate_deserialize)]
+pub struct PreDefinedColour {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
+    pub name: Label,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum PreDefinedColourAny {
+    #[holder(use_place_holder)]
+    PreDefinedColour(Box<PreDefinedColour>),
+    #[holder(use_place_holder)]
+    DraughtingPreDefinedColour(Box<DraughtingPreDefinedColour>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = pre_defined_curve_font)]
+#[holder(generate_deserialize)]
+pub struct PreDefinedCurveFont {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
+    pub name: Label,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum PreDefinedCurveFontAny {
+    #[holder(use_place_holder)]
+    PreDefinedCurveFont(Box<PreDefinedCurveFont>),
+    #[holder(use_place_holder)]
+    DraughtingPreDefinedCurveFont(Box<DraughtingPreDefinedCurveFont>),
+    #[holder(use_place_holder)]
+    SolidCurveFont(Box<SolidCurveFont>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = pre_defined_dimension_symbol)]
+#[holder(generate_deserialize)]
+pub struct PreDefinedDimensionSymbol {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
+    pub name: Label,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = pre_defined_geometrical_tolerance_symbol)]
+#[holder(generate_deserialize)]
+pub struct PreDefinedGeometricalToleranceSymbol {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
+    pub name: Label,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = pre_defined_item)]
+#[holder(generate_deserialize)]
+pub struct PreDefinedItem {
+    #[holder(use_place_holder)]
+    pub name: Label,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum PreDefinedItemAny {
+    #[holder(use_place_holder)]
+    PreDefinedItem(Box<PreDefinedItem>),
+    #[holder(use_place_holder)]
+    KnownSource(Box<KnownSource>),
+    #[holder(use_place_holder)]
+    PreDefinedColour(Box<PreDefinedColourAny>),
+    #[holder(use_place_holder)]
+    PreDefinedCurveFont(Box<PreDefinedCurveFontAny>),
+    #[holder(use_place_holder)]
+    PreDefinedMarker(Box<PreDefinedMarkerAny>),
+    #[holder(use_place_holder)]
+    PreDefinedSurfaceSideStyle(Box<PreDefinedSurfaceSideStyle>),
+    #[holder(use_place_holder)]
+    PreDefinedSymbol(Box<PreDefinedSymbolAny>),
+    #[holder(use_place_holder)]
+    PreDefinedTextFont(Box<PreDefinedTextFontAny>),
+    #[holder(use_place_holder)]
+    PreDefinedTile(Box<PreDefinedTile>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = pre_defined_marker)]
+#[holder(generate_deserialize)]
+pub struct PreDefinedMarker {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
+    pub name: Label,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum PreDefinedMarkerAny {
+    #[holder(use_place_holder)]
+    PreDefinedMarker(Box<PreDefinedMarker>),
+    #[holder(use_place_holder)]
+    ExternallyDefinedMarker(Box<ExternallyDefinedMarker>),
+    #[holder(use_place_holder)]
+    PreDefinedPointMarkerSymbol(Box<PreDefinedPointMarkerSymbol>),
+    #[holder(use_place_holder)]
+    UserDefinedMarker(Box<UserDefinedMarker>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = pre_defined_point_marker_symbol)]
+#[holder(generate_deserialize)]
+pub struct PreDefinedPointMarkerSymbol {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
+    pub name: Label,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = pre_defined_surface_condition_symbol)]
+#[holder(generate_deserialize)]
+pub struct PreDefinedSurfaceConditionSymbol {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
+    pub name: Label,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = pre_defined_surface_side_style)]
+#[holder(generate_deserialize)]
+pub struct PreDefinedSurfaceSideStyle {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
+    pub name: Label,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = pre_defined_symbol)]
+#[holder(generate_deserialize)]
+pub struct PreDefinedSymbol {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
+    pub name: Label,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum PreDefinedSymbolAny {
+    #[holder(use_place_holder)]
+    PreDefinedSymbol(Box<PreDefinedSymbol>),
+    #[holder(use_place_holder)]
+    PreDefinedDimensionSymbol(Box<PreDefinedDimensionSymbol>),
+    #[holder(use_place_holder)]
+    PreDefinedGeometricalToleranceSymbol(Box<PreDefinedGeometricalToleranceSymbol>),
+    #[holder(use_place_holder)]
+    PreDefinedPointMarkerSymbol(Box<PreDefinedPointMarkerSymbol>),
+    #[holder(use_place_holder)]
+    PreDefinedSurfaceConditionSymbol(Box<PreDefinedSurfaceConditionSymbol>),
+    #[holder(use_place_holder)]
+    PreDefinedTerminatorSymbol(Box<PreDefinedTerminatorSymbolAny>),
+    #[holder(use_place_holder)]
+    UserDefinedTerminatorSymbol(Box<UserDefinedTerminatorSymbol>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = pre_defined_terminator_symbol)]
+#[holder(generate_deserialize)]
+pub struct PreDefinedTerminatorSymbol {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
+    pub name: Label,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum PreDefinedTerminatorSymbolAny {
+    #[holder(use_place_holder)]
+    PreDefinedTerminatorSymbol(Box<PreDefinedTerminatorSymbol>),
+    #[holder(use_place_holder)]
+    VectorStyle(Box<VectorStyle>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = pre_defined_text_font)]
+#[holder(generate_deserialize)]
+pub struct PreDefinedTextFont {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
+    pub name: Label,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum PreDefinedTextFontAny {
+    #[holder(use_place_holder)]
+    PreDefinedTextFont(Box<PreDefinedTextFont>),
+    #[holder(use_place_holder)]
+    DraughtingPreDefinedTextFont(Box<DraughtingPreDefinedTextFont>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = pre_defined_tile)]
+#[holder(generate_deserialize)]
+pub struct PreDefinedTile {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "pre_defined_item")]
+    pub name: Label,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -22751,38 +22751,6 @@ pub struct RangeCharacteristic {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = ratio_measure_with_unit)]
-#[holder(generate_deserialize)]
-pub struct RatioMeasureWithUnit {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "measure_with_unit")]
-    pub value_component: MeasureValue,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "measure_with_unit")]
-    pub unit_component: Unit,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum RatioMeasureWithUnitAny {
-    #[holder(use_place_holder)]
-    RatioMeasureWithUnit(Box<RatioMeasureWithUnit>),
-    #[holder(use_place_holder)]
-    DielectricConstantMeasureWithUnit(Box<DielectricConstantMeasureWithUnit>),
-    #[holder(use_place_holder)]
-    LossTangentMeasureWithUnit(Box<LossTangentMeasureWithUnit>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = ratio_unit)]
-#[holder(generate_deserialize)]
-pub struct RatioUnit {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "named_unit")]
-    pub dimensions: DimensionalExponents,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
 # [holder (field = rational_b_spline_curve)]
 #[holder(generate_deserialize)]
 pub struct RationalBSplineCurve {
@@ -22838,6 +22806,38 @@ pub struct RationalRepresentationItem {
     #[holder(use_place_holder)]
     #[holder(supertype = "binary_generic_expression")]
     pub operands: Vec<GenericExpressionAny>,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = ratio_measure_with_unit)]
+#[holder(generate_deserialize)]
+pub struct RatioMeasureWithUnit {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
+    pub value_component: MeasureValue,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "measure_with_unit")]
+    pub unit_component: Unit,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum RatioMeasureWithUnitAny {
+    #[holder(use_place_holder)]
+    RatioMeasureWithUnit(Box<RatioMeasureWithUnit>),
+    #[holder(use_place_holder)]
+    DielectricConstantMeasureWithUnit(Box<DielectricConstantMeasureWithUnit>),
+    #[holder(use_place_holder)]
+    LossTangentMeasureWithUnit(Box<LossTangentMeasureWithUnit>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = ratio_unit)]
+#[holder(generate_deserialize)]
+pub struct RatioUnit {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "named_unit")]
+    pub dimensions: DimensionalExponents,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -22929,18 +22929,6 @@ pub struct RelativeEventOccurrence {
     pub base_event: EventOccurrenceAny,
     #[holder(use_place_holder)]
     pub offset: TimeMeasureWithUnit,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = rep_item_group)]
-#[holder(generate_deserialize)]
-pub struct RepItemGroup {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "group")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "group")]
-    pub description: Option<Text>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -23241,6 +23229,18 @@ pub struct RepresentationRelationshipWithTransformation {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = rep_item_group)]
+#[holder(generate_deserialize)]
+pub struct RepItemGroup {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "group")]
+    pub description: Option<Text>,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = requirement_assigned_object)]
 #[holder(generate_deserialize)]
 pub struct RequirementAssignedObject {
@@ -23535,6 +23535,28 @@ pub struct RowVariable {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = ruled_surface_swept_area_solid)]
+#[holder(generate_deserialize)]
+pub struct RuledSurfaceSweptAreaSolid {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "swept_area_solid")]
+    pub swept_area: CurveBoundedSurface,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "surface_curve_swept_area_solid")]
+    pub directrix: CurveAny,
+    #[holder(supertype = "surface_curve_swept_area_solid")]
+    pub start_param: f64,
+    #[holder(supertype = "surface_curve_swept_area_solid")]
+    pub end_param: f64,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "surface_curve_swept_area_solid")]
+    pub reference_surface: SurfaceAny,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = rule_action)]
 #[holder(generate_deserialize)]
 pub struct RuleAction {
@@ -23690,28 +23712,6 @@ pub struct RuleSupersedence {
     #[holder(use_place_holder)]
     #[holder(supertype = "action")]
     pub chosen_method: ActionMethodAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = ruled_surface_swept_area_solid)]
-#[holder(generate_deserialize)]
-pub struct RuledSurfaceSweptAreaSolid {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation_item")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "swept_area_solid")]
-    pub swept_area: CurveBoundedSurface,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "surface_curve_swept_area_solid")]
-    pub directrix: CurveAny,
-    #[holder(supertype = "surface_curve_swept_area_solid")]
-    pub start_param: f64,
-    #[holder(supertype = "surface_curve_swept_area_solid")]
-    pub end_param: f64,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "surface_curve_swept_area_solid")]
-    pub reference_surface: SurfaceAny,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -24169,6 +24169,36 @@ pub struct ShapeRepresentationWithParameters {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
+# [holder (field = shelled_solid)]
+#[holder(generate_deserialize)]
+pub struct ShelledSolid {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
+    pub rationale: Text,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "modified_solid")]
+    pub base_solid: BaseSolidSelect,
+    #[holder(use_place_holder)]
+    pub deleted_face_set: Vec<FaceSurfaceAny>,
+    #[holder(use_place_holder)]
+    pub thickness: LengthMeasure,
+}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum ShelledSolidAny {
+    #[holder(use_place_holder)]
+    ShelledSolid(Box<ShelledSolid>),
+    #[holder(use_place_holder)]
+    ComplexShelledSolid(Box<ComplexShelledSolid>),
+    #[holder(use_place_holder)]
+    DoubleOffsetShelledSolid(Box<DoubleOffsetShelledSolid>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
 # [holder (field = shell_based_surface_model)]
 #[holder(generate_deserialize)]
 pub struct ShellBasedSurfaceModel {
@@ -24206,33 +24236,74 @@ pub struct ShellBasedWireframeShapeRepresentation {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = shelled_solid)]
+# [holder (field = simple_boolean_expression)]
 #[holder(generate_deserialize)]
-pub struct ShelledSolid {
+pub struct SimpleBooleanExpression {}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum SimpleBooleanExpressionAny {
+    #[holder(use_place_holder)]
+    SimpleBooleanExpression(Box<SimpleBooleanExpression>),
+    #[holder(use_place_holder)]
+    BooleanLiteral(Box<BooleanLiteralAny>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = simple_clause)]
+#[holder(generate_deserialize)]
+pub struct SimpleClause {
     #[holder(use_place_holder)]
     #[holder(supertype = "representation_item")]
     pub name: Label,
     #[holder(use_place_holder)]
-    #[holder(supertype = "modified_solid")]
-    pub rationale: Text,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "modified_solid")]
-    pub base_solid: BaseSolidSelect,
-    #[holder(use_place_holder)]
-    pub deleted_face_set: Vec<FaceSurfaceAny>,
-    #[holder(use_place_holder)]
-    pub thickness: LengthMeasure,
+    #[holder(supertype = "compound_representation_item")]
+    pub item_element: CompoundItemDefinition,
 }
 #[derive(Debug, Clone, PartialEq, Holder)]
 # [holder (table = Tables)]
 #[holder(generate_deserialize)]
-pub enum ShelledSolidAny {
+pub enum SimpleClauseAny {
     #[holder(use_place_holder)]
-    ShelledSolid(Box<ShelledSolid>),
+    SimpleClause(Box<SimpleClause>),
     #[holder(use_place_holder)]
-    ComplexShelledSolid(Box<ComplexShelledSolid>),
+    LiteralConjunction(Box<LiteralConjunction>),
     #[holder(use_place_holder)]
-    DoubleOffsetShelledSolid(Box<DoubleOffsetShelledSolid>),
+    LiteralDisjunction(Box<LiteralDisjunction>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = simple_generic_expression)]
+#[holder(generate_deserialize)]
+pub struct SimpleGenericExpression {}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum SimpleGenericExpressionAny {
+    #[holder(use_place_holder)]
+    SimpleGenericExpression(Box<SimpleGenericExpression>),
+    #[holder(use_place_holder)]
+    GenericLiteral(Box<GenericLiteralAny>),
+    #[holder(use_place_holder)]
+    GenericVariable(Box<GenericVariable>),
+    #[holder(use_place_holder)]
+    SimpleBooleanExpression(Box<SimpleBooleanExpressionAny>),
+    #[holder(use_place_holder)]
+    SimpleNumericExpression(Box<SimpleNumericExpressionAny>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = simple_numeric_expression)]
+#[holder(generate_deserialize)]
+pub struct SimpleNumericExpression {}
+#[derive(Debug, Clone, PartialEq, Holder)]
+# [holder (table = Tables)]
+#[holder(generate_deserialize)]
+pub enum SimpleNumericExpressionAny {
+    #[holder(use_place_holder)]
+    SimpleNumericExpression(Box<SimpleNumericExpression>),
+    #[holder(use_place_holder)]
+    LiteralNumber(Box<LiteralNumberAny>),
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -24557,77 +24628,6 @@ pub enum SiUnitAny {
     SiRadioactivityUnit(Box<SiRadioactivityUnit>),
     #[holder(use_place_holder)]
     SiResistanceUnit(Box<SiResistanceUnit>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = simple_boolean_expression)]
-#[holder(generate_deserialize)]
-pub struct SimpleBooleanExpression {}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum SimpleBooleanExpressionAny {
-    #[holder(use_place_holder)]
-    SimpleBooleanExpression(Box<SimpleBooleanExpression>),
-    #[holder(use_place_holder)]
-    BooleanLiteral(Box<BooleanLiteralAny>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = simple_clause)]
-#[holder(generate_deserialize)]
-pub struct SimpleClause {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation_item")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "compound_representation_item")]
-    pub item_element: CompoundItemDefinition,
-}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum SimpleClauseAny {
-    #[holder(use_place_holder)]
-    SimpleClause(Box<SimpleClause>),
-    #[holder(use_place_holder)]
-    LiteralConjunction(Box<LiteralConjunction>),
-    #[holder(use_place_holder)]
-    LiteralDisjunction(Box<LiteralDisjunction>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = simple_generic_expression)]
-#[holder(generate_deserialize)]
-pub struct SimpleGenericExpression {}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum SimpleGenericExpressionAny {
-    #[holder(use_place_holder)]
-    SimpleGenericExpression(Box<SimpleGenericExpression>),
-    #[holder(use_place_holder)]
-    GenericLiteral(Box<GenericLiteralAny>),
-    #[holder(use_place_holder)]
-    GenericVariable(Box<GenericVariable>),
-    #[holder(use_place_holder)]
-    SimpleBooleanExpression(Box<SimpleBooleanExpressionAny>),
-    #[holder(use_place_holder)]
-    SimpleNumericExpression(Box<SimpleNumericExpressionAny>),
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = simple_numeric_expression)]
-#[holder(generate_deserialize)]
-pub struct SimpleNumericExpression {}
-#[derive(Debug, Clone, PartialEq, Holder)]
-# [holder (table = Tables)]
-#[holder(generate_deserialize)]
-pub enum SimpleNumericExpressionAny {
-    #[holder(use_place_holder)]
-    SimpleNumericExpression(Box<SimpleNumericExpression>),
-    #[holder(use_place_holder)]
-    LiteralNumber(Box<LiteralNumberAny>),
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -25769,17 +25769,6 @@ pub struct SolidWithVariableRadiusEdgeBlend {
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
-# [holder (field = source_for_requirement)]
-#[holder(generate_deserialize)]
-pub struct SourceForRequirement {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "group_assignment")]
-    pub assigned_group: GroupAny,
-    #[holder(use_place_holder)]
-    pub items: Vec<RequirementSourceItem>,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
 # [holder (field = sourced_requirement)]
 #[holder(generate_deserialize)]
 pub struct SourcedRequirement {
@@ -25788,6 +25777,17 @@ pub struct SourcedRequirement {
     pub assigned_group: GroupAny,
     #[holder(use_place_holder)]
     pub items: Vec<ProductDefinitionAny>,
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = source_for_requirement)]
+#[holder(generate_deserialize)]
+pub struct SourceForRequirement {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "group_assignment")]
+    pub assigned_group: GroupAny,
+    #[holder(use_place_holder)]
+    pub items: Vec<RequirementSourceItem>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -26066,6 +26066,18 @@ pub enum SurfaceAny {
     SurfaceReplica(Box<SurfaceReplica>),
     #[holder(use_place_holder)]
     SweptSurface(Box<SweptSurfaceAny>),
+}
+#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
+# [holder (table = Tables)]
+# [holder (field = surfaced_open_shell)]
+#[holder(generate_deserialize)]
+pub struct SurfacedOpenShell {
+    #[holder(use_place_holder)]
+    #[holder(supertype = "representation_item")]
+    pub name: Label,
+    #[holder(use_place_holder)]
+    #[holder(supertype = "connected_face_set")]
+    pub cfs_faces: Vec<FaceAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]
@@ -26383,18 +26395,6 @@ pub struct SurfaceTextureRepresentation {
     #[holder(use_place_holder)]
     #[holder(supertype = "representation")]
     pub context_of_items: RepresentationContextAny,
-}
-#[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
-# [holder (table = Tables)]
-# [holder (field = surfaced_open_shell)]
-#[holder(generate_deserialize)]
-pub struct SurfacedOpenShell {
-    #[holder(use_place_holder)]
-    #[holder(supertype = "representation_item")]
-    pub name: Label,
-    #[holder(use_place_holder)]
-    #[holder(supertype = "connected_face_set")]
-    pub cfs_faces: Vec<FaceAny>,
 }
 #[derive(Debug, Clone, PartialEq, :: derive_new :: new, Holder)]
 # [holder (table = Tables)]

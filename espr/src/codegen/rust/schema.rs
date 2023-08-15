@@ -49,14 +49,22 @@ impl ToTokens for PartialEntityMapping {
 impl Schema {
     pub fn to_token_stream(&self, prefix: CratePrefix) -> TokenStream {
         let types = &self.types;
-        let entities = &self.entities;
+        let mut entities = self.entities.clone();
+        entities.sort_by(|a, b| {
+            let mut aa = a.name.clone();
+            aa.make_ascii_uppercase();
+            let mut bb = b.name.clone();
+            bb.make_ascii_uppercase();
+            aa.cmp(&bb)
+        });
+
         let type_decls = self.types.iter().filter(|e| match e {
             TypeDecl::Enumeration(_) => false,
             _ => true,
         });
 
         let mut partials = Vec::new();
-        for entity in entities {
+        for entity in &entities {
             let mut variables = Vec::new();
             for variable in entity
                 .attributes
@@ -71,7 +79,7 @@ impl Schema {
             });
         }
 
-        let expanded_entities: Vec<Entity> = entities.iter().map(|e| e.expand(entities)).collect();
+        let expanded_entities: Vec<Entity> = entities.iter().map(|e| e.expand(&entities)).collect();
 
         let mut complete = Vec::new();
         for ee in &expanded_entities {
