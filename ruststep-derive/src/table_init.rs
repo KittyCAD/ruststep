@@ -123,14 +123,14 @@ fn entity_impl_table_init(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
                 writeln!(&mut data, "{}{} = {};", hash, id, simple).unwrap();
             }
             _ => {
-                let mut complex = "(".to_string();
+                let mut complex = "(\n  ".to_string();
                 for (i, v) in instances.iter().enumerate() {
                 complex += &v.to_partial(&type_names);
                 if i != instances.len() - 1 {
-                    complex += " ";
+                    complex += "\n  ";
                 }
                 }
-                complex += ")";
+                complex += "\n)";
                 writeln!(&mut data, "{}{} = {};", hash, id, complex).unwrap();
             }
             }
