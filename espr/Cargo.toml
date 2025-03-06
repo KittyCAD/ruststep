@@ -15,7 +15,7 @@ categories    = ["science", "development-tools"]
 
 [dependencies]
 # For parser
-nom = "7.1.3"
+nom = "8.0.0"
 
 # For Rust code generation
 syn = "2.0.9"
