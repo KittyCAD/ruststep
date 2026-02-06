@@ -1,4 +1,3 @@
-use inflector::Inflector;
 use proc_macro2::{Span, TokenStream as TokenStream2};
 use quote::{format_ident, quote};
 use std::convert::*;
@@ -6,13 +5,13 @@ use std::convert::*;
 use super::*;
 
 pub fn derive_holder(ident: &syn::Ident, st: &syn::DataStruct, attr: &HolderAttr) -> TokenStream2 {
-    let name = ident.to_string().to_screaming_snake_case();
+    let name = crate::entity::make_name(ident);
     let holder_ident = as_holder_ident(ident);
     let def_holder_tt = def_holder(ident, st);
     let impl_holder_tt = impl_holder(ident, attr, st);
     let impl_entity_table_tt = impl_entity_table(ident, attr);
     if attr.generate_deserialize {
-        let def_visitor_tt = def_visitor(&holder_ident, &name, st);
+        let def_visitor_tt = def_visitor(&holder_ident, &name, st, attr);
         let impl_deserialize_tt = impl_deserialize(&holder_ident, &name, st);
         let impl_with_visitor_tt = impl_with_visitor(ident);
         quote! {
@@ -43,7 +42,7 @@ pub fn def_holder(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStream2 {
 }
 
 pub fn impl_holder(ident: &syn::Ident, table: &HolderAttr, st: &syn::DataStruct) -> TokenStream2 {
-    let name = ident.to_string().to_screaming_snake_case();
+    let name = crate::entity::make_name(ident);
     let holder_ident = as_holder_ident(ident);
     let FieldEntries {
         holder_types,
@@ -53,6 +52,10 @@ pub fn impl_holder(ident: &syn::Ident, table: &HolderAttr, st: &syn::DataStruct)
     let tuple_len = holder_types.len();
     let table_arg = table_arg();
     let ruststep = ruststep_crate();
+
+    if tuple_len != 1 {
+        abort_call_site!("unsupported type declaration");
+    }
 
     quote! {
         #[automatically_derived]
@@ -72,6 +75,12 @@ pub fn impl_holder(ident: &syn::Ident, table: &HolderAttr, st: &syn::DataStruct)
                 #tuple_len
             }
         }
+    #[automatically_derived]
+    impl #ruststep::tables::ToData for #holder_ident {
+        fn to_data(&self) -> String {
+        self.0.to_data()
+        }
+    }
     } // quote!
 }
 
@@ -95,7 +104,12 @@ pub fn impl_entity_table(ident: &syn::Ident, table: &HolderAttr) -> TokenStream2
 
 // `name` may be different from `ident`
 // because this will be used for both Entity struct and its `*Holder` struct.
-fn def_visitor(ident: &syn::Ident, name: &str, st: &syn::DataStruct) -> TokenStream2 {
+fn def_visitor(
+    ident: &syn::Ident,
+    name: &str,
+    st: &syn::DataStruct,
+    attr: &HolderAttr,
+) -> TokenStream2 {
     let visitor_ident = as_visitor_ident(ident);
     let FieldEntries { holder_types, .. } = FieldEntries::parse(st);
     let attr_len = holder_types.len();
@@ -103,6 +117,151 @@ fn def_visitor(ident: &syn::Ident, name: &str, st: &syn::DataStruct) -> TokenStr
         .map(|i| format_ident!("a_{}", i))
         .collect::<Vec<_>>();
     let serde = serde_crate();
+
+    let mut conversions = Vec::new();
+    if let Some(inner_type_ident) = attr.inner_type.as_ref() {
+        let inner_type_holder_ident = &as_holder_ident(&inner_type_ident);
+        conversions.push(quote!{
+	    fn visit_bool<E>(self, v: bool) -> Result<Self::Value, E>
+	    where
+		E: #serde::de::Error,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_bool(v)?;
+		Ok(#ident(value))
+	    }
+
+	    fn visit_i64<E>(self, v: i64) -> Result<Self::Value, E>
+	    where
+		E: #serde::de::Error,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_i64(v)?;
+		Ok(#ident(value))
+	    }
+
+	    fn visit_f64<E>(self, v: f64) -> Result<Self::Value, E>
+	    where
+		E: #serde::de::Error,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_f64(v)?;
+		Ok(#ident(value))
+	    }
+
+	    fn visit_str<E>(self, v: &str) -> Result<Self::Value, E>
+	    where
+		E: #serde::de::Error,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_str(v)?;
+		Ok(#ident(value))
+	    }
+
+	    fn visit_none<E>(self) -> Result<Self::Value, E>
+	    where
+		E: #serde::de::Error,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_none()?;
+		Ok(#ident(value))
+	    }
+
+	    fn visit_seq<A>(self, seq: A) -> Result<Self::Value, A::Error>
+	    where
+		A: #serde::de::SeqAccess<'de>,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_seq(seq)?;
+		Ok(#ident(value))
+	    }
+
+	    fn visit_map<A>(self, map: A) -> Result<Self::Value, A::Error>
+	    where
+		A: #serde::de::MapAccess<'de>,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_map(map)?;
+		Ok(#ident(value))
+	    }
+
+	    fn visit_enum<A>(self, data: A) -> Result<Self::Value, A::Error>
+	    where
+		A: #serde::de::EnumAccess<'de>,
+	    {
+		let inner_visitor = crate::tables::PlaceHolderVisitor::<#inner_type_holder_ident>::default();
+		let value = inner_visitor.visit_enum(data)?;
+		Ok(#ident(value))
+	    }
+	});
+    } else {
+        match attr.from_type.as_ref() {
+            Some(FromType::F64) => {
+                conversions.push(quote! {
+                            fn visit_f64<E>(self, v: f64) -> ::std::result::Result<Self::Value, E>
+                            where
+                    E: #serde::de::Error,
+                            {
+                    Ok(#ident(v))
+                            }
+                });
+            }
+            Some(FromType::I64) => {
+                conversions.push(quote! {
+                            fn visit_i64<E>(self, v: i64) -> ::std::result::Result<Self::Value, E>
+                            where
+                    E: #serde::de::Error,
+                            {
+                    Ok(#ident(v))
+                            }
+                });
+            }
+            Some(FromType::Str) => {
+                conversions.push(quote! {
+                            fn visit_str<E>(self, v: &str) -> ::std::result::Result<Self::Value, E>
+                            where
+                    E: #serde::de::Error,
+                            {
+                    Ok(#ident(v.to_string()))
+                            }
+                });
+            }
+            None => {
+                conversions.push(quote! {
+                    fn visit_seq<A>(self, mut seq: A) -> ::std::result::Result<Self::Value, A::Error>
+                    where
+			A: #serde::de::SeqAccess<'de>,
+                    {
+			if let Some(size) = seq.size_hint() {
+			    if size != #attr_len {
+				use #serde::de::Error;
+				return Err(A::Error::invalid_length(size, &self));
+			    }
+			}
+			#( let #attributes = seq.next_element()?.unwrap(); )*
+			Ok(#ident ( #(#attributes),* ))
+                    }
+
+                    // Entry point for Record or Parameter::Typed
+                    fn visit_map<A>(self, mut map: A) -> ::std::result::Result<Self::Value, A::Error>
+                    where
+			A: #serde::de::MapAccess<'de>,
+                    {
+			let key: String = map
+			    .next_key()?
+			    .expect("Empty map cannot be accepted as ruststep Holder"); // this must be a bug, not runtime error
+			if key != #name {
+			    use #serde::de::{Error, Unexpected};
+			    return Err(A::Error::invalid_value(Unexpected::Other(&key), &self));
+			}
+			let value = map.next_value()?; // send to Self::visit_seq
+			Ok(value)
+                    }
+		});
+            }
+        }
+    }
+
     quote! {
         #[doc(hidden)]
         pub struct #visitor_ident;
@@ -114,35 +273,8 @@ fn def_visitor(ident: &syn::Ident, name: &str, st: &syn::DataStruct) -> TokenStr
                 write!(formatter, #name)
             }
 
-            fn visit_seq<A>(self, mut seq: A) -> ::std::result::Result<Self::Value, A::Error>
-            where
-                A: #serde::de::SeqAccess<'de>,
-            {
-                if let Some(size) = seq.size_hint() {
-                    if size != #attr_len {
-                        use #serde::de::Error;
-                        return Err(A::Error::invalid_length(size, &self));
-                    }
-                }
-                #( let #attributes = seq.next_element()?.unwrap(); )*
-                Ok(#ident ( #(#attributes),* ))
-            }
+        #(#conversions)*
 
-            // Entry point for Record or Parameter::Typed
-            fn visit_map<A>(self, mut map: A) -> ::std::result::Result<Self::Value, A::Error>
-            where
-                A: #serde::de::MapAccess<'de>,
-            {
-                let key: String = map
-                    .next_key()?
-                    .expect("Empty map cannot be accepted as ruststep Holder"); // this must be a bug, not runtime error
-                if key != #name {
-                    use #serde::de::{Error, Unexpected};
-                    return Err(A::Error::invalid_value(Unexpected::Other(&key), &self));
-                }
-                let value = map.next_value()?; // send to Self::visit_seq
-                Ok(value)
-            }
         }
     } // quote!
 }
@@ -199,7 +331,6 @@ impl FieldEntries {
         for (i, field) in st.fields.iter().enumerate() {
             let ft: FieldType = field.ty.clone().try_into().unwrap();
             let index = syn::Index::from(i);
-
             let HolderAttr { place_holder, .. } = HolderAttr::parse(&field.attrs);
             if place_holder {
                 match &ft {
@@ -215,6 +346,7 @@ impl FieldEntries {
                             .map(|v| v.into_owned(#table_arg))
                             .collect::<::std::result::Result<Vec<_>, _>>()?
                     }),
+                    FieldType::Derived(_) => abort_call_site!("Unexpected Derived<T>"),
                     FieldType::Boxed(_) => abort_call_site!("Unexpected Box<T>"),
                 }
                 holder_types.push(ft.as_holder().as_place_holder().into());

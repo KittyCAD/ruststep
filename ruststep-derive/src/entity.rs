@@ -6,8 +6,20 @@ use std::convert::*;
 
 use super::*;
 
+// HACK: fix special cases properly.
+pub fn make_name(ident: &syn::Ident) -> String {
+    let mut name = ident.to_string().to_screaming_snake_case();
+    match name.as_str() {
+        "AXIS_1_PLACEMENT" => name = "AXIS1_PLACEMENT".to_string(),
+        "AXIS_2_PLACEMENT_2D" => name = "AXIS2_PLACEMENT_2D".to_string(),
+        "AXIS_2_PLACEMENT_3D" => name = "AXIS2_PLACEMENT_3D".to_string(),
+        _ => {}
+    };
+    name
+}
+
 pub fn derive_deserialize(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStream2 {
-    let name = ident.to_string().to_screaming_snake_case();
+    let name = make_name(ident);
     let def_visitor_tt = def_visitor(ident, &name, st);
     let impl_deserialize_tt = impl_deserialize(ident, &name, st);
     quote! {
@@ -17,7 +29,7 @@ pub fn derive_deserialize(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStre
 }
 
 pub fn derive_holder(ident: &syn::Ident, st: &syn::DataStruct, attr: &HolderAttr) -> TokenStream2 {
-    let name = ident.to_string().to_screaming_snake_case();
+    let name = make_name(ident);
     let holder_ident = as_holder_ident(ident);
     let def_holder_tt = def_holder(ident, st);
     let impl_holder_tt = impl_holder(ident, attr, st);
@@ -52,6 +64,7 @@ struct FieldEntries {
     attributes: Vec<syn::Ident>,
     holder_types: Vec<syn::Type>,
     into_owned: Vec<TokenStream2>,
+    supertypes: Vec<Option<syn::LitStr>>,
 }
 
 impl FieldEntries {
@@ -61,6 +74,7 @@ impl FieldEntries {
         let mut attributes = Vec::new();
         let mut holder_types = Vec::new();
         let mut into_owned = Vec::new();
+        let mut supertypes = Vec::new();
 
         for field in &st.fields {
             let ident = field.ident.as_ref().expect_or_abort("st is not struct");
@@ -68,7 +82,13 @@ impl FieldEntries {
 
             let ft: FieldType = field.ty.clone().try_into().unwrap();
 
-            let HolderAttr { place_holder, .. } = HolderAttr::parse(&field.attrs);
+            let HolderAttr {
+                place_holder,
+                supertype,
+                ..
+            } = HolderAttr::parse(&field.attrs);
+            supertypes.push(supertype);
+
             if place_holder {
                 match &ft {
                     FieldType::Path(_) => {
@@ -83,6 +103,7 @@ impl FieldEntries {
                             .map(|v| v.into_owned(#table_arg))
                             .collect::<::std::result::Result<Vec<_>, _>>()?
                     }),
+                    FieldType::Derived(_) => abort_call_site!("Unexpected Derived<T>"),
                     FieldType::Boxed(_) => abort_call_site!("Unexpected Box<T>"),
                 }
                 holder_types.push(ft.as_holder().as_place_holder().into());
@@ -95,6 +116,7 @@ impl FieldEntries {
             attributes,
             holder_types,
             into_owned,
+            supertypes,
         }
     }
 }
@@ -116,17 +138,47 @@ pub fn def_holder(ident: &syn::Ident, st: &syn::DataStruct) -> TokenStream2 {
 }
 
 pub fn impl_holder(ident: &syn::Ident, table: &HolderAttr, st: &syn::DataStruct) -> TokenStream2 {
-    let name = ident.to_string().to_screaming_snake_case();
+    let name = make_name(ident);
     let holder_ident = as_holder_ident(ident);
     let FieldEntries {
         attributes,
         into_owned,
+        supertypes,
         ..
     } = FieldEntries::parse(st);
     let attr_len = attributes.len();
     let HolderAttr { table, .. } = table;
     let table_arg = table_arg();
     let ruststep = ruststep_crate();
+
+    let have_supertypes = supertypes.iter().any(|opt| opt.is_some());
+    let to_partial = if have_supertypes {
+        let mut push_fields = Vec::new();
+        for (attribute, supertype) in attributes.iter().zip(supertypes.iter()) {
+            if let Some(name) = supertype.as_ref() {
+                push_fields.push(quote! {
+                    if !others.iter().any(|name| *name == #name) {
+                    fields.push(&self.#attribute);
+                    }
+                });
+            } else {
+                push_fields.push(quote! {
+                    fields.push(&self.#attribute);
+                });
+            }
+        }
+        quote! {
+            fn to_partial(&self, others: &[&str]) -> String {
+            let name = #name;
+            let mut fields: Vec<&dyn #ruststep::tables::ToData> = Vec::new();
+            #( #push_fields )*
+            format!("{}{}", name, fields.to_data())
+            }
+        }
+    } else {
+        // Empty (delegate to default implementation).
+        quote! {}
+    };
 
     quote! {
         #[automatically_derived]
@@ -147,6 +199,19 @@ pub fn impl_holder(ident: &syn::Ident, table: &HolderAttr, st: &syn::DataStruct)
                 #attr_len
             }
         }
+
+    #[automatically_derived]
+    impl #ruststep::tables::ToData for #holder_ident {
+            fn to_data(&self) -> String {
+        let name = #name;
+        let fields: &[&dyn #ruststep::tables::ToData] = &[
+            #(&self. #attributes),*
+        ];
+        format!("{}{}", name, fields.to_data())
+            }
+
+        #to_partial
+    }
     } // quote!
 }
 
@@ -165,6 +230,13 @@ pub fn impl_entity_table(ident: &syn::Ident, table: &HolderAttr) -> TokenStream2
                 #ruststep::tables::owned_iter(self, &self.#field)
             }
         }
+
+    #[automatically_derived]
+    impl #ruststep::tables::Insert<#holder_ident> for #table {
+        fn insert(&mut self, index: u64, value: #holder_ident) {
+        #ruststep::tables::insert(&mut self.#field, index, value);
+        }
+    }
     }
 }
 

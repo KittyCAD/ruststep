@@ -325,7 +325,7 @@ impl Instantiables {
             // i=0b11 -> A & B, and so on.
             let mut c: Option<Self> = None;
             for factor in &factors {
-                if i % 2 == 1 {
+                if (i & 1) == 1 {
                     c = Some(if let Some(pre) = c {
                         pre & factor.clone()
                     } else {
@@ -368,7 +368,10 @@ impl Instantiables {
                     .iter()
                     .map(|e| Self::from_constraint_expr(ns, e))
                     .collect::<Result<Vec<Self>, SemanticError>>()?;
-                Ok(Self::andor(exprs))
+                // HACK: this has an exponential number of cases.
+                // We only ever consider one, so treat it as ONEOF instead.
+                // Ok(Self::andor(exprs))
+                Ok(Self::oneof(exprs))
             }
         }
     }

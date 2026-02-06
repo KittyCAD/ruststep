@@ -101,12 +101,140 @@
 //! These are automated by [ruststep_derive::Holder] proc-macro.
 //!
 
-use crate::{ast::*, error::*};
+use crate::{ast::*, error::*, primitive::*};
 use serde::{
     de::{self, IntoDeserializer, VariantAccess},
     Deserialize,
 };
-use std::{collections::HashMap, fmt, marker::PhantomData};
+use std::{boxed::Box, collections::HashMap, fmt, marker::PhantomData};
+
+/// Helper trait for inserting entities into tables.
+pub trait Insert<T> {
+    /// Insert a value with the given index into the table.
+    ///
+    /// # Panics
+    ///
+    /// May panic if the table already contains the value.
+    fn insert(&mut self, index: u64, value: T);
+}
+
+/// Helper function used by the automatically generated `Insert` implementations for tables.
+///
+/// # Panics
+///
+/// Panics if the map already has a value associated with the given id.
+pub fn insert<T>(map: &mut HashMap<u64, T>, id: u64, value: T) {
+    match map.entry(id) {
+        std::collections::hash_map::Entry::Vacant(vacancy) => {
+            vacancy.insert(value);
+        }
+        _ => panic!("map already contains value with ID {id}"),
+    }
+}
+
+/// Export helper trait.
+pub trait ToData {
+    /// Serialize to simple EXPRESS data record.
+    fn to_data(&self) -> String;
+
+    /// Serialize to partial EXPRESS data record.
+    ///
+    /// `others` lists the type names of the accompanying partial records.
+    fn to_partial(&self, others: &[&str]) -> String {
+        let _ = others;
+        self.to_data()
+    }
+}
+
+impl ToData for [&dyn ToData] {
+    fn to_data(&self) -> String {
+        let mut data = "(".to_string();
+        for (i, v) in self.iter().enumerate() {
+            data += &v.to_data();
+            if i != self.len() - 1 {
+                data += ", ";
+            }
+        }
+        data + ")"
+    }
+}
+
+impl ToData for String {
+    fn to_data(&self) -> String {
+        format!("'{self}'")
+    }
+}
+
+impl ToData for bool {
+    fn to_data(&self) -> String {
+        match self {
+            true => ".T.".to_string(),
+            false => ".F.".to_string(),
+        }
+    }
+}
+
+impl ToData for f64 {
+    fn to_data(&self) -> String {
+        format!("{self}")
+    }
+}
+
+impl ToData for i64 {
+    fn to_data(&self) -> String {
+        format!("{self}")
+    }
+}
+
+impl ToData for Logical {
+    fn to_data(&self) -> String {
+        match *self {
+            Logical::True => ".T.".to_string(),
+            Logical::False => ".F.".to_string(),
+            Logical::Unknown => ".U.".to_string(),
+        }
+    }
+}
+
+impl ToData for Binary {
+    fn to_data(&self) -> String {
+        self.encode()
+    }
+}
+
+impl<T> ToData for Derived<T> {
+    fn to_data(&self) -> String {
+        "*".to_string()
+    }
+}
+
+impl<T> ToData for Option<T>
+where
+    T: ToData,
+{
+    fn to_data(&self) -> String {
+        match *self {
+            Some(ref value) => value.to_data(),
+            None => "$".to_string(),
+        }
+    }
+}
+
+impl<T> ToData for Vec<T>
+where
+    T: ToData,
+{
+    fn to_data(&self) -> String {
+        let mut data = "(".to_string();
+        for (i, v) in self.iter().enumerate() {
+            data += &v.to_data();
+            if i != self.len() - 1 {
+                data += ", ";
+            }
+        }
+        data + ")"
+    }
+}
 
 /// Trait for resolving a reference through entity id
 pub trait IntoOwned: Clone + 'static {
@@ -188,17 +316,75 @@ where
     )
 }
 
-/// Helper function to implement TableInit trait
+/// Helper function to implement TableInit trait for simple entities.
 pub fn insert_record<'de, T: de::Deserialize<'de>>(
     table: &mut HashMap<u64, T>,
     id: u64,
     record: &Record,
 ) -> crate::error::Result<()> {
-    if let Some(_) = table.insert(id, de::Deserialize::deserialize(record)?) {
+    if table
+        .insert(id, de::Deserialize::deserialize(record)?)
+        .is_some()
+    {
         Err(Error::DuplicatedEntity(id))
     } else {
         Ok(())
     }
+}
+
+pub fn expand_complex_record(
+    partial_map: &phf::Map<&'static str, &'static [&'static str]>,
+    complete_map: &phf::Map<&'static str, &'static [&'static str]>,
+    name: &str,
+    partials: &[Record],
+) -> Record {
+    // The idea is we populate a 'complete' record from a set of 'partial' records.
+    // This has to be performed per attribute.
+    // TODO: ensure attribute identifiers are unique.
+
+    let mut complete_record = Record {
+        name: name.to_string(),
+        parameter: Parameter::List(Vec::new()),
+    };
+
+    for field in *complete_map.get(name).expect("unrecognized complete") {
+        // Find corresponding entry in partials.
+        let mut parameter = None;
+        'search: for partial in partials {
+            let avail = *partial_map
+                .get(&partial.name)
+                .expect("unrecognized partial");
+            let mut index = 0;
+            for ident in avail {
+                if ident == field {
+                    // Found partial entry
+                    match partial.parameter {
+                        Parameter::List(ref v) => {
+                            parameter = v.get(index).clone();
+                            break 'search;
+                        }
+                        _ => panic!("should not reach here"), // TODO: improve error handling.
+                    }
+                }
+                index += 1;
+            }
+        }
+
+        match complete_record.parameter {
+            Parameter::List(ref mut v) => {
+                // push parameter onto list
+                v.push(
+                    parameter
+                        .take()
+                        .expect("partial parameter not found")
+                        .clone(),
+                ); // TODO: improve error handling.
+            }
+            _ => unreachable!(),
+        }
+    }
+
+    complete_record
 }
 
 /// Owned value or reference through entity/value id
@@ -206,6 +392,23 @@ pub fn insert_record<'de, T: de::Deserialize<'de>>(
 pub enum PlaceHolder<T> {
     Ref(Name),
     Owned(T),
+}
+
+impl<T> ToData for PlaceHolder<T>
+where
+    T: ToData,
+{
+    fn to_data(&self) -> String {
+        match self {
+            PlaceHolder::Ref(ref name) => match name {
+                Name::Entity(id) => format!("#{id}"),
+                Name::Value(id) => format!("@{id}"),
+                Name::ConstantEntity(id) => format!("#{id}"),
+                Name::ConstantValue(id) => format!("@{id}"),
+            },
+            PlaceHolder::Owned(ref item) => item.to_data(),
+        }
+    }
 }
 
 impl<T: Holder> IntoOwned for PlaceHolder<T>
@@ -256,7 +459,8 @@ impl<'de, T: Holder + WithVisitor + Deserialize<'de>> Deserialize<'de> for Place
     }
 }
 
-struct PlaceHolderVisitor<T> {
+#[doc(hidden)]
+pub struct PlaceHolderVisitor<T> {
     phantom: PhantomData<T>,
 }
 

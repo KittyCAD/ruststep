@@ -29,7 +29,8 @@ impl de::Error for Error {
     where
         T: fmt::Display,
     {
-        Error::DeserializeFailed(msg.to_string())
+        panic!("{}", msg.to_string());
+        // Error::DeserializeFailed(msg.to_string())
     }
 }
 

@@ -1,12 +1,13 @@
 //! Parse the associated attribute `#[holder(...)]` with `#[derive(Holder)]`
 //!
-//! There are three options:
+//! There are five options:
 //!
 //! - `#[holder(table = {path::to::table::struct})]`
 //! - `#[holder(field = {field_ident})]`
 //! - `#[holder(use_place_holder)]`
 //! - `#[holder(generate_deserialize)]`
-//!
+//! - `#[holder(from_type = {type})]`
+//! - `#[holder(derived)]`
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct HolderAttr {
@@ -14,14 +15,22 @@ pub struct HolderAttr {
     pub field: Option<syn::Ident>,
     pub place_holder: bool,
     pub generate_deserialize: bool,
+    pub from_type: Option<FromType>,
+    pub derived: bool,
+    pub supertype: Option<syn::LitStr>,
+    pub inner_type: Option<syn::Ident>,
 }
 
 impl HolderAttr {
     pub fn parse(attrs: &[syn::Attribute]) -> Self {
         let mut table = None;
         let mut field = None;
+        let mut from_type = None;
         let mut place_holder = false;
         let mut generate_deserialize = false;
+        let mut derived = false;
+        let mut supertype = None;
+        let mut inner_type = None;
 
         for attr in attrs {
             // Only read `#[holder(...)]`
@@ -40,19 +49,57 @@ impl HolderAttr {
                 Attr::Field(ident) => {
                     field = Some(ident);
                 }
+                Attr::FromType(from_type_) => {
+                    from_type = Some(from_type_);
+                }
                 Attr::PlaceHolder => {
                     place_holder = true;
                 }
                 Attr::GenerateDeserialize => {
                     generate_deserialize = true;
                 }
+                Attr::Derived => {
+                    derived = true;
+                }
+                Attr::Supertype(name) => {
+                    supertype = Some(name);
+                }
+                Attr::InnerType(ident) => {
+                    inner_type = Some(ident);
+                }
             }
         }
         HolderAttr {
             table,
             field,
+            from_type,
             place_holder,
             generate_deserialize,
+            derived,
+            supertype,
+            inner_type,
+        }
+    }
+}
+
+#[derive(Clone, Debug, PartialEq)]
+pub enum FromType {
+    F64,
+    I64,
+    Str,
+}
+
+impl syn::parse::Parse for FromType {
+    fn parse(input: syn::parse::ParseStream) -> syn::parse::Result<Self> {
+        let ident: syn::Ident = input.parse()?;
+        match ident.to_string().as_str() {
+            "f64" => Ok(FromType::F64),
+            "i64" => Ok(FromType::I64),
+            "String" => Ok(FromType::Str),
+            other => Err(syn::parse::Error::new(
+                ident.span(),
+                &format!("unsupported type `{other}`"),
+            )),
         }
     }
 }
@@ -61,8 +108,12 @@ impl HolderAttr {
 enum Attr {
     Table(syn::Path),
     Field(syn::Ident),
+    FromType(FromType),
+    Supertype(syn::LitStr),
     PlaceHolder,
     GenerateDeserialize,
+    Derived,
+    InnerType(syn::Ident),
 }
 
 impl syn::parse::Parse for Attr {
@@ -79,8 +130,24 @@ impl syn::parse::Parse for Attr {
                 let ident = input.parse()?;
                 Ok(Attr::Field(ident))
             }
+            "from" => {
+                let _eq: syn::Token![=] = input.parse()?;
+                let ty = input.parse()?;
+                Ok(Attr::FromType(ty))
+            }
             "use_place_holder" => Ok(Attr::PlaceHolder),
             "generate_deserialize" => Ok(Attr::GenerateDeserialize),
+            "derived" => Ok(Attr::Derived),
+            "supertype" => {
+                let _eq: syn::Token![=] = input.parse()?;
+                let name = input.parse()?;
+                Ok(Attr::Supertype(name))
+            }
+            "inner" => {
+                let _eq: syn::Token![=] = input.parse()?;
+                let name = input.parse()?;
+                Ok(Attr::InnerType(name))
+            }
             _ => Err(syn::parse::Error::new(
                 ident.span(),
                 "expected `table`, `field`, or `use_place_holder`",

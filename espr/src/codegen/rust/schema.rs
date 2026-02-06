@@ -1,9 +1,10 @@
 use crate::ir::*;
 
 use check_keyword::CheckKeyword;
-use inflector::Inflector;
 use proc_macro2::TokenStream;
 use quote::*;
+
+use inflector::Inflector;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum CratePrefix {
@@ -31,15 +32,67 @@ impl IR {
     }
 }
 
+struct PartialEntityMapping {
+    pub name: String,
+    pub attributes: Vec<String>,
+}
+
+impl ToTokens for PartialEntityMapping {
+    fn to_tokens(&self, tokens: &mut TokenStream) {
+        let PartialEntityMapping { name, attributes } = self;
+        tokens.append_all(quote! {
+            #name => &[ #(#attributes,)* ],
+        });
+    }
+}
+
 impl Schema {
     pub fn to_token_stream(&self, prefix: CratePrefix) -> TokenStream {
-        let name = format_ident!("{}", self.name);
         let types = &self.types;
-        let entities = &self.entities;
+        let mut entities = self.entities.clone();
+        entities.sort_by(|a, b| {
+            let mut aa = a.name.clone();
+            aa.make_ascii_uppercase();
+            let mut bb = b.name.clone();
+            bb.make_ascii_uppercase();
+            aa.cmp(&bb)
+        });
+
         let type_decls = self.types.iter().filter(|e| match e {
             TypeDecl::Enumeration(_) => false,
             _ => true,
         });
+
+        let mut partials = Vec::new();
+        for entity in &entities {
+            let mut variables = Vec::new();
+            for variable in entity
+                .attributes
+                .iter()
+                .filter_map(|attr| attr.as_variable())
+            {
+                variables.push(variable.name.clone());
+            }
+            partials.push(PartialEntityMapping {
+                name: super::make_name(&entity.name),
+                attributes: variables,
+            });
+        }
+
+        let expanded_entities: Vec<Entity> = entities.iter().map(|e| e.expand(&entities)).collect();
+
+        let mut complete = Vec::new();
+        for ee in &expanded_entities {
+            let mut variables = Vec::new();
+            for variable in ee.attributes.iter().filter_map(|attr| attr.as_variable()) {
+                variables.push(variable.name.clone());
+            }
+            complete.push(PartialEntityMapping {
+                name: super::make_name(&ee.name),
+                attributes: variables,
+            });
+        }
+
         let entity_types: Vec<_> = entities
             .iter()
             .map(|e| format_ident!("{}", e.name.to_pascal_case()))
@@ -67,28 +120,43 @@ impl Schema {
         let ruststep_path = prefix.as_path();
 
         quote! {
-            pub mod #name {
-                use #ruststep_path::{as_holder, Holder, TableInit, primitive::*, derive_more::*};
-                use std::collections::HashMap;
+            use #ruststep_path::{as_holder, Holder, TableInit, primitive::*, derive_more::*};
+            use std::collections::HashMap;
 
-                #[derive(Debug, Clone, PartialEq, Default, TableInit)]
-                pub struct Tables {
-                    #(
+                static COMPLETE: ::phf::Map<&'static str, &'static [&'static str]> = ::phf::phf_map! {
+                    #( #complete )*
+                };
+
+                static PARTIALS: ::phf::Map<&'static str, &'static [&'static str]> = ::phf::phf_map! {
+                    #( #partials )*
+                };
+
+
+            #[derive(Debug, Clone, PartialEq, Default, TableInit)]
+            pub struct Tables {
+                #(
                     #holder_name: HashMap<u64, as_holder!(#entity_types)>,
-                    )*
-                }
+                )*
+            }
 
-                impl Tables {
-                    #(
+            impl Tables {
+                #(
                     pub fn #holders_name(&self) -> &HashMap<u64, as_holder!(#entity_types)> {
                         &self.#holder_name
                     }
-                    )*
+                )*
+
+                pub fn complete_mappings(&self) -> &::phf::Map<&'static str, &'static [&'static str]> {
+                    &COMPLETE
                 }
 
-                #(#types)*
-                #(#entities)*
+                pub fn partial_mappings(&self) -> &::phf::Map<&'static str, &'static [&'static str]> {
+                    &PARTIALS
+                }
             }
+
+            #(#types)*
+            #(#expanded_entities)*
         }
     }
 }

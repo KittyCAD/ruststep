@@ -13,7 +13,7 @@ pub fn digit(input: &str) -> RawParseResult<char> {
 
 /// 127 hex_digit = [digit] | `a` | `b` | `c` | `d` | `e` | `f` .
 pub fn hex_digit(input: &str) -> RawParseResult<u8> {
-    let hex_letter = satisfy(|c| matches!(c, 'A'..='Z' | 'a'..='f'));
+    let hex_letter = satisfy(|c| matches!(c, 'A'..='F' | 'a'..='f'));
     alt((digit, hex_letter))
         .map(|c| c.to_digit(16).unwrap() as u8)
         .parse(input)
@@ -51,6 +51,19 @@ pub fn encoded_string_literal(input: &str) -> RawParseResult<String> {
 pub fn simple_string_literal(input: &str) -> RawParseResult<String> {
     tuple((char('\''), many0(none_of("'")), char('\'')))
         .map(|(_open, chars, _close)| chars.into_iter().collect())
+        .parse(input)
+}
+
+fn binary_prefix(input: &str) -> RawParseResult<u8> {
+    satisfy(|c| matches!(c, '0'..='3'))
+        .map(|c| c.to_digit(10).unwrap() as u8)
+        .parse(input)
+}
+
+/// §6.4.6 binary = `"` [digit] { [hex_digit] } `"`
+pub fn simple_binary(input: &str) -> RawParseResult<(u8, Vec<u8>)> {
+    tuple((char('"'), binary_prefix, many0(hex_digit), char('"')))
+        .map(|(_open, prefix, nibbles, _close)| (prefix, nibbles))
         .parse(input)
 }
 
@@ -125,6 +138,31 @@ mod tests {
         assert_eq!(residual, "23");
 
         assert!(super::hex_digit("x").finish().is_err());
+    }
+
+    #[test]
+    fn binary_prefix() {
+        let (residual, value) = super::binary_prefix("0").finish().unwrap();
+        assert_eq!(value, 0);
+        assert_eq!(residual, "");
+
+        let (residual, value) = super::binary_prefix("1").finish().unwrap();
+        assert_eq!(value, 1);
+        assert_eq!(residual, "");
+
+        let (residual, value) = super::binary_prefix("2").finish().unwrap();
+        assert_eq!(value, 2);
+        assert_eq!(residual, "");
+
+        let (residual, value) = super::binary_prefix("3").finish().unwrap();
+        assert_eq!(value, 3);
+        assert_eq!(residual, "");
+
+        let (residual, value) = super::binary_prefix("00").finish().unwrap();
+        assert_eq!(value, 0);
+        assert_eq!(residual, "0");
+
+        assert!(super::binary_prefix("4").finish().is_err());
     }
 
     #[test]

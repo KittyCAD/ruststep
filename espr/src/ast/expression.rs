@@ -305,8 +305,17 @@ pub enum Logical {
     Unknown,
 }
 
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Binary {
+    /// Number of padding chars `n` where `0 <= n < 4`.
+    pub prefix: u8,
+    /// Binary nibbles.
+    pub nibbles: Vec<u8>,
+}
+
 #[derive(Debug, Clone, PartialEq, From)]
 pub enum Literal {
+    Binary(Binary),
     Real(f64),
     String(String),
     Logial(Logical),

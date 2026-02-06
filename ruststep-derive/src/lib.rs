@@ -152,6 +152,49 @@ fn derive_holder(ast: &syn::DeriveInput) -> TokenStream2 {
     }
 }
 
+// HACK: only used for plain enumerations.
+#[proc_macro_error]
+#[proc_macro_derive(ToData)]
+pub fn derive_to_data_entry(input: TokenStream) -> TokenStream {
+    derive_to_data(syn::parse(input).unwrap()).into()
+}
+
+fn to_enumeration_value(ident: &syn::Ident) -> TokenStream2 {
+    use inflector::Inflector;
+    let token = format!(".{}.", ident.to_string().to_screaming_snake_case());
+    quote! {
+    #token
+    }
+}
+
+fn derive_to_data(ast: syn::DeriveInput) -> TokenStream2 {
+    match &ast.data {
+        syn::Data::Enum(e) => {
+            // TODO: is this robust?
+            let is_plain_enum = e.variants.iter().all(|v| v.fields.is_empty());
+            if !is_plain_enum {
+                abort_call_site!("Applicable only to plain enumerations")
+            }
+
+            let ruststep = common::ruststep_crate();
+            let ident = ast.ident;
+            let variants: Vec<_> = e.variants.iter().map(|v| &v.ident).collect();
+            let variant_value: Vec<_> = variants.iter().map(|v| to_enumeration_value(v)).collect();
+            quote! {
+            #[automatically_derived]
+            impl #ruststep::tables::ToData for #ident {
+                fn to_data(&self) -> String {
+                match *self {
+                    #(Self:: #variants => String::from(#variant_value)),*
+                }
+                }
+            }
+            }
+        }
+        _ => abort_call_site!("Applicable only to plain enumerations"),
+    }
+}
+
 /// Get `Holder` struct identifier from `ENTITY` struct identifier
 ///
 /// - e.g. `as_holder!(A)` to `AHolder`

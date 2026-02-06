@@ -13,7 +13,7 @@ impl ToTokens for SimpleType {
             Logical => tokens.append_all(quote! { Logical }),
             Boolen => tokens.append(format_ident!("bool")),
             String_ { .. } => tokens.append(format_ident!("String")),
-            Binary { .. } => unimplemented!("Binary type is not supported yet"),
+            Binary { .. } => tokens.append(format_ident!("Binary")),
         }
     }
 }
